@@ -3,42 +3,159 @@ const locale = Astro.currentLocale || 'fr';
 
 const content = {
     fr: {
-        title: "50% de l'oxygène que vous respirez vient de l'Océan",
-        subtitle: "Scrollez pour comprendre pourquoi votre entreprise dépend du bleu",
-        cta_title: "Ne retenez pas votre souffle",
-        cta_desc: "L'Océan est le premier régulateur du climat. Former vos équipes, c'est sécuriser votre propre avenir.",
-        cta_btn: "Réserver une Fresque Océane",
+        title: "Testez votre connaissance de l'Océan",
+        subtitle: "Répondez aux questions en descendant dans les profondeurs",
+        result_title: "Votre score d'explorateur : ",
+        low_score: {
+            msg: "Oups... Il semblerait que l'Océan ait encore beaucoup de secrets pour vous.",
+            cta: "Il est URGENT de se former. Réservez une Fresque Océane pour vos équipes.",
+        },
+        high_score: {
+            msg: "Bravo ! Vous avez le pied marin et une bonne conscience écologique.",
+            cta: "Passez au niveau supérieur. Engagez votre entreprise dans la préservation active.",
+        },
+        btn_label: "Agir maintenant",
         depths: [
-            { level: 0, title: "La Surface", desc: "Tout semble calme. Pourtant, +90% de la chaleur excédentaire mondiale est absorbée ici.", label: "Surface" },
-            { level: 100, title: "Zone Épipélagique (-100m)", desc: "CECI EST VOTRE POUMON. Le phytoplancton produit 1 respiration sur 2. Sans lui, l'air devient rare.", label: "-100m" },
-            { level: 500, title: "Zone Mésopélagique (-500m)", desc: "LA CHAÎNE ALIMENTAIRE BRISÉE. Les microplastiques ingérés ici finissent dans nos assiettes. C'est un risque sanitaire majeur.", label: "-500m" },
-            { level: 1000, title: "Les Abysses (-1000m+)", desc: "LA BOMBE CARBONE. Les fonds marins stockent des gigatonnes de CO2. Si cet écosystème s'effondre, le climat s'emballe.", label: "-1000m" }
+            { 
+                level: 0, 
+                label: "Surface",
+                question: "Quelle part de la chaleur excédentaire mondiale l'Océan absorbe-t-il ?",
+                options: ["10%", "50%", "+90%"],
+                correct: 2,
+                title: "Le Régulateur Thermique",
+                desc: "L'Océan est notre bouclier climatique. Il a absorbé plus de 90% de la chaleur générée par nos activités, retardant le réchauffement de l'atmosphère."
+            },
+            { 
+                level: 100, 
+                label: "-100m",
+                question: "D'où vient 50% de l'oxygène que vous respirez ?",
+                options: ["Des forêts", "Du phytoplancton", "Des marais"],
+                correct: 1,
+                title: "Le Deuxième Poumon",
+                desc: "Merci le phytoplancton et les cyanobactéries ! Sans cette vie microscopique marine, l'air serait irrespirable sur Terre."
+            },
+            { 
+                level: 500, 
+                label: "-500m",
+                question: "Combien de temps un plastique met-il à disparaître en mer ?",
+                options: ["10 ans", "100 ans", "Jamais (il se fragmente)"],
+                correct: 2,
+                title: "L'Illusion de la Disparition",
+                desc: "Le plastique ne disparaît pas, il se transforme en microplastiques. Ingérés par les poissons, ils remontent la chaîne alimentaire... jusqu'à nous."
+            },
+            { 
+                level: 1000, 
+                label: "-1000m",
+                question: "Lequel stocke le plus de carbone ?",
+                options: ["L'atmosphère", "Les forêts", "L'Océan"],
+                correct: 2,
+                title: "La Bombe Carbone",
+                desc: "L'Océan est le principal puits de carbone. Les abysses stockent des quantités colossales de CO2. Perturber cet équilibre serait catastrophique."
+            }
         ]
     },
     en: {
-        title: "50% of the oxygen you breathe comes from the Ocean",
-        subtitle: "Scroll to understand why your business depends on the blue",
-        cta_title: "Don't hold your breath",
-        cta_desc: "The Ocean is the primary climate regulator. Training your teams means securing your own future.",
-        cta_btn: "Book an Ocean Collage",
+        title: "Test your Ocean Knowledge",
+        subtitle: "Answer questions as you dive deeper",
+        result_title: "Your Explorer Score: ",
+        low_score: {
+            msg: "Oops... It seems the Ocean still holds many secrets for you.",
+            cta: "It is URGENT to train up. Book an Ocean Collage for your teams.",
+        },
+        high_score: {
+            msg: "Well done! You have sea legs and strong ecological awareness.",
+            cta: "Take it to the next level. Engage your company in active preservation.",
+        },
+        btn_label: "Act Now",
         depths: [
-            { level: 0, title: "The Surface", desc: "It looks calm. Yet, +90% of global excess heat is absorbed here.", label: "Surface" },
-            { level: 100, title: "Epipelagic Zone (-100m)", desc: "THIS IS YOUR LUNG. Phytoplankton produce 1 in every 2 breaths. Without it, air becomes scarce.", label: "-100m" },
-            { level: 500, title: "Mesopelagic Zone (-500m)", desc: "THE BROKEN CHAIN. Microplastics ingested here end up on our plates. It's a major health risk.", label: "-500m" },
-            { level: 1000, title: "The Abyss (-1000m+)", desc: "THE CARBON BOMB. The seafloor stores gigatons of CO2. If this ecosystem collapses, the climate spirals out of control.", label: "-1000m" }
+            { 
+                level: 0, 
+                label: "Surface",
+                question: "How much of the world's excess heat does the Ocean absorb?",
+                options: ["10%", "50%", "+90%"],
+                correct: 2,
+                title: "The Thermal Regulator",
+                desc: "The Ocean is our climate shield. It has absorbed over 90% of the heat generated by human activity, delaying atmospheric warming."
+            },
+            { 
+                level: 100, 
+                label: "-100m",
+                question: "Where does 50% of the oxygen you breathe come from?",
+                options: ["Forests", "Phytoplankton", "Swamps"],
+                correct: 1,
+                title: "The Second Lung",
+                desc: "Thanks to phytoplankton and cyanobacteria! Without this microscopic marine life, Earth's air would be unbreathable."
+            },
+            { 
+                level: 500, 
+                label: "-500m",
+                question: "How long does plastic take to disappear in the ocean?",
+                options: ["10 years", "100 years", "Never (it fragments)"],
+                correct: 2,
+                title: "The Illusion of Disappearance",
+                desc: "Plastic doesn't disappear; it breaks down into microplastics. Eaten by fish, they move up the food chain... right back to us."
+            },
+            { 
+                level: 1000, 
+                label: "-1000m",
+                question: "Which stores the most carbon?",
+                options: ["The Atmosphere", "Forests", "The Ocean"],
+                correct: 2,
+                title: "The Carbon Bomb",
+                desc: "The Ocean is the primary carbon sink. The abyss stores colossal amounts of CO2. Disturbing this balance would be catastrophic."
+            }
         ]
     },
     es: {
-        title: "El 50% del oxígeno que respiras proviene del Océano",
-        subtitle: "Desplázate para entender por qué tu empresa depende del azul",
-        cta_title: "No contengas la respiración",
-        cta_desc: "El Océano es el principal regulador del clima. Formar a tus equipos es asegurar tu propio futuro.",
-        cta_btn: "Reservar un Mural del Océano",
+        title: "Pon a prueba tu conocimiento del Océano",
+        subtitle: "Responde preguntas mientras desciendes a las profundidades",
+        result_title: "Tu Puntuación de Explorador: ",
+        low_score: {
+            msg: "Uy... Parece que el Océano todavía guarda muchos secretos para ti.",
+            cta: "Es URGENTE formarse. Reserva un Mural del Océano para tus equipos.",
+        },
+        high_score: {
+            msg: "¡Bravo! Tienes alma de marinero y buena conciencia ecológica.",
+            cta: "Pasa al siguiente nivel. Involucra a tu empresa en la preservación activa.",
+        },
+        btn_label: "Actuar Ahora",
         depths: [
-            { level: 0, title: "La Superficie", desc: "Todo parece tranquilo. Sin embargo, +90% del calor excedente mundial se absorbe aquí.", label: "Superficie" },
-            { level: 100, title: "Zona Epipelágica (-100m)", desc: "ESTE ES TU PULMÓN. El fitoplancton produce 1 de cada 2 respiraciones. Sin él, el aire escasea.", label: "-100m" },
-            { level: 500, title: "Zona Mesopelágica (-500m)", desc: "LA CADENA ROTA. Los microplásticos ingeridos aquí terminan en nuestros platos. Es un riesgo sanitario mayor.", label: "-500m" },
-            { level: 1000, title: "Los Abismos (-1000m+)", desc: "LA BOMBA DE CARBONO. El fondo marino almacena gigatoneladas de CO2. Si este ecosistema colapsa, el clima se descontrola.", label: "-1000m" }
+            { 
+                level: 0, 
+                label: "Superficie",
+                question: "¿Qué parte del calor excedente mundial absorbe el Océano?",
+                options: ["10%", "50%", "+90%"],
+                correct: 2,
+                title: "El Regulador Térmico",
+                desc: "El Océano es nuestro escudo climático. Ha absorbido más del 90% del calor generado por nuestras actividades, retrasando el calentamiento atmosférico."
+            },
+            { 
+                level: 100, 
+                label: "-100m",
+                question: "¿De dónde viene el 50% del oxígeno que respiras?",
+                options: ["De los bosques", "Del fitoplancton", "De los pantanos"],
+                correct: 1,
+                title: "El Segundo Pulmón",
+                desc: "¡Gracias al fitoplancton y las cianobacterias! Sin esta vida microscópica marina, el aire sería irrespirable en la Tierra."
+            },
+            { 
+                level: 500, 
+                label: "-500m",
+                question: "¿Cuánto tarda el plástico en desaparecer en el mar?",
+                options: ["10 años", "100 años", "Nunca (se fragmenta)"],
+                correct: 2,
+                title: "La Ilusión de la Desaparición",
+                desc: "El plástico no desaparece, se transforma en microplásticos. Ingeridos por los peces, suben por la cadena alimentaria... hasta nosotros."
+            },
+            { 
+                level: 1000, 
+                label: "-1000m",
+                question: "¿Cuál almacena más carbono?",
+                options: ["La atmósfera", "Los bosques", "El Océano"],
+                correct: 2,
+                title: "La Bomba de Carbono",
+                desc: "El Océano es el principal sumidero de carbono. Los abismos almacenan cantidades colosales de CO2. Perturbar este equilibrio sería catastrófico."
+            }
         ]
     }
 };
@@ -49,7 +166,7 @@ const depths = t.depths;
 
 <section id="deep-dive" class="relative w-full overflow-hidden text-white -mt-10 pt-20 pb-0">
     
-    <!-- Top Wave Divider for better integration -->
+    <!-- Top Wave Divider -->
     <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0] transform rotate-180 z-20">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-[calc(100%+1.3px)] h-[60px] fill-background">
             <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
@@ -71,29 +188,51 @@ const depths = t.depths;
             </div>
         </div>
 
-        <!-- Depth Line Container -->
+        <!-- Quiz Container -->
         <div class="relative w-full max-w-4xl">
             <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-white/20 rounded-full"></div>
 
             <div class="space-y-40">
                 {depths.map((depth, index) => (
-                    <div class={`relative flex items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} group`}>
+                    <div class={`relative flex items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''} group quiz-step`} data-correct={depth.correct}>
                         <!-- Dot -->
-                        <div class="absolute left-4 md:left-1/2 -ml-[9px] w-6 h-6 bg-secondary rounded-full border-4 border-[#0B3D91] shadow-[0_0_20px_rgba(0,139,139,0.8)] z-20 group-hover:scale-125 transition-transform duration-300"></div>
+                        <div class="depth-dot absolute left-4 md:left-1/2 -ml-[9px] w-6 h-6 bg-secondary rounded-full border-4 border-[#0B3D91] shadow-[0_0_20px_rgba(0,139,139,0.8)] z-20 transition-all duration-300"></div>
 
                         <!-- Content Side -->
                         <div class="w-full md:w-1/2 pl-16 md:pl-0 md:px-12">
-                            <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors shadow-lg">
+                            <div class="quiz-card bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover:bg-white/10 transition-colors shadow-lg">
                                 <div class="flex items-center gap-3 mb-4">
                                      <span class="inline-block px-3 py-1 rounded-full bg-secondary/80 text-white text-xs font-bold uppercase tracking-widest shadow-sm">
                                         {depth.label}
                                     </span>
                                 </div>
                                
-                                <h3 class="text-2xl font-bold mb-3 text-white">{depth.title}</h3>
-                                <p class="text-blue-100 text-lg leading-relaxed">
-                                    {depth.desc}
-                                </p>
+                                <!-- Question State -->
+                                <div class="quiz-question">
+                                    <h3 class="text-xl font-bold mb-6 text-white leading-snug">{depth.question}</h3>
+                                    <div class="flex flex-col gap-3">
+                                        {depth.options.map((opt, optIndex) => (
+                                            <button 
+                                                class="quiz-option text-left px-4 py-3 rounded-lg bg-white/10 hover:bg-white/20 border border-white/10 transition-all text-sm md:text-base font-medium"
+                                                data-index={optIndex}
+                                            >
+                                                {opt}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <!-- Result/Fact State (Hidden initially) -->
+                                <div class="quiz-result hidden" data-title={depth.title}>
+                                    <div class="mb-4">
+                                        <span class="result-badge inline-block px-3 py-1 rounded-md text-sm font-bold mb-2"></span>
+                                        <h3 class="text-2xl font-bold text-white">{depth.title}</h3>
+                                    </div>
+                                    <p class="text-blue-100 text-lg leading-relaxed">
+                                        {depth.desc}
+                                    </p>
+                                </div>
+
                             </div>
                         </div>
 
@@ -104,14 +243,96 @@ const depths = t.depths;
             </div>
         </div>
 
-        <!-- Impact CTA -->
-        <div class="text-center mt-40 max-w-2xl mx-auto bg-gradient-to-br from-white/10 to-transparent p-10 rounded-3xl border border-white/20 backdrop-blur-md">
-            <h3 class="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">{t.cta_title}</h3>
-            <p class="text-blue-100 text-lg mb-10">{t.cta_desc}</p>
+        <!-- Final Score CTA -->
+        <div id="quiz-final" class="hidden text-center mt-40 max-w-2xl mx-auto bg-gradient-to-br from-white/10 to-transparent p-10 rounded-3xl border border-white/20 backdrop-blur-md transition-all duration-500 transform scale-95 opacity-0">
+            <h3 class="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                {t.result_title} <span id="final-score" class="text-secondary text-5xl">0/4</span>
+            </h3>
+            
+            <p id="score-msg" class="text-blue-100 text-lg mb-4 italic"></p>
+            <p id="score-cta" class="text-white text-xl font-bold mb-10"></p>
+
             <a href="#contact" class="inline-flex items-center gap-2 bg-accent hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-full shadow-[0_4px_20px_rgba(255,107,53,0.4)] transform hover:scale-105 transition-all text-lg">
-                <span>{t.cta_btn}</span>
+                <span>{t.btn_label}</span>
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
             </a>
         </div>
     </div>
 </section>
+
+<!-- Pass localized strings to Script -->
+<script define:vars={{ lowScore: t.low_score, highScore: t.high_score }}>
+    // Quiz Interactive Logic
+    let score = 0;
+    let questionsAnswered = 0;
+    const totalQuestions = 4;
+
+    const steps = document.querySelectorAll('.quiz-step');
+    const finalSection = document.getElementById('quiz-final');
+
+    steps.forEach(step => {
+        const correctIndex = parseInt(step.dataset.correct);
+        const options = step.querySelectorAll('.quiz-option');
+        const questionBox = step.querySelector('.quiz-question');
+        const resultBox = step.querySelector('.quiz-result');
+        const dot = step.querySelector('.depth-dot');
+        const badge = resultBox.querySelector('.result-badge');
+
+        options.forEach(opt => {
+            opt.addEventListener('click', () => {
+                // Prevent multiple answers
+                if (step.classList.contains('answered')) return;
+                step.classList.add('answered');
+
+                const chosenIndex = parseInt(opt.dataset.index);
+                const isCorrect = chosenIndex === correctIndex;
+
+                if (isCorrect) {
+                    score++;
+                    opt.classList.add('bg-green-500', 'border-green-400', 'text-white');
+                    dot.classList.remove('bg-secondary');
+                    dot.classList.add('bg-green-500', 'shadow-[0_0_20px_rgba(34,197,94,0.8)]');
+                    badge.classList.add('bg-green-500/20', 'text-green-300');
+                    badge.textContent = "Correct !";
+                } else {
+                    opt.classList.add('bg-red-500', 'border-red-400', 'text-white');
+                    // Highlight correct one
+                    options[correctIndex].classList.add('bg-green-500/50', 'border-green-400/50');
+                    dot.classList.remove('bg-secondary');
+                    dot.classList.add('bg-red-500', 'shadow-[0_0_20px_rgba(239,68,68,0.8)]');
+                    badge.classList.add('bg-red-500/20', 'text-red-300');
+                    badge.textContent = "Oups...";
+                }
+
+                // Transition UI
+                setTimeout(() => {
+                    questionBox.classList.add('hidden');
+                    resultBox.classList.remove('hidden');
+                    questionsAnswered++;
+                    checkCompletion();
+                }, 600);
+            });
+        });
+    });
+
+    function checkCompletion() {
+        if (questionsAnswered === totalQuestions) {
+            finalSection.classList.remove('hidden');
+            // Trigger animation
+            setTimeout(() => {
+                finalSection.classList.remove('scale-95', 'opacity-0');
+                finalSection.classList.add('scale-100', 'opacity-100');
+                
+                // Update text
+                document.getElementById('final-score').textContent = `${score}/${totalQuestions}`;
+                
+                const isGood = score >= 3;
+                const content = isGood ? highScore : lowScore;
+                
+                document.getElementById('score-msg').textContent = `"${content.msg}"`;
+                document.getElementById('score-cta').textContent = content.cta;
+
+            }, 100);
+        }
+    }
+</script>
