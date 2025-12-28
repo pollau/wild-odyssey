@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ActivityCard from '../../components/ActivityCard.astro';
+import DeepDive from '../../components/DeepDive.astro';
 import { getCollection, getEntry } from 'astro:content';
 
 export function getStaticPaths() {
@@ -113,6 +114,9 @@ const accentHeroTitle = heroTitleParts[1] || '';
                 </div>
             </div>
 		</section>
+
+        <!-- Deep Dive Module -->
+        <DeepDive />
 
         <!-- Activities Section -->
         <section id="activites" class="py-24 px-4 bg-background relative z-20 -mt-10 rounded-t-[3rem]">
