@@ -16,7 +16,7 @@ const accentHeroTitle = heroTitleParts[1];
 <Layout title="Accueil">
 	<main class="min-h-screen">
 		<!-- Hero Section -->
-		<section class="relative h-screen w-full overflow-hidden flex items-center justify-center">
+		<section class="relative h-screen w-full overflow-hidden flex items-center justify-center snap-start">
 			
             <!-- Background Image -->
             <div class="absolute inset-0 z-0">
@@ -42,10 +42,17 @@ const accentHeroTitle = heroTitleParts[1];
                 </p>
 
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#activites" class="bg-primary hover:bg-green-800 text-white font-semibold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg">
+                    <a href="#deep-dive" class="bg-primary hover:bg-green-800 text-white font-semibold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg">
                         Découvrir nos ateliers
                     </a>
                 </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer z-20" onclick="document.getElementById('deep-dive').scrollIntoView()">
+                <svg class="w-10 h-10 text-white/80 hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7-7-7m14-8l-7 7-7-7"></path>
+                </svg>
             </div>
 		</section>
 
