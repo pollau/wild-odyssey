@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ActivityCard from '../components/ActivityCard.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+const homepage = await getEntry('homepage', 'index');
+const activities = await getCollection('activities');
+
+// Title split for the effect
+const heroTitleParts = homepage.data.heroTitle.split('.');
+const mainHeroTitle = heroTitleParts[0] + '.';
+const accentHeroTitle = heroTitleParts[1];
+---
+
+<Layout title="Accueil">
+	<main class="min-h-screen">
+		<!-- Hero Section -->
+		<section class="relative h-screen w-full overflow-hidden flex items-center justify-center">
+			
+            <!-- Background Image -->
+            <div class="absolute inset-0 z-0">
+                <img 
+                    src={homepage.data.heroImage || "/assets/images/hero.png"} 
+                    alt="Wild Odyssey - Océan et Forêt" 
+                    class="w-full h-full object-cover"
+                />
+                <!-- Overlay for readability -->
+                <div class="absolute inset-0 bg-black/30"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+                <h1 class="font-heading text-4xl md:text-6xl text-white font-bold mb-6 leading-tight">
+                    {mainHeroTitle}<br/>
+                    <span class="text-accent">{accentHeroTitle}</span>
+                    {heroTitleParts.length > 2 && <span>{heroTitleParts[2]}</span>}
+                </h1>
+                
+                <p class="font-sans text-lg md:text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
+                    {homepage.data.heroSubtitle}
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#activites" class="bg-primary hover:bg-green-800 text-white font-semibold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg">
+                        Découvrir nos ateliers
+                    </a>
+                </div>
+            </div>
+		</section>
+
+        <!-- Activities Section -->
+        <section id="activites" class="py-24 px-4 bg-background relative z-20 -mt-10 rounded-t-[3rem]">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="text-accent font-semibold tracking-wider uppercase text-sm">Nos Formats</span>
+                    <h2 class="font-heading text-4xl md:text-5xl font-bold text-primary mt-3 mb-6">Des expériences pour<br/>tous les besoins</h2>
+                    <p class="max-w-2xl mx-auto text-gray-600 text-lg">
+                        Du CP à l'Université, de la salle de classe au bord de mer, nous adaptons la pédagogie pour relier la tête, le cœur et les mains.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-12">
+                    {activities.map((activity) => (
+                        <ActivityCard 
+                            title={activity.data.title}
+                            description={activity.data.description}
+                            duration={activity.data.duration}
+                            participants={activity.data.participants}
+                            color={activity.data.color}
+                            image={activity.data.image}
+                        />
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof / Logos -->
+        <section class="py-16 border-t border-gray-200 bg-white">
+            <div class="max-w-6xl mx-auto px-4 text-center">
+                <p class="text-gray-400 font-semibold mb-8">APPROCHE RECONNUE ET VALIDÉE PAR</p>
+                <div class="flex flex-wrap justify-center items-center gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                    <!-- Text Placeholders for Logos until we have SVGs -->
+                    <span class="text-xl font-bold text-gray-600">OFB</span>
+                    <span class="text-xl font-bold text-gray-600">UICN</span>
+                    <span class="text-xl font-bold text-gray-600">Ministère Transition Écologique</span>
+                    <span class="text-xl font-bold text-gray-600">IPBES</span>
+                </div>
+                <div class="mt-12 flex justify-center gap-16 text-center">
+                    <div>
+                        <div class="text-4xl font-bold text-secondary mb-1">+150k</div>
+                        <div class="text-sm text-gray-500 font-medium">Participants</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-secondary mb-1">+1000</div>
+                        <div class="text-sm text-gray-500 font-medium">Établissements</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+	</main>
+</Layout>

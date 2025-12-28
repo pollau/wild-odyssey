@@ -1,0 +1,51 @@
+---
+interface Props {
+	title: string;
+	description: string;
+    duration?: string;
+    participants?: string;
+    image?: string;
+    color?: string; // Optional accent color class
+}
+
+const { title, description, duration, participants, image, color = "bg-primary" } = Astro.props;
+---
+
+<div class="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col h-full">
+    <!-- Image Placeholder or Actual Image -->
+    <div class={`h-48 w-full ${color} relative overflow-hidden`}>
+        {image ? (
+            <img src={image} alt={title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        ) : (
+             <div class="absolute inset-0 flex items-center justify-center text-white/20">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+             </div>
+        )}
+        
+        <!-- Badge -->
+        {(duration || participants) && (
+            <div class="absolute bottom-3 left-3 flex flex-wrap gap-2">
+                {duration && <span class="px-2 py-1 bg-white/90 backdrop-blur text-xs font-semibold rounded-md text-gray-700 shadow-sm">⏱ {duration}</span>}
+                {participants && <span class="px-2 py-1 bg-white/90 backdrop-blur text-xs font-semibold rounded-md text-gray-700 shadow-sm">👥 {participants}</span>}
+            </div>
+        )}
+    </div>
+
+    <div class="p-6 flex flex-col flex-grow">
+        <h3 class="font-heading text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors">
+            {title}
+        </h3>
+        <p class="text-gray-600 mb-6 flex-grow leading-relaxed">
+            {description}
+        </p>
+
+        <a href="#contact" class="inline-flex items-center text-primary font-semibold hover:text-secondary group/link transition-colors mt-auto">
+            En savoir plus
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 transition-transform group-hover/link:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+        </a>
+    </div>
+</div>

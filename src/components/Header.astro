@@ -1,0 +1,92 @@
+---
+const links = [
+  { href: "#activites", label: "Nos Activités" },
+  { href: "#impact", label: "Notre Impact" },
+  { href: "#apropos", label: "À propos" },
+  { href: "#contact", label: "Contact" },
+];
+---
+
+<header class="fixed w-full z-50 transition-all duration-300" id="main-header">
+  <div class="absolute inset-0 bg-white/10 backdrop-blur-md border-b border-white/10 shadow-sm" id="header-bg"></div>
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="flex justify-between items-center h-20">
+      
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <a href="/" class="font-heading font-bold text-2xl text-white tracking-tight hover:opacity-90 transition-opacity" id="logo-text">
+            Wild Odyssey
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden md:flex space-x-8">
+        {links.map(link => (
+          <a href={link.href} class="text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+            {link.label}
+          </a>
+        ))}
+        <a href="#contact" class="bg-primary hover:bg-green-800 text-white px-5 py-2 rounded-full text-sm font-bold transition-all shadow-lg transform hover:scale-105">
+            Réserver
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-btn" class="text-white hover:text-white p-2">
+          <span class="sr-only">Ouvrir le menu</span>
+          <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Panel -->
+  <div class="hidden md:hidden absolute top-20 left-0 w-full bg-primary/95 backdrop-blur-xl border-b border-white/10 shadow-xl" id="mobile-menu">
+     <div class="px-4 pt-2 pb-6 space-y-2">
+        {links.map(link => (
+          <a href={link.href} class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-white/10 border-l-4 border-transparent hover:border-accent transition-all">
+            {link.label}
+          </a>
+        ))}
+     </div>
+  </div>
+</header>
+
+<script>
+    // Scroll Effect
+    const header = document.getElementById('main-header');
+    const bg = document.getElementById('header-bg');
+    const logo = document.getElementById('logo-text');
+    
+    // Function to update header style based on scroll or background
+    function updateHeader() {
+        if (window.scrollY > 50) {
+            bg?.classList.add('bg-white/90');
+            bg?.classList.remove('bg-white/10');
+            logo?.classList.remove('text-white');
+            logo?.classList.add('text-primary');
+            // Update links color logic would go here if strict text color change is needed, 
+            // but white text usually works on dark hero, need dark text on white background.
+            // For now keeping simple glassmorphism.
+        } else {
+            bg?.classList.remove('bg-white/90');
+            bg?.classList.add('bg-white/10');
+            logo?.classList.add('text-white');
+            logo?.classList.remove('text-primary');
+        }
+    }
+
+    window.addEventListener('scroll', updateHeader);
+    
+    // Mobile Menu Toggle
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    btn?.addEventListener('click', () => {
+        menu?.classList.toggle('hidden');
+    });
+</script>
