@@ -7,5 +7,6 @@
   "description_es": "Comprende las causas de la pérdida de biodiversidad y actúa. Un taller lúdico y colaborativo basado en los informes de la IPBES.",
   "duration": "3h",
   "participants": "14-30 pers.",
-  "color": "bg-emerald-500"
+  "color": "bg-emerald-500",
+  "image": "/assets/images/activities/fresque-biodiversite.jpg"
 }
