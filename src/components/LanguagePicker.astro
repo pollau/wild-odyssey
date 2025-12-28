@@ -11,13 +11,13 @@ const languages = {
 };
 ---
 
-<div class="relative z-50">
-    <button id="lang-toggle" class="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-2 rounded-full transition-colors backdrop-blur-sm">
+<div class="relative z-50 lang-picker-component">
+    <button class="lang-toggle flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-2 rounded-full transition-colors backdrop-blur-sm">
         <span class="text-xl">{languages[currentLocale]?.label || '🇫🇷'}</span>
-        <svg class="w-4 h-4 text-white transition-transform duration-200" id="lang-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        <svg class="w-4 h-4 text-white transition-transform duration-200 lang-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
     </button>
     
-    <div id="lang-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl transition-all duration-200 transform origin-top-right overflow-hidden border border-gray-100">
+    <div class="lang-dropdown hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl transition-all duration-200 transform origin-top-right overflow-hidden border border-gray-100">
         <ul class="py-1">
             {Object.values(languages).map((lang) => (
                 <li>
@@ -36,23 +36,35 @@ const languages = {
 </div>
 
 <script>
-    // Logic for Language Dropdown
-    const langBtn = document.getElementById('lang-toggle');
-    const langMenu = document.getElementById('lang-dropdown');
-    const langArrow = document.getElementById('lang-arrow');
+    // Logic for Language Dropdown (supports multiple instances)
+    const pickers = document.querySelectorAll('.lang-picker-component');
 
-    langBtn?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        langMenu?.classList.toggle('hidden');
-        langArrow?.classList.toggle('rotate-180');
-    });
+    pickers.forEach(picker => {
+        const btn = picker.querySelector('.lang-toggle');
+        const menu = picker.querySelector('.lang-dropdown');
+        const arrow = picker.querySelector('.lang-arrow');
 
-    // Close on click outside
-    document.addEventListener('click', (e) => {
-        if (langMenu && !langBtn?.contains(e.target as Node) && !langMenu.contains(e.target as Node)) {
-            langMenu.classList.add('hidden');
-            langArrow?.classList.remove('rotate-180');
-        }
+        btn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            // Close other open pickers first? Optional but cleaner.
+            pickers.forEach(p => {
+                if (p !== picker) {
+                    p.querySelector('.lang-dropdown')?.classList.add('hidden');
+                    p.querySelector('.lang-arrow')?.classList.remove('rotate-180');
+                }
+            });
+            
+            menu?.classList.toggle('hidden');
+            arrow?.classList.toggle('rotate-180');
+        });
+
+        // Close on click outside
+        document.addEventListener('click', (e) => {
+            if (menu && !picker.contains(e.target as Node)) {
+                menu.classList.add('hidden');
+                arrow?.classList.remove('rotate-180');
+            }
+        });
     });
 
     // Client-side auto-redirect on root only
