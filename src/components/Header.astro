@@ -50,7 +50,7 @@ const cta = bookLabel[lang];
       <!-- Desktop Menu -->
       <nav class="hidden md:flex items-center space-x-6">
         {links.map(link => (
-          <a href={link.href} class="text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+          <a href={link.href} class="nav-link text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-md text-sm font-medium transition-colors">
             {link.label}
           </a>
         ))}
@@ -65,7 +65,7 @@ const cta = bookLabel[lang];
       <!-- Mobile Menu Button & Lang -->
       <div class="md:hidden flex items-center gap-4">
         <LanguagePicker />
-        <button id="mobile-menu-btn" class="text-white hover:text-white p-2">
+        <button id="mobile-menu-btn" class="text-white hover:text-white p-2 transition-colors">
           <span class="sr-only">Ouvrir le menu</span>
           <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
@@ -92,22 +92,42 @@ const cta = bookLabel[lang];
     const header = document.getElementById('main-header');
     const bg = document.getElementById('header-bg');
     const logo = document.getElementById('logo-text');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const mobileBtn = document.getElementById('mobile-menu-btn');
     
     // Function to update header style based on scroll or background
     function updateHeader() {
         if (window.scrollY > 50) {
+            // Scrolled State (White Background)
             bg?.classList.add('bg-white/90');
             bg?.classList.remove('bg-white/10');
+            
             logo?.classList.remove('text-white');
             logo?.classList.add('text-primary');
-            // Update links color logic would go here if strict text color change is needed, 
-            // but white text usually works on dark hero, need dark text on white background.
-            // For now keeping simple glassmorphism.
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-white/90', 'hover:text-white', 'hover:bg-white/10');
+                link.classList.add('text-gray-700', 'hover:text-primary', 'hover:bg-gray-100');
+            });
+
+            mobileBtn?.classList.remove('text-white');
+            mobileBtn?.classList.add('text-primary');
+
         } else {
+            // Top State (Transparent)
             bg?.classList.remove('bg-white/90');
             bg?.classList.add('bg-white/10');
+            
             logo?.classList.add('text-white');
             logo?.classList.remove('text-primary');
+
+            navLinks.forEach(link => {
+                link.classList.add('text-white/90', 'hover:text-white', 'hover:bg-white/10');
+                link.classList.remove('text-gray-700', 'hover:text-primary', 'hover:bg-gray-100');
+            });
+
+            mobileBtn?.classList.add('text-white');
+            mobileBtn?.classList.remove('text-primary');
         }
     }
 
