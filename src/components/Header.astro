@@ -158,4 +158,13 @@ const cta = bookLabel[lang];
             menu?.classList.add('hidden');
         });
     });
+
+    // Close on Scroll
+    window.addEventListener('scroll', () => {
+        if (menu && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+        }
+        // Also update header style (existing logic)
+        updateHeader();
+    });
 </script>
