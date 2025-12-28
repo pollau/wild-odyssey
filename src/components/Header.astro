@@ -1,12 +1,37 @@
 ---
 import LanguagePicker from './LanguagePicker.astro';
 
-const links = [
-  { href: "#activites", label: "Nos Activités" },
-  { href: "#impact", label: "Notre Impact" },
-  { href: "#apropos", label: "À propos" },
-  { href: "#contact", label: "Contact" },
-];
+const lang = Astro.currentLocale || 'fr';
+
+const navItems = {
+  fr: [
+    { href: "#activites", label: "Nos Activités" },
+    { href: "#impact", label: "Notre Impact" },
+    { href: "#apropos", label: "À propos" },
+    { href: "#contact", label: "Contact" },
+  ],
+  en: [
+    { href: "#activites", label: "Our Activities" },
+    { href: "#impact", label: "Our Impact" },
+    { href: "#apropos", label: "About" },
+    { href: "#contact", label: "Contact" },
+  ],
+  es: [
+    { href: "#activites", label: "Nuestras Actividades" },
+    { href: "#impact", label: "Nuestro Impacto" },
+    { href: "#apropos", label: "Sobre Nosotros" },
+    { href: "#contact", label: "Contacto" },
+  ]
+};
+
+const bookLabel = {
+    fr: "Réserver",
+    en: "Book Now",
+    es: "Reservar"
+};
+
+const links = navItems[lang];
+const cta = bookLabel[lang];
 ---
 
 <header class="fixed w-full z-50 transition-all duration-300" id="main-header">
@@ -33,7 +58,7 @@ const links = [
         <LanguagePicker />
 
         <a href="#contact" class="bg-primary hover:bg-green-800 text-white px-5 py-2 rounded-full text-sm font-bold transition-all shadow-lg transform hover:scale-105 ml-4">
-            Réserver
+            {cta}
         </a>
       </nav>
 
