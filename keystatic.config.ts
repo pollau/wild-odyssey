@@ -5,6 +5,7 @@ export default config({
         ? {
             kind: 'github',
             repo: 'pollau/wild-odyssey',
+            clientId: 'Ov23liIAbyk1IMYRqHI5',
         }
         : {
             kind: 'local',
