@@ -97,6 +97,9 @@ const cta = bookLabel[lang];
     
     // Function to update header style based on scroll or background
     function updateHeader() {
+        const langTexts = document.querySelectorAll('.lang-toggle span');
+        const langArrows = document.querySelectorAll('.lang-toggle svg');
+
         if (window.scrollY > 50) {
             // Scrolled State (White Background)
             bg?.classList.add('bg-white/90');
@@ -109,6 +112,10 @@ const cta = bookLabel[lang];
                 link.classList.remove('text-white/90', 'hover:text-white', 'hover:bg-white/10');
                 link.classList.add('text-gray-700', 'hover:text-primary', 'hover:bg-gray-100');
             });
+
+            // Language Picker Updates
+            langTexts.forEach(el => el.classList.replace('text-white', 'text-gray-700'));
+            langArrows.forEach(el => el.classList.replace('text-white', 'text-gray-700'));
 
             mobileBtn?.classList.remove('text-white');
             mobileBtn?.classList.add('text-primary');
@@ -125,6 +132,10 @@ const cta = bookLabel[lang];
                 link.classList.add('text-white/90', 'hover:text-white', 'hover:bg-white/10');
                 link.classList.remove('text-gray-700', 'hover:text-primary', 'hover:bg-gray-100');
             });
+
+            // Language Picker Updates
+            langTexts.forEach(el => el.classList.replace('text-gray-700', 'text-white'));
+            langArrows.forEach(el => el.classList.replace('text-gray-700', 'text-white'));
 
             mobileBtn?.classList.add('text-white');
             mobileBtn?.classList.remove('text-primary');
