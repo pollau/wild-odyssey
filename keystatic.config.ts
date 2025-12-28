@@ -4,7 +4,7 @@ export default config({
     storage: import.meta.env.PROD
         ? {
             kind: 'github',
-            repo: 'PaulDELACELLE/wild-odyssey',
+            repo: 'pollau/wild-odyssey',
         }
         : {
             kind: 'local',
