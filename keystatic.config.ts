@@ -24,6 +24,24 @@ export default config({
                     publicPath: '/assets/images/hero/',
                     validation: { isRequired: true },
                 }),
+
+                // Section À Propos
+                aboutTitle: fields.text({ label: 'Titre À Propos', defaultValue: 'Lionel Raybaud' }),
+                aboutBio: fields.text({
+                    label: 'Biographie',
+                    multiline: true,
+                    defaultValue: 'Passionné par le vivant, Lionel est certifié par le Ministère de la Transition Écologique...'
+                }),
+                aboutImage: fields.image({
+                    label: 'Photo Profil',
+                    directory: 'public/assets/images/about',
+                    publicPath: '/assets/images/about/',
+                }),
+
+                // Section Contact
+                contactEmail: fields.text({ label: 'Email Contact', defaultValue: 'lionel.raybaud.green@gmail.com' }),
+                contactPhone: fields.text({ label: 'Téléphone', defaultValue: '+33 6 50 32 18 94' }),
+                contactLinkedin: fields.text({ label: 'LinkedIn URL', defaultValue: 'https://www.linkedin.com/in/lionel-raybaud/' }),
             },
         }),
     },

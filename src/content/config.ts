@@ -18,6 +18,16 @@ const homepage = defineCollection({
         heroTitle: z.string(),
         heroSubtitle: z.string(),
         heroImage: z.string().optional(),
+
+        // About
+        aboutTitle: z.string().optional(),
+        aboutBio: z.string().optional(),
+        aboutImage: z.string().optional(),
+
+        // Contact
+        contactEmail: z.string().optional(),
+        contactPhone: z.string().optional(),
+        contactLinkedin: z.string().optional(),
     }),
 });
 

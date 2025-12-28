@@ -1,5 +1,10 @@
 {
   "heroTitle": "el chapito",
   "heroSubtitle": "Des expériences collaboratives fondées sur la science pour former les acteurs du monde de demain.",
-  "heroImage": "/assets/images/hero/heroImage.png"
+  "heroImage": "/assets/images/hero/heroImage.png",
+  "aboutTitle": "Lionel Raybaud",
+  "aboutBio": "Expert engagé et certifié, Lionel porte la mission de \"Wild Odyssey\" : reconnecter le vivant. Avec une approche qui allie rigueur scientifique (IPBES) et pédagogie active, il forme les acteurs de demain. Son credo : relier la tête, le cœur et les mains pour inspirer l’action.",
+  "contactEmail": "lionel.raybaud.green@gmail.com",
+  "contactPhone": "+33 6 50 32 18 94",
+  "contactLinkedin": "https://www.linkedin.com/in/lionel-raybaud/"
 }
