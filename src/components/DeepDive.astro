@@ -164,7 +164,7 @@ const t = content[locale];
 const depths = t.depths;
 ---
 
-<section id="deep-dive" class="relative w-full overflow-hidden text-white -mt-10 pt-20 pb-0 scroll-mt-0 snap-start">
+<section id="deep-dive" class="relative w-full overflow-hidden text-white pt-10 pb-0">
     
     <!-- Gradient Background -->
     <div class="absolute inset-0 z-0 bg-gradient-to-b from-[#0B3D91] via-[#006994] to-[#000d1a]"></div>
@@ -262,8 +262,49 @@ const depths = t.depths;
 
     const steps = document.querySelectorAll('.quiz-step');
     const finalSection = document.getElementById('quiz-final');
+    // ... (existing logic)
 
-    steps.forEach(step => {
+    // --- SMART SCROLL LOGIC ---
+    // 1. Hero -> Deep Dive Transition
+    let isScrolling = false;
+    const heroSection = document.querySelector('section:first-of-type'); // Assuming Hero is first
+    const deepDiveSection = document.getElementById('deep-dive');
+
+    // Simple observer to know if we are in Hero
+    const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                document.addEventListener('wheel', handleHeroScroll, { passive: false });
+            } else {
+                document.removeEventListener('wheel', handleHeroScroll);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    if (heroSection) heroObserver.observe(heroSection);
+
+    function handleHeroScroll(e) {
+        // If scrolling down frankly
+        if (e.deltaY > 30 && !isScrolling) {
+            e.preventDefault();
+            isScrolling = true;
+            deepDiveSection.scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => { isScrolling = false; }, 1000);
+        }
+    }
+
+    // 2. Quiz "Stop at Unanswered" Logic
+    // We want to snap to the first unanswered question if scrolling down
+    // This requires a more complex "wheel" handler on the deep dive section
+    
+    // For now, let's keep it simple to avoid locking the user:
+    // When answering a question -> Smooth scroll to next question (Already mostly handled by UI transition?)
+    // Let's add that explicitly.
+
+    steps.forEach((step, index) => {
+        const nextStep = steps[index + 1]; // Next question
+        
+        // ... existing vars ...
         const correctIndex = parseInt(step.dataset.correct);
         const options = step.querySelectorAll('.quiz-option');
         const questionBox = step.querySelector('.quiz-question');
@@ -273,13 +314,13 @@ const depths = t.depths;
 
         options.forEach(opt => {
             opt.addEventListener('click', () => {
-                // Prevent multiple answers
                 if (step.classList.contains('answered')) return;
                 step.classList.add('answered');
 
                 const chosenIndex = parseInt(opt.dataset.index);
                 const isCorrect = chosenIndex === correctIndex;
 
+                // Visual Feedback
                 if (isCorrect) {
                     score++;
                     opt.classList.add('bg-green-500', 'border-green-400', 'text-white');
@@ -289,7 +330,6 @@ const depths = t.depths;
                     badge.textContent = "Correct !";
                 } else {
                     opt.classList.add('bg-red-500', 'border-red-400', 'text-white');
-                    // Highlight correct one
                     options[correctIndex].classList.add('bg-green-500/50', 'border-green-400/50');
                     dot.classList.remove('bg-secondary');
                     dot.classList.add('bg-red-500', 'shadow-[0_0_20px_rgba(239,68,68,0.8)]');
@@ -303,28 +343,35 @@ const depths = t.depths;
                     resultBox.classList.remove('hidden');
                     questionsAnswered++;
                     checkCompletion();
-                }, 600);
+                    
+                    // AUTO SCROLL TO NEXT QUESTION
+                    if (nextStep) {
+                        nextStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else {
+                         // Scroll to result if last
+                         if (questionsAnswered === totalQuestions) {
+                             setTimeout(() => finalSection.scrollIntoView({ behavior: 'smooth', block: 'center' }), 500);
+                         }
+                    }
+
+                }, 800); // Increased delay for reading
             });
         });
     });
 
+    // ... existing checkCompletion ...
     function checkCompletion() {
         if (questionsAnswered === totalQuestions) {
             finalSection.classList.remove('hidden');
-            // Trigger animation
             setTimeout(() => {
                 finalSection.classList.remove('scale-95', 'opacity-0');
                 finalSection.classList.add('scale-100', 'opacity-100');
                 
-                // Update text
                 document.getElementById('final-score').textContent = `${score}/${totalQuestions}`;
-                
                 const isGood = score >= 3;
                 const content = isGood ? highScore : lowScore;
-                
                 document.getElementById('score-msg').textContent = `"${content.msg}"`;
                 document.getElementById('score-cta').textContent = content.cta;
-
             }, 100);
         }
     }
