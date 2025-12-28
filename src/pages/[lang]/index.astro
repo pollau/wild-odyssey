@@ -1,0 +1,262 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ActivityCard from '../../components/ActivityCard.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export function getStaticPaths() {
+  return [
+    {params: {lang: 'en'}},
+    {params: {lang: 'es'}},
+  ];
+}
+
+const { lang } = Astro.params;
+
+const homepage = await getEntry('homepage', 'index');
+const activities = await getCollection('activities');
+
+// Helper to get localized data with fallback
+const l = (key) => homepage.data[`${key}_${lang}`] || homepage.data[key] || '';
+
+// Hardcoded translations for UI elements
+const ui = {
+    en: {
+        discover: "Discover our workshops",
+        formats: "Our Formats",
+        needs_title: "Experiences for every need",
+        needs_desc: "From schools to corporate events, we adapt our pedagogy to connect head, heart, and hands.",
+        approved_by: "APPROACH RECOGNIZED AND VALIDATED BY",
+        participants: "Participants",
+        establishments: "Establishments",
+        about_title: "About",
+        contact_title: "Contact Us",
+        email: "Email",
+        phone: "Phone",
+        linkedin: "LinkedIn",
+        view_profile: "View Profile",
+        b2b_tag: "Corporate & CSR Offer",
+        b2b_title: "Unite your teams around the living world",
+        b2b_desc: "Engage your employees with 'tailor-made' formats (Team Building, Seminars, Conferences) validated by leading groups.",
+        b2b_card1_title: "Impact Team Building",
+        b2b_card1_desc: "Strengthen cohesion (Head, Heart, Hands) through collective intelligence workshops or nature immersions.",
+        b2b_card2_title: "CSR & Awareness",
+        b2b_card2_desc: "Address sustainable transformation challenges. Content aligned with scientific standards (IPBES, CSRD).",
+        b2b_card3_title: "Conferences & Masterclass",
+        b2b_card3_desc: "Short and impactful formats (1h30) for large groups (up to 200 pax). Interactive narratives to awaken consciousness."
+    },
+    es: {
+        discover: "Descubre nuestros talleres",
+        formats: "Nuestros Formatos",
+        needs_title: "Experiencias para cada necesidad",
+        needs_desc: "Desde escuelas hasta empresas, adaptamos nuestra pedagogía para conectar cabeza, corazón y manos.",
+        approved_by: "ENFOQUE RECONOCIDO Y VALIDADO POR",
+        participants: "Participantes",
+        establishments: "Establecimientos",
+        about_title: "Sobre Nosotros",
+        contact_title: "Contáctenos",
+        email: "Correo",
+        phone: "Teléfono",
+        linkedin: "LinkedIn",
+        view_profile: "Ver Perfil",
+        b2b_tag: "Oferta Corporativa y RSE",
+        b2b_title: "Une a tus equipos en torno a los seres vivos",
+        b2b_desc: "Involucra a tus colaboradores con formatos a medida (Team Building, Seminarios) validados por grandes grupos.",
+        b2b_card1_title: "Team Building de Impacto",
+        b2b_card1_desc: "Refuerza la cohesión a través de talleres de inteligencia colectiva o inmersiones en la naturaleza.",
+        b2b_card2_title: "RSE y Sensibilización",
+        b2b_card2_desc: "Responde a los desafíos de transformación sostenible. Contenidos alineados con estándares científicos.",
+        b2b_card3_title: "Conferencias y Masterclass",
+        b2b_card3_desc: "Formatos cortos e impactantes (1h30) para grandes grupos. Narrativas interactivas para despertar conciencias."
+    }
+};
+
+const t = ui[lang];
+
+// Title split logic (Localized)
+const heroTitleRaw = l('heroTitle');
+const heroTitleParts = heroTitleRaw.split('.');
+const mainHeroTitle = heroTitleParts[0] + '.';
+const accentHeroTitle = heroTitleParts[1] || '';
+---
+
+<Layout title="Home">
+	<main class="min-h-screen">
+		<!-- Hero Section -->
+		<section class="relative h-screen w-full overflow-hidden flex items-center justify-center">
+			
+            <!-- Background Image -->
+            <div class="absolute inset-0 z-0">
+                <img 
+                    src={homepage.data.heroImage || "/assets/images/hero.png"} 
+                    alt="Wild Odyssey" 
+                    class="w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-black/30"></div>
+            </div>
+
+            <!-- Content -->
+            <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+                <h1 class="font-heading text-4xl md:text-6xl text-white font-bold mb-6 leading-tight">
+                    {mainHeroTitle}<br/>
+                    <span class="text-accent">{accentHeroTitle}</span>
+                    {heroTitleParts.length > 2 && <span>{heroTitleParts[2]}</span>}
+                </h1>
+                
+                <p class="font-sans text-lg md:text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
+                    {l('heroSubtitle')}
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#activites" class="bg-primary hover:bg-green-800 text-white font-semibold py-3 px-8 rounded-full transition-all transform hover:scale-105 shadow-lg">
+                        {t.discover}
+                    </a>
+                </div>
+            </div>
+		</section>
+
+        <!-- Activities Section -->
+        <section id="activites" class="py-24 px-4 bg-background relative z-20 -mt-10 rounded-t-[3rem]">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="text-accent font-semibold tracking-wider uppercase text-sm">{t.formats}</span>
+                    <h2 class="font-heading text-4xl md:text-5xl font-bold text-primary mt-3 mb-6">{t.needs_title}</h2>
+                    <p class="max-w-2xl mx-auto text-gray-600 text-lg">
+                        {t.needs_desc}
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-12">
+                    {activities.map((activity) => (
+                        <ActivityCard 
+                            title={activity.data[`title_${lang}`] || activity.data.title}
+                            description={activity.data[`description_${lang}`] || activity.data.description}
+                            duration={activity.data.duration}
+                            participants={activity.data.participants}
+                            color={activity.data.color}
+                            image={activity.data.image}
+                        />
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- Enterprise / B2B Section -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-secondary font-semibold tracking-wider uppercase text-sm">{t.b2b_tag}</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-gray-900 mt-2">{t.b2b_title}</h2>
+                    <p class="mt-4 text-xl text-gray-500 max-w-3xl mx-auto">
+                        {t.b2b_desc}
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 rounded-xl p-8 border border-gray-100">
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6"><span class="text-2xl">🎯</span></div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">{t.b2b_card1_title}</h3>
+                        <p class="text-gray-600">{t.b2b_card1_desc}</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-8 border border-gray-100">
+                        <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mb-6"><span class="text-2xl">📊</span></div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">{t.b2b_card2_title}</h3>
+                        <p class="text-gray-600">{t.b2b_card2_desc}</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-8 border border-gray-100">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-6"><span class="text-2xl">🎤</span></div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">{t.b2b_card3_title}</h3>
+                        <p class="text-gray-600">{t.b2b_card3_desc}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof / Logos -->
+        <section class="py-16 border-t border-gray-200 bg-white">
+            <div class="max-w-6xl mx-auto px-4 text-center">
+                <p class="text-gray-400 font-semibold mb-8">{t.approved_by}</p>
+                <div class="flex flex-wrap justify-center items-center gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                    <span class="text-xl font-bold text-gray-600">OFB</span>
+                    <span class="text-xl font-bold text-gray-600">UICN</span>
+                    <span class="text-xl font-bold text-gray-600">Ministère Transition Écologique</span>
+                    <span class="text-xl font-bold text-gray-600">IPBES</span>
+                </div>
+                <div class="mt-12 flex justify-center gap-16 text-center">
+                    <div>
+                        <div class="text-4xl font-bold text-secondary mb-1">+150k</div>
+                        <div class="text-sm text-gray-500 font-medium">{t.participants}</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-secondary mb-1">+1000</div>
+                        <div class="text-sm text-gray-500 font-medium">{t.establishments}</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="py-20 bg-primary text-white">
+            <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3">
+                    <img 
+                        src={homepage.data.aboutImage || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=400&h=400"} 
+                        alt={homepage.data.aboutTitle} 
+                        class="rounded-full w-64 h-64 object-cover border-4 border-accent shadow-2xl mx-auto"
+                    />
+                </div>
+                <div class="md:w-2/3 text-center md:text-left">
+                    <span class="text-accent font-semibold tracking-wider uppercase text-sm mb-2 block">{t.about_title}</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold mb-6">{homepage.data.aboutTitle}</h2>
+                    <p class="text-lg text-gray-200 leading-relaxed mb-6 whitespace-pre-line">
+                        {l('aboutBio')}
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-background">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="font-heading text-3xl md:text-4xl font-bold text-primary mb-12">{t.contact_title}</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {homepage.data.contactEmail && (
+                        <div class="p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">✉️</span>
+                            </div>
+                            <h3 class="font-bold text-gray-800 mb-2">{t.email}</h3>
+                            <a href={`mailto:${homepage.data.contactEmail}`} class="text-primary hover:text-accent transition-colors">
+                                {homepage.data.contactEmail}
+                            </a>
+                        </div>
+                    )}
+
+                    {homepage.data.contactPhone && (
+                        <div class="p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">📞</span>
+                            </div>
+                            <h3 class="font-bold text-gray-800 mb-2">{t.phone}</h3>
+                            <a href={`tel:${homepage.data.contactPhone}`} class="text-primary hover:text-accent transition-colors">
+                                {homepage.data.contactPhone}
+                            </a>
+                        </div>
+                    )}
+
+                    {homepage.data.contactLinkedin && (
+                        <div class="p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="w-12 h-12 bg-blue-50 text-blue-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">🔗</span>
+                            </div>
+                            <h3 class="font-bold text-gray-800 mb-2">{t.linkedin}</h3>
+                            <a href={homepage.data.contactLinkedin} target="_blank" rel="noopener noreferrer" class="text-primary hover:text-accent transition-colors">
+                                {t.view_profile}
+                            </a>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </section>
+	</main>
+</Layout>

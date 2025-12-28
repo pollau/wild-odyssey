@@ -1,0 +1,50 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+// Current locale logic
+const currentLocale = Astro.currentLocale || 'fr';
+
+const languages = {
+  fr: { code: 'fr', label: '🇫🇷', name: 'Français' },
+  en: { code: 'en', label: '🇬🇧', name: 'English' },
+  es: { code: 'es', label: '🇪🇸', name: 'Español' },
+};
+---
+
+<div class="relative group z-50">
+    <button class="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-2 rounded-full transition-colors backdrop-blur-sm">
+        <span class="text-xl">{languages[currentLocale]?.label || '🇫🇷'}</span>
+        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+    </button>
+    
+    <div class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right overflow-hidden border border-gray-100">
+        <ul class="py-1">
+            {Object.values(languages).map((lang) => (
+                <li>
+                    <a 
+                        href={getRelativeLocaleUrl(lang.code, '')}
+                        class={`block px-4 py-3 text-sm flex items-center gap-3 hover:bg-gray-50 transition-colors ${currentLocale === lang.code ? 'font-bold text-primary bg-blue-50' : 'text-gray-700'}`}
+                        onclick={`localStorage.setItem('wild_odyssey_lang', '${lang.code}')`}
+                    >
+                        <span class="text-xl">{lang.label}</span>
+                        <span>{lang.name}</span>
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </div>
+</div>
+
+<script>
+    // Client-side auto-redirect on root only
+    if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+        const storedLang = localStorage.getItem('wild_odyssey_lang');
+        const browserLang = navigator.language.split('-')[0];
+        const targetLang = storedLang || (['en', 'es'].includes(browserLang) ? browserLang : 'fr');
+        
+        if (targetLang !== 'fr') {
+             // Redirect to preferred language if not french (default)
+            window.location.href = `/${targetLang}/`;
+        }
+    }
+</script>

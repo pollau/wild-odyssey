@@ -9,6 +9,13 @@ import node from '@astrojs/node';
 // https://astro.build/config
 export default defineConfig({
   output: 'static',
+  i18n: {
+    defaultLocale: 'fr',
+    locales: ['fr', 'en', 'es'],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  },
 
   // output: 'static' is the default in Astro 5
   integrations: [keystatic(), react()],

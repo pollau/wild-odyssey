@@ -16,8 +16,16 @@ export default config({
             path: 'src/content/homepage/index',
             format: { data: 'json' },
             schema: {
-                heroTitle: fields.text({ label: 'Titre Hero' }),
-                heroSubtitle: fields.text({ label: 'Sous-titre Hero', multiline: true }),
+                // Hero FR
+                heroTitle: fields.text({ label: 'Titre Hero (FR)' }),
+                heroSubtitle: fields.text({ label: 'Sous-titre Hero (FR)', multiline: true }),
+                // Hero EN
+                heroTitle_en: fields.text({ label: 'Hero Title (EN)' }),
+                heroSubtitle_en: fields.text({ label: 'Hero Subtitle (EN)', multiline: true }),
+                // Hero ES
+                heroTitle_es: fields.text({ label: 'Título Hero (ES)' }),
+                heroSubtitle_es: fields.text({ label: 'Subtítulo Hero (ES)', multiline: true }),
+
                 heroImage: fields.image({
                     label: 'Image Hero Background',
                     directory: 'public/assets/images/hero',
@@ -54,6 +62,13 @@ export default config({
             schema: {
                 title: fields.slug({ name: { label: 'Titre' } }),
                 description: fields.text({ label: 'Description', multiline: true }),
+                // EN
+                title_en: fields.text({ label: 'Title (EN)' }),
+                description_en: fields.text({ label: 'Description (EN)', multiline: true }),
+                // ES
+                title_es: fields.text({ label: 'Título (ES)' }),
+                description_es: fields.text({ label: 'Descripción (ES)', multiline: true }),
+
                 duration: fields.text({ label: 'Durée' }),
                 participants: fields.text({ label: 'Participants' }),
                 color: fields.text({ label: 'Couleur (Tailwind class)', defaultValue: 'bg-primary' }),

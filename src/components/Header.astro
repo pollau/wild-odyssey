@@ -1,4 +1,6 @@
 ---
+import LanguagePicker from './LanguagePicker.astro';
+
 const links = [
   { href: "#activites", label: "Nos Activités" },
   { href: "#impact", label: "Notre Impact" },
@@ -21,19 +23,23 @@ const links = [
       </div>
 
       <!-- Desktop Menu -->
-      <nav class="hidden md:flex space-x-8">
+      <nav class="hidden md:flex items-center space-x-6">
         {links.map(link => (
           <a href={link.href} class="text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-md text-sm font-medium transition-colors">
             {link.label}
           </a>
         ))}
-        <a href="#contact" class="bg-primary hover:bg-green-800 text-white px-5 py-2 rounded-full text-sm font-bold transition-all shadow-lg transform hover:scale-105">
+        
+        <LanguagePicker />
+
+        <a href="#contact" class="bg-primary hover:bg-green-800 text-white px-5 py-2 rounded-full text-sm font-bold transition-all shadow-lg transform hover:scale-105 ml-4">
             Réserver
         </a>
       </nav>
 
-      <!-- Mobile Menu Button -->
-      <div class="md:hidden flex items-center">
+      <!-- Mobile Menu Button & Lang -->
+      <div class="md:hidden flex items-center gap-4">
+        <LanguagePicker />
         <button id="mobile-menu-btn" class="text-white hover:text-white p-2">
           <span class="sr-only">Ouvrir le menu</span>
           <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
