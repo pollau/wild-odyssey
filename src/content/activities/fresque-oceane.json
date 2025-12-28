@@ -7,5 +7,6 @@
     "description_es": "Un viaje sistémico al corazón del mundo azul (Clima, Biodiversidad, Economía). Disponible en formato Taller (14 pers) o Masterclass inmersiva con Quiz interactivo (hasta 200 pers).",
     "duration": "2h - 3h30",
     "participants": "14 à 200 pers.",
-    "color": "bg-blue-600"
+    "color": "bg-blue-600",
+    "image": "/assets/images/activities/fresque-oceane.jpg"
 }

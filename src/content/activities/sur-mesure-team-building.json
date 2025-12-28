@@ -7,5 +7,6 @@
     "description_es": "Formatos adaptables para satisfacer sus necesidades específicas: conferencias, stands, juegos interactivos, recogida de residuos...",
     "duration": "Flexible",
     "participants": "Sur devis",
-    "color": "bg-orange-500"
+    "color": "bg-orange-500",
+    "image": "/assets/images/activities/team-building.jpg"
 }

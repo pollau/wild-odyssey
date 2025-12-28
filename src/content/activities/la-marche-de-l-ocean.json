@@ -7,5 +7,6 @@
     "description_es": "Una inmersión \"con los pies en la tierra\". Una caminata de 5,5 km simulando el ascenso desde los abismos hasta la superficie. Formato ideal para Team Building y cohesión de equipo al aire libre.",
     "duration": "1h30 - 3h30",
     "participants": "Tout public / Entreprise",
-    "color": "bg-cyan-600"
+    "color": "bg-cyan-600",
+    "image": "/assets/images/activities/marche-ocean.jpg"
 }
