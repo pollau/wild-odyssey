@@ -1,4 +1,5 @@
 import { defineCollection, z } from 'astro:content';
+// Force Content Rebuild
 
 const activities = defineCollection({
     type: 'data',
