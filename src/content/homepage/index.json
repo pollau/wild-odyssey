@@ -1,9 +1,17 @@
 {
   "heroTitle": "Inspirez l'action. Protégez le vivant.",
   "heroSubtitle": "Des expériences collaboratives fondées sur la science pour former les acteurs du monde de demain. Écoles, Entreprises, Collectivités.",
+  "heroTitle_en": "Inspire action. Protect life.",
+  "heroSubtitle_en": "Collaborative science-based experiences to train tomorrow's changemakers. Schools, Companies, Communities.",
+  "heroTitle_es": "Inspira la acción. Protege la vida.",
+  "heroSubtitle_es": "Experiencias colaborativas basadas en la ciencia para formar a los actores del mañana. Escuelas, Empresas, Comunidades.",
   "heroImage": "/assets/images/hero/heroImage.png",
   "aboutTitle": "Lionel Raybaud",
   "aboutBio": "Expert engagé et certifié, Lionel fonde Wild Odyssey avec une ambition : reconnecter le vivant au cœur des organisations. Fort de son expérience avec plus de 150 000 participants (Accor, LVMH, Éducation Nationale), il déploie une pédagogie disruptive alliant rigueur scientifique (IPBES, GIEC) et intelligence collective. Son credo : relier la tête, le cœur et les mains pour transformer la prise de conscience en action durable.",
+  "aboutTitle_en": "Lionel Raybaud",
+  "aboutBio_en": "A committed and certified expert, Lionel founded Wild Odyssey with a single ambition: to reconnect living systems at the heart of organizations. With experience guiding over 150,000 participants (Accor, LVMH, National Education), he deploys a disruptive pedagogy combining scientific rigor (IPBES, IPCC) and collective intelligence. His credo: connecting head, heart, and hands to transform awareness into sustainable action.",
+  "aboutTitle_es": "Lionel Raybaud",
+  "aboutBio_es": "Experto comprometido y certificado, Lionel fundó Wild Odyssey con una ambición: reconectar lo vivo en el corazón de las organizaciones. Con experiencia guiando a más de 150.000 participantes (Accor, LVMH, Educación Nacional), despliega una pedagogía disruptiva que combina rigor científico (IPBES, IPCC) e inteligencia colectiva. Su credo: conectar la cabeza, el corazón y las manos para transformar la conciencia en acción sostenible.",
   "contactEmail": "lionel.raybaud.green@gmail.com",
   "contactPhone": "+33 6 50 32 18 94",
   "contactLinkedin": "https://www.linkedin.com/in/lionel-raybaud/"

@@ -1,7 +1,11 @@
 {
     "title": "Sur Mesure & Team Building",
-    "description": "Collectes de déchets, balades guidées ou formats entreprises. Nous co-créons l'événement qui correspond à vos objectifs RSE.",
+    "description": "Des formats adaptables pour répondre à vos besoins spécifiques : conférences, stands, jeux interactifs, collectes de déchets...",
+    "title_en": "Tailor-made & Team Building",
+    "description_en": "Adaptable formats to meet your specific needs: conferences, booths, interactive games, waste collection...",
+    "title_es": "A Medida y Team Building",
+    "description_es": "Formatos adaptables para satisfacer sus necesidades específicas: conferencias, stands, juegos interactivos, recogida de residuos...",
     "duration": "Flexible",
     "participants": "Sur devis",
-    "color": "bg-orange-400"
+    "color": "bg-orange-500"
 }

@@ -1,6 +1,10 @@
 {
     "title": "La Marche de l'Océan",
     "description": "Immersion \"les pieds sur terre\". Une marche de 5,5 km simulant l'ascension des abysses à la surface. Format idéal pour le Team Building et la cohésion d'équipe en plein air.",
+    "title_en": "The Ocean Walk",
+    "description_en": "An immersion \"feet on the ground\". A 5.5 km walk simulating the ascent from the abyss to the surface. Ideal format for Team Building and outdoor team cohesion.",
+    "title_es": "La Marcha del Océano",
+    "description_es": "Una inmersión \"con los pies en la tierra\". Una caminata de 5,5 km simulando el ascenso desde los abismos hasta la superficie. Formato ideal para Team Building y cohesión de equipo al aire libre.",
     "duration": "1h30 - 3h30",
     "participants": "Tout public / Entreprise",
     "color": "bg-cyan-600"

@@ -1,6 +1,10 @@
 {
   "title": "Fresque de la Biodiversité",
   "description": "Comprenez les causes de l'érosion de la biodiversité et agissez. Un atelier ludique et collaboratif fondé sur les rapports de l'IPBES.",
+  "title_en": "Biodiversity Collage",
+  "description_en": "Understand the causes of biodiversity loss and take action. A playful and collaborative workshop based on IPBES reports.",
+  "title_es": "Mural de la Biodiversidad",
+  "description_es": "Comprende las causas de la pérdida de biodiversidad y actúa. Un taller lúdico y colaborativo basado en los informes de la IPBES.",
   "duration": "3h",
   "participants": "14-30 pers.",
   "color": "bg-emerald-500"

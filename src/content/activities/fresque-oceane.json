@@ -1,6 +1,10 @@
 {
     "title": "Fresque Océane",
     "description": "Voyage systémique au cœur du monde bleu (Climat, Biodiversité, Économie). Disponible en format Atelier (14 pers) ou Masterclass immersive avec Quiz interactif (jusqu'à 200 pers).",
+    "title_en": "Ocean Collage",
+    "description_en": "A systemic journey into the blue world (Climate, Biodiversity, Economy). Available as a Workshop (14 pax) or Immersive Masterclass with interactive Quiz (up to 200 pax).",
+    "title_es": "Mural del Océano",
+    "description_es": "Un viaje sistémico al corazón del mundo azul (Clima, Biodiversidad, Economía). Disponible en formato Taller (14 pers) o Masterclass inmersiva con Quiz interactivo (hasta 200 pers).",
     "duration": "2h - 3h30",
     "participants": "14 à 200 pers.",
     "color": "bg-blue-600"
