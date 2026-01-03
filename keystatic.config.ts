@@ -3,13 +3,14 @@ import { config, fields, collection, singleton } from '@keystatic/core';
 export default config({
     storage: import.meta.env.PROD
         ? {
-            kind: 'github',
-            repo: 'pollau/wild-odyssey',
-            clientId: 'Ov23liIAbyk1IMYRqHI5',
+            kind: 'cloud',
         }
         : {
             kind: 'local',
         },
+    cloud: {
+        project: 'wild-odyssey/wild-odyssey',
+    },
     singletons: {
         homepage: singleton({
             label: 'Page d\'accueil',
