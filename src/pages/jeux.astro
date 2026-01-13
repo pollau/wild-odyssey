@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import DeepDive from "../components/DeepDive.astro";
+---
+
+<Layout title="Jeux & Quiz" headerTransparent={true}>
+    <main class="min-h-screen bg-background">
+        <!-- Deep Dive Quiz (Hero Section) -->
+        <DeepDive />
+
+        <!-- Other Games Grid -->
+        <section class="max-w-6xl mx-auto px-4 py-24">
+            <div class="text-center mb-16">
+                <h2
+                    class="font-heading text-3xl md:text-4xl font-bold text-primary mb-4"
+                >
+                    Autres Activités Ludiques
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Découvrez nos autres formats interactifs pour apprendre en
+                    s'amusant.
+                </p>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-8 place-items-center"
+            >
+                <!-- Placeholder for future games or the Ocean Quiz card if distinct -->
+                <div
+                    class="bg-white rounded-xl overflow-hidden shadow-lg p-8 text-center hover:-translate-y-2 transition-transform duration-300 w-full max-w-md"
+                >
+                    <div
+                        class="w-20 h-20 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mx-auto mb-6"
+                    >
+                        <span class="text-4xl">❓</span>
+                    </div>
+                    <h3
+                        class="font-heading text-2xl font-bold text-gray-900 mb-4"
+                    >
+                        Quiz Océan & Climat
+                    </h3>
+                    <p class="text-gray-600 mb-8">
+                        Un quiz interactif pour découvrir les liens méconnus
+                        entre l'océan, le climat et la biodiversité. Idéal pour
+                        challenger vos amis ou collègues !
+                    </p>
+                    <button
+                        class="bg-gray-200 text-gray-500 font-bold py-3 px-8 rounded-full cursor-not-allowed"
+                    >
+                        Bientôt disponible en version complète
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

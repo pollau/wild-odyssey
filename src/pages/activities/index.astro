@@ -1,0 +1,65 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ActivityCard from "../../components/ActivityCard.astro";
+import { getCollection } from "astro:content";
+
+const activities = await getCollection("activities");
+---
+
+<Layout title="Nos Ateliers">
+    <main class="pt-24 min-h-screen bg-background relative overflow-hidden">
+        <!-- Background Elements -->
+        <div
+            class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0"
+        >
+            <div
+                class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl"
+            >
+            </div>
+            <div
+                class="absolute bottom-[10%] left-[-10%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl"
+            >
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 py-12 relative z-10">
+            <header class="text-center mb-20 max-w-3xl mx-auto">
+                <span
+                    class="text-accent font-bold tracking-[0.2em] uppercase text-xs mb-3 block"
+                    >Catalogue</span
+                >
+                <h1
+                    class="font-heading text-5xl md:text-6xl font-bold text-primary mb-8 leading-tight"
+                >
+                    Nos Ateliers <br />
+                    <span class="text-secondary italic font-light"
+                        >Immersifs</span
+                    >
+                </h1>
+                <p
+                    class="text-stone-600 text-lg md:text-xl leading-relaxed font-light"
+                >
+                    Des expériences conçues pour relier l'homme et la nature. De
+                    la fresque participative à l'immersion sauvage, chaque
+                    atelier est une invitation à comprendre et protéger le
+                    vivant.
+                </p>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16">
+                {
+                    activities.map((activity) => (
+                        <ActivityCard
+                            title={activity.data.title}
+                            description={activity.data.description}
+                            duration={activity.data.duration}
+                            participants={activity.data.participants}
+                            color={activity.data.color}
+                            image={activity.data.image}
+                        />
+                    ))
+                }
+            </div>
+        </div>
+    </main>
+</Layout>

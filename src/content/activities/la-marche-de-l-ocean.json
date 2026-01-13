@@ -8,5 +8,11 @@
     "duration": "1h30 - 3h30",
     "participants": "Tout public / Entreprise",
     "color": "bg-cyan-600",
-    "image": "/assets/images/activities/marche-ocean.jpg"
+    "image": "/assets/images/activities/marche-ocean.jpg",
+    "audience": [
+        "school",
+        "corporate",
+        "public_services",
+        "associations"
+    ]
 }

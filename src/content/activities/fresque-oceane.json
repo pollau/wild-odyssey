@@ -8,5 +8,11 @@
     "duration": "2h - 3h30",
     "participants": "14 à 200 pers.",
     "color": "bg-blue-600",
-    "image": "/assets/images/activities/fresque-oceane.jpg"
+    "image": "/assets/images/activities/fresque-oceane.jpg",
+    "audience": [
+        "school",
+        "corporate",
+        "public_services",
+        "associations"
+    ]
 }

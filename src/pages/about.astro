@@ -1,0 +1,133 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getEntry } from "astro:content";
+
+const homepage = await getEntry("homepage", "index");
+---
+
+<Layout title="À Propos">
+    <main class="pt-20">
+        <!-- About Section -->
+        <section class="py-20 bg-primary text-white">
+            <div
+                class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center gap-12"
+            >
+                <div class="md:w-1/3">
+                    <img
+                        src={homepage.data.aboutImage ||
+                            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=400&h=400"}
+                        alt={homepage.data.aboutTitle}
+                        class="rounded-full w-64 h-64 object-cover border-4 border-accent shadow-2xl mx-auto"
+                    />
+                </div>
+                <div class="md:w-2/3 text-center md:text-left">
+                    <span
+                        class="text-accent font-semibold tracking-wider uppercase text-sm mb-2 block"
+                        >L'Équipe</span
+                    >
+                    <h1
+                        class="font-heading text-3xl md:text-4xl font-bold mb-6"
+                    >
+                        {homepage.data.aboutTitle}
+                    </h1>
+                    <p
+                        class="text-lg text-gray-200 leading-relaxed mb-6 whitespace-pre-line"
+                    >
+                        {homepage.data.aboutBio}
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof / Legitimacy (Kept here as it fits the "Who we are" narrative) -->
+        <section class="py-16 bg-white border-b border-gray-100">
+            <div class="max-w-6xl mx-auto px-4 text-center">
+                <p class="text-gray-400 font-semibold mb-8">
+                    APPROCHE RECONNUE ET VALIDÉE PAR
+                </p>
+                <div
+                    class="flex flex-wrap justify-center items-center gap-12 opacity-60 grayscale"
+                >
+                    <span class="text-xl font-bold text-gray-600">OFB</span>
+                    <span class="text-xl font-bold text-gray-600">UICN</span>
+                    <span class="text-xl font-bold text-gray-600"
+                        >Ministère Transition Écologique</span
+                    >
+                    <span class="text-xl font-bold text-gray-600">IPBES</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="py-20 bg-background">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2
+                    class="font-heading text-3xl md:text-4xl font-bold text-primary mb-12"
+                >
+                    Contactez-nous
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {
+                        homepage.data.contactEmail && (
+                            <div class="p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-2xl">✉️</span>
+                                </div>
+                                <h3 class="font-bold text-gray-800 mb-2">
+                                    Email
+                                </h3>
+                                <a
+                                    href={`mailto:${homepage.data.contactEmail}`}
+                                    class="text-primary hover:text-accent transition-colors"
+                                >
+                                    {homepage.data.contactEmail}
+                                </a>
+                            </div>
+                        )
+                    }
+
+                    {
+                        homepage.data.contactPhone && (
+                            <div class="p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-2xl">📞</span>
+                                </div>
+                                <h3 class="font-bold text-gray-800 mb-2">
+                                    Téléphone
+                                </h3>
+                                <a
+                                    href={`tel:${homepage.data.contactPhone}`}
+                                    class="text-primary hover:text-accent transition-colors"
+                                >
+                                    {homepage.data.contactPhone}
+                                </a>
+                            </div>
+                        )
+                    }
+
+                    {
+                        homepage.data.contactLinkedin && (
+                            <div class="p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                                <div class="w-12 h-12 bg-blue-50 text-blue-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <span class="text-2xl">🔗</span>
+                                </div>
+                                <h3 class="font-bold text-gray-800 mb-2">
+                                    LinkedIn
+                                </h3>
+                                <a
+                                    href={homepage.data.contactLinkedin}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-primary hover:text-accent transition-colors"
+                                >
+                                    Voir le profil
+                                </a>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

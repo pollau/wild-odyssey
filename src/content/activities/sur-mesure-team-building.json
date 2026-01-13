@@ -8,5 +8,9 @@
     "duration": "Flexible",
     "participants": "Sur devis",
     "color": "bg-orange-500",
-    "image": "/assets/images/activities/team-building.jpg"
+    "image": "/assets/images/activities/team-building.jpg",
+    "audience": [
+        "corporate",
+        "public_services"
+    ]
 }

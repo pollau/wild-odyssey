@@ -1,0 +1,73 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ActivityCard from "../components/ActivityCard.astro";
+import { getCollection } from "astro:content";
+
+// Filter activities for public services
+const allActivities = await getCollection("activities");
+const publicActivities = allActivities.filter((activity) =>
+    activity.data.audience?.includes("public_services"),
+);
+---
+
+<Layout title="Services Publics & Collectivités" headerTransparent={true}>
+    <main class="min-h-screen bg-background">
+        <!-- Hero Header -->
+        <section
+            class="relative h-[50vh] min-h-[400px] flex items-center justify-center overflow-hidden"
+        >
+            <div class="absolute inset-0 z-0">
+                <img
+                    src="/assets/images/hero-new.jpg"
+                    alt="Wild Odyssey Services Publics"
+                    class="w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-cyan-900/80 mix-blend-multiply">
+                </div>
+            </div>
+            <div
+                class="relative z-10 text-center px-4 max-w-4xl mx-auto text-white"
+            >
+                <h1 class="font-heading text-4xl md:text-6xl font-bold mb-4">
+                    Services Publics
+                </h1>
+                <p
+                    class="text-xl md:text-2xl font-light opacity-90 max-w-2xl mx-auto"
+                >
+                    Accompagner les territoires et les agents dans la transition
+                    écologique.
+                </p>
+            </div>
+        </section>
+
+        <!-- Content Grid -->
+        <section class="max-w-6xl mx-auto px-4 py-24">
+            <div class="text-center mb-12">
+                <p
+                    class="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed"
+                >
+                    Des formats adaptés aux collectivités territoriales et aux
+                    administrations pour sensibiliser et former aux enjeux du
+                    vivant.
+                </p>
+            </div>
+
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-12"
+            >
+                {
+                    publicActivities.map((activity) => (
+                        <ActivityCard
+                            title={activity.data.title}
+                            description={activity.data.description}
+                            duration={activity.data.duration}
+                            participants={activity.data.participants}
+                            color={activity.data.color}
+                            image={activity.data.image}
+                        />
+                    ))
+                }
+            </div>
+        </section>
+    </main>
+</Layout>

@@ -1,74 +1,186 @@
 ---
-import LanguagePicker from './LanguagePicker.astro';
+import LanguagePicker from "./LanguagePicker.astro";
 
-const lang = Astro.currentLocale || 'fr';
+interface Props {
+  transparent?: boolean;
+}
 
+const { transparent = false } = Astro.props;
+
+const lang = Astro.currentLocale || "fr";
+
+// Navigation Data Structure
 const navItems = {
   fr: [
-    { href: "#activites", label: "Nos Activités" },
-    { href: "#impact", label: "Notre Impact" },
-    { href: "#apropos", label: "À propos" },
-    { href: "#contact", label: "Contact" },
+    { href: "/", label: "Accueil" },
+    { 
+      label: "Nos Offres", 
+      href: "#", // Dropdown trigger
+      children: [
+        { href: "/scolaire", label: "Pour les Écoles" },
+        { href: "/entreprises", label: "Entreprises" },
+        { href: "/services-publics", label: "Services Publics" },
+        { href: "/associations", label: "Associations" },
+      ]
+    },
+    { href: "/jeux", label: "Jeux & Quiz" },
+    { href: "/evenements", label: "Événements" },
+    { href: "/pingouin", label: "Créer votre formation" },
+     { href: "/about", label: "À propos" },
   ],
   en: [
-    { href: "#activites", label: "Our Activities" },
-    { href: "#impact", label: "Our Impact" },
-    { href: "#apropos", label: "About" },
-    { href: "#contact", label: "Contact" },
+    { href: "/", label: "Home" },
+    { 
+      label: "Our Offers", 
+      href: "#",
+      children: [
+         { href: "/scolaire", label: "For Schools" },
+         { href: "/entreprises", label: "Corporate" },
+         { href: "/services-publics", label: "Public Services" },
+         { href: "/associations", label: "Associations" },
+      ]
+    },
+     { href: "/jeux", label: "Games & Quiz" },
+    { href: "/evenements", label: "Events" }, // URL stays technical or localized? Keeping simple /evenements for now
+     { href: "/pingouin", label: "Create your training" },
+    { href: "/about", label: "About" },
   ],
-  es: [
-    { href: "#activites", label: "Nuestras Actividades" },
-    { href: "#impact", label: "Nuestro Impacto" },
-    { href: "#apropos", label: "Sobre Nosotros" },
-    { href: "#contact", label: "Contacto" },
-  ]
+   es: [
+    { href: "/", label: "Inicio" },
+    { 
+      label: "Nuestras Ofertas", 
+      href: "#",
+      children: [
+         { href: "/scolaire", label: "Para Escuelas" },
+         { href: "/entreprises", label: "Empresas" },
+         { href: "/services-publics", label: "Servicios Públicos" },
+         { href: "/associations", label: "Asociaciones" },
+      ]
+    },
+     { href: "/jeux", label: "Juegos y Quiz" },
+    { href: "/evenements", label: "Eventos" },
+     { href: "/pingouin", label: "Crea tu formación" },
+    { href: "/about", label: "Sobre Nosotros" },
+  ],
 };
 
 const bookLabel = {
-    fr: "Réserver",
-    en: "Book Now",
-    es: "Reservar"
+  fr: "Réserver",
+  en: "Book Now",
+  es: "Reservar",
 };
 
 const links = navItems[lang];
 const cta = bookLabel[lang];
+
+// Initial State Classes
+const initialTextClass = transparent ? "text-white" : "text-primary";
+const initialNavClass = transparent
+  ? "text-white/90 hover:text-white"
+  : "text-gray-700 hover:text-primary";
+const initialBgClass = transparent ? "bg-white/10" : "bg-white/90";
 ---
 
-<header class="fixed w-full z-50 transition-all duration-300" id="main-header">
-  <div class="absolute inset-0 bg-white/10 backdrop-blur-md border-b border-white/10 shadow-sm" id="header-bg"></div>
-  
+<header
+  class="fixed w-full z-50 transition-all duration-300"
+  id="main-header"
+  data-transparent={transparent.toString()}
+>
+  <div
+    class={`absolute inset-0 backdrop-blur-md border-b border-white/10 shadow-sm ${initialBgClass}`}
+    id="header-bg"
+  >
+  </div>
+
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
     <div class="flex justify-between items-center h-20">
-      
       <!-- Logo -->
       <div class="flex-shrink-0 flex items-center">
-        <a href="/" class="font-heading font-bold text-2xl text-white tracking-tight hover:opacity-90 transition-opacity" id="logo-text">
-            Wild Odyssey
+        <a
+          href="/"
+          class={`font-heading font-bold text-2xl tracking-tight transition-colors ${initialTextClass}`}
+          id="logo-text"
+        >
+          Wild Odyssey
         </a>
       </div>
 
       <!-- Desktop Menu -->
       <nav class="hidden md:flex items-center space-x-6">
-        {links.map(link => (
-          <a href={link.href} class="nav-link text-white/90 hover:text-white hover:bg-white/10 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-            {link.label}
-          </a>
-        ))}
-        
-        <LanguagePicker />
+        {
+          links.map((link) => (
+            link.children ? (
+                <div class="relative group">
+                    <button class={`nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center gap-1 ${initialNavClass}`}>
+                        {link.label}
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <!-- Dropdown -->
+                    <div class="absolute left-0 mt-2 w-56 rounded-xl bg-white shadow-xl ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left overflow-hidden">
+                        <div class="py-1">
+                            {link.children.map(child => (
+                                <a href={child.href} class="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors border-l-4 border-transparent hover:border-accent flex items-center justify-between">
+                                    {child.label}
+                                    {child.badge && (
+                                        <span class={`ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold ${child.badge.toLowerCase().includes('construction') ? 'bg-orange-100 text-orange-800' : 'bg-blue-100 text-blue-800'}`}>
+                                            {child.badge}
+                                        </span>
+                                    )}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            ) : (
+             <a
+              href={link.href}
+              class={`nav-link px-3 py-2 rounded-md text-sm font-medium transition-colors inline-flex items-center gap-2 ${initialNavClass}`}
+            >
+              {link.label}
+              {link.badge && (
+                  <span class={`ml-1.5 inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold whitespace-nowrap ${link.badge.toLowerCase().includes('construction') ? 'bg-orange-100 text-orange-800' : 'bg-blue-100 text-blue-800'}`}>
+                    {link.badge}
+                  </span>
+              )}
+            </a>
+            )
+          ))
+        }
 
-        <a href="#contact" class="bg-primary hover:bg-green-800 text-white px-5 py-2 rounded-full text-sm font-bold transition-all shadow-lg transform hover:scale-105 ml-4">
-            {cta}
+        <div class={`lang-wrapper ${transparent ? "text-white" : "text-gray-700"}`}>
+          <LanguagePicker />
+        </div>
+
+        <a
+          href="#contact"
+          class="bg-primary hover:bg-green-800 text-white px-5 py-2 rounded-full text-sm font-bold transition-all shadow-lg transform hover:scale-105 ml-4"
+        >
+          {cta}
         </a>
       </nav>
 
       <!-- Mobile Menu Button & Lang -->
       <div class="md:hidden flex items-center gap-4">
-        <LanguagePicker />
-        <button id="mobile-menu-btn" class="text-white hover:text-white p-2 transition-colors">
+         <div class={`lang-wrapper-mobile ${transparent ? "text-white" : "text-gray-700"}`}>
+          <LanguagePicker />
+        </div>
+
+        <button
+          id="mobile-menu-btn"
+          class={`p-2 transition-colors ${initialTextClass}`}
+        >
           <span class="sr-only">Ouvrir le menu</span>
-          <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          <svg
+            class="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
         </button>
       </div>
@@ -76,106 +188,167 @@ const cta = bookLabel[lang];
   </div>
 
   <!-- Mobile Menu Panel -->
-  <div class="hidden md:hidden absolute top-20 left-0 w-full bg-primary/95 backdrop-blur-xl border-b border-white/10 shadow-xl" id="mobile-menu">
-     <div class="px-4 pt-2 pb-6 space-y-2">
-        {links.map(link => (
-          <a href={link.href} class="block px-3 py-3 rounded-md text-base font-medium text-white hover:bg-white/10 border-l-4 border-transparent hover:border-accent transition-all">
-            {link.label}
-          </a>
-        ))}
-     </div>
+  <div
+    class="hidden md:hidden absolute top-20 left-0 w-full bg-surface/95 backdrop-blur-xl border-b border-stone-200 shadow-xl overflow-y-auto max-h-[80vh]"
+    id="mobile-menu"
+  >
+    <div class="px-4 pt-2 pb-6 space-y-2">
+      {
+        links.map((link) => (
+             link.children ? (
+                 <div class="space-y-1">
+                    <button class="mobile-dropdown-btn w-full flex items-center justify-between px-3 py-3 rounded-md text-base font-medium text-stone-700 hover:bg-stone-100 bg-stone-50/50">
+                        {link.label}
+                        <svg class="w-5 h-5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-4 space-y-1">
+                         {link.children.map(child => (
+                            <a href={child.href} class="block px-3 py-2 rounded-md text-sm font-medium text-stone-600 hover:text-stone-900 hover:bg-stone-100 flex items-center justify-between">
+                                {child.label}
+                                {child.badge && (
+                                    <span class={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold whitespace-nowrap ${child.badge.toLowerCase().includes('construction') ? 'bg-orange-100 text-orange-800' : 'bg-blue-100 text-blue-800'}`}>
+                                        {child.badge}
+                                    </span>
+                                )}
+                            </a>
+                        ))}
+                    </div>
+                 </div>
+             ) : (
+                <a
+                    href={link.href}
+                    class="block px-3 py-3 rounded-md text-base font-medium text-stone-700 hover:bg-stone-100 border-l-4 border-transparent hover:border-accent transition-all flex items-center justify-between"
+                >
+                    {link.label}
+                     {link.badge && (
+                        <span class={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold whitespace-nowrap ${link.badge.toLowerCase().includes('construction') ? 'bg-orange-100 text-orange-800' : 'bg-blue-100 text-blue-800'}`}>
+                            {link.badge}
+                        </span>
+                     )}
+                </a>
+             )
+        ))
+      }
+    </div>
   </div>
 </header>
 
 <script>
-    // Scroll Effect
-    const header = document.getElementById('main-header');
-    const bg = document.getElementById('header-bg');
-    const logo = document.getElementById('logo-text');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const mobileBtn = document.getElementById('mobile-menu-btn');
-    
-    // Function to update header style based on scroll or background
-    function updateHeader() {
-        const langTexts = document.querySelectorAll('.lang-toggle span');
-        const langArrows = document.querySelectorAll('.lang-toggle svg');
+  // Scroll Effect
+  const header = document.getElementById("main-header");
+  const bg = document.getElementById("header-bg");
+  const logo = document.getElementById("logo-text");
+  const navLinks = document.querySelectorAll(".nav-link");
+  const mobileBtn = document.getElementById("mobile-menu-btn");
+  const langWrappers = document.querySelectorAll(".lang-wrapper, .lang-wrapper-mobile");
 
-        if (window.scrollY > 50) {
-            // Scrolled State (White Background)
-            bg?.classList.add('bg-white/90');
-            bg?.classList.remove('bg-white/10');
-            
-            logo?.classList.remove('text-white');
-            logo?.classList.add('text-primary');
+  // Read config
+  const isTransparentInitial = header?.dataset.transparent === "true";
 
-            navLinks.forEach(link => {
-                link.classList.remove('text-white/90', 'hover:text-white', 'hover:bg-white/10');
-                link.classList.add('text-gray-700', 'hover:text-primary', 'hover:bg-gray-100');
-            });
+  function updateHeader() {
+    const isScrolled = window.scrollY > 50;
 
-            // Language Picker Updates
-            langTexts.forEach(el => el.classList.replace('text-white', 'text-gray-700'));
-            langArrows.forEach(el => el.classList.replace('text-white', 'text-gray-700'));
+    if (isScrolled) {
+      // Scrolled (Dark Mode)
+      bg?.classList.add("bg-white/90");
+      bg?.classList.remove("bg-white/10");
 
-            mobileBtn?.classList.remove('text-white');
-            mobileBtn?.classList.add('text-primary');
+      logo?.classList.remove("text-white");
+      logo?.classList.add("text-primary");
 
-        } else {
-            // Top State (Transparent)
-            bg?.classList.remove('bg-white/90');
-            bg?.classList.add('bg-white/10');
-            
-            logo?.classList.add('text-white');
-            logo?.classList.remove('text-primary');
+      navLinks.forEach((link) => {
+        link.classList.remove("text-white/90", "hover:text-white");
+        link.classList.add("text-gray-700", "hover:text-primary");
+      });
 
-            navLinks.forEach(link => {
-                link.classList.add('text-white/90', 'hover:text-white', 'hover:bg-white/10');
-                link.classList.remove('text-gray-700', 'hover:text-primary', 'hover:bg-gray-100');
-            });
+      langWrappers.forEach((el) => {
+        el.classList.remove("text-white");
+        el.classList.add("text-gray-700");
+      });
 
-            // Language Picker Updates
-            langTexts.forEach(el => el.classList.replace('text-gray-700', 'text-white'));
-            langArrows.forEach(el => el.classList.replace('text-gray-700', 'text-white'));
+      mobileBtn?.classList.remove("text-white");
+      mobileBtn?.classList.add("text-primary");
+    } else {
+      // Top
+      if (isTransparentInitial) {
+        // Transparent (White Text)
+        bg?.classList.remove("bg-white/90");
+        bg?.classList.add("bg-white/10");
 
-            mobileBtn?.classList.add('text-white');
-            mobileBtn?.classList.remove('text-primary');
-        }
-    }
+        logo?.classList.add("text-white");
+        logo?.classList.remove("text-primary");
 
-    window.addEventListener('scroll', updateHeader);
-    
-    // Mobile Menu Toggle
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
-
-    btn?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        menu?.classList.toggle('hidden');
-    });
-
-    // Close Mobile Menu on Click Outside or Link Click
-    document.addEventListener('click', (e) => {
-        const isClickInside = menu?.contains(e.target as Node) || btn?.contains(e.target as Node);
-        
-        if (!isClickInside && menu && !menu.classList.contains('hidden')) {
-            menu.classList.add('hidden');
-        }
-    });
-
-    // Close menu when clicking a link inside it
-    const mobileLinks = menu?.querySelectorAll('a');
-    mobileLinks?.forEach(link => {
-        link.addEventListener('click', () => {
-            menu?.classList.add('hidden');
+        navLinks.forEach((link) => {
+          link.classList.add("text-white/90", "hover:text-white");
+          link.classList.remove("text-gray-700", "hover:text-primary");
         });
-    });
 
+        langWrappers.forEach((el) => {
+          el.classList.add("text-white");
+          el.classList.remove("text-gray-700");
+        });
+
+        mobileBtn?.classList.add("text-white");
+        mobileBtn?.classList.remove("text-primary");
+      } else {
+        // Standard Page (Dark Text)
+        bg?.classList.add("bg-white/90");
+        bg?.classList.remove("bg-white/10");
+
+        logo?.classList.remove("text-white");
+        logo?.classList.add("text-primary");
+
+        navLinks.forEach((link) => {
+             link.classList.remove("text-white/90", "hover:text-white");
+            link.classList.add("text-gray-700", "hover:text-primary");
+        });
+        
+         langWrappers.forEach((el) => {
+          el.classList.remove("text-white");
+          el.classList.add("text-gray-700");
+        });
+
+        mobileBtn?.classList.remove("text-white");
+        mobileBtn?.classList.add("text-primary");
+      }
+    }
+  }
+
+  window.addEventListener("scroll", updateHeader);
+  updateHeader();
+
+  // Mobile Menu Logic
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+
+  btn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    menu?.classList.toggle("hidden");
+  });
+
+  // Mobile Accordion Logic
+  const mobileDropdowns = document.querySelectorAll('.mobile-dropdown-btn');
+  mobileDropdowns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+          const content = btn.nextElementSibling;
+          const arrow = btn.querySelector('svg');
+          content?.classList.toggle('hidden');
+          arrow?.classList.toggle('rotate-180');
+      });
+  });
+
+  // Close Mobile Menu on Click Outside
+  document.addEventListener("click", (e) => {
+    const isClickInside = menu?.contains(e.target as Node) || btn?.contains(e.target as Node);
+    if (!isClickInside && menu && !menu.classList.contains("hidden")) {
+      menu.classList.add("hidden");
+    }
+  });
+   
     // Close on Scroll
-    window.addEventListener('scroll', () => {
-        if (menu && !menu.classList.contains('hidden')) {
-            menu.classList.add('hidden');
-        }
-        // Also update header style (existing logic)
-        updateHeader();
-    });
+  window.addEventListener("scroll", () => {
+    if (menu && !menu.classList.contains("hidden")) {
+      menu.classList.add("hidden");
+    }
+  });
 </script>

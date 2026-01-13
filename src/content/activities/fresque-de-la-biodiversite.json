@@ -8,5 +8,11 @@
   "duration": "3h",
   "participants": "14-30 pers.",
   "color": "bg-emerald-500",
-  "image": "/assets/images/activities/fresque-biodiversite.jpg"
+  "image": "/assets/images/activities/fresque-biodiversite.jpg",
+  "audience": [
+    "school",
+    "corporate",
+    "public_services",
+    "associations"
+  ]
 }
