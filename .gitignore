@@ -22,5 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Claude Code local settings (tokens, personal config)
+.claude/settings.local.json
 flyer.pdf
 flyer.pdf

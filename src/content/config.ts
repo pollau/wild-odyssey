@@ -1,49 +1,33 @@
 import { defineCollection, z } from 'astro:content';
-// Force Content Rebuild
 
 const activities = defineCollection({
     type: 'data',
     schema: z.object({
         title: z.string(),
+        subtitle: z.string().optional(),
         description: z.string(),
-        // EN
-        title_en: z.string().optional(),
-        description_en: z.string().optional(),
-        // ES
+        title_fr: z.string().optional(),
+        description_fr: z.string().optional(),
         title_es: z.string().optional(),
         description_es: z.string().optional(),
-
         duration: z.string().optional(),
         participants: z.string().optional(),
-        color: z.string().optional(),
-        image: z.string().optional(),
-        audience: z.array(z.string()).optional(),
+        format: z.array(z.string()).optional(),
+        theme: z.string().optional(),
+        image: z.string().nullable().optional(),
     }),
 });
 
 const homepage = defineCollection({
     type: 'data',
     schema: z.object({
-        heroTitle: z.string(),
-        heroSubtitle: z.string(),
-        // EN
+        heroTitle_fr: z.string().optional(),
         heroTitle_en: z.string().optional(),
-        heroSubtitle_en: z.string().optional(),
-        // ES
         heroTitle_es: z.string().optional(),
-        heroSubtitle_es: z.string().optional(),
-
-        heroImage: z.string().optional(),
-
-        // About
-        aboutTitle: z.string().optional(),
-        aboutBio: z.string().optional(),
-        aboutImage: z.string().optional(),
-
-        // Contact
+        statsParticipants: z.string().optional(),
+        statsOrganizations: z.string().optional(),
+        statsYears: z.string().optional(),
         contactEmail: z.string().optional(),
-        contactPhone: z.string().optional(),
-        contactLinkedin: z.string().optional(),
     }),
 });
 

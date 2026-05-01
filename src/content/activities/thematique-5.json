@@ -1,0 +1,17 @@
+{
+  "title": "À venir",
+  "subtitle": "Coming soon",
+  "subtitle_fr": "À venir",
+  "subtitle_en": "Coming soon",
+  "subtitle_es": "Próximamente",
+  "description": "A new thematic experience is coming soon.",
+  "title_fr": "À venir",
+  "description_fr": "Une nouvelle thématique arrive bientôt.",
+  "title_es": "Próximamente",
+  "description_es": "Una nueva temática llega pronto.",
+  "duration": "From 2h",
+  "participants": "14–200 people",
+  "format": ["workshop"],
+  "theme": "placeholder",
+  "image": "/assets/figma/workshop-carbon-card.png"
+}

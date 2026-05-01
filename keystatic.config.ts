@@ -2,79 +2,64 @@ import { config, fields, collection, singleton } from '@keystatic/core';
 
 export default config({
     storage: import.meta.env.PROD
-        ? {
-            kind: 'cloud',
-        }
-        : {
-            kind: 'local',
-        },
+        ? { kind: 'cloud' }
+        : { kind: 'local' },
     cloud: {
         project: 'wild-odyssey/wild-odyssey',
     },
     singletons: {
         homepage: singleton({
-            label: 'Page d\'accueil',
+            label: 'Homepage',
             path: 'src/content/homepage/index',
             format: { data: 'json' },
             schema: {
-                // Hero FR
-                heroTitle: fields.text({ label: 'Titre Hero (FR)' }),
-                heroSubtitle: fields.text({ label: 'Sous-titre Hero (FR)', multiline: true }),
-                // Hero EN
+                heroTitle_fr: fields.text({ label: 'Hero Title (FR)' }),
                 heroTitle_en: fields.text({ label: 'Hero Title (EN)' }),
-                heroSubtitle_en: fields.text({ label: 'Hero Subtitle (EN)', multiline: true }),
-                // Hero ES
-                heroTitle_es: fields.text({ label: 'Título Hero (ES)' }),
-                heroSubtitle_es: fields.text({ label: 'Subtítulo Hero (ES)', multiline: true }),
-
-                heroImage: fields.image({
-                    label: 'Image Hero Background',
-                    directory: 'public/assets/images/hero',
-                    publicPath: '/assets/images/hero/',
-                    validation: { isRequired: true },
-                }),
-
-                // Section À Propos
-                aboutTitle: fields.text({ label: 'Titre À Propos', defaultValue: 'Lionel Raybaud' }),
-                aboutBio: fields.text({
-                    label: 'Biographie',
-                    multiline: true,
-                    defaultValue: 'Passionné par le vivant, Lionel est certifié par le Ministère de la Transition Écologique...'
-                }),
-                aboutImage: fields.image({
-                    label: 'Photo Profil',
-                    directory: 'public/assets/images/about',
-                    publicPath: '/assets/images/about/',
-                }),
-
-                // Section Contact
-                contactEmail: fields.text({ label: 'Email Contact', defaultValue: 'lionel.raybaud.green@gmail.com' }),
-                contactPhone: fields.text({ label: 'Téléphone', defaultValue: '+33 6 50 32 18 94' }),
-                contactLinkedin: fields.text({ label: 'LinkedIn URL', defaultValue: 'https://www.linkedin.com/in/lionel-raybaud/' }),
+                heroTitle_es: fields.text({ label: 'Hero Title (ES)' }),
+                statsParticipants: fields.text({ label: 'Stats — Participants', defaultValue: '+500.000' }),
+                statsOrganizations: fields.text({ label: 'Stats — Organizations', defaultValue: '+2.000' }),
+                statsYears: fields.text({ label: 'Stats — Years of experience', defaultValue: '+5' }),
+                contactEmail: fields.text({ label: 'Contact Email' }),
             },
         }),
     },
     collections: {
         activities: collection({
-            label: 'Activités',
+            label: 'Workshops',
             slugField: 'title',
             path: 'src/content/activities/*',
             format: { data: 'json' },
             schema: {
-                title: fields.slug({ name: { label: 'Titre' } }),
-                description: fields.text({ label: 'Description', multiline: true }),
-                // EN
-                title_en: fields.text({ label: 'Title (EN)' }),
-                description_en: fields.text({ label: 'Description (EN)', multiline: true }),
-                // ES
-                title_es: fields.text({ label: 'Título (ES)' }),
-                description_es: fields.text({ label: 'Descripción (ES)', multiline: true }),
-
-                duration: fields.text({ label: 'Durée' }),
-                participants: fields.text({ label: 'Participants' }),
-                color: fields.text({ label: 'Couleur (Tailwind class)', defaultValue: 'bg-primary' }),
+                title: fields.slug({ name: { label: 'Name' } }),
+                subtitle: fields.text({ label: 'Subtitle (tagline)' }),
+                description: fields.text({ label: 'Description (EN)', multiline: true }),
+                title_fr: fields.text({ label: 'Name (FR)' }),
+                description_fr: fields.text({ label: 'Description (FR)', multiline: true }),
+                title_es: fields.text({ label: 'Name (ES)' }),
+                description_es: fields.text({ label: 'Description (ES)', multiline: true }),
+                duration: fields.text({ label: 'Duration (e.g. "From 2h")' }),
+                participants: fields.text({ label: 'Group size (e.g. "14–30 people")' }),
+                format: fields.multiselect({
+                    label: 'Formats',
+                    options: [
+                        { label: 'Workshop', value: 'workshop' },
+                        { label: 'Masterclass', value: 'masterclass' },
+                        { label: 'Ocean Walk', value: 'ocean-walk' },
+                        { label: 'Custom', value: 'custom' },
+                    ],
+                }),
+                theme: fields.select({
+                    label: 'Theme',
+                    options: [
+                        { label: 'Desirable Futures', value: 'desirable-futures' },
+                        { label: 'Ocean & Systemic', value: 'ocean' },
+                        { label: 'Biodiversity', value: 'biodiversity' },
+                        { label: 'Carbon Footprint', value: 'carbon' },
+                    ],
+                    defaultValue: 'desirable-futures',
+                }),
                 image: fields.image({
-                    label: 'Image',
+                    label: 'Cover image',
                     directory: 'public/assets/images/activities',
                     publicPath: '/assets/images/activities/',
                 }),

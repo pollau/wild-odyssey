@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style="display: block;" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="twemoji:flag-france" clip-path="url(#clip0_0_16)">
+<path id="Vector" d="M41 30.75C41 31.9582 40.52 33.1169 39.6657 33.9713C38.8114 34.8256 37.6527 35.3056 36.4444 35.3056H27.3333V5.69444H36.4444C37.6527 5.69444 38.8114 6.1744 39.6657 7.02874C40.52 7.88307 41 9.04179 41 10.25V30.75Z" fill="var(--fill-0, #ED2939)"/>
+<path id="Vector_2" d="M4.55556 5.69444C3.34735 5.69444 2.18862 6.1744 1.33429 7.02874C0.479959 7.88307 0 9.04179 0 10.25L0 30.75C0 31.9582 0.479959 33.1169 1.33429 33.9713C2.18862 34.8256 3.34735 35.3056 4.55556 35.3056H13.6667V5.69444H4.55556Z" fill="var(--fill-0, #002495)"/>
+<path id="Vector_3" d="M13.6667 5.69444H27.3333V35.3056H13.6667V5.69444Z" fill="var(--fill-0, #EEEEEE)"/>
+</g>
+<defs>
+<clipPath id="clip0_0_16">
+<rect width="41" height="41" fill="white"/>
+</clipPath>
+</defs>
+</svg>
