@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /keystatic/
+
+Sitemap: https://wild-odyssey.com/sitemap-index.xml

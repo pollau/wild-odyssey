@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "scrape": "node scripts/scrape-events.mjs",
+    "build": "node scripts/scrape-events.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -24,5 +25,8 @@
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@astrojs/sitemap": "^3.7.2"
   }
 }

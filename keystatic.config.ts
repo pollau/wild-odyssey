@@ -8,6 +8,23 @@ export default config({
         project: 'wild-odyssey/wild-odyssey',
     },
     singletons: {
+        events: singleton({
+            label: '📅 Événements',
+            path: 'src/content/events',
+            format: { data: 'json' },
+            schema: {
+                list: fields.array(
+                    fields.object({
+                        externalUrl: fields.url({ label: "🔗 Lien de l'événement (Eventbrite, BilletWeb, Meetup…)" }),
+                        published:   fields.checkbox({ label: '✅ Publié sur le site', defaultValue: false }),
+                    }),
+                    {
+                        label: 'Événements',
+                        itemLabel: (props) => props.fields.externalUrl.value || 'Nouvel événement',
+                    }
+                ),
+            },
+        }),
         homepage: singleton({
             label: 'Homepage',
             path: 'src/content/homepage/index',

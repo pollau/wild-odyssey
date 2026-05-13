@@ -26,6 +26,9 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
         <a href={`${prefix}/workshops`} class="text-[15px] lg:text-[16px] font-semibold text-black hover:text-[#0698c0] transition-colors whitespace-nowrap">
           {t(lang, "nav.workshops")}
         </a>
+        <a href="/evenements" class="text-[15px] lg:text-[16px] font-semibold text-black hover:text-[#0698c0] transition-colors whitespace-nowrap">
+          Événements
+        </a>
 
         <!-- Language picker -->
         <div class="border border-[#f05600] rounded-full px-3 py-1.5 bg-[rgba(240,86,0,0.15)] flex items-center gap-2">
@@ -54,6 +57,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#d9d9d9] px-6 py-4 space-y-4">
     <a href={`${prefix}/ongs`} class="block text-base font-semibold text-black py-2">{t(lang, "nav.ngos")}</a>
     <a href={`${prefix}/workshops`} class="block text-base font-semibold text-black py-2">{t(lang, "nav.workshops")}</a>
+    <a href="/evenements" class="block text-base font-semibold text-black py-2">Événements</a>
     <LanguagePicker />
     <a href="#contact" class="block bg-[#f05600] text-white text-center font-semibold py-3 rounded-[7px]">{t(lang, "nav.cta")}</a>
   </div>

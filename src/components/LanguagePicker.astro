@@ -1,8 +1,11 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
-// Current locale logic
 const currentLocale = Astro.currentLocale || 'fr';
+
+// Strip locale prefix to get the bare path, then rebuild per locale
+const rawPath = Astro.url.pathname;
+const strippedPath = rawPath.replace(/^\/(en|es)(\/|$)/, '/') || '/';
 
 const languages = {
   fr: { code: 'fr', flag: 'https://flagcdn.com/w40/fr.png', label: 'FR', name: 'Français' },
@@ -23,7 +26,7 @@ const languages = {
             {Object.values(languages).map((lang) => (
                 <li>
                     <a 
-                        href={getRelativeLocaleUrl(lang.code, '')}
+                        href={getRelativeLocaleUrl(lang.code, strippedPath)}
                         class={`block px-4 py-3 text-sm flex items-center gap-3 hover:bg-gray-50 transition-colors ${currentLocale === lang.code ? 'font-bold text-primary bg-blue-50' : 'text-gray-700'}`}
                         onclick={`localStorage.setItem('wild_odyssey_lang', '${lang.code}')`}
                     >

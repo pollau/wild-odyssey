@@ -1,103 +1,227 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import eventsData from "../content/events.json";
+import cacheData from "../content/events-cache.json";
 
-// Placeholder data for events (To be replaced by Eventbrite API later)
-const events = [
-    {
-        title: "Fresque de la Biodiversité",
-        date: "15 Mars 2026",
-        time: "14h00 - 17h00",
-        location: "La Ruche, Paris",
-        image: "/assets/images/activities/fresque-biodiversite.jpg",
-        link: "https://www.eventbrite.fr/", // Placeholder
-        tag: "Grand Public",
-    },
-    {
-        title: "Atelier Océan & Climat",
-        date: "22 Mars 2026",
-        time: "18h30 - 20h30",
-        location: "Maison des Associations, Lyon",
-        image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800",
-        link: "https://www.eventbrite.fr/", // Placeholder
-        tag: "Associations",
-    },
-];
+type EventEntry = { externalUrl: string; published: boolean };
+type CacheEntry = {
+  name?: string | null;
+  startDate?: string | null;
+  endDate?: string | null;
+  venue?: string | null;
+  city?: string | null;
+  country?: string | null;
+  description?: string | null;
+  image?: string | null;
+};
+
+const cache = cacheData as Record<string, CacheEntry>;
+const allEvents = (eventsData.list as EventEntry[]) ?? [];
+
+const events = allEvents
+  .filter((e) => e.published)
+  .map((e) => ({ externalUrl: e.externalUrl, ...(cache[e.externalUrl] ?? {}) }))
+  .sort((a, b) => {
+    if (!a.startDate && !b.startDate) return 0;
+    if (!a.startDate) return 1;
+    if (!b.startDate) return -1;
+    return a.startDate.localeCompare(b.startDate);
+  });
+
+function formatDay(iso: string | null | undefined): string {
+  if (!iso) return "—";
+  return new Date(iso).toLocaleDateString("fr-FR", { day: "numeric" });
+}
+
+function formatMonthYear(iso: string | null | undefined): string {
+  if (!iso) return "Date à confirmer";
+  return new Date(iso).toLocaleDateString("fr-FR", { month: "long", year: "numeric" });
+}
+
+function formatTimeRange(startIso: string | null | undefined, endIso: string | null | undefined): string | null {
+  if (!startIso) return null;
+  try {
+    const fmt = (iso: string) => {
+      const d = new Date(iso);
+      const h = d.getHours().toString().padStart(2, "0");
+      const m = d.getMinutes().toString().padStart(2, "0");
+      return `${h}h${m}`;
+    };
+    const start = fmt(startIso);
+    const end = endIso ? fmt(endIso) : null;
+    return end && end !== start ? `${start} – ${end}` : start;
+  } catch {
+    return null;
+  }
+}
+
+function formatLocation(city: string | null | undefined, country: string | null | undefined): string | null {
+  if (!city && !country) return null;
+  let countryLabel = country ?? null;
+  if (countryLabel && countryLabel.length === 2) {
+    try {
+      countryLabel = new Intl.DisplayNames(["fr"], { type: "region" }).of(countryLabel) ?? countryLabel;
+    } catch {}
+  }
+  if (city && countryLabel) return `${city}, ${countryLabel}`;
+  return city ?? countryLabel ?? null;
+}
+
+function getSource(url: string): string {
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, "");
+    if (host.startsWith("eventbrite.")) return "Eventbrite";
+    if (host === "billetweb.fr") return "BilletWeb";
+    if (host === "meetup.com") return "Meetup";
+    return host;
+  } catch {
+    return "";
+  }
+}
 ---
 
 <Layout title="Agenda">
-    <main class="pt-24 min-h-screen bg-background">
-        <div class="max-w-6xl mx-auto px-4 py-8">
-            <header class="text-center mb-16">
-                <span
-                    class="text-accent font-semibold tracking-wider uppercase text-sm"
-                    >Prochains Événements</span
-                >
-                <h1
-                    class="font-heading text-4xl md:text-5xl font-bold text-primary mt-3 mb-6"
-                >
-                    L'Agenda Wild Odyssey
-                </h1>
-                <p class="max-w-2xl mx-auto text-gray-600 text-lg">
-                    Rejoignez-nous pour nos prochains ateliers ouverts au
-                    public.
-                </p>
-            </header>
+  <main class="pt-[64px] lg:pt-[80px] min-h-screen bg-white">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {
-                    events.map((event) => (
-                        <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all transform hover:-translate-y-1 group">
-                            <div class="relative h-48 overflow-hidden">
-                                <img
-                                    src={event.image}
-                                    alt={event.title}
-                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                />
-                                <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-primary">
-                                    {event.tag}
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <div class="flex items-center text-sm text-gray-500 mb-3">
-                                    <span>📅 {event.date}</span>
-                                    <span class="mx-2">•</span>
-                                    <span>📍 {event.location}</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">
-                                    {event.title}
-                                </h3>
-                                <p class="text-gray-600 text-sm mb-6">
-                                    {event.time}
-                                </p>
-                                <a
-                                    href={event.link}
-                                    target="_blank"
-                                    class="block w-full text-center bg-primary text-white font-semibold py-3 rounded-lg hover:bg-green-800 transition-colors"
-                                >
-                                    Réserver sa place
-                                </a>
-                            </div>
-                        </article>
-                    ))
-                }
-            </div>
+    <!-- Hero -->
+    <section class="bg-[#f7fbfe] border-b border-[#e5edf4] py-10 lg:py-14">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <p class="text-[13px] font-semibold tracking-widest uppercase text-[#0698c0] mb-2">
+          Prochains événements
+        </p>
+        <h1 class="text-[28px] lg:text-[38px] font-semibold text-[#1e3676] leading-tight">
+          L'Agenda Wild Odyssey
+        </h1>
+        <p class="mt-3 text-[15px] lg:text-[17px] text-gray-500 max-w-xl">
+          Rejoignez-nous pour nos prochains ateliers ouverts au public.
+        </p>
+      </div>
+    </section>
 
-            <!-- Empty State / More info -->
-            <div class="mt-20 p-8 bg-blue-50 rounded-2xl text-center">
-                <h3 class="font-heading text-2xl font-bold text-blue-900 mb-4">
-                    Vous êtes une entreprise ou un groupe ?
-                </h3>
-                <p class="text-blue-700 mb-6">
-                    La plupart de nos interventions se font sur mesure et en
-                    privé. Contactez-nous pour organiser votre session.
-                </p>
-                <a
-                    href="/about#contact"
-                    class="inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-full hover:bg-blue-700 transition-colors"
-                >
-                    Demander un devis
-                </a>
-            </div>
+    <!-- Events grid -->
+    <section class="py-10 lg:py-16">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+        {events.length === 0 ? (
+          <div class="text-center py-20">
+            <p class="text-[17px] text-gray-400 font-medium">Aucun événement à venir pour le moment.</p>
+            <p class="text-[14px] text-gray-400 mt-2">
+              Revenez bientôt ou <a href="#contact" class="text-[#f05600] hover:underline">contactez-nous</a>.
+            </p>
+          </div>
+        ) : (
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {events.map((event) => (
+              <article class="bg-white rounded-xl border border-[#e8edf4] overflow-hidden hover:shadow-lg transition-shadow group flex flex-col">
+
+                <!-- Image -->
+                <div class="relative h-48 overflow-hidden bg-[#f0f4f8]">
+                  {event.image ? (
+                    <img
+                      src={event.image}
+                      alt={event.name ?? ""}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div class="w-full h-full flex items-center justify-center">
+                      <svg class="w-12 h-12 text-[#c8d8e8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+
+                <!-- Content -->
+                <div class="p-5 flex flex-col flex-1 gap-4">
+
+                  <!-- Date block -->
+                  <div class="flex items-center gap-3">
+                    {event.startDate ? (
+                      <div class="flex flex-col items-center justify-center bg-[#f05600] text-white rounded-lg w-12 h-12 shrink-0">
+                        <span class="text-[18px] font-bold leading-none">{formatDay(event.startDate)}</span>
+                        <span class="text-[9px] font-semibold uppercase leading-none mt-0.5 opacity-90">
+                          {new Date(event.startDate).toLocaleDateString("fr-FR", { month: "short" })}
+                        </span>
+                      </div>
+                    ) : (
+                      <div class="flex items-center justify-center bg-gray-100 text-gray-400 rounded-lg w-12 h-12 shrink-0 text-[10px] font-medium text-center leading-tight px-1">
+                        Date à conf.
+                      </div>
+                    )}
+                    <div>
+                      <p class="text-[15px] font-semibold text-gray-900 leading-snug">
+                        {formatMonthYear(event.startDate)}
+                      </p>
+                      {formatTimeRange(event.startDate, event.endDate) && (
+                        <p class="text-[13px] text-gray-400 mt-0.5">
+                          {formatTimeRange(event.startDate, event.endDate)}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  <!-- Title + description -->
+                  <div class="flex flex-col gap-1.5">
+                    <h2 class="text-[15px] font-semibold text-gray-900 leading-snug line-clamp-2">
+                      {event.name ?? event.externalUrl}
+                    </h2>
+                    {event.description && (
+                      <p class="text-[13px] text-gray-500 leading-relaxed line-clamp-2">
+                        {event.description}
+                      </p>
+                    )}
+                  </div>
+
+                  <!-- Location -->
+                  {formatLocation(event.city, event.country) && (
+                    <span class="flex items-center gap-1.5 text-[13px] text-gray-500">
+                      <svg class="w-3.5 h-3.5 shrink-0 text-[#0698c0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      {formatLocation(event.city, event.country)}
+                    </span>
+                  )}
+
+                  <!-- CTA + source -->
+                  <div class="mt-auto pt-1 flex flex-col gap-2">
+                    <a
+                      href={event.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="block w-full text-center bg-[#f05600] text-white text-[14px] font-semibold py-2.5 rounded-[7px] hover:bg-orange-700 transition-colors"
+                    >
+                      S'inscrire
+                    </a>
+                    <p class="text-center text-[11px] text-gray-400">
+                      via {getSource(event.externalUrl)}
+                    </p>
+                  </div>
+
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+
+        <!-- Custom sessions CTA -->
+        <div class="mt-16 bg-[#f7fbfe] border border-[#e5edf4] rounded-xl p-8 lg:p-10 text-center">
+          <h3 class="text-[20px] lg:text-[24px] font-semibold text-[#1e3676] mb-3">
+            Vous êtes une entreprise ou un groupe ?
+          </h3>
+          <p class="text-[15px] text-gray-500 mb-6 max-w-lg mx-auto">
+            La plupart de nos interventions se font sur mesure et en privé. Contactez-nous pour organiser votre session.
+          </p>
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center bg-[#f05600] text-white text-[15px] font-semibold px-8 h-[46px] rounded-[7px] hover:bg-orange-700 transition-colors"
+          >
+            Demander un devis
+          </a>
         </div>
-    </main>
+
+      </div>
+    </section>
+
+  </main>
 </Layout>
