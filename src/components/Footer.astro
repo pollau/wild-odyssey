@@ -6,7 +6,7 @@ const lang = Astro.currentLocale || "fr";
 const prefix = lang === "fr" ? "" : `/${lang}`;
 
 const homepageEntry = await getEntry("homepage", "index");
-const contactEmail = (homepageEntry?.data.contactEmail as string) ?? "contact@wild-odyssey.com";
+const contactEmail = (homepageEntry?.data.contactEmail as string) ?? "lionel.raybaud@wildodyssey.org";
 ---
 
 <footer id="contact" class="relative overflow-hidden">
@@ -36,6 +36,9 @@ const contactEmail = (homepageEntry?.data.contactEmail as string) ?? "contact@wi
       >
         {t(lang, "footer.ctaBtn")}
       </a>
+      <a href={`mailto:${contactEmail}`} class="text-white/70 text-[14px] lg:text-[15px] hover:text-white transition-colors">
+        {contactEmail}
+      </a>
     </div>
 
     <!-- Séparateur -->
@@ -52,9 +55,7 @@ const contactEmail = (homepageEntry?.data.contactEmail as string) ?? "contact@wi
         </a>
         <p class="text-sm text-white/50">{t(lang, "footer.copyright")}</p>
         <div class="flex gap-6 text-sm text-white/70">
-          <a href={`${prefix}/ongs`} class="hover:text-white transition-colors">{t(lang, "footer.ngos")}</a>
-          <a href={`${prefix}/workshops`} class="hover:text-white transition-colors">{t(lang, "footer.workshops")}</a>
-          <a href="#contact" class="hover:text-white transition-colors">{t(lang, "footer.contact")}</a>
+          <a href={`mailto:${contactEmail}`} class="hover:text-white transition-colors">{t(lang, "footer.contact")}</a>
         </div>
       </div>
     </div>
