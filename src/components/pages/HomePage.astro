@@ -158,13 +158,13 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
         </div>
 
         <!-- Workshop list -->
-        <div class="flex flex-col gap-5 lg:gap-6 w-full">
+        <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0 lg:flex-col lg:gap-6 w-full">
           {[
             { img: "/assets/figma/workshop-2030.png",                     title: t(lang, "formats.workshopTitle"),    desc: t(lang, "formats.workshopDesc") },
             { img: "/assets/images/activities/team-building.jpg",         title: t(lang, "formats.masterclassTitle"), desc: t(lang, "formats.masterclassDesc") },
             { img: "/assets/images/activities/marche-ocean.jpg",          title: t(lang, "formats.oceanWalkTitle"),   desc: t(lang, "formats.oceanWalkDesc") },
           ].map((f) => (
-            <div class="bg-white border border-[#d9d9d9] rounded-[13px] shadow-[0px_0px_8px_rgba(173,173,173,0.25)] flex flex-col sm:flex-row items-stretch overflow-hidden min-h-[130px] sm:h-[160px]">
+            <div class="shrink-0 w-[85vw] sm:w-auto snap-start bg-white border border-[#d9d9d9] rounded-[13px] shadow-[0px_0px_8px_rgba(173,173,173,0.25)] flex flex-col sm:flex-row items-stretch overflow-hidden min-h-[130px] sm:h-[160px] lg:w-full lg:shrink">
               <div class="shrink-0 w-full sm:w-[160px] h-[130px] sm:h-full">
                 <img src={f.img} alt={f.title} class="w-full h-full object-cover sm:rounded-bl-[13px] sm:rounded-tl-[13px]" />
               </div>
@@ -237,7 +237,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
         <!-- Reason cards (scroll on mobile) -->
         <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0">
           {reasons.map((r) => (
-            <div class="border border-[#e8e8e8] rounded-[10px] shrink-0 w-[280px] lg:w-[320px] snap-start flex flex-col overflow-hidden">
+            <div class="border-2 border-[#9ca3af] rounded-[10px] shrink-0 w-[280px] lg:w-[320px] snap-start flex flex-col overflow-hidden">
               <div class="h-[170px] lg:h-[200px] overflow-hidden rounded-t-[8px]">
                 <img src={r.img} alt={r.title} class="w-full h-full object-cover" />
               </div>
