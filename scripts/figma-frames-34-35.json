@@ -1,0 +1,5944 @@
+{
+  "Frame 34": {
+    "id": "106:156",
+    "width": 1920,
+    "height": 6992,
+    "texts": [
+      {
+        "id": "106:162",
+        "name": "CSRD ? ESG ? Lack of Team engagement ? Feels like a maze ? We have the map!",
+        "characters": "CSRD ?  ESG ? Lack of Team engagement ?\nFeels like a maze ? \nWe have the map!",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 48,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16751,
+          "y": 1130.9285888671875,
+          "width": 1035,
+          "height": 174
+        }
+      },
+      {
+        "id": "106:164",
+        "name": "We love a good adventure.",
+        "characters": "We love a good adventure.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16751,
+          "y": 1344.9285888671875,
+          "width": 1035,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:165",
+        "name": "Let us embark you and your teams on the most impactful, science-based, and genuinely fun team building odyssey you've ever experienced. Fully adaptable, custom-built for your reality, and delivered in French, English or Spanish.",
+        "characters": "Let us embark you and your teams on the most impactful, science-based, and genuinely fun team building odyssey you've ever experienced. Fully adaptable, custom-built for your reality, and delivered in French, English or Spanish.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16751,
+          "y": 1392.9285888671875,
+          "width": 1035,
+          "height": 90
+        }
+      },
+      {
+        "id": "106:166",
+        "name": "One unique experience that creates real environmental awareness, sparks real conversations, and pushes real action towards a more sustainable future.",
+        "characters": "One unique experience that creates real environmental awareness, sparks real conversations, and pushes real action towards a more sustainable future.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16751,
+          "y": 1500.9285888671875,
+          "width": 1035,
+          "height": 60
+        }
+      },
+      {
+        "id": "106:167",
+        "name": "Because the best journeys are always taken together.",
+        "characters": "Because the best journeys are always taken together.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#f05600"
+        },
+        "bounds": {
+          "x": 16751,
+          "y": 1600.9285888671875,
+          "width": 1035,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:169",
+        "name": "Ready for the Odyssey",
+        "characters": "Ready for the Odyssey",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 16785,
+          "y": 1699.9285888671875,
+          "width": 274,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:174",
+        "name": "CSRD ? ESG ? Lack of Team engagement ? Feels like a maze ? We have the map!",
+        "characters": "CSRD ?  ESG ? Lack of Team engagement ?\nFeels like a maze ? \nWe have the map!",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 48,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16751,
+          "y": 1946.857177734375,
+          "width": 1035,
+          "height": 174
+        }
+      },
+      {
+        "id": "106:176",
+        "name": "We love a good adventure.",
+        "characters": "We love a good adventure.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16751,
+          "y": 2160.857177734375,
+          "width": 1035,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:177",
+        "name": "Let us embark you and your teams on the most impactful, science-based, and genuinely fun team building odyssey you've ever experienced. Fully adaptable, custom-built for your reality, and delivered in French, English or Spanish.",
+        "characters": "Let us embark you and your teams on the most impactful, science-based, and genuinely fun team building odyssey you've ever experienced. Fully adaptable, custom-built for your reality, and delivered in French, English or Spanish.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16751,
+          "y": 2208.857177734375,
+          "width": 1035,
+          "height": 90
+        }
+      },
+      {
+        "id": "106:178",
+        "name": "One unique experience that creates real environmental awareness, sparks real conversations, and pushes real action towards a more sustainable future.",
+        "characters": "One unique experience that creates real environmental awareness, sparks real conversations, and pushes real action towards a more sustainable future.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16751,
+          "y": 2316.857177734375,
+          "width": 1035,
+          "height": 60
+        }
+      },
+      {
+        "id": "106:179",
+        "name": "Because the best journeys are always taken together.",
+        "characters": "Because the best journeys are always taken together.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#f05600"
+        },
+        "bounds": {
+          "x": 16751,
+          "y": 2416.857177734375,
+          "width": 1035,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:181",
+        "name": "Ready for the Odyssey",
+        "characters": "Ready for the Odyssey",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 16785,
+          "y": 2515.857177734375,
+          "width": 274,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:361",
+        "name": "WILD ODYSSEY",
+        "characters": "WILD ODYSSEY",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 30,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 16847.5,
+          "y": 958.5,
+          "width": 228,
+          "height": 36
+        }
+      },
+      {
+        "id": "106:363",
+        "name": "The ONGS",
+        "characters": "The ONGS",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17721.5,
+          "y": 964.5,
+          "width": 101,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:364",
+        "name": "The workshops",
+        "characters": "The workshops",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17875.5,
+          "y": 964.5,
+          "width": 150,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:366",
+        "name": "Contact me",
+        "characters": "Contact me",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 18302.5,
+          "y": 961.5,
+          "width": 141,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:412",
+        "name": "Workshop - masterclasses - Ocean walk Custom",
+        "characters": "Workshop - masterclasses - Ocean walk\nCustom",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 45,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17182.724609375,
+          "y": 3911.999870801562,
+          "width": 920.5522639850387,
+          "height": 108.09119365156312
+        }
+      },
+      {
+        "id": "106:422",
+        "name": "From 1 hour",
+        "characters": "From 1 hour",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17050.123046875,
+          "y": 4215.1826171875,
+          "width": 212,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:431",
+        "name": "From SMEs large organizations",
+        "characters": "From SMEs large organizations",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17427.123046875,
+          "y": 4219.6826171875,
+          "width": 359,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:436",
+        "name": "Fun, flexible, and fully customizable",
+        "characters": "Fun, flexible, and fully customizable",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17878,
+          "y": 4219.6826171875,
+          "width": 359,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:444",
+        "name": "In person or online",
+        "characters": "In person or online",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16976,
+          "y": 4428.6826171875,
+          "width": 359,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:448",
+        "name": "From leadership to frontlines teams",
+        "characters": "From leadership to frontlines teams",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17427,
+          "y": 4431.4775390625,
+          "width": 359,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:453",
+        "name": "Access all sectors",
+        "characters": "Access all sectors",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17878,
+          "y": 4428.6826171875,
+          "width": 359,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:465",
+        "name": "The collaborative workshop to raise awareness and inspire action",
+        "characters": "The collaborative workshop to raise awareness and inspire action",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#f05600"
+        },
+        "bounds": {
+          "x": 17203.5,
+          "y": 4603.6826171875,
+          "width": 1032,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:466",
+        "name": "Dive into our most popular format: an interactive, science-based card game to explore a theme of your choice: carbon footprint, biodiversity, ocean or desirable futures. A collective and structured experience that strengthens the understanding of sustainability issues and transforms the group's energy into initial concrete actions, individually and as a team.",
+        "characters": "Dive into our most popular format: an interactive, science-based card game to explore a theme of your choice: carbon footprint, biodiversity, ocean or desirable futures.\nA collective and structured experience that strengthens the understanding of sustainability issues and transforms the group's energy into initial concrete actions, individually and as a team.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 500,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17203.5,
+          "y": 4631.6826171875,
+          "width": 1032,
+          "height": 120
+        }
+      },
+      {
+        "id": "106:471",
+        "name": "The collaborative workshop to raise awareness and inspire action",
+        "characters": "The collaborative workshop to raise awareness and inspire action",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#f05600"
+        },
+        "bounds": {
+          "x": 17203.5,
+          "y": 4842.6826171875,
+          "width": 1032,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:472",
+        "name": "Dive into our most popular format: an interactive, science-based card game to explore a theme of your choice: carbon footprint, biodiversity, ocean or desirable futures. A collective and structured experience that strengthens the understanding of sustainability issues and transforms the group's energy into initial concrete actions, individually and as a team.",
+        "characters": "Dive into our most popular format: an interactive, science-based card game to explore a theme of your choice: carbon footprint, biodiversity, ocean or desirable futures.\nA collective and structured experience that strengthens the understanding of sustainability issues and transforms the group's energy into initial concrete actions, individually and as a team.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 500,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17203.5,
+          "y": 4870.6826171875,
+          "width": 1032,
+          "height": 120
+        }
+      },
+      {
+        "id": "106:477",
+        "name": "The collaborative workshop to raise awareness and inspire action",
+        "characters": "The collaborative workshop to raise awareness and inspire action",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#f05600"
+        },
+        "bounds": {
+          "x": 17203.5,
+          "y": 5081.6826171875,
+          "width": 1032,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:478",
+        "name": "Dive into our most popular format: an interactive, science-based card game to explore a theme of your choice: carbon footprint, biodiversity, ocean or desirable futures. A collective and structured experience that strengthens the understanding of sustainability issues and transforms the group's energy into initial concrete actions, individually and as a team.",
+        "characters": "Dive into our most popular format: an interactive, science-based card game to explore a theme of your choice: carbon footprint, biodiversity, ocean or desirable futures.\nA collective and structured experience that strengthens the understanding of sustainability issues and transforms the group's energy into initial concrete actions, individually and as a team.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 500,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17203.5,
+          "y": 5109.6826171875,
+          "width": 1032,
+          "height": 120
+        }
+      },
+      {
+        "id": "106:702",
+        "name": "Ver todas",
+        "characters": "Ver todas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 17585,
+          "y": 5309.6826171875,
+          "width": 116,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:493",
+        "name": "4 Major Challenges",
+        "characters": "4 Major Challenges",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 17544.5,
+          "y": 2778,
+          "width": 187,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:308",
+        "name": "A common methodology, 4 Thematic",
+        "characters": "A common methodology, 4 Thematic",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 45,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16830.5,
+          "y": 2848.000042835506,
+          "width": 1614.9999775767792,
+          "height": 48.078082164493935
+        }
+      },
+      {
+        "id": "115:312",
+        "name": "Most sustainability topics feel abstract, distant, or just plain heavy. Our science-based, systemic workshops make them visceral, clear, and energising from the first card to the last conversation.",
+        "characters": "Most sustainability topics feel abstract, distant, or just plain heavy. Our science-based, systemic workshops make them visceral, clear, and energising from the first card to the last conversation.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 500,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16830.5,
+          "y": 2925,
+          "width": 1615,
+          "height": 60
+        }
+      },
+      {
+        "id": "115:313",
+        "name": "Each experience is aligned with the UN Sustainable Development Goals, turning individual understanding into collective action.",
+        "characters": "Each experience is aligned with the UN Sustainable Development Goals, turning individual understanding into collective action.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 500,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16830.5,
+          "y": 2999,
+          "width": 1615,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:506",
+        "name": "2030 Glorieuses",
+        "characters": "2030 Glorieuses",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 24,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 16900.5,
+          "y": 3110,
+          "width": 289,
+          "height": 29
+        }
+      },
+      {
+        "id": "106:512",
+        "name": "Desirable futures & collective vision",
+        "characters": "Desirable futures & collective vision",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 22,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 16883.5,
+          "y": 3319,
+          "width": 324,
+          "height": 54
+        }
+      },
+      {
+        "id": "106:514",
+        "name": "Imagine a desirable future, then co-construct it in a feasible way from individual and group ideas.",
+        "characters": "Imagine a desirable future, then co-construct it in a feasible way from individual and group ideas.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#3b3b3b"
+        },
+        "bounds": {
+          "x": 16883.5,
+          "y": 3383,
+          "width": 308,
+          "height": 72
+        }
+      },
+      {
+        "id": "106:516",
+        "name": "Ver mas",
+        "characters": "Ver mas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 16996,
+          "y": 3498.5,
+          "width": 99,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:519",
+        "name": "2030 Glorieuses",
+        "characters": "2030 Glorieuses",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 24,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 17295.5,
+          "y": 3110.52685546875,
+          "width": 289,
+          "height": 30.07877540588379
+        }
+      },
+      {
+        "id": "106:525",
+        "name": "Ocean & Systemic",
+        "characters": "Ocean & Systemic",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 22,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 17278.5,
+          "y": 3327.30126953125,
+          "width": 324,
+          "height": 27
+        }
+      },
+      {
+        "id": "106:527",
+        "name": "A systemic approach to the role of the ocean, its benefits, and the human pressures that weaken it.",
+        "characters": "A systemic approach to the role of the ocean, its benefits, and the human pressures that weaken it.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#3b3b3b"
+        },
+        "bounds": {
+          "x": 17278.5,
+          "y": 3364.30126953125,
+          "width": 308,
+          "height": 96
+        }
+      },
+      {
+        "id": "106:529",
+        "name": "Ver mas",
+        "characters": "Ver mas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 17391,
+          "y": 3498.80126953125,
+          "width": 99,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:532",
+        "name": "2030 Glorieuses",
+        "characters": "2030 Glorieuses",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 24,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 17690.5,
+          "y": 3129.134521484375,
+          "width": 289,
+          "height": 27.454315185546875
+        }
+      },
+      {
+        "id": "106:538",
+        "name": "Risks & Dependencies on Living Organisms",
+        "characters": "Risks & Dependencies on Living Organisms",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 22,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 17673.5,
+          "y": 3320,
+          "width": 324,
+          "height": 54
+        }
+      },
+      {
+        "id": "106:540",
+        "name": "Understand how living things work, the pressures they face, and why biodiversity erosion is a systemic risk.",
+        "characters": "Understand how living things work, the pressures they face, and why biodiversity erosion is a systemic risk.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#3b3b3b"
+        },
+        "bounds": {
+          "x": 17673.5,
+          "y": 3384,
+          "width": 308,
+          "height": 96
+        }
+      },
+      {
+        "id": "106:542",
+        "name": "Ver mas",
+        "characters": "Ver mas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 17786,
+          "y": 3501.5,
+          "width": 99,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:545",
+        "name": "2030 Glorieuses",
+        "characters": "2030 Glorieuses",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 24,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 18085.5,
+          "y": 3129.134521484375,
+          "width": 289,
+          "height": 27.454315185546875
+        }
+      },
+      {
+        "id": "106:551",
+        "name": "Carbon Footprint & environment",
+        "characters": "Carbon Footprint & environment",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 22,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 18068.5,
+          "y": 3320,
+          "width": 324,
+          "height": 54
+        }
+      },
+      {
+        "id": "106:552",
+        "name": "An interactive simulation to understand carbon footprint, explore reduction pathways and identify levers for action.",
+        "characters": "An interactive simulation to understand carbon footprint, explore reduction pathways and identify levers for action.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#3b3b3b"
+        },
+        "bounds": {
+          "x": 18068.5,
+          "y": 3384,
+          "width": 308,
+          "height": 96
+        }
+      },
+      {
+        "id": "106:554",
+        "name": "Ver mas",
+        "characters": "Ver mas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 18181,
+          "y": 3504.5,
+          "width": 99,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:373",
+        "name": "SCIENCE-BASED WORKSHOPS",
+        "characters": "SCIENCE-BASED WORKSHOPS",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#47cdf2"
+        },
+        "bounds": {
+          "x": 17499.59765625,
+          "y": 5526.8486328125,
+          "width": 300,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:375",
+        "name": "Methodologies trusted by the worlds most ambitious teams",
+        "characters": "Methodologies trusted by the worlds most ambitious  teams",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 45,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 17236.103515625,
+          "y": 5599.846083709636,
+          "width": 853.79524494207,
+          "height": 108.08458035286367
+        }
+      },
+      {
+        "id": "106:378",
+        "name": "+500.000",
+        "characters": "+500.000",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 100,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 16892.79296875,
+          "y": 5844.86865234375,
+          "width": 488,
+          "height": 121
+        }
+      },
+      {
+        "id": "106:379",
+        "name": "Participants",
+        "characters": "Participants",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 40,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#47cdf2"
+        },
+        "bounds": {
+          "x": 16939.79296875,
+          "y": 5982.86865234375,
+          "width": 394,
+          "height": 48
+        }
+      },
+      {
+        "id": "106:381",
+        "name": "+2.000",
+        "characters": "+2.000",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 100,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 17495.79296875,
+          "y": 5844.86865234375,
+          "width": 354,
+          "height": 121
+        }
+      },
+      {
+        "id": "106:382",
+        "name": "Organizations",
+        "characters": "Organizations",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 40,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#47cdf2"
+        },
+        "bounds": {
+          "x": 17475.79296875,
+          "y": 5982.86865234375,
+          "width": 394,
+          "height": 48
+        }
+      },
+      {
+        "id": "106:384",
+        "name": "+5",
+        "characters": "+5",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 100,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 18143.29296875,
+          "y": 5844.86865234375,
+          "width": 131,
+          "height": 121
+        }
+      },
+      {
+        "id": "106:385",
+        "name": "Years of experience",
+        "characters": "Years of experience",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 40,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#47cdf2"
+        },
+        "bounds": {
+          "x": 18011.79296875,
+          "y": 6000.86865234375,
+          "width": 394,
+          "height": 48
+        }
+      },
+      {
+        "id": "106:485",
+        "name": "What about YOU?",
+        "characters": "What about YOU?",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 45,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 17039,
+          "y": 7450.999798842196,
+          "width": 1157.993278400827,
+          "height": 54.09150975155444
+        }
+      },
+      {
+        "id": "106:486",
+        "name": "It all starts with one conversation. Lets design your next impact experience together",
+        "characters": "It all starts with one conversation. Lets design your next impact experience together",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 30,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 17039,
+          "y": 7515.09130859375,
+          "width": 1157.9932861328125,
+          "height": 72
+        }
+      },
+      {
+        "id": "106:489",
+        "name": "Ready for the Odyssey",
+        "characters": "Ready for the Odyssey",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 17480.99609375,
+          "y": 7658.09130859375,
+          "width": 274,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:187",
+        "name": "SCIENCE-BASED WORKSHOPS",
+        "characters": "SCIENCE-BASED WORKSHOPS",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 16816.5,
+          "y": 6411,
+          "width": 300,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:189",
+        "name": "1 team-building experience. 6 reasons your director will say yes!",
+        "characters": "1 team-building experience. 6 reasons your director will say yes!",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 48,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16791,
+          "y": 6481,
+          "width": 1743,
+          "height": 58
+        }
+      },
+      {
+        "id": "106:191",
+        "name": "For the HR manager who needs engagement. For the CSR officer who needs buy-in. For the director who needs to justify the budget. And for everyone in the room who wants to feel part of the solution.",
+        "characters": "For the HR manager who needs engagement. For the CSR officer who needs buy-in. For the director who needs to justify the budget. And for everyone in the room who wants to feel part of the solution.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 500,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16791,
+          "y": 6556,
+          "width": 1743,
+          "height": 60
+        }
+      },
+      {
+        "id": "106:192",
+        "name": "One science-based sustainability experience. 6 reasons to say yes: Easy to justify; impossible to forget.",
+        "characters": "One science-based sustainability experience. 6 reasons to say yes: Easy to justify; impossible to forget.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 500,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16791,
+          "y": 6630,
+          "width": 1743,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:649",
+        "name": "A memorable experience",
+        "characters": "A memorable experience",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16803,
+          "y": 6958.3583984375,
+          "width": 289,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:651",
+        "name": "From the intern to the director: same experience, same language, same systemic vision of what’s at stake.",
+        "characters": "From the intern to the director: same experience, same language, same systemic vision of what’s at stake.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16803,
+          "y": 6991.3583984375,
+          "width": 373,
+          "height": 66
+        }
+      },
+      {
+        "id": "106:652",
+        "name": "Not because they had to. Because they lived the same experience.",
+        "characters": "Not because they had to. Because they lived the same experience.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 16803,
+          "y": 7064.3583984375,
+          "width": 373,
+          "height": 44
+        }
+      },
+      {
+        "id": "106:655",
+        "name": "Ver mas",
+        "characters": "Ver mas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 16941.5,
+          "y": 7166.5,
+          "width": 99,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:696",
+        "name": "Inspire awareness",
+        "characters": "Inspire awareness",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17223,
+          "y": 6958.3583984375,
+          "width": 289,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:698",
+        "name": "We don't lecture.",
+        "characters": "We don't lecture.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17223,
+          "y": 6991.3583984375,
+          "width": 373,
+          "height": 22
+        }
+      },
+      {
+        "id": "106:699",
+        "name": "We make people feel the stakes through science, stories, and a game that stays with them long after the day is over.",
+        "characters": "We make people feel the stakes through science, stories, and a game that stays with them long after the day is over.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17223,
+          "y": 7020.3583984375,
+          "width": 373,
+          "height": 66
+        }
+      },
+      {
+        "id": "106:725",
+        "name": "Ver mas",
+        "characters": "Ver mas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 17361.5,
+          "y": 7166.5,
+          "width": 99,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:680",
+        "name": "Attract new talents",
+        "characters": "Attract new talents",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17643,
+          "y": 6958.3583984375,
+          "width": 289,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:682",
+        "name": "70% of Gen Z and Millennials consider sustainability when choosing an employer (Deloitte, 2023).",
+        "characters": "70% of Gen Z and Millennials consider sustainability when choosing an employer (Deloitte, 2023).",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17643,
+          "y": 6991.3583984375,
+          "width": 373,
+          "height": 66
+        }
+      },
+      {
+        "id": "106:683",
+        "name": "Give them a reason to choose you & stay.",
+        "characters": "Give them a reason to choose you & stay.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 17643,
+          "y": 7064.3583984375,
+          "width": 373,
+          "height": 22
+        }
+      },
+      {
+        "id": "106:686",
+        "name": "Ver mas",
+        "characters": "Ver mas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 17781.5,
+          "y": 7166.5,
+          "width": 99,
+          "height": 30
+        }
+      },
+      {
+        "id": "106:665",
+        "name": "Change through action",
+        "characters": "Change through action",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18063,
+          "y": 6958.3583984375,
+          "width": 289,
+          "height": 24
+        }
+      },
+      {
+        "id": "106:667",
+        "name": "Every session ends with concrete next steps: chosen by the team, not imposed from above.",
+        "characters": "Every session ends with concrete next steps: chosen by the team, not imposed from above.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18063,
+          "y": 6991.3583984375,
+          "width": 373,
+          "height": 66
+        }
+      },
+      {
+        "id": "106:668",
+        "name": "That's the difference between a workshop and a turning point.",
+        "characters": "That's the difference between a workshop and a turning point.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18063,
+          "y": 7064.3583984375,
+          "width": 373,
+          "height": 44
+        }
+      },
+      {
+        "id": "106:671",
+        "name": "Ver mas",
+        "characters": "Ver mas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 18201.5,
+          "y": 7166.5,
+          "width": 99,
+          "height": 30
+        }
+      }
+    ],
+    "images": [
+      {
+        "id": "106:560",
+        "name": "Vector",
+        "imageRef": "d33ad63270912f57be65f6de75b6e95ad30dd539",
+        "bounds": {
+          "x": 17848,
+          "y": 1060,
+          "width": 634,
+          "height": 769.857177734375
+        }
+      },
+      {
+        "id": "106:183",
+        "name": "Gemini_Generated_Image_7zelyl7zelyl7zel-removebg-preview 2",
+        "imageRef": "f1b974f740239103d023c73773812e3aa157d0af",
+        "bounds": {
+          "x": 17848,
+          "y": 1947,
+          "width": 624.6819458007812,
+          "height": 627.71435546875
+        }
+      },
+      {
+        "id": "106:359",
+        "name": "image 11",
+        "imageRef": "382b92053ee5af1e6c484979d42aa7aea1e69157",
+        "bounds": {
+          "x": 16744.5,
+          "y": 933,
+          "width": 90,
+          "height": 87
+        }
+      },
+      {
+        "id": "106:463",
+        "name": "Rectangle 9",
+        "imageRef": "f755d97b51f79f9b3d211eaebb6bf9576686ef9a",
+        "bounds": {
+          "x": 16972.5,
+          "y": 4578.1826171875,
+          "width": 199,
+          "height": 199
+        }
+      },
+      {
+        "id": "106:469",
+        "name": "Rectangle 9",
+        "imageRef": "f755d97b51f79f9b3d211eaebb6bf9576686ef9a",
+        "bounds": {
+          "x": 16972.5,
+          "y": 4817.1826171875,
+          "width": 199,
+          "height": 199
+        }
+      },
+      {
+        "id": "106:475",
+        "name": "Rectangle 9",
+        "imageRef": "f755d97b51f79f9b3d211eaebb6bf9576686ef9a",
+        "bounds": {
+          "x": 16972.5,
+          "y": 5056.1826171875,
+          "width": 199,
+          "height": 199
+        }
+      },
+      {
+        "id": "106:510",
+        "name": "Rectangle 8",
+        "imageRef": "7773bf13c8cb750ce9abc6661a3dbd87b3fca191",
+        "bounds": {
+          "x": 16866.5,
+          "y": 3095.99658203125,
+          "width": 358,
+          "height": 208.43896484375
+        }
+      },
+      {
+        "id": "106:523",
+        "name": "Rectangle 8",
+        "imageRef": "f755d97b51f79f9b3d211eaebb6bf9576686ef9a",
+        "bounds": {
+          "x": 17261.5,
+          "y": 3096.005859375,
+          "width": 358,
+          "height": 220.92340087890625
+        }
+      },
+      {
+        "id": "106:536",
+        "name": "Rectangle 8",
+        "imageRef": "4a78f791b8ee270b221fb9e79c4da872288e3c96",
+        "bounds": {
+          "x": 17656.5,
+          "y": 3096,
+          "width": 358,
+          "height": 212
+        }
+      },
+      {
+        "id": "106:549",
+        "name": "5f3ea82e-0c62-4b16-8839-8bff653b68be 1",
+        "imageRef": "bb2c8e013bd052116fa11656df1ef6bffcb49c13",
+        "bounds": {
+          "x": 18051.5,
+          "y": 3096,
+          "width": 358,
+          "height": 209
+        }
+      },
+      {
+        "id": "106:370",
+        "name": "02-21-23-645_512 1",
+        "imageRef": "29fc5898c80a468457b6e3d3511703cc478cf7c0",
+        "bounds": {
+          "x": 16658,
+          "y": 5443,
+          "width": 1927.9998779296875,
+          "height": 875.3952026367188
+        }
+      },
+      {
+        "id": "106:481",
+        "name": "Rectangle 23",
+        "imageRef": "9d94d05cd8d42f0c4dcda504941203647e071acb",
+        "bounds": {
+          "x": 16951,
+          "y": 7318,
+          "width": 1334,
+          "height": 510
+        }
+      },
+      {
+        "id": "106:390",
+        "name": "image 2",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 16689,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        }
+      },
+      {
+        "id": "106:391",
+        "name": "image 3",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 16978,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        }
+      },
+      {
+        "id": "106:392",
+        "name": "image 4",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 17267,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        }
+      },
+      {
+        "id": "106:393",
+        "name": "image 5",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 17556,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        }
+      },
+      {
+        "id": "106:394",
+        "name": "image 6",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 17845,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        }
+      },
+      {
+        "id": "106:395",
+        "name": "image 7",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 18134,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        }
+      },
+      {
+        "id": "106:396",
+        "name": "image 8",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 18423,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        }
+      },
+      {
+        "id": "106:397",
+        "name": "image 9",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 18712,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        }
+      },
+      {
+        "id": "106:704",
+        "name": "Rectangle 6",
+        "imageRef": "eb744b818a948035e3afccc289159a924ca922a3",
+        "bounds": {
+          "x": 16804,
+          "y": 6707,
+          "width": 376,
+          "height": 239.3583984375
+        }
+      },
+      {
+        "id": "106:695",
+        "name": "Rectangle 5",
+        "imageRef": "b351d9afdd6cfa1c73eb8d68e97c02e1c3c76ee0",
+        "bounds": {
+          "x": 17224,
+          "y": 6707,
+          "width": 376,
+          "height": 239.3583984375
+        }
+      },
+      {
+        "id": "106:679",
+        "name": "Rectangle 6",
+        "imageRef": "8804eb8b45ae02bd759cfb2c580858a7fc592020",
+        "bounds": {
+          "x": 17644,
+          "y": 6707,
+          "width": 376,
+          "height": 239.3583984375
+        }
+      },
+      {
+        "id": "106:664",
+        "name": "Rectangle 5",
+        "imageRef": "44f6b40e414858ecb50356bd37147a02b9d435b8",
+        "bounds": {
+          "x": 18064,
+          "y": 6707,
+          "width": 376,
+          "height": 239.3583984375
+        }
+      }
+    ],
+    "layout": [
+      {
+        "depth": 0,
+        "id": "106:156",
+        "name": "Frame 34",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16658,
+          "y": 921,
+          "width": 1920,
+          "height": 6992
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 1
+          }
+        ],
+        "children": 6
+      },
+      {
+        "depth": 1,
+        "id": "106:157",
+        "name": "Group 11",
+        "type": "GROUP",
+        "bounds": {
+          "x": 16657,
+          "y": 921,
+          "width": 1921,
+          "height": 2286
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 2,
+        "id": "106:158",
+        "name": "Frame 11",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16657,
+          "y": 921,
+          "width": 1921,
+          "height": 2286
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 0.10000000149011612
+          }
+        ],
+        "children": 2
+      },
+      {
+        "depth": 3,
+        "id": "106:159",
+        "name": "Frame 23",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16751,
+          "y": 1060,
+          "width": 1743,
+          "height": 1514.857177734375
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 4,
+        "id": "106:160",
+        "name": "Frame 11",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16751,
+          "y": 1060,
+          "width": 1743,
+          "height": 769.857177734375
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 4,
+        "id": "106:172",
+        "name": "Frame 12",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16751,
+          "y": 1946.857177734375,
+          "width": 1743,
+          "height": 628
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 3,
+        "id": "106:356",
+        "name": "Frame 12",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16657,
+          "y": 920,
+          "width": 1921,
+          "height": 113
+        },
+        "layout": "VERTICAL",
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 1
+          }
+        ],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "106:357",
+        "name": "Frame 12",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16744.5,
+          "y": 933,
+          "width": 1743,
+          "height": 87
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 1,
+        "id": "106:398",
+        "name": "Group 25",
+        "type": "GROUP",
+        "bounds": {
+          "x": 16592,
+          "y": 2679,
+          "width": 2387,
+          "height": 2675.1826171875
+        },
+        "layout": null,
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 2,
+        "id": "106:399",
+        "name": "Group 22",
+        "type": "GROUP",
+        "bounds": {
+          "x": 16592,
+          "y": 2679,
+          "width": 2387,
+          "height": 2675.1826171875
+        },
+        "layout": null,
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 3,
+        "id": "106:400",
+        "name": "Group 21",
+        "type": "GROUP",
+        "bounds": {
+          "x": 16592,
+          "y": 2679,
+          "width": 2387,
+          "height": 2161
+        },
+        "layout": null,
+        "fills": [],
+        "children": 7
+      },
+      {
+        "depth": 4,
+        "id": "106:401",
+        "name": "Rectangle 13",
+        "type": "VECTOR",
+        "bounds": {
+          "x": 16594.5,
+          "y": 2679,
+          "width": 2008.5,
+          "height": 1304.5
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#5db642",
+            "opacity": 0.14000000059604645
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "106:402",
+        "name": "Ellipse 3",
+        "type": "ELLIPSE",
+        "bounds": {
+          "x": 18212,
+          "y": 3486,
+          "width": 547,
+          "height": 547
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#47cdf2",
+            "opacity": 0.27000001072883606
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "106:403",
+        "name": "Ellipse 4",
+        "type": "ELLIPSE",
+        "bounds": {
+          "x": 18117,
+          "y": 3384,
+          "width": 862,
+          "height": 862
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 0.2800000011920929
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "106:404",
+        "name": "Ellipse 5",
+        "type": "ELLIPSE",
+        "bounds": {
+          "x": 18212,
+          "y": 3486,
+          "width": 547,
+          "height": 547
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#47cdf2",
+            "opacity": 0.27000001072883606
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "106:405",
+        "name": "Ellipse 6",
+        "type": "ELLIPSE",
+        "bounds": {
+          "x": 18117,
+          "y": 3384,
+          "width": 862,
+          "height": 862
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 0.2800000011920929
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "106:406",
+        "name": "Group 10",
+        "type": "GROUP",
+        "bounds": {
+          "x": 16779,
+          "y": 2714,
+          "width": 1664,
+          "height": 1101
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "106:408",
+        "name": "Rectangle 14",
+        "type": "VECTOR",
+        "bounds": {
+          "x": 16592,
+          "y": 3712,
+          "width": 2150,
+          "height": 1128
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 1
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 3,
+        "id": "106:409",
+        "name": "Frame 17",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16976,
+          "y": 3912,
+          "width": 1334,
+          "height": 1442.1824951171875
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 3
+      },
+      {
+        "depth": 4,
+        "id": "106:410",
+        "name": "Group 12",
+        "type": "GROUP",
+        "bounds": {
+          "x": 17182.724609375,
+          "y": 3912,
+          "width": 920.55224609375,
+          "height": 108.09119415283203
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "106:413",
+        "name": "Group 16",
+        "type": "GROUP",
+        "bounds": {
+          "x": 16976,
+          "y": 4090.09130859375,
+          "width": 1334,
+          "height": 418.09130859375
+        },
+        "layout": null,
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 4,
+        "id": "106:460",
+        "name": "Frame 17",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16972.5,
+          "y": 4578.1826171875,
+          "width": 1341,
+          "height": 776
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 4
+      },
+      {
+        "depth": 2,
+        "id": "106:490",
+        "name": "Frame 8",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16830.5,
+          "y": 2760,
+          "width": 1615,
+          "height": 811.9999389648438
+        },
+        "layout": "VERTICAL",
+        "fills": [
+          {
+            "hex": "#427b46",
+            "opacity": 0.14000000059604645
+          }
+        ],
+        "children": 2
+      },
+      {
+        "depth": 3,
+        "id": "106:491",
+        "name": "Frame 8",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16830.5,
+          "y": 2760,
+          "width": 1615,
+          "height": 268.99993896484375
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 4,
+        "id": "106:492",
+        "name": "Frame 6",
+        "type": "FRAME",
+        "bounds": {
+          "x": 17505,
+          "y": 2760,
+          "width": 266,
+          "height": 60
+        },
+        "layout": "HORIZONTAL",
+        "fills": [
+          {
+            "hex": "#0698c0",
+            "opacity": 0.15000000596046448
+          }
+        ],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "106:497",
+        "name": "Frame 4",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16830.5,
+          "y": 2848,
+          "width": 1615,
+          "height": 180.9999542236328
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 3,
+        "id": "106:503",
+        "name": "Frame 8",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16866.5,
+          "y": 3096,
+          "width": 1543,
+          "height": 476
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 4
+      },
+      {
+        "depth": 4,
+        "id": "106:504",
+        "name": "Frame 8",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16866.5,
+          "y": 3096,
+          "width": 358,
+          "height": 476
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "106:517",
+        "name": "Frame 9",
+        "type": "FRAME",
+        "bounds": {
+          "x": 17261.5,
+          "y": 3096,
+          "width": 358,
+          "height": 397
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "106:530",
+        "name": "Frame 10",
+        "type": "FRAME",
+        "bounds": {
+          "x": 17656.5,
+          "y": 3096,
+          "width": 358,
+          "height": 397
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "106:543",
+        "name": "Frame 11",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18051.5,
+          "y": 3096,
+          "width": 358,
+          "height": 397
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 1,
+        "id": "106:367",
+        "name": "Group 26",
+        "type": "GROUP",
+        "bounds": {
+          "x": 16658,
+          "y": 5443,
+          "width": 1927.9998779296875,
+          "height": 875.3952026367188
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 2,
+        "id": "106:368",
+        "name": "Group 24",
+        "type": "GROUP",
+        "bounds": {
+          "x": 16658,
+          "y": 5443,
+          "width": 1927.9998779296875,
+          "height": 875.3952026367188
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 3,
+        "id": "106:369",
+        "name": "Group 9",
+        "type": "GROUP",
+        "bounds": {
+          "x": 16658,
+          "y": 5443,
+          "width": 1927.9998779296875,
+          "height": 875.3952026367188
+        },
+        "layout": null,
+        "fills": [],
+        "children": 3
+      },
+      {
+        "depth": 4,
+        "id": "106:370",
+        "name": "02-21-23-645_512 1",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 16658,
+          "y": 5443,
+          "width": 1927.9998779296875,
+          "height": 875.3952026367188
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "106:371",
+        "name": "Frame 1",
+        "type": "FRAME",
+        "bounds": {
+          "x": 17236.109375,
+          "y": 5508.8486328125,
+          "width": 826.9773559570312,
+          "height": 205.2917938232422
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 4,
+        "id": "106:376",
+        "name": "Frame 1",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16939.79296875,
+          "y": 5844.86865234375,
+          "width": 1419.6121826171875,
+          "height": 197.54493713378906
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 3
+      },
+      {
+        "depth": 1,
+        "id": "106:479",
+        "name": "Group 21",
+        "type": "GROUP",
+        "bounds": {
+          "x": 16951,
+          "y": 7451,
+          "width": 1334,
+          "height": 377
+        },
+        "layout": null,
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 2,
+        "id": "106:480",
+        "name": "Frame 18",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16951,
+          "y": 7618.14013671875,
+          "width": 1334,
+          "height": 209.8599090576172
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 3,
+        "id": "106:481",
+        "name": "Rectangle 23",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 16951,
+          "y": 7318,
+          "width": 1334,
+          "height": 510
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 2,
+        "id": "106:482",
+        "name": "Frame 20",
+        "type": "FRAME",
+        "bounds": {
+          "x": 17039,
+          "y": 7451,
+          "width": 1157.9932861328125,
+          "height": 109.4939956665039
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 3,
+        "id": "106:483",
+        "name": "Frame 20",
+        "type": "FRAME",
+        "bounds": {
+          "x": 17039,
+          "y": 7451,
+          "width": 1157.9932861328125,
+          "height": 136.0915069580078
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 4,
+        "id": "106:484",
+        "name": "Group 17",
+        "type": "GROUP",
+        "bounds": {
+          "x": 17039,
+          "y": 7451,
+          "width": 1157.9932861328125,
+          "height": 54.09151077270508
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "106:486",
+        "name": "It all starts with one conversation. Lets design your next impact experience together",
+        "type": "TEXT",
+        "bounds": {
+          "x": 17039,
+          "y": 7515.09130859375,
+          "width": 1157.9932861328125,
+          "height": 72
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 1
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 3,
+        "id": "106:487",
+        "name": "Frame 18",
+        "type": "FRAME",
+        "bounds": {
+          "x": 17446.99609375,
+          "y": 7629.09130859375,
+          "width": 342,
+          "height": 88
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "106:488",
+        "name": "Frame 2",
+        "type": "FRAME",
+        "bounds": {
+          "x": 17446.99609375,
+          "y": 7629.09130859375,
+          "width": 342,
+          "height": 88
+        },
+        "layout": "HORIZONTAL",
+        "fills": [
+          {
+            "hex": "#f05600",
+            "opacity": 1
+          }
+        ],
+        "children": 1
+      },
+      {
+        "depth": 1,
+        "id": "106:386",
+        "name": "Group 3",
+        "type": "GROUP",
+        "bounds": {
+          "x": 16658,
+          "y": 6172,
+          "width": 2257,
+          "height": 151
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 2,
+        "id": "106:387",
+        "name": "Group 23",
+        "type": "GROUP",
+        "bounds": {
+          "x": 16658,
+          "y": 6172,
+          "width": 2257,
+          "height": 151
+        },
+        "layout": null,
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 3,
+        "id": "106:388",
+        "name": "Rectangle 6",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 16658,
+          "y": 6172,
+          "width": 1928,
+          "height": 151
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#000000",
+            "opacity": 0.5799999833106995
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 3,
+        "id": "106:389",
+        "name": "Frame 1",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16689,
+          "y": 6219,
+          "width": 2226,
+          "height": 57
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 8
+      },
+      {
+        "depth": 4,
+        "id": "106:390",
+        "name": "image 2",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 16689,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "106:391",
+        "name": "image 3",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 16978,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "106:392",
+        "name": "image 4",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 17267,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "106:393",
+        "name": "image 5",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 17556,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "106:394",
+        "name": "image 6",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 17845,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "106:395",
+        "name": "image 7",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 18134,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "106:396",
+        "name": "image 8",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 18423,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "106:397",
+        "name": "image 9",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 18712,
+          "y": 6219,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 1,
+        "id": "106:706",
+        "name": "Frame 32",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16791,
+          "y": 6393,
+          "width": 1743,
+          "height": 830
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 2,
+        "id": "106:184",
+        "name": "Frame 9",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16791,
+          "y": 6393,
+          "width": 1743,
+          "height": 267
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 3,
+        "id": "106:185",
+        "name": "Frame 9",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16791,
+          "y": 6393,
+          "width": 1743,
+          "height": 267
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 4,
+        "id": "106:186",
+        "name": "Frame 2",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16791,
+          "y": 6393,
+          "width": 351,
+          "height": 60
+        },
+        "layout": "HORIZONTAL",
+        "fills": [
+          {
+            "hex": "#0698c0",
+            "opacity": 1
+          }
+        ],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "106:188",
+        "name": "Frame 1",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16791,
+          "y": 6481,
+          "width": 1743,
+          "height": 179
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 2,
+        "id": "106:622",
+        "name": "Frame 31",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16791,
+          "y": 6695,
+          "width": 1743,
+          "height": 528
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 3,
+        "id": "106:589",
+        "name": "Frame 31",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16791,
+          "y": 6695,
+          "width": 1743,
+          "height": 528
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 4,
+        "id": "106:713",
+        "name": "Frame 32",
+        "type": "FRAME",
+        "bounds": {
+          "x": 16791,
+          "y": 6695,
+          "width": 1660,
+          "height": 528
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 4
+      },
+      {
+        "depth": 4,
+        "id": "106:710",
+        "name": "Vector",
+        "type": "VECTOR",
+        "bounds": {
+          "x": 18486,
+          "y": 6935,
+          "width": 25,
+          "height": 48
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#0698c0",
+            "opacity": 1
+          }
+        ],
+        "children": 0
+      }
+    ],
+    "screenshotUrl": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/209ab9d5-59ca-4e1e-bd27-31a5cb5b3644"
+  },
+  "Frame 35": {
+    "id": "115:2",
+    "width": 1920,
+    "height": 7622,
+    "texts": [
+      {
+        "id": "115:8",
+        "name": "CSRD ? ESG ? Lack of Team engagement ? Feels like a maze ? We have the map!",
+        "characters": "CSRD ?  ESG ? Lack of Team engagement ?\nFeels like a maze ? \nWe have the map!",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 48,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18711,
+          "y": 1130.9285888671875,
+          "width": 1035,
+          "height": 174
+        }
+      },
+      {
+        "id": "115:10",
+        "name": "We love a good adventure.",
+        "characters": "We love a good adventure.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18711,
+          "y": 1344.9285888671875,
+          "width": 1035,
+          "height": 30
+        }
+      },
+      {
+        "id": "115:11",
+        "name": "Let us embark you and your teams on the most impactful, science-based, and genuinely fun team building odyssey you've ever experienced. Fully adaptable, custom-built for your reality, and delivered in French, English or Spanish.",
+        "characters": "Let us embark you and your teams on the most impactful, science-based, and genuinely fun team building odyssey you've ever experienced. Fully adaptable, custom-built for your reality, and delivered in French, English or Spanish.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18711,
+          "y": 1392.9285888671875,
+          "width": 1035,
+          "height": 90
+        }
+      },
+      {
+        "id": "115:12",
+        "name": "One unique experience that creates real environmental awareness, sparks real conversations, and pushes real action towards a more sustainable future.",
+        "characters": "One unique experience that creates real environmental awareness, sparks real conversations, and pushes real action towards a more sustainable future.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18711,
+          "y": 1500.9285888671875,
+          "width": 1035,
+          "height": 60
+        }
+      },
+      {
+        "id": "115:13",
+        "name": "Because the best journeys are always taken together.",
+        "characters": "Because the best journeys are always taken together.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#f05600"
+        },
+        "bounds": {
+          "x": 18711,
+          "y": 1600.9285888671875,
+          "width": 1035,
+          "height": 30
+        }
+      },
+      {
+        "id": "115:15",
+        "name": "Ready for the Odyssey",
+        "characters": "Ready for the Odyssey",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 18745,
+          "y": 1699.9285888671875,
+          "width": 274,
+          "height": 30
+        }
+      },
+      {
+        "id": "115:20",
+        "name": "CSRD ? ESG ? Lack of Team engagement ? Feels like a maze ? We have the map!",
+        "characters": "CSRD ?  ESG ? Lack of Team engagement ?\nFeels like a maze ? \nWe have the map!",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 48,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18711,
+          "y": 1946.857177734375,
+          "width": 1035,
+          "height": 174
+        }
+      },
+      {
+        "id": "115:22",
+        "name": "We love a good adventure.",
+        "characters": "We love a good adventure.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18711,
+          "y": 2160.857177734375,
+          "width": 1035,
+          "height": 30
+        }
+      },
+      {
+        "id": "115:23",
+        "name": "Let us embark you and your teams on the most impactful, science-based, and genuinely fun team building odyssey you've ever experienced. Fully adaptable, custom-built for your reality, and delivered in French, English or Spanish.",
+        "characters": "Let us embark you and your teams on the most impactful, science-based, and genuinely fun team building odyssey you've ever experienced. Fully adaptable, custom-built for your reality, and delivered in French, English or Spanish.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18711,
+          "y": 2208.857177734375,
+          "width": 1035,
+          "height": 90
+        }
+      },
+      {
+        "id": "115:24",
+        "name": "One unique experience that creates real environmental awareness, sparks real conversations, and pushes real action towards a more sustainable future.",
+        "characters": "One unique experience that creates real environmental awareness, sparks real conversations, and pushes real action towards a more sustainable future.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18711,
+          "y": 2316.857177734375,
+          "width": 1035,
+          "height": 60
+        }
+      },
+      {
+        "id": "115:25",
+        "name": "Because the best journeys are always taken together.",
+        "characters": "Because the best journeys are always taken together.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#f05600"
+        },
+        "bounds": {
+          "x": 18711,
+          "y": 2416.857177734375,
+          "width": 1035,
+          "height": 30
+        }
+      },
+      {
+        "id": "115:27",
+        "name": "Ready for the Odyssey",
+        "characters": "Ready for the Odyssey",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 18745,
+          "y": 2515.857177734375,
+          "width": 274,
+          "height": 30
+        }
+      },
+      {
+        "id": "115:35",
+        "name": "WILD ODYSSEY",
+        "characters": "WILD ODYSSEY",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 30,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 18807.5,
+          "y": 958.5,
+          "width": 228,
+          "height": 36
+        }
+      },
+      {
+        "id": "115:37",
+        "name": "The ONGS",
+        "characters": "The ONGS",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19681.5,
+          "y": 964.5,
+          "width": 101,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:38",
+        "name": "The workshops",
+        "characters": "The workshops",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19835.5,
+          "y": 964.5,
+          "width": 150,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:40",
+        "name": "Contact me",
+        "characters": "Contact me",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 20262.5,
+          "y": 961.5,
+          "width": 141,
+          "height": 30
+        }
+      },
+      {
+        "id": "115:127",
+        "name": "4 Major Challenges",
+        "characters": "4 Major Challenges",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 19504.5,
+          "y": 2778,
+          "width": 187,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:130",
+        "name": "A common methodology, 6 Thematic",
+        "characters": "A common methodology, 6 Thematic",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 45,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19203.90234375,
+          "y": 2848.0000428333087,
+          "width": 788.1942692906596,
+          "height": 48.078082166691274
+        }
+      },
+      {
+        "id": "115:135",
+        "name": "Most sustainability topics feel abstract, distant, or just plain heavy. Our science-based, systemic workshops make them visceral, clear, and energising from the first card to the last conversation.",
+        "characters": "Most sustainability topics feel abstract, distant, or just plain heavy. Our science-based, systemic workshops make them visceral, clear, and energising from the first card to the last conversation.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 500,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18790.5,
+          "y": 2935,
+          "width": 1615,
+          "height": 60
+        }
+      },
+      {
+        "id": "115:136",
+        "name": "Each experience is aligned with the UN Sustainable Development Goals, turning individual understanding into collective action.",
+        "characters": "Each experience is aligned with the UN Sustainable Development Goals, turning individual understanding into collective action.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 500,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18790.5,
+          "y": 3009,
+          "width": 1615,
+          "height": 30
+        }
+      },
+      {
+        "id": "115:140",
+        "name": "2030 Glorieuses",
+        "characters": "2030 Glorieuses",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 24,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19058,
+          "y": 3120,
+          "width": 289,
+          "height": 29
+        }
+      },
+      {
+        "id": "115:146",
+        "name": "Desirable futures & collective vision",
+        "characters": "Desirable futures & collective vision",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 22,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 19041,
+          "y": 3329,
+          "width": 324,
+          "height": 54
+        }
+      },
+      {
+        "id": "115:148",
+        "name": "Imagine a desirable future, then co-construct it in a feasible way from individual and group ideas.",
+        "characters": "Imagine a desirable future, then co-construct it in a feasible way from individual and group ideas.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#3b3b3b"
+        },
+        "bounds": {
+          "x": 19041,
+          "y": 3393,
+          "width": 308,
+          "height": 72
+        }
+      },
+      {
+        "id": "115:150",
+        "name": "Ver mas",
+        "characters": "Ver mas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19153.5,
+          "y": 3508.5,
+          "width": 99,
+          "height": 30
+        }
+      },
+      {
+        "id": "115:153",
+        "name": "2030 Glorieuses",
+        "characters": "2030 Glorieuses",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 24,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19453,
+          "y": 3120.52685546875,
+          "width": 289,
+          "height": 30.07877540588379
+        }
+      },
+      {
+        "id": "115:159",
+        "name": "Ocean & Systemic",
+        "characters": "Ocean & Systemic",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 22,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 19436,
+          "y": 3337.30126953125,
+          "width": 324,
+          "height": 27
+        }
+      },
+      {
+        "id": "115:161",
+        "name": "A systemic approach to the role of the ocean, its benefits, and the human pressures that weaken it.",
+        "characters": "A systemic approach to the role of the ocean, its benefits, and the human pressures that weaken it.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#3b3b3b"
+        },
+        "bounds": {
+          "x": 19436,
+          "y": 3374.30126953125,
+          "width": 308,
+          "height": 96
+        }
+      },
+      {
+        "id": "115:163",
+        "name": "Ver mas",
+        "characters": "Ver mas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19548.5,
+          "y": 3508.80126953125,
+          "width": 99,
+          "height": 30
+        }
+      },
+      {
+        "id": "115:166",
+        "name": "2030 Glorieuses",
+        "characters": "2030 Glorieuses",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 24,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19848,
+          "y": 3139.134521484375,
+          "width": 289,
+          "height": 27.454315185546875
+        }
+      },
+      {
+        "id": "115:172",
+        "name": "Risks & Dependencies on Living Organisms",
+        "characters": "Risks & Dependencies on Living Organisms",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 22,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 19831,
+          "y": 3330,
+          "width": 324,
+          "height": 54
+        }
+      },
+      {
+        "id": "115:174",
+        "name": "Understand how living things work, the pressures they face, and why biodiversity erosion is a systemic risk.",
+        "characters": "Understand how living things work, the pressures they face, and why biodiversity erosion is a systemic risk.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#3b3b3b"
+        },
+        "bounds": {
+          "x": 19831,
+          "y": 3394,
+          "width": 308,
+          "height": 96
+        }
+      },
+      {
+        "id": "115:176",
+        "name": "Ver mas",
+        "characters": "Ver mas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19943.5,
+          "y": 3511.5,
+          "width": 99,
+          "height": 30
+        }
+      },
+      {
+        "id": "115:179",
+        "name": "2030 Glorieuses",
+        "characters": "2030 Glorieuses",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 24,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19058,
+          "y": 3652.134521484375,
+          "width": 289,
+          "height": 27.454315185546875
+        }
+      },
+      {
+        "id": "115:185",
+        "name": "Carbon Footprint & environment",
+        "characters": "Carbon Footprint & environment",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 22,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 19041,
+          "y": 3843,
+          "width": 324,
+          "height": 54
+        }
+      },
+      {
+        "id": "115:186",
+        "name": "An interactive simulation to understand carbon footprint, explore reduction pathways and identify levers for action.",
+        "characters": "An interactive simulation to understand carbon footprint, explore reduction pathways and identify levers for action.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#3b3b3b"
+        },
+        "bounds": {
+          "x": 19041,
+          "y": 3907,
+          "width": 308,
+          "height": 96
+        }
+      },
+      {
+        "id": "115:188",
+        "name": "Ver mas",
+        "characters": "Ver mas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19153.5,
+          "y": 4027.5,
+          "width": 99,
+          "height": 30
+        }
+      },
+      {
+        "id": "129:5",
+        "name": "2030 Glorieuses",
+        "characters": "2030 Glorieuses",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 24,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19453,
+          "y": 3652.134521484375,
+          "width": 289,
+          "height": 27.454315185546875
+        }
+      },
+      {
+        "id": "129:11",
+        "name": "Carbon Footprint & environment",
+        "characters": "Carbon Footprint & environment",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 22,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 19436,
+          "y": 3843,
+          "width": 324,
+          "height": 54
+        }
+      },
+      {
+        "id": "129:12",
+        "name": "An interactive simulation to understand carbon footprint, explore reduction pathways and identify levers for action.",
+        "characters": "An interactive simulation to understand carbon footprint, explore reduction pathways and identify levers for action.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#3b3b3b"
+        },
+        "bounds": {
+          "x": 19436,
+          "y": 3907,
+          "width": 308,
+          "height": 96
+        }
+      },
+      {
+        "id": "129:14",
+        "name": "Ver mas",
+        "characters": "Ver mas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19548.5,
+          "y": 4027.5,
+          "width": 99,
+          "height": 30
+        }
+      },
+      {
+        "id": "129:18",
+        "name": "2030 Glorieuses",
+        "characters": "2030 Glorieuses",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 24,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19848,
+          "y": 3652.134521484375,
+          "width": 289,
+          "height": 27.454315185546875
+        }
+      },
+      {
+        "id": "129:24",
+        "name": "Carbon Footprint & environment",
+        "characters": "Carbon Footprint & environment",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 22,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 19831,
+          "y": 3843,
+          "width": 324,
+          "height": 54
+        }
+      },
+      {
+        "id": "129:25",
+        "name": "An interactive simulation to understand carbon footprint, explore reduction pathways and identify levers for action.",
+        "characters": "An interactive simulation to understand carbon footprint, explore reduction pathways and identify levers for action.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#3b3b3b"
+        },
+        "bounds": {
+          "x": 19831,
+          "y": 3907,
+          "width": 308,
+          "height": 96
+        }
+      },
+      {
+        "id": "129:27",
+        "name": "Ver mas",
+        "characters": "Ver mas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19943.5,
+          "y": 4027.5,
+          "width": 99,
+          "height": 30
+        }
+      },
+      {
+        "id": "115:195",
+        "name": "SCIENCE-BASED WORKSHOPS",
+        "characters": "SCIENCE-BASED WORKSHOPS",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#47cdf2"
+        },
+        "bounds": {
+          "x": 19450.09765625,
+          "y": 4212.8486328125,
+          "width": 300,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:197",
+        "name": "Methodologies trusted by the worlds most ambitious teams",
+        "characters": "Methodologies trusted by the worlds most ambitious  teams",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 45,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19186.603515625,
+          "y": 4285.846083709636,
+          "width": 853.79524494207,
+          "height": 108.08458035286367
+        }
+      },
+      {
+        "id": "115:200",
+        "name": "+500.000",
+        "characters": "+500.000",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 100,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 18843.29296875,
+          "y": 4530.86865234375,
+          "width": 488,
+          "height": 121
+        }
+      },
+      {
+        "id": "115:201",
+        "name": "Participants",
+        "characters": "Participants",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 40,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#47cdf2"
+        },
+        "bounds": {
+          "x": 18890.29296875,
+          "y": 4668.86865234375,
+          "width": 394,
+          "height": 48
+        }
+      },
+      {
+        "id": "115:203",
+        "name": "+2.000",
+        "characters": "+2.000",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 100,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19446.29296875,
+          "y": 4530.86865234375,
+          "width": 354,
+          "height": 121
+        }
+      },
+      {
+        "id": "115:204",
+        "name": "Organizations",
+        "characters": "Organizations",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 40,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#47cdf2"
+        },
+        "bounds": {
+          "x": 19426.29296875,
+          "y": 4668.86865234375,
+          "width": 394,
+          "height": 48
+        }
+      },
+      {
+        "id": "115:206",
+        "name": "+5",
+        "characters": "+5",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 100,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 20093.79296875,
+          "y": 4530.86865234375,
+          "width": 131,
+          "height": 121
+        }
+      },
+      {
+        "id": "115:207",
+        "name": "Years of experience",
+        "characters": "Years of experience",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 40,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#47cdf2"
+        },
+        "bounds": {
+          "x": 19962.29296875,
+          "y": 4686.86865234375,
+          "width": 394,
+          "height": 48
+        }
+      },
+      {
+        "id": "115:55",
+        "name": "Workshop - masterclasses - Ocean walk Custom",
+        "characters": "Workshop - masterclasses - Ocean walk\nCustom",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 45,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19122.724609375,
+          "y": 5070.000114942187,
+          "width": 920.5522639850387,
+          "height": 108.09119365156312
+        }
+      },
+      {
+        "id": "115:65",
+        "name": "From 1 hour",
+        "characters": "From 1 hour",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18990.123046875,
+          "y": 5373.1826171875,
+          "width": 212,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:70",
+        "name": "From SMEs large organizations",
+        "characters": "From SMEs large organizations",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19367.123046875,
+          "y": 5377.6826171875,
+          "width": 359,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:78",
+        "name": "Fun, flexible, and fully customizable",
+        "characters": "Fun, flexible, and fully customizable",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19818,
+          "y": 5377.6826171875,
+          "width": 359,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:86",
+        "name": "In person or online",
+        "characters": "In person or online",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18916,
+          "y": 5586.6826171875,
+          "width": 359,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:90",
+        "name": "From leadership to frontlines teams",
+        "characters": "From leadership to frontlines teams",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19367,
+          "y": 5589.4775390625,
+          "width": 359,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:95",
+        "name": "Access all sectors",
+        "characters": "Access all sectors",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "CENTER",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19818,
+          "y": 5586.6826171875,
+          "width": 359,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:107",
+        "name": "The collaborative workshop to raise awareness and inspire action",
+        "characters": "The collaborative workshop to raise awareness and inspire action",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#f05600"
+        },
+        "bounds": {
+          "x": 19143.5,
+          "y": 5761.6826171875,
+          "width": 1032,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:108",
+        "name": "Dive into our most popular format: an interactive, science-based card game to explore a theme of your choice: carbon footprint, biodiversity, ocean or desirable futures. A collective and structured experience that strengthens the understanding of sustainability issues and transforms the group's energy into initial concrete actions, individually and as a team.",
+        "characters": "Dive into our most popular format: an interactive, science-based card game to explore a theme of your choice: carbon footprint, biodiversity, ocean or desirable futures.\nA collective and structured experience that strengthens the understanding of sustainability issues and transforms the group's energy into initial concrete actions, individually and as a team.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 500,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19143.5,
+          "y": 5789.6826171875,
+          "width": 1032,
+          "height": 120
+        }
+      },
+      {
+        "id": "115:113",
+        "name": "The collaborative workshop to raise awareness and inspire action",
+        "characters": "The collaborative workshop to raise awareness and inspire action",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#f05600"
+        },
+        "bounds": {
+          "x": 19143.5,
+          "y": 6000.6826171875,
+          "width": 1032,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:114",
+        "name": "Dive into our most popular format: an interactive, science-based card game to explore a theme of your choice: carbon footprint, biodiversity, ocean or desirable futures. A collective and structured experience that strengthens the understanding of sustainability issues and transforms the group's energy into initial concrete actions, individually and as a team.",
+        "characters": "Dive into our most popular format: an interactive, science-based card game to explore a theme of your choice: carbon footprint, biodiversity, ocean or desirable futures.\nA collective and structured experience that strengthens the understanding of sustainability issues and transforms the group's energy into initial concrete actions, individually and as a team.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 500,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19143.5,
+          "y": 6028.6826171875,
+          "width": 1032,
+          "height": 120
+        }
+      },
+      {
+        "id": "129:36",
+        "name": "The collaborative workshop to raise awareness and inspire action",
+        "characters": "The collaborative workshop to raise awareness and inspire action",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#f05600"
+        },
+        "bounds": {
+          "x": 19143.5,
+          "y": 6239.6826171875,
+          "width": 1032,
+          "height": 24
+        }
+      },
+      {
+        "id": "129:37",
+        "name": "Dive into our most popular format: an interactive, science-based card game to explore a theme of your choice: carbon footprint, biodiversity, ocean or desirable futures. A collective and structured experience that strengthens the understanding of sustainability issues and transforms the group's energy into initial concrete actions, individually and as a team.",
+        "characters": "Dive into our most popular format: an interactive, science-based card game to explore a theme of your choice: carbon footprint, biodiversity, ocean or desirable futures.\nA collective and structured experience that strengthens the understanding of sustainability issues and transforms the group's energy into initial concrete actions, individually and as a team.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 500,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19143.5,
+          "y": 6267.6826171875,
+          "width": 1032,
+          "height": 120
+        }
+      },
+      {
+        "id": "115:119",
+        "name": "The collaborative workshop to raise awareness and inspire action",
+        "characters": "The collaborative workshop to raise awareness and inspire action",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#f05600"
+        },
+        "bounds": {
+          "x": 19143.5,
+          "y": 6478.6826171875,
+          "width": 1032,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:120",
+        "name": "Dive into our most popular format: an interactive, science-based card game to explore a theme of your choice: carbon footprint, biodiversity, ocean or desirable futures. A collective and structured experience that strengthens the understanding of sustainability issues and transforms the group's energy into initial concrete actions, individually and as a team.",
+        "characters": "Dive into our most popular format: an interactive, science-based card game to explore a theme of your choice: carbon footprint, biodiversity, ocean or desirable futures.\nA collective and structured experience that strengthens the understanding of sustainability issues and transforms the group's energy into initial concrete actions, individually and as a team.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 500,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19143.5,
+          "y": 6506.6826171875,
+          "width": 1032,
+          "height": 120
+        }
+      },
+      {
+        "id": "115:123",
+        "name": "Ver todas",
+        "characters": "Ver todas",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19525,
+          "y": 6706.6826171875,
+          "width": 116,
+          "height": 30
+        }
+      },
+      {
+        "id": "115:235",
+        "name": "SCIENCE-BASED WORKSHOPS",
+        "characters": "SCIENCE-BASED WORKSHOPS",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 18737,
+          "y": 6825.1826171875,
+          "width": 300,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:237",
+        "name": "1 team-building experience. 6 reasons your director will say yes!",
+        "characters": "1 team-building experience. 6 reasons your director will say yes!",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 48,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18711.5,
+          "y": 6895.1826171875,
+          "width": 1743,
+          "height": 58
+        }
+      },
+      {
+        "id": "115:239",
+        "name": "For the HR manager who needs engagement. For the CSR officer who needs buy-in. For the director who needs to justify the budget. And for everyone in the room who wants to feel part of the solution.",
+        "characters": "For the HR manager who needs engagement. For the CSR officer who needs buy-in. For the director who needs to justify the budget. And for everyone in the room who wants to feel part of the solution.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 500,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18711.5,
+          "y": 6970.1826171875,
+          "width": 1743,
+          "height": 60
+        }
+      },
+      {
+        "id": "115:240",
+        "name": "One science-based sustainability experience. 6 reasons to say yes: Easy to justify; impossible to forget.",
+        "characters": "One science-based sustainability experience. 6 reasons to say yes: Easy to justify; impossible to forget.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 500,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18711.5,
+          "y": 7044.1826171875,
+          "width": 1743,
+          "height": 30
+        }
+      },
+      {
+        "id": "145:72",
+        "name": "1",
+        "characters": "1",
+        "style": {
+          "fontFamily": "Irish Grover",
+          "fontSize": 78,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 18894.5,
+          "y": 7206.1826171875,
+          "width": 26,
+          "height": 94
+        }
+      },
+      {
+        "id": "115:250",
+        "name": "A memorable experience",
+        "characters": "A memorable experience",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18894.5,
+          "y": 7309.1826171875,
+          "width": 289,
+          "height": 24
+        }
+      },
+      {
+        "id": "115:252",
+        "name": "From the intern to the director: same experience, same language, same systemic vision of what’s at stake.",
+        "characters": "From the intern to the director: same experience, same language, same systemic vision of what’s at stake.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18894.5,
+          "y": 7342.1826171875,
+          "width": 373,
+          "height": 66
+        }
+      },
+      {
+        "id": "115:253",
+        "name": "Not because they had to. Because they lived the same experience.",
+        "characters": "Not because they had to. Because they lived the same experience.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18894.5,
+          "y": 7415.1826171875,
+          "width": 373,
+          "height": 44
+        }
+      },
+      {
+        "id": "145:79",
+        "name": "2",
+        "characters": "2",
+        "style": {
+          "fontFamily": "Irish Grover",
+          "fontSize": 78,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 19395,
+          "y": 7217.1826171875,
+          "width": 45,
+          "height": 94
+        }
+      },
+      {
+        "id": "145:81",
+        "name": "Inspire awareness",
+        "characters": "Inspire awareness",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19395,
+          "y": 7320.1826171875,
+          "width": 289,
+          "height": 24
+        }
+      },
+      {
+        "id": "145:83",
+        "name": "We don't lecture.",
+        "characters": "We don't lecture.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19395,
+          "y": 7353.1826171875,
+          "width": 373,
+          "height": 22
+        }
+      },
+      {
+        "id": "145:84",
+        "name": "We make people feel the stakes through science, stories, and a game that stays with them long after the day is over.",
+        "characters": "We make people feel the stakes through science, stories, and a game that stays with them long after the day is over.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19395,
+          "y": 7382.1826171875,
+          "width": 373,
+          "height": 66
+        }
+      },
+      {
+        "id": "145:91",
+        "name": "3",
+        "characters": "3",
+        "style": {
+          "fontFamily": "Irish Grover",
+          "fontSize": 78,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 19895.5,
+          "y": 7217.1826171875,
+          "width": 42,
+          "height": 94
+        }
+      },
+      {
+        "id": "145:93",
+        "name": "Attract new talents",
+        "characters": "Attract new talents",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19895.5,
+          "y": 7320.1826171875,
+          "width": 289,
+          "height": 24
+        }
+      },
+      {
+        "id": "145:95",
+        "name": "70% of Gen Z and Millennials consider sustainability when choosing an employer (Deloitte, 2023).",
+        "characters": "70% of Gen Z and Millennials consider sustainability when choosing an employer (Deloitte, 2023).",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19895.5,
+          "y": 7353.1826171875,
+          "width": 373,
+          "height": 66
+        }
+      },
+      {
+        "id": "145:96",
+        "name": "Give them a reason to choose you & stay.",
+        "characters": "Give them a reason to choose you & stay.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19895.5,
+          "y": 7426.1826171875,
+          "width": 373,
+          "height": 22
+        }
+      },
+      {
+        "id": "145:103",
+        "name": "4",
+        "characters": "4",
+        "style": {
+          "fontFamily": "Irish Grover",
+          "fontSize": 78,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 18894.5,
+          "y": 7521.1826171875,
+          "width": 43,
+          "height": 94
+        }
+      },
+      {
+        "id": "145:105",
+        "name": "Change through action",
+        "characters": "Change through action",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18894.5,
+          "y": 7624.1826171875,
+          "width": 289,
+          "height": 24
+        }
+      },
+      {
+        "id": "145:107",
+        "name": "Every session ends with concrete next steps: chosen by the team, not imposed from above.",
+        "characters": "Every session ends with concrete next steps: chosen by the team, not imposed from above.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18894.5,
+          "y": 7657.1826171875,
+          "width": 373,
+          "height": 66
+        }
+      },
+      {
+        "id": "145:108",
+        "name": "That's the difference between a workshop and a turning point.",
+        "characters": "That's the difference between a workshop and a turning point.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 18894.5,
+          "y": 7730.1826171875,
+          "width": 373,
+          "height": 44
+        }
+      },
+      {
+        "id": "145:115",
+        "name": "5",
+        "characters": "5",
+        "style": {
+          "fontFamily": "Irish Grover",
+          "fontSize": 78,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 19395,
+          "y": 7521.1826171875,
+          "width": 41,
+          "height": 94
+        }
+      },
+      {
+        "id": "145:117",
+        "name": "Change through action",
+        "characters": "Change through action",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19395,
+          "y": 7624.1826171875,
+          "width": 289,
+          "height": 24
+        }
+      },
+      {
+        "id": "145:119",
+        "name": "Every session ends with concrete next steps: chosen by the team, not imposed from above.",
+        "characters": "Every session ends with concrete next steps: chosen by the team, not imposed from above.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19395,
+          "y": 7657.1826171875,
+          "width": 373,
+          "height": 66
+        }
+      },
+      {
+        "id": "145:120",
+        "name": "That's the difference between a workshop and a turning point.",
+        "characters": "That's the difference between a workshop and a turning point.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19395,
+          "y": 7730.1826171875,
+          "width": 373,
+          "height": 44
+        }
+      },
+      {
+        "id": "145:127",
+        "name": "6",
+        "characters": "6",
+        "style": {
+          "fontFamily": "Irish Grover",
+          "fontSize": 78,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#0698c0"
+        },
+        "bounds": {
+          "x": 19895.5,
+          "y": 7521.1826171875,
+          "width": 41,
+          "height": 94
+        }
+      },
+      {
+        "id": "145:129",
+        "name": "Change through action",
+        "characters": "Change through action",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 20,
+          "fontWeight": 700,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19895.5,
+          "y": 7624.1826171875,
+          "width": 289,
+          "height": 24
+        }
+      },
+      {
+        "id": "145:131",
+        "name": "Every session ends with concrete next steps: chosen by the team, not imposed from above.",
+        "characters": "Every session ends with concrete next steps: chosen by the team, not imposed from above.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19895.5,
+          "y": 7657.1826171875,
+          "width": 373,
+          "height": 66
+        }
+      },
+      {
+        "id": "145:132",
+        "name": "That's the difference between a workshop and a turning point.",
+        "characters": "That's the difference between a workshop and a turning point.",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 18,
+          "fontWeight": 400,
+          "textAlign": "LEFT",
+          "color": "#000000"
+        },
+        "bounds": {
+          "x": 19895.5,
+          "y": 7730.1826171875,
+          "width": 373,
+          "height": 44
+        }
+      },
+      {
+        "id": "115:214",
+        "name": "What about YOU?",
+        "characters": "What about YOU?",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 45,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 18974.486328125,
+          "y": 8047.636517592196,
+          "width": 1157.993278400827,
+          "height": 54.09150975155444
+        }
+      },
+      {
+        "id": "115:215",
+        "name": "It all starts with one conversation. Lets design your next impact experience together",
+        "characters": "It all starts with one conversation. Lets design your next impact experience together",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 30,
+          "fontWeight": 600,
+          "textAlign": "CENTER",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 18974.486328125,
+          "y": 8111.72802734375,
+          "width": 1217.021484375,
+          "height": 72
+        }
+      },
+      {
+        "id": "115:218",
+        "name": "Ready for the Odyssey",
+        "characters": "Ready for the Odyssey",
+        "style": {
+          "fontFamily": "Inter",
+          "fontSize": 25,
+          "fontWeight": 600,
+          "textAlign": "LEFT",
+          "color": "#ffffff"
+        },
+        "bounds": {
+          "x": 19445.99609375,
+          "y": 8254.728515625,
+          "width": 274,
+          "height": 30
+        }
+      }
+    ],
+    "images": [
+      {
+        "id": "115:17",
+        "name": "Vector",
+        "imageRef": "d33ad63270912f57be65f6de75b6e95ad30dd539",
+        "bounds": {
+          "x": 19808,
+          "y": 1060,
+          "width": 634,
+          "height": 769.857177734375
+        }
+      },
+      {
+        "id": "115:29",
+        "name": "Gemini_Generated_Image_7zelyl7zelyl7zel-removebg-preview 2",
+        "imageRef": "f1b974f740239103d023c73773812e3aa157d0af",
+        "bounds": {
+          "x": 19807.998046875,
+          "y": 1947,
+          "width": 624.6819458007812,
+          "height": 627.71435546875
+        }
+      },
+      {
+        "id": "115:33",
+        "name": "image 11",
+        "imageRef": "382b92053ee5af1e6c484979d42aa7aea1e69157",
+        "bounds": {
+          "x": 18704.5,
+          "y": 933,
+          "width": 90,
+          "height": 87
+        }
+      },
+      {
+        "id": "115:144",
+        "name": "Rectangle 8",
+        "imageRef": "7773bf13c8cb750ce9abc6661a3dbd87b3fca191",
+        "bounds": {
+          "x": 19024,
+          "y": 3105.99658203125,
+          "width": 358,
+          "height": 208.43896484375
+        }
+      },
+      {
+        "id": "115:157",
+        "name": "Rectangle 8",
+        "imageRef": "f755d97b51f79f9b3d211eaebb6bf9576686ef9a",
+        "bounds": {
+          "x": 19419,
+          "y": 3106.005859375,
+          "width": 358,
+          "height": 220.92340087890625
+        }
+      },
+      {
+        "id": "115:170",
+        "name": "Rectangle 8",
+        "imageRef": "4a78f791b8ee270b221fb9e79c4da872288e3c96",
+        "bounds": {
+          "x": 19814,
+          "y": 3106,
+          "width": 358,
+          "height": 212
+        }
+      },
+      {
+        "id": "115:183",
+        "name": "5f3ea82e-0c62-4b16-8839-8bff653b68be 1",
+        "imageRef": "bb2c8e013bd052116fa11656df1ef6bffcb49c13",
+        "bounds": {
+          "x": 19024,
+          "y": 3619,
+          "width": 358,
+          "height": 209
+        }
+      },
+      {
+        "id": "129:9",
+        "name": "5f3ea82e-0c62-4b16-8839-8bff653b68be 1",
+        "imageRef": "bb2c8e013bd052116fa11656df1ef6bffcb49c13",
+        "bounds": {
+          "x": 19419,
+          "y": 3619,
+          "width": 358,
+          "height": 209
+        }
+      },
+      {
+        "id": "129:22",
+        "name": "5f3ea82e-0c62-4b16-8839-8bff653b68be 1",
+        "imageRef": "bb2c8e013bd052116fa11656df1ef6bffcb49c13",
+        "bounds": {
+          "x": 19814,
+          "y": 3619,
+          "width": 358,
+          "height": 209
+        }
+      },
+      {
+        "id": "115:192",
+        "name": "02-21-23-645_512 1",
+        "imageRef": "29fc5898c80a468457b6e3d3511703cc478cf7c0",
+        "bounds": {
+          "x": 18608.5,
+          "y": 4129,
+          "width": 1949,
+          "height": 885
+        }
+      },
+      {
+        "id": "115:105",
+        "name": "Rectangle 9",
+        "imageRef": "f755d97b51f79f9b3d211eaebb6bf9576686ef9a",
+        "bounds": {
+          "x": 18912.5,
+          "y": 5736.1826171875,
+          "width": 199,
+          "height": 199
+        }
+      },
+      {
+        "id": "115:111",
+        "name": "Rectangle 9",
+        "imageRef": "f755d97b51f79f9b3d211eaebb6bf9576686ef9a",
+        "bounds": {
+          "x": 18912.5,
+          "y": 5975.1826171875,
+          "width": 199,
+          "height": 199
+        }
+      },
+      {
+        "id": "129:34",
+        "name": "Rectangle 9",
+        "imageRef": "f755d97b51f79f9b3d211eaebb6bf9576686ef9a",
+        "bounds": {
+          "x": 18912.5,
+          "y": 6214.1826171875,
+          "width": 199,
+          "height": 199
+        }
+      },
+      {
+        "id": "115:117",
+        "name": "Rectangle 9",
+        "imageRef": "f755d97b51f79f9b3d211eaebb6bf9576686ef9a",
+        "bounds": {
+          "x": 18912.5,
+          "y": 6453.1826171875,
+          "width": 199,
+          "height": 199
+        }
+      },
+      {
+        "id": "115:241",
+        "name": "Frame 31",
+        "imageRef": "001b0714e7dc0b3876d01e07f6cefd004984b2bf",
+        "bounds": {
+          "x": 18711.5,
+          "y": 7109.1826171875,
+          "width": 1743,
+          "height": 762
+        }
+      },
+      {
+        "id": "115:210",
+        "name": "Rectangle 23",
+        "imageRef": "9d94d05cd8d42f0c4dcda504941203647e071acb",
+        "bounds": {
+          "x": 18882,
+          "y": 7924.365234375,
+          "width": 1402,
+          "height": 510
+        }
+      },
+      {
+        "id": "115:223",
+        "name": "image 2",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 18664,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        }
+      },
+      {
+        "id": "115:224",
+        "name": "image 3",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 18953,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        }
+      },
+      {
+        "id": "115:225",
+        "name": "image 4",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 19242,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        }
+      },
+      {
+        "id": "115:226",
+        "name": "image 5",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 19531,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        }
+      },
+      {
+        "id": "115:227",
+        "name": "image 6",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 19820,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        }
+      },
+      {
+        "id": "115:228",
+        "name": "image 7",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 20109,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        }
+      },
+      {
+        "id": "115:229",
+        "name": "image 8",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 20398,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        }
+      },
+      {
+        "id": "115:230",
+        "name": "image 9",
+        "imageRef": "b62d230a8599bd0670616bea1bbb15e86d20bb79",
+        "bounds": {
+          "x": 20687,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        }
+      }
+    ],
+    "layout": [
+      {
+        "depth": 0,
+        "id": "115:2",
+        "name": "Frame 35",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18618,
+          "y": 921,
+          "width": 1920,
+          "height": 7622
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 1
+          }
+        ],
+        "children": 4
+      },
+      {
+        "depth": 1,
+        "id": "115:3",
+        "name": "Group 11",
+        "type": "GROUP",
+        "bounds": {
+          "x": 18617,
+          "y": 921,
+          "width": 1921,
+          "height": 2286
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 2,
+        "id": "115:4",
+        "name": "Frame 11",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18617,
+          "y": 921,
+          "width": 1921,
+          "height": 2286
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 0.10000000149011612
+          }
+        ],
+        "children": 2
+      },
+      {
+        "depth": 3,
+        "id": "115:5",
+        "name": "Frame 23",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18711,
+          "y": 1060,
+          "width": 1743,
+          "height": 1514.857177734375
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 4,
+        "id": "115:6",
+        "name": "Frame 11",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18711,
+          "y": 1060,
+          "width": 1743,
+          "height": 769.857177734375
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 4,
+        "id": "115:18",
+        "name": "Frame 12",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18711,
+          "y": 1946.857177734375,
+          "width": 1743,
+          "height": 628
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 3,
+        "id": "115:30",
+        "name": "Frame 12",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18617,
+          "y": 920,
+          "width": 1921,
+          "height": 113
+        },
+        "layout": "VERTICAL",
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 1
+          }
+        ],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "115:31",
+        "name": "Frame 12",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18704.5,
+          "y": 933,
+          "width": 1743,
+          "height": 87
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 1,
+        "id": "115:41",
+        "name": "Group 25",
+        "type": "GROUP",
+        "bounds": {
+          "x": 18539,
+          "y": 2691,
+          "width": 2369,
+          "height": 2399
+        },
+        "layout": null,
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 2,
+        "id": "115:42",
+        "name": "Group 22",
+        "type": "GROUP",
+        "bounds": {
+          "x": 18539,
+          "y": 2691,
+          "width": 2369,
+          "height": 2399
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 3,
+        "id": "115:43",
+        "name": "Group 21",
+        "type": "GROUP",
+        "bounds": {
+          "x": 18539,
+          "y": 2691,
+          "width": 2369,
+          "height": 2399
+        },
+        "layout": null,
+        "fills": [],
+        "children": 7
+      },
+      {
+        "depth": 4,
+        "id": "115:44",
+        "name": "Rectangle 13",
+        "type": "VECTOR",
+        "bounds": {
+          "x": 18575,
+          "y": 2691,
+          "width": 1960,
+          "height": 1719
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#5db642",
+            "opacity": 0.14000000059604645
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "115:46",
+        "name": "Ellipse 4",
+        "type": "ELLIPSE",
+        "bounds": {
+          "x": 20046,
+          "y": 3675,
+          "width": 862,
+          "height": 862
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 0.2800000011920929
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "115:47",
+        "name": "Ellipse 5",
+        "type": "ELLIPSE",
+        "bounds": {
+          "x": 20180,
+          "y": 3769,
+          "width": 547,
+          "height": 547
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#47cdf2",
+            "opacity": 0.27000001072883606
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "129:30",
+        "name": "Ellipse 7",
+        "type": "ELLIPSE",
+        "bounds": {
+          "x": 20180,
+          "y": 3769,
+          "width": 547,
+          "height": 547
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#47cdf2",
+            "opacity": 0.27000001072883606
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "115:48",
+        "name": "Ellipse 6",
+        "type": "ELLIPSE",
+        "bounds": {
+          "x": 20046,
+          "y": 3675,
+          "width": 862,
+          "height": 862
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 0.2800000011920929
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "115:49",
+        "name": "Group 10",
+        "type": "GROUP",
+        "bounds": {
+          "x": 18711,
+          "y": 2995,
+          "width": 1685,
+          "height": 1401
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "115:51",
+        "name": "Rectangle 14",
+        "type": "VECTOR",
+        "bounds": {
+          "x": 18539,
+          "y": 4157,
+          "width": 2150,
+          "height": 933
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 1
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 2,
+        "id": "115:124",
+        "name": "Frame 8",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18790.5,
+          "y": 2760,
+          "width": 1615,
+          "height": 822
+        },
+        "layout": "VERTICAL",
+        "fills": [
+          {
+            "hex": "#427b46",
+            "opacity": 0.14000000059604645
+          }
+        ],
+        "children": 2
+      },
+      {
+        "depth": 3,
+        "id": "115:125",
+        "name": "Frame 8",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18790.5,
+          "y": 2760,
+          "width": 1615,
+          "height": 278.9999694824219
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 3
+      },
+      {
+        "depth": 4,
+        "id": "115:126",
+        "name": "Frame 6",
+        "type": "FRAME",
+        "bounds": {
+          "x": 19468,
+          "y": 2760,
+          "width": 260,
+          "height": 60
+        },
+        "layout": "HORIZONTAL",
+        "fills": [
+          {
+            "hex": "#0698c0",
+            "opacity": 0.15000000596046448
+          }
+        ],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "115:128",
+        "name": "Group 13",
+        "type": "GROUP",
+        "bounds": {
+          "x": 19203.90234375,
+          "y": 2848,
+          "width": 788.1942749023438,
+          "height": 58.99995803833008
+        },
+        "layout": null,
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 4,
+        "id": "115:131",
+        "name": "Frame 4",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18790.5,
+          "y": 2935,
+          "width": 1615,
+          "height": 104
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 3,
+        "id": "115:137",
+        "name": "Frame 8",
+        "type": "FRAME",
+        "bounds": {
+          "x": 19024,
+          "y": 3106,
+          "width": 1148,
+          "height": 476
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 4,
+        "id": "129:2",
+        "name": "Frame 32",
+        "type": "FRAME",
+        "bounds": {
+          "x": 19024,
+          "y": 3106,
+          "width": 1148,
+          "height": 476
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 3
+      },
+      {
+        "depth": 4,
+        "id": "129:29",
+        "name": "Frame 32",
+        "type": "FRAME",
+        "bounds": {
+          "x": 19024,
+          "y": 3619,
+          "width": 1148,
+          "height": 397
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 3
+      },
+      {
+        "depth": 1,
+        "id": "115:315",
+        "name": "Frame 32",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18619,
+          "y": 4129,
+          "width": 1927.9998779296875,
+          "height": 4305.365234375
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 4
+      },
+      {
+        "depth": 2,
+        "id": "115:189",
+        "name": "Group 26",
+        "type": "GROUP",
+        "bounds": {
+          "x": 18608.5,
+          "y": 4129,
+          "width": 1949,
+          "height": 885
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 3,
+        "id": "115:190",
+        "name": "Group 24",
+        "type": "GROUP",
+        "bounds": {
+          "x": 18608.5,
+          "y": 4129,
+          "width": 1949,
+          "height": 885
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "115:191",
+        "name": "Group 9",
+        "type": "GROUP",
+        "bounds": {
+          "x": 18608.5,
+          "y": 4129,
+          "width": 1949,
+          "height": 885
+        },
+        "layout": null,
+        "fills": [],
+        "children": 3
+      },
+      {
+        "depth": 2,
+        "id": "115:52",
+        "name": "Frame 17",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18916,
+          "y": 5070,
+          "width": 1334,
+          "height": 1681.1824951171875
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 3
+      },
+      {
+        "depth": 3,
+        "id": "115:53",
+        "name": "Group 12",
+        "type": "GROUP",
+        "bounds": {
+          "x": 19122.724609375,
+          "y": 5070,
+          "width": 920.55224609375,
+          "height": 108.09119415283203
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "115:54",
+        "name": "Group 13",
+        "type": "GROUP",
+        "bounds": {
+          "x": 19122.724609375,
+          "y": 5070,
+          "width": 920.55224609375,
+          "height": 108.09119415283203
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 3,
+        "id": "115:56",
+        "name": "Group 16",
+        "type": "GROUP",
+        "bounds": {
+          "x": 18916,
+          "y": 5248.09130859375,
+          "width": 1334,
+          "height": 418.09130859375
+        },
+        "layout": null,
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 4,
+        "id": "115:57",
+        "name": "Rectangle 21",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 18916,
+          "y": 5248.09130859375,
+          "width": 1334,
+          "height": 418
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#2496d4",
+            "opacity": 0.05000000074505806
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "115:58",
+        "name": "Group 15",
+        "type": "GROUP",
+        "bounds": {
+          "x": 18916,
+          "y": 5248.1826171875,
+          "width": 1268,
+          "height": 418
+        },
+        "layout": null,
+        "fills": [],
+        "children": 7
+      },
+      {
+        "depth": 3,
+        "id": "115:102",
+        "name": "Frame 17",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18912.5,
+          "y": 5736.1826171875,
+          "width": 1341,
+          "height": 1015
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 5
+      },
+      {
+        "depth": 4,
+        "id": "115:103",
+        "name": "Frame 17",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18912.5,
+          "y": 5736.1826171875,
+          "width": 1341,
+          "height": 199
+        },
+        "layout": "VERTICAL",
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 1
+          }
+        ],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "115:109",
+        "name": "Frame 18",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18912.5,
+          "y": 5975.1826171875,
+          "width": 1341,
+          "height": 199
+        },
+        "layout": "VERTICAL",
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 1
+          }
+        ],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "129:32",
+        "name": "Frame 20",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18912.5,
+          "y": 6214.1826171875,
+          "width": 1341,
+          "height": 199
+        },
+        "layout": "VERTICAL",
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 1
+          }
+        ],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "115:115",
+        "name": "Frame 19",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18912.5,
+          "y": 6453.1826171875,
+          "width": 1341,
+          "height": 199
+        },
+        "layout": "VERTICAL",
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 1
+          }
+        ],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "115:121",
+        "name": "Frame 1",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18912.5,
+          "y": 6692.1826171875,
+          "width": 1341,
+          "height": 59
+        },
+        "layout": "VERTICAL",
+        "fills": [
+          {
+            "hex": "#ffffff",
+            "opacity": 1
+          }
+        ],
+        "children": 1
+      },
+      {
+        "depth": 2,
+        "id": "115:231",
+        "name": "Frame 32",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18711.5,
+          "y": 6807.1826171875,
+          "width": 1743,
+          "height": 1064
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 3,
+        "id": "115:232",
+        "name": "Frame 9",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18711.5,
+          "y": 6807.1826171875,
+          "width": 1743,
+          "height": 267
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "115:233",
+        "name": "Frame 9",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18711.5,
+          "y": 6807.1826171875,
+          "width": 1743,
+          "height": 267
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 3,
+        "id": "115:241",
+        "name": "Frame 31",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18711.5,
+          "y": 7109.1826171875,
+          "width": 1743,
+          "height": 762
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "115:242",
+        "name": "Frame 31",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18711.5,
+          "y": 7188.1826171875,
+          "width": 1743,
+          "height": 604
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 2,
+        "id": "115:208",
+        "name": "Group 21",
+        "type": "GROUP",
+        "bounds": {
+          "x": 18882,
+          "y": 7927.1826171875,
+          "width": 1402,
+          "height": 507.1825256347656
+        },
+        "layout": null,
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 3,
+        "id": "115:209",
+        "name": "Frame 18",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18882,
+          "y": 8152.0380859375,
+          "width": 1402,
+          "height": 282.3270568847656
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 4,
+        "id": "115:210",
+        "name": "Rectangle 23",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 18882,
+          "y": 7924.365234375,
+          "width": 1402,
+          "height": 510
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 3,
+        "id": "115:211",
+        "name": "Frame 20",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18974.486328125,
+          "y": 7927.1826171875,
+          "width": 1217.021484375,
+          "height": 507
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 4,
+        "id": "115:212",
+        "name": "Frame 20",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18974.486328125,
+          "y": 8047.63671875,
+          "width": 1217.021484375,
+          "height": 136.0915069580078
+        },
+        "layout": "VERTICAL",
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 4,
+        "id": "115:216",
+        "name": "Frame 18",
+        "type": "FRAME",
+        "bounds": {
+          "x": 19411.99609375,
+          "y": 8225.728515625,
+          "width": 342,
+          "height": 88
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 1,
+        "id": "115:219",
+        "name": "Group 3",
+        "type": "GROUP",
+        "bounds": {
+          "x": 18618,
+          "y": 4863,
+          "width": 2272,
+          "height": 161
+        },
+        "layout": null,
+        "fills": [],
+        "children": 1
+      },
+      {
+        "depth": 2,
+        "id": "115:220",
+        "name": "Group 23",
+        "type": "GROUP",
+        "bounds": {
+          "x": 18618,
+          "y": 4863,
+          "width": 2272,
+          "height": 161
+        },
+        "layout": null,
+        "fills": [],
+        "children": 2
+      },
+      {
+        "depth": 3,
+        "id": "115:221",
+        "name": "Rectangle 6",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 18618,
+          "y": 4863,
+          "width": 1928,
+          "height": 151
+        },
+        "layout": null,
+        "fills": [
+          {
+            "hex": "#000000",
+            "opacity": 0.5799999833106995
+          }
+        ],
+        "children": 0
+      },
+      {
+        "depth": 3,
+        "id": "115:222",
+        "name": "Frame 1",
+        "type": "FRAME",
+        "bounds": {
+          "x": 18664,
+          "y": 4967,
+          "width": 2226,
+          "height": 57
+        },
+        "layout": "HORIZONTAL",
+        "fills": [],
+        "children": 8
+      },
+      {
+        "depth": 4,
+        "id": "115:223",
+        "name": "image 2",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 18664,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "115:224",
+        "name": "image 3",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 18953,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "115:225",
+        "name": "image 4",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 19242,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "115:226",
+        "name": "image 5",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 19531,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "115:227",
+        "name": "image 6",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 19820,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "115:228",
+        "name": "image 7",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 20109,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "115:229",
+        "name": "image 8",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 20398,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      },
+      {
+        "depth": 4,
+        "id": "115:230",
+        "name": "image 9",
+        "type": "RECTANGLE",
+        "bounds": {
+          "x": 20687,
+          "y": 4967,
+          "width": 203,
+          "height": 57
+        },
+        "layout": null,
+        "fills": [],
+        "children": 0
+      }
+    ],
+    "screenshotUrl": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/457fc14a-48d6-4d24-84a4-d8de0949dc6b"
+  }
+}

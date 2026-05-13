@@ -1,0 +1,257 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, getEntry } from "astro:content";
+import { t } from "../../i18n/ui";
+import { tc } from "../../i18n/content";
+
+interface Props {
+  lang: string;
+  audience: string;
+}
+
+const { lang } = Astro.props;
+
+const homepageEntry = await getEntry("homepage", "index");
+const homepage = homepageEntry!.data;
+const workshops = await getCollection("activities");
+
+const heroTitle = tc(homepage, "heroTitle", lang);
+const statsParticipants = homepage.statsParticipants ?? "+500.000";
+const statsOrganizations = homepage.statsOrganizations ?? "+2.000";
+const statsYears = homepage.statsYears ?? "+5";
+
+const features = [
+  { icon: "/assets/figma/icon-clock.svg", label: t(lang, "formats.feat1") },
+  { icon: "/assets/figma/icon-organic.svg", label: t(lang, "formats.feat2") },
+  { icon: "/assets/figma/icon-customize.svg", label: t(lang, "formats.feat3") },
+  { icon: "/assets/figma/icon-online.svg", label: t(lang, "formats.feat4") },
+  { icon: "/assets/figma/icon-leader.svg", label: t(lang, "formats.feat5") },
+  { icon: "/assets/figma/icon-organization.svg", label: t(lang, "formats.feat6") },
+];
+
+const reasons = [
+  { img: "/assets/figma/reason-memorable.png", title: t(lang, "reasons.r1.title"), text: t(lang, "reasons.r1.text") },
+  { img: "/assets/figma/reason-awareness.png", title: t(lang, "reasons.r2.title"), text: t(lang, "reasons.r2.text") },
+  { img: "/assets/figma/reason-talent.png", title: t(lang, "reasons.r3.title"), text: t(lang, "reasons.r3.text") },
+  { img: "/assets/figma/reason-action.png", title: t(lang, "reasons.r4.title"), text: t(lang, "reasons.r4.text") },
+];
+
+const prefix = lang === "fr" ? "" : `/${lang}`;
+---
+
+<Layout title="Home">
+  <main class="pt-[80px]">
+
+    <!-- ─── HERO ─── -->
+    <section class="bg-white py-12 lg:py-20">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
+        <!-- Text -->
+        <div class="flex-1 flex flex-col gap-6 lg:gap-8">
+          <h1 class="text-[28px] lg:text-[36px] font-bold leading-tight">
+            {heroTitle.substring(0, heroTitle.lastIndexOf("?") + 1)}<br />
+            <span class="text-[#f05600]">{heroTitle.substring(heroTitle.lastIndexOf("?") + 1).trim()}</span>
+          </h1>
+          <div class="flex flex-col gap-4 text-[16px] lg:text-[18px] text-black leading-relaxed">
+            <p>{t(lang, "hero.body1")}</p>
+            <p>{t(lang, "hero.body2")}</p>
+            <p>{t(lang, "hero.body3")}</p>
+          </div>
+          <p class="text-[#f05600] text-[16px] lg:text-[18px]">{t(lang, "hero.tagline")}</p>
+          <a
+            href="#contact"
+            class="bg-[#f05600] text-white text-[16px] lg:text-[18px] font-semibold h-[54px] lg:h-[64px] w-full sm:w-[260px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
+          >
+            {t(lang, "hero.cta")}
+          </a>
+        </div>
+        <!-- Image -->
+        <div class="w-full lg:flex-shrink-0 lg:w-auto">
+          <img src="/assets/figma/hero-nature.png" alt="Wild Odyssey" class="w-full lg:w-[460px] rounded-2xl object-cover" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 6 THEMATIC WORKSHOPS ─── -->
+    <section class="relative py-12 lg:py-20 overflow-hidden" style="background-color: #e8f5e5;">
+
+      <!-- Décoration bas-droite : grand cercle blanc + photo océan intérieure -->
+      <div class="absolute bottom-0 right-0 translate-x-[30%] translate-y-[30%] pointer-events-none select-none z-[1]">
+        <div class="w-[400px] h-[400px] lg:w-[560px] lg:h-[560px] rounded-full bg-white/[0.28] flex items-center justify-center">
+          <div class="w-[260px] h-[260px] lg:w-[360px] lg:h-[360px] rounded-full overflow-hidden">
+            <img src="/assets/figma/ellipse-inner.png" alt="" class="w-full h-full object-cover" />
+          </div>
+        </div>
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col gap-10 lg:gap-14 items-center">
+
+        <!-- Header -->
+        <div class="flex flex-col gap-4 lg:gap-5 items-center text-center w-full">
+          <div class="bg-[rgba(6,152,192,0.15)] px-6 h-[44px] flex items-center justify-center rounded-full">
+            <span class="text-[#0698c0] text-[14px] lg:text-[15px] font-semibold">{t(lang, "workshops.badge")}</span>
+          </div>
+          <h2 class="text-[24px] lg:text-[30px] font-semibold text-black">
+            {t(lang, "workshops.heading1")} <span class="text-[#f05600]">{t(lang, "workshops.heading2")}</span>
+          </h2>
+          <div class="flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black text-center">
+            <p>{t(lang, "workshops.body1")}</p>
+            <p>{t(lang, "workshops.body2")}</p>
+          </div>
+        </div>
+
+        <!-- Workshop cards — 3 colonnes × 2 rangées -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 w-full">
+          {workshops.map((w) => (
+            <div class="bg-white border border-[#dbdbdb] rounded-[12px] shadow-[0px_1px_8px_rgba(168,168,168,0.25)] flex flex-col overflow-hidden">
+              <div class="relative h-[190px] bg-[#acb8a9]">
+                <img
+                  src={w.data.image}
+                  alt={tc(w.data, "title", lang)}
+                  class="w-full h-full object-cover object-bottom"
+                />
+                <span class="absolute top-3 left-1/2 -translate-x-1/2 text-white text-[18px] font-bold text-center w-[90%] leading-tight drop-shadow-md">
+                  {tc(w.data, "title", lang)}
+                </span>
+              </div>
+              <div class="p-4 flex flex-col gap-2 flex-1">
+                <p class="text-[#0698c0] text-[17px] font-bold leading-snug">
+                  {tc(w.data, "subtitle", lang) || tc(w.data, "title", lang)}
+                </p>
+                <div class="flex flex-col gap-5 flex-1 justify-between">
+                  <p class="text-[#3b3b3b] text-[15px] leading-snug">
+                    {tc(w.data, "description", lang)}
+                  </p>
+                  <a
+                    href={`${prefix}/workshops/${w.id}`}
+                    class="bg-[#f05600] text-white text-[15px] font-semibold h-[46px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
+                  >
+                    {t(lang, "workshops.learnMore")}
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── WORKSHOP FORMATS ─── -->
+    <section class="py-12 lg:py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col gap-10 lg:gap-14 items-center">
+
+        <h2 class="text-[24px] lg:text-[32px] font-semibold text-center leading-tight">
+          {t(lang, "formats.heading1")}<br />
+          <span class="text-[#f05600]">{t(lang, "formats.heading2")}</span>
+        </h2>
+
+        <!-- 6 features box -->
+        <div class="w-full border-4 border-[#0698c0] rounded-[17px] bg-[rgba(6,152,192,0.05)] shadow-[0px_0px_7px_rgba(168,168,168,0.25)] p-5 lg:p-6">
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {features.map((f) => (
+              <div class="flex flex-col items-center gap-2 py-3 lg:py-4 px-3 text-center">
+                <img src={f.icon} alt="" class="w-[44px] h-[44px] lg:w-[52px] lg:h-[52px]" />
+                <p class="text-black text-[14px] lg:text-[15px] font-bold leading-snug">{f.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Workshop list -->
+        <div class="flex flex-col gap-5 lg:gap-6 w-full">
+          {[0,1,2].map(() => (
+            <div class="bg-white border border-[#d9d9d9] rounded-[13px] shadow-[0px_0px_8px_rgba(173,173,173,0.25)] flex flex-col sm:flex-row items-stretch overflow-hidden min-h-[130px] sm:h-[160px]">
+              <div class="shrink-0 w-full sm:w-[160px] h-[130px] sm:h-full">
+                <img src="/assets/figma/workshop-2030.png" alt="" class="w-full h-full object-cover sm:rounded-bl-[13px] sm:rounded-tl-[13px]" />
+              </div>
+              <div class="flex flex-col gap-1 px-5 py-3 flex-1">
+                <p class="text-[#f05600] text-[15px] lg:text-[16px] font-bold">{t(lang, "formats.workshopTitle")}</p>
+                <p class="text-black text-[13px] lg:text-[14px] font-medium leading-[22px]">{t(lang, "formats.workshopDesc")}</p>
+              </div>
+            </div>
+          ))}
+
+          <a
+            href={`${prefix}/workshops`}
+            class="bg-[#0698c0] text-white text-[16px] lg:text-[18px] font-semibold h-[48px] flex items-center justify-center rounded-[7px] w-full hover:bg-cyan-700 transition-colors"
+          >
+            {t(lang, "formats.seeAll")}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── STATS ─── -->
+    <section class="relative py-16 lg:py-24 overflow-hidden">
+      <div class="absolute inset-0">
+        <img src="/assets/figma/stats-bg.png" alt="" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black/40"></div>
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center gap-8 lg:gap-10">
+        <div class="flex flex-col items-center gap-4 lg:gap-5 text-center">
+          <div class="bg-[rgba(6,152,192,0.53)] px-6 h-[44px] flex items-center justify-center rounded-full">
+            <span class="text-[#47cdf2] text-[13px] lg:text-[15px] font-semibold">{t(lang, "stats.badge")}</span>
+          </div>
+          <p class="text-[22px] lg:text-[32px] font-semibold text-white text-center leading-snug max-w-[640px]">
+            <span class="text-[#47cdf2]">{t(lang, "stats.heading2")}</span> {t(lang, "stats.heading3")} <span class="text-[#f05600]">{t(lang, "stats.heading4")}</span>
+          </p>
+        </div>
+        <div class="flex flex-col md:flex-row gap-10 md:gap-20 items-center justify-center text-center">
+          {[
+            { value: statsParticipants, label: t(lang, "stats.participants") },
+            { value: statsOrganizations, label: t(lang, "stats.organizations") },
+            { value: statsYears, label: t(lang, "stats.years") },
+          ].map((s) => (
+            <div class="flex flex-col items-center gap-2 lg:gap-3">
+              <span class="text-[44px] lg:text-[72px] font-semibold text-white leading-none">{s.value}</span>
+              <span class="text-[20px] lg:text-[28px] font-semibold text-[#47cdf2]">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── 6 REASONS ─── -->
+    <section class="py-12 lg:py-16 bg-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col gap-7 lg:gap-9">
+
+        <!-- Header -->
+        <div class="flex flex-col gap-4 lg:gap-5">
+          <div class="bg-[#0698c0] px-6 h-[44px] flex items-center justify-center rounded-full self-start">
+            <span class="text-white text-[13px] lg:text-[15px] font-semibold">{t(lang, "reasons.badge")}</span>
+          </div>
+          <h2 class="text-[24px] lg:text-[34px] font-semibold leading-tight">
+            {t(lang, "reasons.heading1")} <span class="text-[#f05600]">{t(lang, "reasons.heading2")}</span> {t(lang, "reasons.heading3")} <span class="text-[#f05600]">{t(lang, "reasons.heading4")}</span>
+          </h2>
+          <div class="flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black">
+            <p>{t(lang, "reasons.body1")}</p>
+            <p>{t(lang, "reasons.body2")}</p>
+          </div>
+        </div>
+
+        <!-- Reason cards (scroll on mobile) -->
+        <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0">
+          {reasons.map((r) => (
+            <div class="border border-[#e8e8e8] rounded-[10px] shrink-0 w-[280px] lg:w-[320px] snap-start flex flex-col overflow-hidden">
+              <div class="h-[170px] lg:h-[200px] overflow-hidden rounded-t-[8px]">
+                <img src={r.img} alt={r.title} class="w-full h-full object-cover" />
+              </div>
+              <div class="p-3 flex flex-col gap-2 flex-1 justify-between">
+                <div class="flex flex-col gap-2">
+                  <p class="text-[15px] lg:text-[17px] font-bold text-black">{r.title}</p>
+                  <p class="text-[13px] lg:text-[15px] text-black leading-snug">{r.text}</p>
+                </div>
+                <a
+                  href="#contact"
+                  class="bg-[#f05600] text-white text-[14px] lg:text-[15px] font-semibold h-[46px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
+                >
+                  {t(lang, "reasons.learnMore")}
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>

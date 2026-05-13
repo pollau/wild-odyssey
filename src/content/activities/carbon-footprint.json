@@ -1,0 +1,20 @@
+{
+  "title": "Carbon Footprint",
+  "subtitle": "Carbon Footprint & Environment",
+  "subtitle_fr": "Empreinte Carbone & Environnement",
+  "subtitle_en": "Carbon Footprint & Environment",
+  "subtitle_es": "Huella de Carbono y Medio Ambiente",
+  "description": "An interactive simulation to understand carbon footprint, explore reduction pathways and identify levers for action.",
+  "title_fr": "Empreinte Carbone",
+  "description_fr": "Une simulation interactive pour comprendre l'empreinte carbone, explorer les voies de réduction et identifier les leviers d'action.",
+  "title_es": "Huella de Carbono",
+  "description_es": "Una simulación interactiva para entender la huella de carbono, explorar vías de reducción e identificar palancas de acción.",
+  "duration": "From 2h",
+  "participants": "14–200 people",
+  "format": [
+    "workshop",
+    "masterclass"
+  ],
+  "theme": "carbon",
+  "image": "/assets/figma/workshop-carbon-card.png"
+}
