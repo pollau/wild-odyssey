@@ -99,10 +99,10 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
           </div>
         </div>
 
-        <!-- Workshop cards — 3 colonnes × 2 rangées -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-7 w-full max-w-3xl">
+        <!-- Workshop cards — scroll horizontal mobile, 2×2 desktop -->
+        <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory w-full max-w-3xl sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-x-visible sm:pb-0 lg:gap-7">
           {workshops.map((w) => (
-            <div class="bg-white border border-[#dbdbdb] rounded-[12px] shadow-[0px_1px_8px_rgba(168,168,168,0.25)] flex flex-col overflow-hidden">
+            <div class="shrink-0 w-[260px] snap-start sm:w-auto bg-white border border-[#dbdbdb] rounded-[12px] shadow-[0px_1px_8px_rgba(168,168,168,0.25)] flex flex-col overflow-hidden">
               <div class="relative h-[190px] bg-[#acb8a9]">
                 <img
                   src={w.data.image}
@@ -160,9 +160,9 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
         <!-- Workshop list -->
         <div class="flex flex-col gap-5 lg:gap-6 w-full">
           {[
-            { img: "/assets/figma/workshop-2030.png",                     title: t(lang, "formats.workshopTitle"),    desc: t(lang, "formats.workshopDesc") },
-            { img: "/assets/images/activities/team-building.jpg",         title: t(lang, "formats.masterclassTitle"), desc: t(lang, "formats.masterclassDesc") },
-            { img: "/assets/images/activities/marche-ocean.jpg",          title: t(lang, "formats.oceanWalkTitle"),   desc: t(lang, "formats.oceanWalkDesc") },
+            { img: "/assets/figma/workshop-2030.png",                 title: t(lang, "formats.workshopTitle"),    desc: t(lang, "formats.workshopDesc") },
+            { img: "/assets/images/activities/team-building.jpg",     title: t(lang, "formats.masterclassTitle"), desc: t(lang, "formats.masterclassDesc") },
+            { img: "/assets/images/activities/marche-ocean.jpg",      title: t(lang, "formats.oceanWalkTitle"),   desc: t(lang, "formats.oceanWalkDesc") },
           ].map((f) => (
             <div class="bg-white border border-[#d9d9d9] rounded-[13px] shadow-[0px_0px_8px_rgba(173,173,173,0.25)] flex flex-col sm:flex-row items-stretch overflow-hidden min-h-[130px] sm:h-[160px]">
               <div class="shrink-0 w-full sm:w-[160px] h-[130px] sm:h-full">
@@ -237,7 +237,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
         <!-- Reason cards (scroll on mobile) -->
         <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0">
           {reasons.map((r) => (
-            <div class="border border-[#e8e8e8] rounded-[10px] shrink-0 w-[280px] lg:w-[320px] snap-start flex flex-col overflow-hidden">
+            <div class="border-2 border-[#9ca3af] rounded-[10px] shrink-0 w-[280px] lg:w-[320px] snap-start flex flex-col overflow-hidden">
               <div class="h-[170px] lg:h-[200px] overflow-hidden rounded-t-[8px]">
                 <img src={r.img} alt={r.title} class="w-full h-full object-cover" />
               </div>

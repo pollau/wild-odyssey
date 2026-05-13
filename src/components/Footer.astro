@@ -36,9 +36,6 @@ const contactEmail = (homepageEntry?.data.contactEmail as string) ?? "lionel.ray
       >
         {t(lang, "footer.ctaBtn")}
       </a>
-      <a href={`mailto:${contactEmail}`} class="text-white/70 text-[14px] lg:text-[15px] hover:text-white transition-colors">
-        {contactEmail}
-      </a>
     </div>
 
     <!-- Séparateur -->
@@ -54,9 +51,9 @@ const contactEmail = (homepageEntry?.data.contactEmail as string) ?? "lionel.ray
           </span>
         </a>
         <p class="text-sm text-white/50">{t(lang, "footer.copyright")}</p>
-        <div class="flex gap-6 text-sm text-white/70">
-          <a href={`mailto:${contactEmail}`} class="hover:text-white transition-colors">{t(lang, "footer.contact")}</a>
-        </div>
+        <a href={`mailto:${contactEmail}`} class="text-sm text-white/70 hover:text-white transition-colors">
+          {contactEmail}
+        </a>
       </div>
     </div>
 
