@@ -1,0 +1,50 @@
+---
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const messages: Record<string, string> = {
+  fr: "✨ Bientôt disponible — cette page est en cours de création !",
+  en: "✨ Coming soon — this page is under construction!",
+  es: "✨ Próximamente — ¡esta página está en construcción!",
+};
+
+const message = messages[lang] ?? messages.fr;
+---
+
+<div
+  id="coming-soon-toast"
+  data-message={message}
+  class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[100] px-5 py-3.5 rounded-[10px] shadow-xl border-l-4 border-[#f05600] bg-[#1e1e1e] text-white text-[14px] lg:text-[15px] font-medium max-w-[90vw] lg:max-w-[480px] pointer-events-none opacity-0 translate-y-4 transition-all duration-300"
+  aria-live="polite"
+></div>
+
+<script>
+  const toast = document.getElementById("coming-soon-toast") as HTMLElement | null;
+  if (!toast) throw new Error("ComingSoonToast: #coming-soon-toast not found");
+
+  const message = toast.dataset.message ?? "Bientôt disponible";
+  let hideTimer: ReturnType<typeof setTimeout> | null = null;
+
+  function showToast() {
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.remove("opacity-0", "translate-y-4");
+    toast.classList.add("opacity-100", "translate-y-0");
+
+    if (hideTimer) clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => {
+      toast.classList.add("opacity-0", "translate-y-4");
+      toast.classList.remove("opacity-100", "translate-y-0");
+    }, 3500);
+  }
+
+  document.querySelectorAll("[data-coming-soon]").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      showToast();
+    });
+  });
+</script>

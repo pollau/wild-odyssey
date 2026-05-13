@@ -1,9 +1,13 @@
 ---
 import LanguagePicker from "./LanguagePicker.astro";
 import { t } from "../i18n/ui";
+import { getEntry } from "astro:content";
 
 const lang = Astro.currentLocale || "fr";
 const prefix = lang === "fr" ? "" : `/${lang}`;
+
+const homepageEntry = await getEntry("homepage", "index");
+const contactEmail = (homepageEntry?.data.contactEmail as string) ?? "lionel.raybaud@wildodyssey.org";
 ---
 
 <header class="fixed w-full z-50 bg-white shadow-[0px_4px_12.5px_rgba(206,206,206,0.25)]" id="main-header">
@@ -20,15 +24,6 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
 
       <!-- Desktop nav -->
       <nav class="hidden md:flex items-center gap-8 lg:gap-10">
-        <a href={`${prefix}/ongs`} class="text-[15px] lg:text-[16px] font-semibold text-black hover:text-[#0698c0] transition-colors whitespace-nowrap">
-          {t(lang, "nav.ngos")}
-        </a>
-        <a href={`${prefix}/workshops`} class="text-[15px] lg:text-[16px] font-semibold text-black hover:text-[#0698c0] transition-colors whitespace-nowrap">
-          {t(lang, "nav.workshops")}
-        </a>
-        <a href="/evenements" class="text-[15px] lg:text-[16px] font-semibold text-black hover:text-[#0698c0] transition-colors whitespace-nowrap">
-          Événements
-        </a>
 
         <!-- Language picker -->
         <div class="border border-[#f05600] rounded-full px-3 py-1.5 bg-[rgba(240,86,0,0.15)] flex items-center gap-2">
@@ -37,7 +32,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
 
         <!-- CTA -->
         <a
-          href="#contact"
+          href={`mailto:${contactEmail}`}
           class="bg-[#f05600] text-white text-[15px] lg:text-[16px] font-semibold px-6 h-[44px] lg:h-[50px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors whitespace-nowrap"
         >
           {t(lang, "nav.cta")}
@@ -55,11 +50,8 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
 
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#d9d9d9] px-6 py-4 space-y-4">
-    <a href={`${prefix}/ongs`} class="block text-base font-semibold text-black py-2">{t(lang, "nav.ngos")}</a>
-    <a href={`${prefix}/workshops`} class="block text-base font-semibold text-black py-2">{t(lang, "nav.workshops")}</a>
-    <a href="/evenements" class="block text-base font-semibold text-black py-2">Événements</a>
     <LanguagePicker />
-    <a href="#contact" class="block bg-[#f05600] text-white text-center font-semibold py-3 rounded-[7px]">{t(lang, "nav.cta")}</a>
+    <a href={`mailto:${contactEmail}`} class="block bg-[#f05600] text-white text-center font-semibold py-3 rounded-[7px]">{t(lang, "nav.cta")}</a>
   </div>
 </header>
 
