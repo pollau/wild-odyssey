@@ -66,8 +66,8 @@ export const ui = {
     "reasons.r6.accent": "sa certification",
     "reasons.r6.text": "CSRD, EcoVadis, B Corp, GSTC… toutes ces certifications exigent la preuve d'une sensibilisation interne et de l'engagement des équipes. Nos ateliers sont conçus pour en être la preuve.",
 
-    "footer.ctaHeading": "Et vous,",
-    "footer.ctaAccent": "c'est pour quand ?",
+    "footer.ctaHeading": "Et",
+    "footer.ctaAccent": "vous ?",
     "footer.ctaBody1": "Tout commence par une conversation.",
     "footer.ctaBody2": "Concevons ensemble votre prochaine expérience d'impact.",
     "footer.ctaBtn": "Prêt pour l'Odyssée",
