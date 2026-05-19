@@ -15,7 +15,7 @@ export const ui = {
     "workshops.body3": "S'émerveiller, comprendre les courants, construire un équipage robuste pour se préparer à demain : c'est ça, l'odyssée.",
     "workshops.learnMore": "En savoir plus",
 
-    "formats.heading1": "Workshop · Masterclasses · Randonnée Océan",
+    "formats.heading1": "Ateliers, Conférences, Marche Océane",
     "formats.heading2": "Sur Mesure",
     "formats.feat1": "À partir d'1 heure",
     "formats.feat2": "Des PME aux grandes organisations",
