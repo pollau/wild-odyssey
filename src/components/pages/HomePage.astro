@@ -32,10 +32,12 @@ const features = [
 ];
 
 const reasons = [
-  { title: t(lang, "reasons.r1.title"), text: t(lang, "reasons.r1.text") },
-  { title: t(lang, "reasons.r2.title"), text: t(lang, "reasons.r2.text") },
-  { title: t(lang, "reasons.r3.title"), text: t(lang, "reasons.r3.text") },
-  { title: t(lang, "reasons.r4.title"), text: t(lang, "reasons.r4.text") },
+  { icon: "👥", title: t(lang, "reasons.r1.title"), accent: t(lang, "reasons.r1.accent"), text: t(lang, "reasons.r1.text") },
+  { icon: "💡", title: t(lang, "reasons.r2.title"), accent: t(lang, "reasons.r2.accent"), text: t(lang, "reasons.r2.text") },
+  { icon: "💪", title: t(lang, "reasons.r3.title"), accent: t(lang, "reasons.r3.accent"), text: t(lang, "reasons.r3.text") },
+  { icon: "🌿", title: t(lang, "reasons.r4.title"), accent: t(lang, "reasons.r4.accent"), text: t(lang, "reasons.r4.text") },
+  { icon: "🎓", title: t(lang, "reasons.r5.title"), accent: t(lang, "reasons.r5.accent"), text: t(lang, "reasons.r5.text") },
+  { icon: "🏅", title: t(lang, "reasons.r6.title"), accent: t(lang, "reasons.r6.accent"), text: t(lang, "reasons.r6.text") },
 ];
 
 const prefix = lang === "fr" ? "" : `/${lang}`;
@@ -236,22 +238,17 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
           </div>
         </div>
 
-        <!-- Reason cards (scroll on mobile, 2×2 grid desktop) -->
-        <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory -mx-6 px-6 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-x-visible sm:pb-0 lg:gap-6">
-          {reasons.map((r, i) => (
-            <div class="shrink-0 w-[280px] snap-start sm:w-auto border-2 border-[#3a9b37]/30 rounded-[14px] bg-white p-5 lg:p-6 flex flex-col gap-4">
-              <span class="font-fraunces text-[52px] lg:text-[64px] leading-none font-bold text-[#0698c0]">{i + 1}</span>
-              <div class="flex flex-col gap-2 flex-1">
-                <p class="font-fraunces text-[16px] lg:text-[18px] font-bold text-black">{r.title}</p>
-                <p class="font-aileron text-[14px] lg:text-[15px] text-[#3b3b3b] leading-snug">{r.text}</p>
+        <!-- Reason cards — 3×2 grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {reasons.map((r) => (
+            <div class="border border-[#d9d9d9] rounded-[14px] bg-white p-5 flex flex-col gap-3 shadow-sm">
+              <div class="flex items-start gap-3">
+                <span class="text-[32px] leading-none">{r.icon}</span>
+                <p class="font-fraunces text-[16px] lg:text-[17px] font-bold text-black leading-snug pt-1">
+                  {r.title} <span class="text-[#f05600]">{r.accent}</span>
+                </p>
               </div>
-              <a
-                href="#"
-                data-coming-soon
-                class="font-aileron bg-[#f05600] text-white text-[14px] font-semibold h-[44px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
-              >
-                {t(lang, "reasons.learnMore")}
-              </a>
+              <p class="font-aileron text-[14px] lg:text-[15px] text-[#3b3b3b] leading-snug">{r.text}</p>
             </div>
           ))}
         </div>
