@@ -44,7 +44,7 @@ export const ui = {
     "reasons.heading2": "4 raisons",
     "reasons.heading3": "pour lesquelles votre directeur dira",
     "reasons.heading4": "oui !",
-    "reasons.body1": "Pour le DRH qui a besoin d'engagement. Pour le responsable RSE qui a besoin d'adhésion. Pour le directeur qui doit justifier le budget. Et pour tous ceux dans la salle qui veulent faire partie de la solution.",
+    "reasons.body1": "Pour les DRH qui ont besoin d'engagement. Pour les responsables RSE qui ont besoin d'adhésion. Pour la direction qui doit justifier le budget. Et pour toutes les personnes dans la salle qui veulent faire partie de la solution.",
     "reasons.body2": "Une expérience durabilité scientifique. 4 raisons de dire oui : facile à justifier, impossible à oublier.",
     "reasons.learnMore": "En savoir plus",
     "reasons.r1.title": "Une expérience mémorable",
