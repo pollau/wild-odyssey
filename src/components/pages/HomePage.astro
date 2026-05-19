@@ -32,10 +32,10 @@ const features = [
 ];
 
 const reasons = [
-  { img: "/assets/figma/reason-memorable.png", title: t(lang, "reasons.r1.title"), text: t(lang, "reasons.r1.text") },
-  { img: "/assets/figma/reason-awareness.png", title: t(lang, "reasons.r2.title"), text: t(lang, "reasons.r2.text") },
-  { img: "/assets/figma/reason-talent.png", title: t(lang, "reasons.r3.title"), text: t(lang, "reasons.r3.text") },
-  { img: "/assets/figma/reason-action.png", title: t(lang, "reasons.r4.title"), text: t(lang, "reasons.r4.text") },
+  { title: t(lang, "reasons.r1.title"), text: t(lang, "reasons.r1.text") },
+  { title: t(lang, "reasons.r2.title"), text: t(lang, "reasons.r2.text") },
+  { title: t(lang, "reasons.r3.title"), text: t(lang, "reasons.r3.text") },
+  { title: t(lang, "reasons.r4.title"), text: t(lang, "reasons.r4.text") },
 ];
 
 const prefix = lang === "fr" ? "" : `/${lang}`;
@@ -236,26 +236,22 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
           </div>
         </div>
 
-        <!-- Reason cards (scroll on mobile) -->
-        <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0">
-          {reasons.map((r) => (
-            <div class="border-2 border-[#9ca3af] rounded-[10px] shrink-0 w-[280px] lg:w-[320px] snap-start flex flex-col overflow-hidden">
-              <div class="h-[170px] lg:h-[200px] overflow-hidden rounded-t-[8px]">
-                <img src={r.img} alt={r.title} class="w-full h-full object-cover" />
+        <!-- Reason cards (scroll on mobile, 2×2 grid desktop) -->
+        <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory -mx-6 px-6 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-x-visible sm:pb-0 lg:gap-6">
+          {reasons.map((r, i) => (
+            <div class="shrink-0 w-[280px] snap-start sm:w-auto border-2 border-[#3a9b37]/30 rounded-[14px] bg-white p-5 lg:p-6 flex flex-col gap-4">
+              <span class="font-fraunces text-[52px] lg:text-[64px] leading-none font-bold text-[#0698c0]">{i + 1}</span>
+              <div class="flex flex-col gap-2 flex-1">
+                <p class="font-fraunces text-[16px] lg:text-[18px] font-bold text-black">{r.title}</p>
+                <p class="font-aileron text-[14px] lg:text-[15px] text-[#3b3b3b] leading-snug">{r.text}</p>
               </div>
-              <div class="p-3 flex flex-col gap-2 flex-1 justify-between">
-                <div class="flex flex-col gap-2">
-                  <p class="font-fraunces text-[15px] lg:text-[17px] font-bold text-black">{r.title}</p>
-                  <p class="font-aileron text-[13px] lg:text-[15px] text-black leading-snug">{r.text}</p>
-                </div>
-                <a
-                  href="#"
-                  data-coming-soon
-                  class="font-aileron bg-[#f05600] text-white text-[14px] lg:text-[15px] font-semibold h-[46px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
-                >
-                  {t(lang, "reasons.learnMore")}
-                </a>
-              </div>
+              <a
+                href="#"
+                data-coming-soon
+                class="font-aileron bg-[#f05600] text-white text-[14px] font-semibold h-[44px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
+              >
+                {t(lang, "reasons.learnMore")}
+              </a>
             </div>
           ))}
         </div>
