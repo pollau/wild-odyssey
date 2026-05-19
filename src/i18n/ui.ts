@@ -144,7 +144,7 @@ export const ui = {
     "reasons.r5.text": "From public speaking to systemic thinking, your people gain real skills. And for those who want to go further: a specific training to become certified facilitators. The impact doesn't stop at the door. It spreads from within.",
     "reasons.r6.title": "Get or keep your",
     "reasons.r6.accent": "Certification",
-    "reasons.r6.text": "CSRD, EcoVadis, B Corp, GSTC — they all require proof of internal awareness and employee engagement. Our workshops are designed to be that proof.",
+    "reasons.r6.text": "CSRD, EcoVadis, B Corp, GSTC... they all require proof of internal awareness and employee engagement. Our workshops are designed to be that proof.",
 
     "footer.ctaHeading": "What about",
     "footer.ctaAccent": "YOU?",
