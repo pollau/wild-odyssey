@@ -19,7 +19,7 @@ export const ui = {
     "formats.heading2": "Sur Mesure",
     "formats.feat1": "À partir d'1 heure",
     "formats.feat2": "PME aux grandes organisations",
-    "formats.feat3": "Fun, flexible et entièrement personnalisable",
+    "formats.feat3": "Ludique, flexible et adapté à votre réalité",
     "formats.feat4": "En présentiel ou en ligne",
     "formats.feat5": "Du leadership aux équipes terrain",
     "formats.feat6": "Tous secteurs",
