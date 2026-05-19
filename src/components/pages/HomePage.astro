@@ -102,7 +102,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
           <div class="font-aileron flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black text-center">
             <p>{t(lang, "workshops.body1")}</p>
             <p>{t(lang, "workshops.body2")}</p>
-            <p>{t(lang, "workshops.body3")}</p>
+            {t(lang, "workshops.body3") && <p>{t(lang, "workshops.body3")}</p>}
           </div>
         </div>
 

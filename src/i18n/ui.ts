@@ -12,7 +12,7 @@ export const ui = {
     "workshops.heading2": "4 thématiques.",
     "workshops.body1": "Climat, océan, biodiversité, empreinte carbone : quatre territoires vastes, interconnectés, parfois intimidants. Nos ateliers systémiques sont votre boussole pour les explorer. Chaque expérience révèle les liens invisibles entre ces écosystèmes, éveille la curiosité et transforme la complexité en émerveillement partagé.",
     "workshops.body2": "Chaque format est aligné avec les ODD de l'ONU.",
-    "workshops.body3": "S'émerveiller, comprendre les courants, construire un équipage robuste pour se préparer à demain : c'est ça, l'odyssée.",
+    "workshops.body3": "",
     "workshops.learnMore": "En savoir plus",
 
     "formats.heading1": "Ateliers, Masterclasses, Marche Océane",
