@@ -25,6 +25,10 @@ const contactEmail = (homepageEntry?.data.contactEmail as string) ?? "lionel.ray
       <!-- Desktop nav -->
       <nav class="hidden md:flex items-center gap-8 lg:gap-10">
 
+        <a href="/evenements" class="text-[15px] lg:text-[16px] font-medium text-black hover:text-[#f05600] transition-colors whitespace-nowrap">
+          {t(lang, "nav.events")}
+        </a>
+
         <!-- Language picker -->
         <div class="border border-[#f05600] rounded-full px-3 py-1.5 bg-[rgba(240,86,0,0.15)] flex items-center gap-2">
           <LanguagePicker />
@@ -51,6 +55,7 @@ const contactEmail = (homepageEntry?.data.contactEmail as string) ?? "lionel.ray
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#d9d9d9] px-6 py-4 space-y-4">
     <LanguagePicker />
+    <a href="/evenements" class="block text-[16px] font-medium text-black py-1">{t(lang, "nav.events")}</a>
     <a href={`mailto:${contactEmail}`} class="block bg-[#f05600] text-white text-center font-semibold py-3 rounded-[7px]">{t(lang, "nav.cta")}</a>
   </div>
 </header>

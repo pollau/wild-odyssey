@@ -76,6 +76,7 @@ export const ui = {
     "footer.workshops": "Les ateliers",
     "footer.contact": "Contact",
 
+    "nav.events": "Événements",
     "nav.ngos": "Les ONGs",
     "nav.workshops": "Les ateliers",
     "nav.cta": "Nous contacter",
@@ -156,6 +157,7 @@ export const ui = {
     "footer.workshops": "The workshops",
     "footer.contact": "Contact",
 
+    "nav.events": "Events",
     "nav.ngos": "The NGOs",
     "nav.workshops": "The workshops",
     "nav.cta": "Contact me",
@@ -236,6 +238,7 @@ export const ui = {
     "footer.workshops": "Los talleres",
     "footer.contact": "Contacto",
 
+    "nav.events": "Eventos",
     "nav.ngos": "Las ONGs",
     "nav.workshops": "Los talleres",
     "nav.cta": "Contacto",
