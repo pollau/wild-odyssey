@@ -13,7 +13,9 @@ const { lang } = Astro.props;
 
 const homepageEntry = await getEntry("homepage", "index");
 const homepage = homepageEntry!.data;
-const workshops = (await getCollection("activities")).filter((w) => w.data.theme !== "placeholder");
+const workshops = (await getCollection("activities"))
+  .filter((w) => w.data.theme !== "placeholder")
+  .sort((a, b) => ((a.data.order ?? 99) - (b.data.order ?? 99)));
 
 const heroTitle = tc(homepage, "heroTitle", lang);
 const statsParticipants = homepage.statsParticipants ?? "+500.000";
