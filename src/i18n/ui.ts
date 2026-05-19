@@ -1,10 +1,11 @@
 export const ui = {
   fr: {
-    "hero.body1": "Nous adorons une bonne aventure.",
-    "hero.body2": "Laissez-nous embarquer vous et vos équipes dans l'odyssée de team building la plus impactante, fondée sur la science et sincèrement fun que vous ayez jamais vécue. Entièrement adaptable, construite sur mesure pour votre réalité, disponible en français, anglais ou espagnol.",
-    "hero.body3": "Une expérience unique qui crée une vraie prise de conscience environnementale, suscite de vraies conversations et pousse vers une vraie action pour un futur plus durable.",
-    "hero.tagline": "Parce que les meilleures aventures se vivent toujours ensemble.",
-    "hero.cta": "Prêt pour l'Odyssée",
+    "hero.pretitle": "CSRD, ESG, RSE, engagement des équipes… vous avez vu les slides.",
+    "hero.body1": "Nous transformons la théorie en émerveillement et l'émerveillement en action à travers des expériences immersives, en collaboration avec des ONG reconnues.",
+    "hero.body2": "Ne vous contentez plus de rapports : mobilisez vos équipes grâce à des formats scientifiques éprouvés. Ensemble, transformons votre entreprise en un équipage soudé, prêt à naviguer face au grand défi du XXIe siècle.",
+    "hero.body3": "",
+    "hero.tagline": "Nous avons la carte. Vous choisissez le cap.",
+    "hero.cta": "Explorer l'horizon",
 
     "workshops.badge": "4 Grands Défis",
     "workshops.heading1": "Une méthodologie commune,",
@@ -69,6 +70,7 @@ export const ui = {
     "nav.cta": "Nous contacter",
   },
   en: {
+    "hero.pretitle": "CSRD, ESG, CSR, team engagement… you've seen the slides.",
     "hero.body1": "We love a good adventure.",
     "hero.body2": "Let us embark you and your teams on the most impactful, science-based, and genuinely fun team building odyssey you've ever experienced. Fully adaptable, custom-built for your reality, and delivered in French, English or Spanish.",
     "hero.body3": "One unique experience that creates real environmental awareness, sparks real conversations, and pushes real action towards a more sustainable future.",
@@ -138,6 +140,7 @@ export const ui = {
     "nav.cta": "Contact me",
   },
   es: {
+    "hero.pretitle": "CSRD, ESG, RSE, compromiso del equipo… ya has visto las diapositivas.",
     "hero.body1": "Nos encanta una buena aventura.",
     "hero.body2": "Permítenos embarcar a ti y a tus equipos en la odisea de team building más impactante, basada en ciencia y genuinamente divertida que hayas experimentado. Totalmente adaptable, construida a medida para tu realidad y disponible en francés, inglés o español.",
     "hero.body3": "Una experiencia única que crea conciencia ambiental real, despierta conversaciones reales e impulsa acciones reales hacia un futuro más sostenible.",
