@@ -41,9 +41,9 @@ export const ui = {
 
     "reasons.badge": "ATELIERS FONDÉS SUR LA SCIENCE",
     "reasons.heading1": "1 expérience de team-building.",
-    "reasons.heading2": "4 raisons",
-    "reasons.heading3": "pour lesquelles votre directeur dira",
-    "reasons.heading4": "oui !",
+    "reasons.heading2": "4 bonnes raisons",
+    "reasons.heading3": "de monter à bord.",
+    "reasons.heading4": "",
     "reasons.body1": "Pour les DRH qui ont besoin d'engagement. Pour les responsables RSE qui ont besoin d'adhésion. Pour la direction qui doit justifier le budget. Et pour toutes les personnes dans la salle qui veulent faire partie de la solution.",
     "reasons.body2": "Une expérience durabilité scientifique. 4 raisons de dire oui : facile à justifier, impossible à oublier.",
     "reasons.learnMore": "En savoir plus",
