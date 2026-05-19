@@ -4,7 +4,7 @@ export const ui = {
     "hero.body1": "Nous transformons la théorie en émerveillement et l'émerveillement en action à travers des expériences immersives, en collaboration avec des ONG reconnues.",
     "hero.body2": "Ne vous contentez plus de rapports : mobilisez vos équipes grâce à des formats scientifiques éprouvés. Ensemble, transformons votre entreprise en un équipage soudé, prêt à naviguer face au grand défi du XXIe siècle.",
     "hero.body3": "",
-    "hero.tagline": "Nous avons la carte. Vous choisissez le cap.",
+    "hero.tagline": "Nous avons la carte, vous choisissez le cap !",
     "hero.cta": "Explorer l'horizon",
 
     "workshops.badge": "4 Grands Défis",
