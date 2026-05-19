@@ -9,9 +9,10 @@ export const ui = {
 
     "workshops.badge": "4 Grands Défis",
     "workshops.heading1": "Une méthodologie commune,",
-    "workshops.heading2": "4 Thématiques",
-    "workshops.body1": "La plupart des sujets durabilité semblent abstraits, distants ou tout simplement lourds. Nos ateliers scientifiques et systémiques les rendent viscéraux, clairs et énergisants du premier atout à la dernière conversation.",
-    "workshops.body2": "Chaque expérience est alignée avec les Objectifs de Développement Durable de l'ONU, transformant la compréhension individuelle en action collective.",
+    "workshops.heading2": "4 thématiques.",
+    "workshops.body1": "Climat, océan, biodiversité, empreinte carbone : quatre territoires vastes, interconnectés, parfois intimidants. Nos ateliers systémiques sont votre boussole pour les explorer. Chaque expérience révèle les liens invisibles entre ces écosystèmes, éveille la curiosité et transforme la complexité en émerveillement partagé.",
+    "workshops.body2": "Chaque format est aligné avec les ODD de l'ONU.",
+    "workshops.body3": "S'émerveiller, comprendre les courants, construire un équipage robuste pour se préparer à demain : c'est ça, l'odyssée.",
     "workshops.learnMore": "En savoir plus",
 
     "formats.heading1": "Workshop · Masterclasses · Randonnée Océan",
