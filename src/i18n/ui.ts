@@ -81,7 +81,7 @@ export const ui = {
     "nav.cta": "Nous contacter",
   },
   en: {
-    "hero.pretitle": "CSRD, ESG, CSR, team engagement… you've seen the slides.",
+    "hero.pretitle": "",
     "hero.body1": "We love a good adventure.",
     "hero.body2": "Let us embark you and your teams on the most impactful, science-based, and genuinely fun team building odyssey you've ever experienced. Fully adaptable, custom-built for your reality, and delivered in French, English or Spanish.",
     "hero.body3": "One unique experience that creates real environmental awareness, sparks real conversations, and pushes real action towards a more sustainable future.",
