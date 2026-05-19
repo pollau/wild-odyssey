@@ -26,8 +26,11 @@ const homepage = defineCollection({
     type: 'data',
     schema: z.object({
         heroTitle_fr: z.string().optional(),
+        heroTitleBase_fr: z.string().optional(),
         heroTitle_en: z.string().optional(),
+        heroTitleBase_en: z.string().optional(),
         heroTitle_es: z.string().optional(),
+        heroTitleBase_es: z.string().optional(),
         statsParticipants: z.string().optional(),
         statsOrganizations: z.string().optional(),
         statsYears: z.string().optional(),
