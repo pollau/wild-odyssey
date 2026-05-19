@@ -89,10 +89,10 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
           <div class="bg-[rgba(6,152,192,0.15)] px-6 h-[44px] flex items-center justify-center rounded-full">
             <span class="text-[#0698c0] text-[14px] lg:text-[15px] font-semibold">{t(lang, "workshops.badge")}</span>
           </div>
-          <h2 class="text-[24px] lg:text-[30px] font-semibold text-black">
+          <h2 class="font-fraunces text-[24px] lg:text-[30px] font-semibold text-black">
             {t(lang, "workshops.heading1")} <span class="text-[#f05600]">{t(lang, "workshops.heading2")}</span>
           </h2>
-          <div class="flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black text-center">
+          <div class="font-aileron flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black text-center">
             <p>{t(lang, "workshops.body1")}</p>
             <p>{t(lang, "workshops.body2")}</p>
             <p>{t(lang, "workshops.body3")}</p>
@@ -109,22 +109,22 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
                   alt={tc(w.data, "title", lang)}
                   class="w-full h-full object-cover object-bottom"
                 />
-                <span class="absolute top-3 left-1/2 -translate-x-1/2 text-white text-[18px] font-bold text-center w-[90%] leading-tight drop-shadow-md">
+                <span class="font-fraunces absolute top-3 left-1/2 -translate-x-1/2 text-white text-[18px] font-bold text-center w-[90%] leading-tight drop-shadow-md">
                   {tc(w.data, "title", lang)}
                 </span>
               </div>
               <div class="p-4 flex flex-col gap-2 flex-1">
-                <p class="text-[#0698c0] text-[17px] font-bold leading-snug">
+                <p class="font-fraunces text-[#0698c0] text-[17px] font-bold leading-snug">
                   {tc(w.data, "subtitle", lang) || tc(w.data, "title", lang)}
                 </p>
                 <div class="flex flex-col gap-5 flex-1 justify-between">
-                  <p class="text-[#3b3b3b] text-[15px] leading-snug">
+                  <p class="font-aileron text-[#3b3b3b] text-[15px] leading-snug">
                     {tc(w.data, "description", lang)}
                   </p>
                   <a
                     href="#"
                     data-coming-soon
-                    class="bg-[#f05600] text-white text-[15px] font-semibold h-[46px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
+                    class="font-aileron bg-[#f05600] text-white text-[15px] font-semibold h-[46px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
                   >
                     {t(lang, "workshops.learnMore")}
                   </a>
