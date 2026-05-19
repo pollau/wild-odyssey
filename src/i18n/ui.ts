@@ -27,7 +27,7 @@ export const ui = {
     "formats.workshopDesc": "Plongez dans notre format le plus populaire : un jeu de cartes interactif et scientifique pour explorer une thématique de votre choix : empreinte carbone, biodiversité, océan ou futurs souhaitables. Une expérience collective et structurée qui renforce la compréhension des enjeux durabilité et transforme l'énergie du groupe en premières actions concrètes, individuellement et en équipe.",
     "formats.masterclassTitle": "La Masterclass : Concise, Interactive et Axée sur la Sensibilisation",
     "formats.masterclassDesc": "Une alternative dynamique à l'atelier complet, idéale pour gagner du temps. En 1h à 1h30, explorez les thèmes de l'océan grâce à un quiz interactif sur smartphone. C'est la manière la plus amusante et efficace de tester les connaissances et de semer les graines du changement.",
-    "formats.oceanWalkTitle": "La Marche de l'Océan : une immersion marine, les pieds sur terre",
+    "formats.oceanWalkTitle": "La Marche Océane : une immersion marine, les pieds sur terre",
     "formats.oceanWalkDesc": "Cette marche guidée de 5,5 km simule l'ascension de la Fosse des Mariannes à la surface. Chaque mètre nous permet de découvrir les couches de l'océan, de rencontrer ses créatures incroyables et de partager les histoires insoupçonnées des profondeurs.",
     "formats.seeAll": "Voir tous les ateliers",
 
