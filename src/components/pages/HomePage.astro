@@ -240,15 +240,18 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
 
         <!-- Reason cards — 3×2 grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {reasons.map((r) => (
-            <div class="border border-[#d9d9d9] rounded-[14px] bg-white p-5 flex flex-col gap-3 shadow-sm">
-              <div class="flex items-start gap-3">
-                <span class="text-[32px] leading-none">{r.icon}</span>
-                <p class="font-fraunces text-[16px] lg:text-[17px] font-bold text-black leading-snug pt-1">
+          {reasons.map((r, i) => (
+            <div class="border border-[#d9d9d9] rounded-[14px] bg-white p-6 lg:p-7 flex flex-col gap-4 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="font-fraunces text-[48px] lg:text-[56px] font-bold text-[#0698c0] leading-none">{i + 1}</span>
+                <span class="text-[30px] leading-none">{r.icon}</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <p class="font-fraunces text-[16px] lg:text-[17px] font-bold text-black leading-snug">
                   {r.title} <span class="text-[#f05600]">{r.accent}</span>
                 </p>
+                <p class="font-aileron text-[14px] lg:text-[15px] text-[#3b3b3b] leading-snug">{r.text}</p>
               </div>
-              <p class="font-aileron text-[14px] lg:text-[15px] text-[#3b3b3b] leading-snug">{r.text}</p>
             </div>
           ))}
         </div>
