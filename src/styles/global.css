@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "@fontsource/aileron";
+@import "./typography.css";
 
 @theme {
   --color-orange:      #f05600;

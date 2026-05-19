@@ -47,18 +47,18 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
       <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
         <!-- Text -->
         <div class="flex-1 flex flex-col gap-6 lg:gap-8">
-          <p class="text-[28px] lg:text-[36px] font-bold leading-tight text-black" style="font-family: 'Fraunces', serif;">{t(lang, "hero.pretitle")}</p>
-          <h1 class="text-[28px] lg:text-[36px] font-bold leading-tight text-[#f05600]" style="font-family: 'Fraunces', serif;">
+          <p class="font-fraunces text-[28px] lg:text-[36px] font-bold leading-tight text-black">{t(lang, "hero.pretitle")}</p>
+          <h1 class="font-fraunces text-[28px] lg:text-[36px] font-bold leading-tight text-[#f05600]">
             {heroTitle}
           </h1>
-          <div class="flex flex-col gap-4 text-[19px] text-black leading-relaxed">
+          <div class="font-aileron flex flex-col gap-4 text-[19px] text-black leading-relaxed">
             <p>{t(lang, "hero.body1")}</p>
             <p>{t(lang, "hero.body2")}</p>
           </div>
-          <p class="text-[#f05600] text-[20px]" style="font-family: 'Fraunces', serif;">{t(lang, "hero.tagline")}</p>
+          <p class="font-fraunces text-[#f05600] text-[20px]">{t(lang, "hero.tagline")}</p>
           <a
             href="#contact"
-            class="bg-[#f05600] text-white text-[20px] font-semibold h-[54px] lg:h-[64px] w-full sm:w-[260px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors" style="font-family: 'Aileron', sans-serif;"
+            class="font-aileron bg-[#f05600] text-white text-[20px] font-semibold h-[54px] lg:h-[64px] w-full sm:w-[260px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
           >
             {t(lang, "hero.cta")}
           </a>
