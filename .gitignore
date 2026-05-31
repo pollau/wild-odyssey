@@ -20,6 +20,13 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# Terraform
+infra/.terraform/
+infra/terraform.tfvars
+infra/*.tfstate
+infra/*.tfstate.backup
+infra/*.tfplan
+
 # jetbrains setting folder
 .idea/
 
