@@ -252,7 +252,9 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
                   {r.title} <span class="text-[#f05600]">{r.accent}</span>
                 </p>
               </div>
-              <p class="font-aileron text-[14px] lg:text-[15px] text-[#3b3b3b] leading-snug">{r.text}</p>
+              <div class="font-aileron text-[14px] lg:text-[15px] text-[#3b3b3b] leading-snug flex flex-col gap-1">
+                {r.text.split("\n").map((line: string) => <p>{line}</p>)}
+              </div>
             </div>
           ))}
         </div>
