@@ -177,7 +177,7 @@ export const ui = {
     "workshops.body2": "Cada experiencia está alineada con los Objetivos de Desarrollo Sostenible de la ONU, convirtiendo la comprensión individual en acción colectiva.",
     "workshops.learnMore": "Más información",
 
-    "formats.heading1": "Workshop · Masterclasses · Paseo por el Océano",
+    "formats.heading1": "Workshop · Masterclasses · Marcha Oceánica",
     "formats.heading2": "Personalizado",
     "formats.feat1": "Desde 1 hora",
     "formats.feat2": "De PYMEs a grandes organizaciones",
@@ -226,7 +226,7 @@ export const ui = {
     "reasons.r5.text": "De la comunicación al pensamiento sistémico, tus colaboradores adquieren competencias reales. Y para quienes quieran ir más lejos: una formación específica para convertirse en facilitadores certificados. El impacto no se detiene en la puerta, se propaga desde adentro.",
     "reasons.r6.title": "Obtener o mantener",
     "reasons.r6.accent": "su certificación",
-    "reasons.r6.text": "Obtén o mantén tus sellos\nEcoVadis, B Corp, ISO 14001, GSTC valoran la prueba de sensibilización interna y compromiso de los equipos. Nuestros talleres te proporcionan un registro concreto y trazable.",
+    "reasons.r6.text": "EcoVadis, B Corp, ISO 14001, GSTC… estos referentes valoran la sensibilización interna y el compromiso de los equipos, y la CSRD exige documentarlo. Nuestros talleres les proporcionan una prueba concreta y trazable (asistencia, temática, formato) para añadir a su expediente.",
 
     "footer.ctaHeading": "¿Y",
     "footer.ctaAccent": "TÚ?",
