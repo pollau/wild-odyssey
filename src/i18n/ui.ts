@@ -163,7 +163,7 @@ export const ui = {
     "nav.cta": "Contact me",
   },
   es: {
-    "hero.pretitle": "CSRD, ESG, RSE, equipos que no se implican… ya han visto las diapositivas.",
+    "hero.pretitle": "¿CSRD? ¿ESG? ¿RSE? ¿Equipos que no se implican? Ya han visto las diapositivas.",
     "hero.body1": "Transformamos la teoría en asombro, y el asombro en acción, a través de experiencias inmersivas lideradas con ONG reconocidas.",
     "hero.body2": "Dejen de conformarse con reportes: movilicen sus equipos con formatos científicos que ya han demostrado su valor. Juntos, transformemos su empresa en una tripulación unida, lista para navegar frente al gran desafío de nuestro siglo.",
     "hero.body3": "La sensibilización que sus certificaciones valoran (EcoVadis, B Corp, ISO 14001), transformada en una experiencia que sus equipos no olvidarán.",
