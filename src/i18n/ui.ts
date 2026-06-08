@@ -40,7 +40,7 @@ export const ui = {
     "stats.years": "Années d'expérience",
 
     "reasons.badge": "ATELIERS FONDÉS SUR LA SCIENCE",
-    "reasons.heading1": "1 expérience de team-building.",
+    "reasons.heading1": "1 expérience de team-building..",
     "reasons.heading2": "6 bonnes raisons",
     "reasons.heading3": "de monter à bord.",
     "reasons.heading4": "",
