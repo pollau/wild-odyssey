@@ -114,7 +114,8 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
                 <img
                   src={w.data.image}
                   alt={tc(w.data, "title", lang)}
-                  class="w-full h-full object-cover object-bottom"
+                  class="w-full h-full object-cover"
+                  style={`object-position: ${w.data.imagePosition ?? "bottom"}`}
                 />
                 <span class="font-fraunces absolute top-3 left-1/2 -translate-x-1/2 text-white text-[18px] font-bold text-center w-[90%] leading-tight drop-shadow-md">
                   {tc(w.data, "title", lang)}

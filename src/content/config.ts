@@ -19,6 +19,7 @@ const activities = defineCollection({
         format: z.array(z.string()).optional(),
         theme: z.string().optional(),
         image: z.string().nullable().optional(),
+        imagePosition: z.string().optional(),
     }),
 });
 
