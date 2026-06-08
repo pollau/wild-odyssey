@@ -45,7 +45,7 @@ export const ui = {
     "reasons.heading3": "de monter à bord.",
     "reasons.heading4": "",
     "reasons.body1": "Pour les DRH qui ont besoin d'engagement. Pour les responsables RSE qui ont besoin d'adhésion. Pour la direction qui doit justifier le budget. Et pour toutes les personnes dans la salle qui veulent faire partie de la solution.",
-    "reasons.body2": "Une expérience durabilité scientifique. 6 raisons de dire oui : facile à justifier, impossible à oublier.",
+    "reasons.body2": "Une expérience durable scientifique, 6 raisons de dire oui : facile à justifier, impossible à oublier.",
     "reasons.learnMore": "En savoir plus",
     "reasons.r1.title": "Une expérience",
     "reasons.r1.accent": "mémorable",
