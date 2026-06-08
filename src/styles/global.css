@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./typography.css";
 
 @theme {
   --color-orange:      #f05600;

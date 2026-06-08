@@ -6,9 +6,9 @@ interface Props {
 const { lang } = Astro.props;
 
 const messages: Record<string, string> = {
-  fr: "✨ Bientôt disponible — cette page est en cours de création !",
-  en: "✨ Coming soon — this page is under construction!",
-  es: "✨ Próximamente — ¡esta página está en construcción!",
+  fr: "🧭 Bientôt disponible, cette page est en cours de création !",
+  en: "🧭 Coming soon, this page is under construction!",
+  es: "🧭 Próximamente, ¡esta página está en construcción!",
 };
 
 const message = messages[lang] ?? messages.fr;

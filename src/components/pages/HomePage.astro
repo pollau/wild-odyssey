@@ -13,9 +13,12 @@ const { lang } = Astro.props;
 
 const homepageEntry = await getEntry("homepage", "index");
 const homepage = homepageEntry!.data;
-const workshops = (await getCollection("activities")).filter((w) => w.data.theme !== "placeholder");
+const workshops = (await getCollection("activities"))
+  .filter((w) => w.data.theme !== "placeholder")
+  .sort((a, b) => ((a.data.order ?? 99) - (b.data.order ?? 99)));
 
 const heroTitle = tc(homepage, "heroTitle", lang);
+const heroTitleBase = tc(homepage, "heroTitleBase", lang);
 const statsParticipants = homepage.statsParticipants ?? "+500.000";
 const statsOrganizations = homepage.statsOrganizations ?? "+2.000";
 const statsYears = homepage.statsYears ?? "+5";
@@ -30,10 +33,12 @@ const features = [
 ];
 
 const reasons = [
-  { img: "/assets/figma/reason-memorable.png", title: t(lang, "reasons.r1.title"), text: t(lang, "reasons.r1.text") },
-  { img: "/assets/figma/reason-awareness.png", title: t(lang, "reasons.r2.title"), text: t(lang, "reasons.r2.text") },
-  { img: "/assets/figma/reason-talent.png", title: t(lang, "reasons.r3.title"), text: t(lang, "reasons.r3.text") },
-  { img: "/assets/figma/reason-action.png", title: t(lang, "reasons.r4.title"), text: t(lang, "reasons.r4.text") },
+  { icon: "👥", title: t(lang, "reasons.r1.title"), accent: t(lang, "reasons.r1.accent"), text: t(lang, "reasons.r1.text") },
+  { icon: "💡", title: t(lang, "reasons.r2.title"), accent: t(lang, "reasons.r2.accent"), text: t(lang, "reasons.r2.text") },
+  { icon: "💪", title: t(lang, "reasons.r3.title"), accent: t(lang, "reasons.r3.accent"), text: t(lang, "reasons.r3.text") },
+  { icon: "🌿", title: t(lang, "reasons.r4.title"), accent: t(lang, "reasons.r4.accent"), text: t(lang, "reasons.r4.text") },
+  { icon: "🎓", title: t(lang, "reasons.r5.title"), accent: t(lang, "reasons.r5.accent"), text: t(lang, "reasons.r5.text") },
+  { icon: "🏅", title: t(lang, "reasons.r6.title"), accent: t(lang, "reasons.r6.accent"), text: t(lang, "reasons.r6.text") },
 ];
 
 const prefix = lang === "fr" ? "" : `/${lang}`;
@@ -47,19 +52,20 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
       <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
         <!-- Text -->
         <div class="flex-1 flex flex-col gap-6 lg:gap-8">
-          <h1 class="text-[28px] lg:text-[36px] font-bold leading-tight">
-            {heroTitle.substring(0, heroTitle.lastIndexOf("?") + 1)}<br />
-            <span class="text-[#f05600]">{heroTitle.substring(heroTitle.lastIndexOf("?") + 1).trim()}</span>
+          {t(lang, "hero.pretitle") && <p class="font-fraunces text-[28px] lg:text-[36px] font-bold leading-tight text-black">{t(lang, "hero.pretitle")}</p>}
+          <h1 class="font-fraunces text-[28px] lg:text-[36px] font-bold leading-tight">
+            {heroTitleBase && <span class="text-black">{heroTitleBase}<br /></span>}
+            <span class="text-[#f05600]">{heroTitle}</span>
           </h1>
-          <div class="flex flex-col gap-4 text-[16px] lg:text-[18px] text-black leading-relaxed">
+          <div class="font-aileron flex flex-col gap-4 text-[19px] text-black leading-relaxed">
             <p>{t(lang, "hero.body1")}</p>
             <p>{t(lang, "hero.body2")}</p>
-            <p>{t(lang, "hero.body3")}</p>
+            {t(lang, "hero.body3") && <p>{t(lang, "hero.body3")}</p>}
           </div>
-          <p class="text-[#f05600] text-[16px] lg:text-[18px]">{t(lang, "hero.tagline")}</p>
+          <p class="font-fraunces text-[#f05600] text-[20px]">{t(lang, "hero.tagline")}</p>
           <a
             href="#contact"
-            class="bg-[#f05600] text-white text-[16px] lg:text-[18px] font-semibold h-[54px] lg:h-[64px] w-full sm:w-[260px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
+            class="font-aileron bg-[#f05600] text-white text-[20px] font-semibold h-[54px] lg:h-[64px] w-full sm:w-[260px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
           >
             {t(lang, "hero.cta")}
           </a>
@@ -90,12 +96,13 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
           <div class="bg-[rgba(6,152,192,0.15)] px-6 h-[44px] flex items-center justify-center rounded-full">
             <span class="text-[#0698c0] text-[14px] lg:text-[15px] font-semibold">{t(lang, "workshops.badge")}</span>
           </div>
-          <h2 class="text-[24px] lg:text-[30px] font-semibold text-black">
+          <h2 class="font-fraunces text-[24px] lg:text-[30px] font-semibold text-black">
             {t(lang, "workshops.heading1")} <span class="text-[#f05600]">{t(lang, "workshops.heading2")}</span>
           </h2>
-          <div class="flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black text-center">
+          <div class="font-aileron flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black text-center">
             <p>{t(lang, "workshops.body1")}</p>
             <p>{t(lang, "workshops.body2")}</p>
+            {t(lang, "workshops.body3") && <p>{t(lang, "workshops.body3")}</p>}
           </div>
         </div>
 
@@ -107,24 +114,25 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
                 <img
                   src={w.data.image}
                   alt={tc(w.data, "title", lang)}
-                  class="w-full h-full object-cover object-bottom"
+                  class="w-full h-full object-cover"
+                  style={`object-position: ${w.data.imagePosition ?? "bottom"}`}
                 />
-                <span class="absolute top-3 left-1/2 -translate-x-1/2 text-white text-[18px] font-bold text-center w-[90%] leading-tight drop-shadow-md">
+                <span class="font-fraunces absolute top-3 left-1/2 -translate-x-1/2 text-white text-[18px] font-bold text-center w-[90%] leading-tight drop-shadow-md">
                   {tc(w.data, "title", lang)}
                 </span>
               </div>
               <div class="p-4 flex flex-col gap-2 flex-1">
-                <p class="text-[#0698c0] text-[17px] font-bold leading-snug">
+                <p class="font-aileron text-[#0698c0] text-[17px] font-bold leading-snug">
                   {tc(w.data, "subtitle", lang) || tc(w.data, "title", lang)}
                 </p>
                 <div class="flex flex-col gap-5 flex-1 justify-between">
-                  <p class="text-[#3b3b3b] text-[15px] leading-snug">
+                  <p class="font-aileron text-[#3b3b3b] text-[15px] leading-snug">
                     {tc(w.data, "description", lang)}
                   </p>
                   <a
                     href="#"
                     data-coming-soon
-                    class="bg-[#f05600] text-white text-[15px] font-semibold h-[46px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
+                    class="font-aileron bg-[#f05600] text-white text-[15px] font-semibold h-[46px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
                   >
                     {t(lang, "workshops.learnMore")}
                   </a>
@@ -140,7 +148,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
     <section class="py-12 lg:py-16 bg-white">
       <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col gap-10 lg:gap-14 items-center">
 
-        <h2 class="text-[24px] lg:text-[32px] font-semibold text-center leading-tight">
+        <h2 class="font-fraunces text-[24px] lg:text-[32px] font-semibold text-center leading-tight">
           {t(lang, "formats.heading1")}<br />
           <span class="text-[#f05600]">{t(lang, "formats.heading2")}</span>
         </h2>
@@ -151,7 +159,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
             {features.map((f) => (
               <div class="flex flex-col items-center gap-2 py-3 lg:py-4 px-3 text-center">
                 <img src={f.icon} alt="" class="w-[44px] h-[44px] lg:w-[52px] lg:h-[52px]" />
-                <p class="text-black text-[14px] lg:text-[15px] font-bold leading-snug">{f.label}</p>
+                <p class="font-aileron text-black text-[14px] lg:text-[15px] font-bold leading-snug">{f.label}</p>
               </div>
             ))}
           </div>
@@ -160,17 +168,17 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
         <!-- Workshop list -->
         <div class="flex flex-col gap-5 lg:gap-6 w-full">
           {[
-            { img: "/assets/figma/workshop-2030.png",                 title: t(lang, "formats.workshopTitle"),    desc: t(lang, "formats.workshopDesc") },
-            { img: "/assets/images/activities/team-building.jpg",     title: t(lang, "formats.masterclassTitle"), desc: t(lang, "formats.masterclassDesc") },
-            { img: "/assets/images/activities/marche-ocean.jpg",      title: t(lang, "formats.oceanWalkTitle"),   desc: t(lang, "formats.oceanWalkDesc") },
+            { img: "/assets/images/activities/workshop-lionel.jpg", title: t(lang, "formats.workshopTitle"),    desc: t(lang, "formats.workshopDesc") },
+            { img: "/assets/images/activities/masterclass-lionel.jpg", title: t(lang, "formats.masterclassTitle"), desc: t(lang, "formats.masterclassDesc") },
+            { img: "/assets/images/activities/marche-oceane.jpg",      title: t(lang, "formats.oceanWalkTitle"),   desc: t(lang, "formats.oceanWalkDesc") },
           ].map((f) => (
             <div class="bg-white border border-[#d9d9d9] rounded-[13px] shadow-[0px_0px_8px_rgba(173,173,173,0.25)] flex flex-col sm:flex-row items-stretch overflow-hidden min-h-[130px] sm:h-[160px]">
               <div class="shrink-0 w-full sm:w-[160px] h-[130px] sm:h-full">
                 <img src={f.img} alt={f.title} class="w-full h-full object-cover sm:rounded-bl-[13px] sm:rounded-tl-[13px]" />
               </div>
               <div class="flex flex-col gap-1 px-5 py-3 flex-1">
-                <p class="text-[#f05600] text-[15px] lg:text-[16px] font-bold">{f.title}</p>
-                <p class="text-black text-[13px] lg:text-[14px] font-medium leading-[22px]">{f.desc}</p>
+                <p class="font-fraunces text-[#f05600] text-[15px] lg:text-[16px] font-bold">{f.title}</p>
+                <p class="font-aileron text-black text-[13px] lg:text-[14px] font-medium leading-[22px]">{f.desc}</p>
               </div>
             </div>
           ))}
@@ -178,7 +186,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
           <a
             href="#"
             data-coming-soon
-            class="bg-[#0698c0] text-white text-[16px] lg:text-[18px] font-semibold h-[48px] flex items-center justify-center rounded-[7px] w-full hover:bg-cyan-700 transition-colors"
+            class="font-aileron bg-[#0698c0] text-white text-[16px] lg:text-[18px] font-semibold h-[48px] flex items-center justify-center rounded-[7px] w-full hover:bg-cyan-700 transition-colors"
           >
             {t(lang, "formats.seeAll")}
           </a>
@@ -197,7 +205,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
           <div class="bg-[rgba(6,152,192,0.53)] px-6 h-[44px] flex items-center justify-center rounded-full">
             <span class="text-[#47cdf2] text-[13px] lg:text-[15px] font-semibold">{t(lang, "stats.badge")}</span>
           </div>
-          <p class="text-[22px] lg:text-[32px] font-semibold text-white text-center leading-snug max-w-[640px]">
+          <p class="font-fraunces text-[22px] lg:text-[32px] font-semibold text-white text-center leading-snug max-w-[640px]">
             <span class="text-[#47cdf2]">{t(lang, "stats.heading2")}</span> {t(lang, "stats.heading3")} <span class="text-[#f05600]">{t(lang, "stats.heading4")}</span>
           </p>
         </div>
@@ -208,8 +216,8 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
             { value: statsYears, label: t(lang, "stats.years") },
           ].map((s) => (
             <div class="flex flex-col items-center gap-2 lg:gap-3">
-              <span class="text-[44px] lg:text-[72px] font-semibold text-white leading-none">{s.value}</span>
-              <span class="text-[20px] lg:text-[28px] font-semibold text-[#47cdf2]">{s.label}</span>
+              <span class="font-fraunces text-[44px] lg:text-[72px] font-semibold text-white leading-none">{s.value}</span>
+              <span class="font-aileron text-[20px] lg:text-[28px] font-semibold text-[#47cdf2]">{s.label}</span>
             </div>
           ))}
         </div>
@@ -225,34 +233,27 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
           <div class="bg-[#0698c0] px-6 h-[44px] flex items-center justify-center rounded-full self-start">
             <span class="text-white text-[13px] lg:text-[15px] font-semibold">{t(lang, "reasons.badge")}</span>
           </div>
-          <h2 class="text-[24px] lg:text-[34px] font-semibold leading-tight">
+          <h2 class="font-fraunces text-[24px] lg:text-[34px] font-semibold leading-tight">
             {t(lang, "reasons.heading1")} <span class="text-[#f05600]">{t(lang, "reasons.heading2")}</span> {t(lang, "reasons.heading3")} <span class="text-[#f05600]">{t(lang, "reasons.heading4")}</span>
           </h2>
-          <div class="flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black">
+          <div class="font-aileron flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black">
             <p>{t(lang, "reasons.body1")}</p>
             <p>{t(lang, "reasons.body2")}</p>
           </div>
         </div>
 
-        <!-- Reason cards (scroll on mobile) -->
-        <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory -mx-6 px-6 lg:mx-0 lg:px-0">
-          {reasons.map((r) => (
-            <div class="border-2 border-[#9ca3af] rounded-[10px] shrink-0 w-[280px] lg:w-[320px] snap-start flex flex-col overflow-hidden">
-              <div class="h-[170px] lg:h-[200px] overflow-hidden rounded-t-[8px]">
-                <img src={r.img} alt={r.title} class="w-full h-full object-cover" />
+        <!-- Reason cards — 3×2 grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {reasons.map((r, i) => (
+            <div class="border border-[#d9d9d9] rounded-[14px] bg-white p-6 lg:p-7 flex flex-col gap-4 shadow-sm">
+              <div class="flex items-center gap-4">
+                <span class="font-fraunces text-[48px] lg:text-[56px] font-bold text-[#0698c0] leading-none shrink-0">{i + 1}</span>
+                <p class="font-fraunces text-[16px] lg:text-[17px] font-bold text-black leading-snug">
+                  {r.title} <span class="text-[#f05600]">{r.accent}</span>
+                </p>
               </div>
-              <div class="p-3 flex flex-col gap-2 flex-1 justify-between">
-                <div class="flex flex-col gap-2">
-                  <p class="text-[15px] lg:text-[17px] font-bold text-black">{r.title}</p>
-                  <p class="text-[13px] lg:text-[15px] text-black leading-snug">{r.text}</p>
-                </div>
-                <a
-                  href="#"
-                  data-coming-soon
-                  class="bg-[#f05600] text-white text-[14px] lg:text-[15px] font-semibold h-[46px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
-                >
-                  {t(lang, "reasons.learnMore")}
-                </a>
+              <div class="font-aileron text-[14px] lg:text-[15px] text-[#3b3b3b] leading-snug flex flex-col gap-1">
+                {r.text.split("\n").map((line: string) => <p>{line}</p>)}
               </div>
             </div>
           ))}

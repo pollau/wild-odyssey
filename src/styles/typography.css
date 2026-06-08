@@ -1,0 +1,10 @@
+/* Typography spec
+ * Titles / display text → Fraunces (loaded via Google Fonts in Layout.astro)
+ * Body text / UI elements → Aileron  (loaded via @fontsource/aileron)
+ */
+@import "@fontsource/aileron";
+
+@theme {
+  --font-fraunces: 'Fraunces', serif;
+  --font-aileron:  'Aileron', sans-serif;
+}

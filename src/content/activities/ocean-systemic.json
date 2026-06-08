@@ -1,13 +1,14 @@
 {
-  "title": "Ocean & Systemic",
-  "subtitle": "Ocean & Systemic",
-  "subtitle_fr": "Océan & Systémique",
-  "subtitle_en": "Ocean & Systemic",
-  "subtitle_es": "Océano & Sistémico",
+  "order": 3,
+  "title": "Ocean",
+  "subtitle": "Dive into the heart of the ocean.",
+  "subtitle_fr": "Plongez au cœur de l'océan.",
+  "subtitle_en": "Dive into the heart of the ocean.",
+  "subtitle_es": "Sumérgete en el corazón del océano.",
   "description": "A systemic approach to the role of the ocean, its benefits, and the human pressures that weaken it.",
-  "title_fr": "Océan & Systémique",
+  "title_fr": "Océan",
   "description_fr": "Une approche systémique du rôle de l'océan, de ses bénéfices et des pressions humaines qui l'affaiblissent.",
-  "title_es": "Océano & Sistémico",
+  "title_es": "Oceano",
   "description_es": "Un enfoque sistémico del papel del océano, sus beneficios y las presiones humanas que lo debilitan.",
   "duration": "From 2h",
   "participants": "14–200 people",
@@ -16,5 +17,5 @@
     "ocean-walk"
   ],
   "theme": "ocean",
-  "image": "/assets/figma/workshop-ocean-card.png"
+  "image": "/assets/images/activities/ocean.jpg"
 }
