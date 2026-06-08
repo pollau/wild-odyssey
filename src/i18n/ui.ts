@@ -1,9 +1,9 @@
 export const ui = {
   fr: {
     "hero.pretitle": "CSRD, ESG, RSE, engagement des équipes… vous avez vu les slides.",
-    "hero.body1": "Nous transformons la théorie en émerveillement et l'émerveillement en action à travers des expériences immersives, en collaboration avec des ONG reconnues.",
-    "hero.body2": "Ne vous contentez plus de rapports : mobilisez vos équipes grâce à des formats scientifiques éprouvés. Ensemble, transformons votre entreprise en un équipage soudé, prêt à naviguer face au grand défi du XXIe siècle.",
-    "hero.body3": "",
+    "hero.body1": "Nous transformons la théorie en émerveillement, et l'émerveillement en action, à travers des expériences immersives menées avec des ONG reconnues.",
+    "hero.body2": "Ne vous contentez plus de rapports : mobilisez vos équipes grâce à des formats scientifiques qui ont fait leurs preuves. Ensemble, transformons votre entreprise en un équipage soudé, prêt à naviguer face au grand défi du XXIe siècle.",
+    "hero.body3": "La sensibilisation que vos certifications valorisent (EcoVadis, B Corp, ISO 14001), transformée en expérience que vos équipes n'oublieront pas.",
     "hero.tagline": "Nous avons la carte, vous choisissez le cap !",
     "hero.cta": "Explorer l'horizon",
 
