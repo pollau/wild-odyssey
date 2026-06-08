@@ -17,5 +17,6 @@
     "masterclass"
   ],
   "theme": "carbon",
-  "image": "/assets/images/activities/carbon-co2-leaf.jpg"
+  "image": "/assets/images/activities/carbon-blocks.jpg",
+  "imagePosition": "center"
 }
