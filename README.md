@@ -137,7 +137,7 @@ Lionel colle juste l'URL d'un événement Eventbrite/BilletWeb/Meetup dans Keyst
 
 | Environnement | Branche | URL |
 |---|---|---|
-| Production | `main` | https://wild-odyssey.com |
+| Production | `main` | https://www.wildodyssey.org |
 | Staging | `staging` | URL fixe Azure SWA (voir Azure Portal) |
 | PR previews | toute PR → `main` | URL auto générée par Azure SWA |
 

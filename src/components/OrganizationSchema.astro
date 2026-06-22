@@ -4,7 +4,7 @@ import { getEntry } from "astro:content";
 // Organization structured data (schema.org) — placed on the homepage per Google's guidance.
 const homepageEntry = await getEntry("homepage", "index");
 const email = (homepageEntry?.data.contactEmail as string) ?? "lionel.raybaud@wildodyssey.org";
-const site = Astro.site ?? new URL("https://wild-odyssey.com");
+const site = Astro.site ?? new URL("https://www.wildodyssey.org");
 
 const schema = {
   "@context": "https://schema.org",
