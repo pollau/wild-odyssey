@@ -1,0 +1,185 @@
+---
+import { t } from "../i18n/ui";
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+// Common dialing codes — France first, then the markets the site targets (FR/EN/ES).
+const phonePrefixes = [
+  { flag: "🇫🇷", code: "+33" },
+  { flag: "🇧🇪", code: "+32" },
+  { flag: "🇨🇭", code: "+41" },
+  { flag: "🇱🇺", code: "+352" },
+  { flag: "🇪🇸", code: "+34" },
+  { flag: "🇬🇧", code: "+44" },
+  { flag: "🇺🇸", code: "+1" },
+  { flag: "🇩🇪", code: "+49" },
+  { flag: "🇮🇹", code: "+39" },
+  { flag: "🇵🇹", code: "+351" },
+  { flag: "🇳🇱", code: "+31" },
+];
+
+const inputClass =
+  "font-aileron w-full h-[46px] px-3.5 rounded-[7px] border border-[#d9d9d9] bg-white text-[15px] text-black placeholder:text-[#9a9a9a] outline-none focus:border-[#0698c0] focus:ring-2 focus:ring-[rgba(6,152,192,0.25)] transition-colors";
+const labelClass = "font-aileron text-[13px] font-semibold text-[#3b3b3b] mb-1.5 flex items-center gap-1";
+---
+
+<main class="pt-[64px] lg:pt-[80px]">
+  <section class="relative py-12 lg:py-20 overflow-hidden" style="background-color: #e8f5e5;">
+    <div class="relative z-10 max-w-[600px] mx-auto px-4 sm:px-6">
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <h1 class="font-fraunces text-[28px] sm:text-[34px] font-semibold leading-tight text-black">
+          {t(lang, "contact.title")}
+        </h1>
+        <p class="font-aileron text-[16px] text-[#3b3b3b] mt-3 leading-snug">{t(lang, "contact.subtitle")}</p>
+      </div>
+
+      <!-- Card -->
+      <div class="bg-white rounded-[16px] shadow-[0px_8px_30px_rgba(0,0,0,0.08)] border border-[#e6e6e6] p-6 sm:p-8">
+        <form id="contact-form" novalidate class="flex flex-col gap-4">
+          <input type="hidden" name="locale" value={lang} />
+          <!-- Honeypot (anti-spam) — hidden from humans -->
+          <div class="absolute -left-[9999px]" aria-hidden="true">
+            <label>Company website<input type="text" name="company_website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class={labelClass} for="cf-lastName">{t(lang, "contact.lastName")}<span class="text-[#f05600]">*</span></label>
+              <input class={inputClass} id="cf-lastName" name="lastName" type="text" autocomplete="family-name" required />
+            </div>
+            <div>
+              <label class={labelClass} for="cf-firstName">{t(lang, "contact.firstName")}<span class="text-[#f05600]">*</span></label>
+              <input class={inputClass} id="cf-firstName" name="firstName" type="text" autocomplete="given-name" required />
+            </div>
+          </div>
+
+          <div>
+            <label class={labelClass} for="cf-organization">{t(lang, "contact.organization")}<span class="text-[#f05600]">*</span></label>
+            <input class={inputClass} id="cf-organization" name="organization" type="text" autocomplete="organization" required />
+          </div>
+
+          <div>
+            <label class={labelClass} for="cf-role">
+              {t(lang, "contact.role")}<span class="font-normal text-[#9a9a9a] text-[12px]">({t(lang, "contact.optional")})</span>
+            </label>
+            <input class={inputClass} id="cf-role" name="role" type="text" autocomplete="organization-title" />
+          </div>
+
+          <div>
+            <label class={labelClass} for="cf-email">{t(lang, "contact.email")}<span class="text-[#f05600]">*</span></label>
+            <input class={inputClass} id="cf-email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div>
+            <label class={labelClass} for="cf-phone">
+              {t(lang, "contact.phone")}<span class="font-normal text-[#9a9a9a] text-[12px]">({t(lang, "contact.optional")})</span>
+            </label>
+            <div class="flex gap-2">
+              <select
+                id="cf-phonePrefix"
+                name="phonePrefix"
+                aria-label={t(lang, "contact.phonePrefix")}
+                class={inputClass + " w-[110px] shrink-0 pr-2"}
+              >
+                {phonePrefixes.map((p) => <option value={p.code}>{p.flag} {p.code}</option>)}
+              </select>
+              <input class={inputClass} id="cf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel-national" />
+            </div>
+          </div>
+
+          <div>
+            <label class={labelClass} for="cf-message">{t(lang, "contact.message")}<span class="text-[#f05600]">*</span></label>
+            <textarea class={inputClass + " h-[120px] py-3 leading-snug resize-y"} id="cf-message" name="message" required></textarea>
+          </div>
+
+          <label class="flex items-start gap-2.5 cursor-pointer">
+            <input type="checkbox" name="consent" required class="mt-0.5 w-4 h-4 accent-[#f05600] shrink-0" />
+            <span class="font-aileron text-[13px] text-[#3b3b3b] leading-snug">{t(lang, "contact.consent")}<span class="text-[#f05600]"> *</span></span>
+          </label>
+
+          <p id="contact-error" class="hidden font-aileron text-[14px] text-[#c0392b] bg-[#fdecea] border border-[#f5c6c0] rounded-[7px] px-3.5 py-2.5" role="alert">
+            {t(lang, "contact.error")}
+          </p>
+
+          <button
+            type="submit"
+            id="contact-submit"
+            class="font-aileron bg-[#f05600] text-white text-[17px] font-semibold h-[54px] flex items-center justify-center gap-2 rounded-[7px] hover:bg-orange-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            <span data-submit-label>{t(lang, "contact.submit")}</span>
+            <span data-submit-spinner class="hidden w-5 h-5 border-2 border-white/40 border-t-white rounded-full animate-spin"></span>
+          </button>
+        </form>
+
+        <!-- Success state -->
+        <div id="contact-success" class="hidden flex-col items-center text-center gap-3 py-8">
+          <div class="w-16 h-16 rounded-full bg-[rgba(6,152,192,0.12)] flex items-center justify-center">
+            <svg class="w-8 h-8 text-[#0698c0]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h3 class="font-fraunces text-[22px] font-semibold text-black">{t(lang, "contact.successTitle")}</h3>
+          <p class="font-aileron text-[15px] text-[#3b3b3b] leading-snug max-w-[360px]">{t(lang, "contact.successBody")}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const successBox = document.getElementById("contact-success") as HTMLElement | null;
+  const errorBox = document.getElementById("contact-error") as HTMLElement | null;
+  const submitBtn = document.getElementById("contact-submit") as HTMLButtonElement | null;
+
+  if (form && successBox && errorBox && submitBtn) {
+    const label = submitBtn.querySelector("[data-submit-label]") as HTMLElement;
+    const spinner = submitBtn.querySelector("[data-submit-spinner]") as HTMLElement;
+
+    const showSuccess = () => {
+      form.classList.add("hidden");
+      successBox.classList.remove("hidden");
+      successBox.classList.add("flex");
+    };
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorBox.classList.add("hidden");
+
+      // Honeypot — silently succeed for bots without sending anything.
+      if ((form.elements.namedItem("company_website") as HTMLInputElement)?.value) {
+        showSuccess();
+        return;
+      }
+
+      if (!form.reportValidity()) return;
+
+      submitBtn.disabled = true;
+      label.classList.add("hidden");
+      spinner.classList.remove("hidden");
+
+      const payload = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        showSuccess();
+      } catch (err) {
+        errorBox.classList.remove("hidden");
+      } finally {
+        submitBtn.disabled = false;
+        label.classList.remove("hidden");
+        spinner.classList.add("hidden");
+      }
+    });
+  }
+</script>

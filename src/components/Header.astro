@@ -1,13 +1,9 @@
 ---
 import LanguagePicker from "./LanguagePicker.astro";
 import { t } from "../i18n/ui";
-import { getEntry } from "astro:content";
 
 const lang = Astro.currentLocale || "fr";
 const prefix = lang === "fr" ? "" : `/${lang}`;
-
-const homepageEntry = await getEntry("homepage", "index");
-const contactEmail = (homepageEntry?.data.contactEmail as string) ?? "lionel.raybaud@wildodyssey.org";
 ---
 
 <header class="fixed w-full z-50 bg-white shadow-[0px_4px_12.5px_rgba(206,206,206,0.25)]" id="main-header">
@@ -32,7 +28,7 @@ const contactEmail = (homepageEntry?.data.contactEmail as string) ?? "lionel.ray
 
         <!-- CTA -->
         <a
-          href={`mailto:${contactEmail}`}
+          href={`${prefix}/contact`}
           class="bg-[#f05600] text-white text-[15px] lg:text-[16px] font-semibold px-6 h-[44px] lg:h-[50px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors whitespace-nowrap"
         >
           {t(lang, "nav.cta")}
@@ -51,7 +47,7 @@ const contactEmail = (homepageEntry?.data.contactEmail as string) ?? "lionel.ray
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#d9d9d9] px-6 py-4 space-y-4">
     <LanguagePicker />
-<a href={`mailto:${contactEmail}`} class="block bg-[#f05600] text-white text-center font-semibold py-3 rounded-[7px]">{t(lang, "nav.cta")}</a>
+<a href={`${prefix}/contact`} class="block w-full bg-[#f05600] text-white text-center font-semibold py-3 rounded-[7px]">{t(lang, "nav.cta")}</a>
   </div>
 </header>
 
