@@ -72,6 +72,8 @@ export default config({
                         { label: 'Ocean & Systemic', value: 'ocean' },
                         { label: 'Biodiversity', value: 'biodiversity' },
                         { label: 'Carbon Footprint', value: 'carbon' },
+                        { label: 'Climate Skeptic Dinner', value: 'climate-skeptic' },
+                        { label: 'Tailor-made', value: 'tailor-made' },
                     ],
                     defaultValue: 'desirable-futures',
                 }),
