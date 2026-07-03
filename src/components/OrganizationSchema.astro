@@ -1,0 +1,28 @@
+---
+import { getEntry } from "astro:content";
+
+// Organization structured data (schema.org) — placed on the homepage per Google's guidance.
+const homepageEntry = await getEntry("homepage", "index");
+const email = (homepageEntry?.data.contactEmail as string) ?? "lionel.raybaud@wildodyssey.org";
+const site = Astro.site ?? new URL("https://www.wildodyssey.org");
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Wild Odyssey",
+  url: site.href,
+  logo: new URL("/assets/figma/logo-image.png", site).href,
+  description:
+    "Wild Odyssey designs science-based awareness workshops (climate, ocean, biodiversity, carbon footprint) that engage teams and turn awareness into action.",
+  email,
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    email,
+    availableLanguage: ["French", "English", "Spanish"],
+  },
+  // sameAs: social profile URLs — add LinkedIn / Instagram / etc. once available.
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

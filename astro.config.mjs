@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://wild-odyssey.com',
+  site: 'https://www.wildodyssey.org',
   output: 'static',
   i18n: {
     defaultLocale: 'fr',

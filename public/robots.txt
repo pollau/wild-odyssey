@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /keystatic/
 
-Sitemap: https://wild-odyssey.com/sitemap-index.xml
+Sitemap: https://www.wildodyssey.org/sitemap-index.xml
