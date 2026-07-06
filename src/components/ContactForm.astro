@@ -129,12 +129,13 @@ const labelClass = "font-aileron text-[13px] font-semibold text-[#3b3b3b] mb-1.5
         </form>
 
         <!-- Success state -->
-        <div id="contact-success" class="hidden flex-col items-center text-center gap-3 py-8">
-          <div class="w-16 h-16 rounded-full bg-[rgba(6,152,192,0.12)] flex items-center justify-center">
-            <svg class="w-8 h-8 text-[#0698c0]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
+        <div id="contact-success" class="hidden flex-col items-center text-center gap-4 py-2">
+          <img
+            src="/assets/images/contact/penguins-dive.webp"
+            alt=""
+            class="w-full rounded-[12px] object-cover"
+            loading="lazy"
+          />
           <h3 class="font-fraunces text-[22px] font-semibold text-black">{t(lang, "contact.successTitle")}</h3>
           <p class="font-aileron text-[15px] text-[#3b3b3b] leading-snug max-w-[360px]">{t(lang, "contact.successBody")}</p>
         </div>
