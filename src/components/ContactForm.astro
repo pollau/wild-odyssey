@@ -102,7 +102,16 @@ const labelClass = "font-aileron text-[13px] font-semibold text-[#3b3b3b] mb-1.5
             <span class="font-aileron text-[13px] text-[#3b3b3b] leading-snug">{t(lang, "contact.consent")}<span class="text-[#f05600]"> *</span></span>
           </label>
 
-          <p id="contact-error" class="hidden font-aileron text-[14px] text-[#c0392b] bg-[#fdecea] border border-[#f5c6c0] rounded-[7px] px-3.5 py-2.5" role="alert">
+          <p
+            id="contact-error"
+            class="hidden font-aileron text-[14px] text-[#c0392b] bg-[#fdecea] border border-[#f5c6c0] rounded-[7px] px-3.5 py-2.5"
+            role="alert"
+            data-msg-generic={t(lang, "contact.error")}
+            data-msg-400={t(lang, "contact.error400")}
+            data-msg-429={t(lang, "contact.error429")}
+            data-msg-500={t(lang, "contact.error500")}
+            data-msg-network={t(lang, "contact.errorNetwork")}
+          >
             {t(lang, "contact.error")}
           </p>
 
@@ -132,6 +141,22 @@ const labelClass = "font-aileron text-[13px] font-semibold text-[#3b3b3b] mb-1.5
 </main>
 
 <script>
+  type SendResult = { ok: true } | { ok: false; code: "400" | "429" | "500" | "network" };
+
+  // MOCK send — simulates the future /api/contact call so the UI can be built first.
+  // The firstName field drives the outcome for testing the display:
+  //   "success" → success state, "400" / "429" / "500" → that error, "network" → network failure.
+  // Any other value succeeds, like a real send.
+  // TODO(api): replace the body of this function with a real fetch("/api/contact", …)
+  // once the Azure Function and the email service are wired.
+  async function sendContact(payload: Record<string, FormDataEntryValue>): Promise<SendResult> {
+    await new Promise((r) => setTimeout(r, 900)); // simulated network latency
+    const trigger = String(payload.firstName ?? "").trim().toLowerCase();
+    if (trigger === "400" || trigger === "429" || trigger === "500") return { ok: false, code: trigger };
+    if (trigger === "network") return { ok: false, code: "network" };
+    return { ok: true };
+  }
+
   const form = document.getElementById("contact-form") as HTMLFormElement | null;
   const successBox = document.getElementById("contact-success") as HTMLElement | null;
   const errorBox = document.getElementById("contact-error") as HTMLElement | null;
@@ -145,6 +170,16 @@ const labelClass = "font-aileron text-[13px] font-semibold text-[#3b3b3b] mb-1.5
       form.classList.add("hidden");
       successBox.classList.remove("hidden");
       successBox.classList.add("flex");
+    };
+
+    const showError = (code?: string) => {
+      const msg =
+        (code && errorBox.getAttribute(`data-msg-${code}`)) ||
+        errorBox.getAttribute("data-msg-generic") ||
+        errorBox.textContent;
+      errorBox.textContent = msg;
+      errorBox.classList.remove("hidden");
+      errorBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
     };
 
     form.addEventListener("submit", async (e) => {
@@ -166,15 +201,11 @@ const labelClass = "font-aileron text-[13px] font-semibold text-[#3b3b3b] mb-1.5
       const payload = Object.fromEntries(new FormData(form).entries());
 
       try {
-        const res = await fetch("/api/contact", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        showSuccess();
-      } catch (err) {
-        errorBox.classList.remove("hidden");
+        const result = await sendContact(payload);
+        if (result.ok) showSuccess();
+        else showError(result.code);
+      } catch {
+        showError("network");
       } finally {
         submitBtn.disabled = false;
         label.classList.remove("hidden");

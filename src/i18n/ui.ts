@@ -98,6 +98,10 @@ export const ui = {
     "contact.successTitle": "Message envoyé, merci !",
     "contact.successBody": "On revient vers vous très vite. Bon vent ! ⛵",
     "contact.error": "Oups, l'envoi a échoué. Réessayez ou écrivez-nous directement.",
+    "contact.error400": "Certaines informations semblent invalides. Vérifiez les champs et réessayez.",
+    "contact.error429": "Trop de tentatives pour le moment. Patientez un instant puis réessayez.",
+    "contact.error500": "Le service est momentanément indisponible. Réessayez dans quelques minutes.",
+    "contact.errorNetwork": "Impossible de joindre le serveur. Vérifiez votre connexion et réessayez.",
     "contact.close": "Fermer",
   },
   en: {
@@ -198,6 +202,10 @@ export const ui = {
     "contact.successTitle": "Message sent, thank you!",
     "contact.successBody": "We'll get back to you very soon. Fair winds! ⛵",
     "contact.error": "Oops, sending failed. Try again or email us directly.",
+    "contact.error400": "Some of the information looks invalid. Check the fields and try again.",
+    "contact.error429": "Too many attempts right now. Wait a moment and try again.",
+    "contact.error500": "The service is temporarily unavailable. Try again in a few minutes.",
+    "contact.errorNetwork": "We could not reach the server. Check your connection and try again.",
     "contact.close": "Close",
   },
   es: {
@@ -298,6 +306,10 @@ export const ui = {
     "contact.successTitle": "¡Mensaje enviado, gracias!",
     "contact.successBody": "Te responderemos muy pronto. ¡Buen viento! ⛵",
     "contact.error": "Vaya, el envío falló. Inténtalo de nuevo o escríbenos directamente.",
+    "contact.error400": "Algunos datos parecen no ser válidos. Revisa los campos y vuelve a intentarlo.",
+    "contact.error429": "Demasiados intentos por ahora. Espera un momento y vuelve a intentarlo.",
+    "contact.error500": "El servicio no está disponible temporalmente. Vuelve a intentarlo en unos minutos.",
+    "contact.errorNetwork": "No se pudo conectar con el servidor. Comprueba tu conexión y vuelve a intentarlo.",
     "contact.close": "Cerrar",
   },
 } as const;
