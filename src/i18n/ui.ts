@@ -82,7 +82,7 @@ export const ui = {
     "nav.cta": "Nous contacter",
 
     "contact.title": "Tout commence par une conversation",
-    "contact.subtitle": "Dites-nous où vous voulez aller, on trace le cap ensemble.",
+    "contact.subtitle": "Une idée qui germe, une question qui flotte, une envie de faire quelque chose de différent et sur mesure pour vos élèves ou vos équipes ?",
     "contact.lastName": "Nom",
     "contact.firstName": "Prénom",
     "contact.organization": "Votre organisation",
