@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "dev:swa": "npx -y @azure/static-web-apps-cli start http://localhost:4321 --run \"npm run dev\" --api-location api",
+    "dev:swa": "swa start http://localhost:4321 --run \"npm run dev\" --api-location api",
     "scrape": "node scripts/scrape-events.mjs",
     "build": "node scripts/scrape-events.mjs && astro build",
     "preview": "astro preview",
@@ -21,14 +21,13 @@
     "@keystatic/core": "^0.5.48",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.18",
-    "add": "^2.0.6",
     "astro": "^5.16.6",
-    "npx": "^10.2.2",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
-    "@astrojs/sitemap": "^3.7.2"
+    "@astrojs/sitemap": "^3.7.2",
+    "@azure/static-web-apps-cli": "^2.0.9"
   }
 }
