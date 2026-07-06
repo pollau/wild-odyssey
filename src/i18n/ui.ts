@@ -186,7 +186,7 @@ export const ui = {
     "nav.cta": "Contact me",
 
     "contact.title": "It all starts with a conversation",
-    "contact.subtitle": "Tell us where you want to go — we'll chart the course together.",
+    "contact.subtitle": "A budding idea, a floating question, or a desire to create something different and tailor-made for your students or teams?",
     "contact.lastName": "Last name",
     "contact.firstName": "First name",
     "contact.organization": "Your organization",
@@ -290,7 +290,7 @@ export const ui = {
     "nav.cta": "Contacto",
 
     "contact.title": "Todo empieza con una conversación",
-    "contact.subtitle": "Dinos a dónde quieres llegar y trazamos el rumbo juntos.",
+    "contact.subtitle": "¿Una idea en mente, una duda en el aire o las ganas de crear algo diferente y a medida para tus alumnos o equipos?",
     "contact.lastName": "Apellido",
     "contact.firstName": "Nombre",
     "contact.organization": "Tu organización",
