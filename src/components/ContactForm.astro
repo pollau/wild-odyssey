@@ -43,9 +43,11 @@ const labelClass = "font-aileron text-[13px] font-semibold text-[#3b3b3b] mb-1.5
       <div class="bg-white rounded-[16px] shadow-[0px_8px_30px_rgba(0,0,0,0.08)] border border-[#e6e6e6] p-6 sm:p-8">
         <form id="contact-form" novalidate class="flex flex-col gap-4">
           <input type="hidden" name="locale" value={lang} />
-          <!-- Honeypot (anti-spam) — hidden from humans -->
+          <!-- Honeypot (anti-spam) — hidden from humans. The name is deliberately
+               meaningless so browser autofill never populates it (a name like
+               "company_website" gets autofilled by Chrome, causing false success). -->
           <div class="absolute -left-[9999px]" aria-hidden="true">
-            <label>Company website<input type="text" name="company_website" tabindex="-1" autocomplete="off" /></label>
+            <label>Leave this field empty<input type="text" name="hp_check" tabindex="-1" autocomplete="off" /></label>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -188,7 +190,7 @@ const labelClass = "font-aileron text-[13px] font-semibold text-[#3b3b3b] mb-1.5
       errorBox.classList.add("hidden");
 
       // Honeypot — silently succeed for bots without sending anything.
-      if ((form.elements.namedItem("company_website") as HTMLInputElement)?.value) {
+      if ((form.elements.namedItem("hp_check") as HTMLInputElement)?.value) {
         showSuccess();
         return;
       }
