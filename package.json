@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "dev:swa": "npx -y @azure/static-web-apps-cli start http://localhost:4321 --run \"npm run dev\" --api-location api",
     "scrape": "node scripts/scrape-events.mjs",
     "build": "node scripts/scrape-events.mjs && astro build",
     "preview": "astro preview",

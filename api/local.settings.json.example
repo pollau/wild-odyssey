@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "SMTP_USER": "form@wildodyssey.org",
+    "SMTP_PASS": "<mot de passe d'application Infomaniak>",
+    "CONTACT_TO": "lionel.raybaud@wildodyssey.org"
+  }
+}

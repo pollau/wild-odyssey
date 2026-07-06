@@ -147,18 +147,23 @@ const labelClass = "font-aileron text-[13px] font-semibold text-[#3b3b3b] mb-1.5
 <script>
   type SendResult = { ok: true } | { ok: false; code: "400" | "429" | "500" | "network" };
 
-  // MOCK send — simulates the future /api/contact call so the UI can be built first.
-  // The firstName field drives the outcome for testing the display:
-  //   "success" → success state, "400" / "429" / "500" → that error, "network" → network failure.
-  // Any other value succeeds, like a real send.
-  // TODO(api): replace the body of this function with a real fetch("/api/contact", …)
-  // once the Azure Function and the email service are wired.
+  // Real send through the Azure Function (managed API of Static Web Apps).
+  // Locally, /api/contact only exists through the SWA CLI (npm run dev:swa);
+  // with plain `npm run dev` any submit falls back to the 500 error message.
   async function sendContact(payload: Record<string, FormDataEntryValue>): Promise<SendResult> {
-    await new Promise((r) => setTimeout(r, 900)); // simulated network latency
-    const trigger = String(payload.firstName ?? "").trim().toLowerCase();
-    if (trigger === "400" || trigger === "429" || trigger === "500") return { ok: false, code: trigger };
-    if (trigger === "network") return { ok: false, code: "network" };
-    return { ok: true };
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (res.ok) return { ok: true };
+      if (res.status === 400) return { ok: false, code: "400" };
+      if (res.status === 429) return { ok: false, code: "429" };
+      return { ok: false, code: "500" };
+    } catch {
+      return { ok: false, code: "network" };
+    }
   }
 
   const form = document.getElementById("contact-form") as HTMLFormElement | null;
