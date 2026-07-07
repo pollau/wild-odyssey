@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "dev:swa": "swa start http://localhost:4321 --run \"npm run dev\" --api-location api",
+    "dev:swa": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/dev-swa.ps1",
     "scrape": "node scripts/scrape-events.mjs",
     "build": "node scripts/scrape-events.mjs && astro build",
     "preview": "astro preview",
