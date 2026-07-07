@@ -4,6 +4,7 @@
     "FUNCTIONS_WORKER_RUNTIME": "node",
     "SMTP_USER": "form@wildodyssey.org",
     "SMTP_PASS": "<mot de passe d'application Infomaniak>",
-    "CONTACT_TO": "lionel.raybaud@wildodyssey.org"
+    "CONTACT_TO": "lionel.raybaud@wildodyssey.org",
+    "SMTP_DEBUG": "false (jamais true en production : le dialogue SMTP loggue l'AUTH en base64 decodable)"
   }
 }

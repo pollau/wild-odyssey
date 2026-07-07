@@ -6,10 +6,50 @@ const clean = (v) => String(v ?? "").replace(/[\r\n]+/g, " ").trim();
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Server side length caps: keep generated emails sane and reject absurd
+// payloads with a clean 400 instead of accepting them silently.
+const LIMITS = {
+    lastName: 100,
+    firstName: 100,
+    organization: 200,
+    role: 200,
+    email: 254,
+    phonePrefix: 8,
+    phone: 30,
+    locale: 8,
+    message: 5000,
+};
+
+// Naive in-memory rate limit (per instance, resets on cold start): above
+// RATE_MAX submissions per IP per window the endpoint answers 429. Enough
+// for this traffic level; the client already maps 429 to a dedicated message.
+const RATE_WINDOW_MS = 60_000;
+const RATE_MAX = 5;
+const hits = new Map(); // ip -> timestamps of recent submissions
+
+function isRateLimited(ip) {
+    const now = Date.now();
+    const recent = (hits.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
+    recent.push(now);
+    hits.set(ip, recent);
+    if (hits.size > 1000) {
+        for (const [k, v] of hits) {
+            if (v.every((t) => now - t >= RATE_WINDOW_MS)) hits.delete(k);
+        }
+    }
+    return recent.length > RATE_MAX;
+}
+
 app.http("contact", {
     methods: ["POST"],
     authLevel: "anonymous",
     handler: async (request, context) => {
+        const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+        if (isRateLimited(ip)) {
+            context.log(`contact: rate limited (${ip})`);
+            return { status: 429, jsonBody: { ok: false, error: "rate_limited" } };
+        }
+
         let body;
         try {
             body = await request.json();
@@ -34,7 +74,10 @@ app.http("contact", {
         const message = String(body.message ?? "").trim();
         const consent = body.consent === "on" || body.consent === true;
 
-        if (!lastName || !firstName || !organization || !message || !consent || !EMAIL_RE.test(email)) {
+        const fields = { lastName, firstName, organization, role, email, phonePrefix, phone, locale, message };
+        const withinLimits = Object.entries(LIMITS).every(([f, max]) => fields[f].length <= max);
+
+        if (!withinLimits || !lastName || !firstName || !organization || !message || !consent || !EMAIL_RE.test(email)) {
             return { status: 400, jsonBody: { ok: false, error: "invalid_fields" } };
         }
 
@@ -44,9 +87,10 @@ app.http("contact", {
             return { status: 500, jsonBody: { ok: false, error: "not_configured" } };
         }
 
-        // SMTP_DEBUG=true logs the full SMTP dialogue (connect, STARTTLS, auth,
-        // server replies) to the console, which flows to Application Insights
-        // traces. Enable per environment when debugging deliverability.
+        // SMTP_DEBUG=true logs the full SMTP dialogue to the console (flows to
+        // Application Insights traces). NEVER enable in production: the dialogue
+        // includes the AUTH exchange in base64, trivially decodable back to the
+        // password. Dev and short lived QA debugging only.
         const smtpDebug = process.env.SMTP_DEBUG === "true";
         const transporter = nodemailer.createTransport({
             host: "mail.infomaniak.com",
@@ -70,12 +114,16 @@ app.http("contact", {
             message,
         ];
 
+        // The display name sits inside quotes in the Reply-To header: drop the
+        // characters that could break out of the quoted string.
+        const displayName = `${firstName} ${lastName}`.replace(/["<>]/g, "");
+
         let info;
         try {
             info = await transporter.sendMail({
                 from: `"Wild Odyssey (formulaire)" <${SMTP_USER}>`,
                 to: CONTACT_TO,
-                replyTo: `"${firstName} ${lastName}" <${email}>`,
+                replyTo: `"${displayName}" <${email}>`,
                 subject: `Nouveau contact : ${firstName} ${lastName} (${organization})`,
                 text: lines.join("\n"),
             });

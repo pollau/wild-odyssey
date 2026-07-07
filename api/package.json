@@ -4,7 +4,7 @@
   "description": "Azure Functions API for the Wild Odyssey contact form",
   "main": "src/functions/*.js",
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "dependencies": {
     "@azure/functions": "^4.5.0",
