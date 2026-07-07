@@ -1,0 +1,15 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ContactForm from "../../components/ContactForm.astro";
+import { t } from "../../i18n/ui";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "es" } }];
+}
+
+const { lang } = Astro.params;
+---
+
+<Layout title={t(lang!, "nav.cta")}>
+  <ContactForm lang={lang!} />
+</Layout>
