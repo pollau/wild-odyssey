@@ -96,7 +96,7 @@ export const ui = {
     "contact.submit": "Envoyer !",
     "contact.sending": "Envoi…",
     "contact.successTitle": "Message envoyé, merci !",
-    "contact.successBody": "Message bien reçu, on file le transmettre à l'équipage ! On revient vers vous au plus vite pour tracer le cap :)",
+    "contact.successBody": "Message bien reçu, on file le transmettre à l'équipage ! On revient vers vous au plus vite pour tracer le cap :)",
     "contact.error": "Oups, l'envoi a échoué. Réessayez ou écrivez-nous directement.",
     "contact.error400": "Certaines informations semblent invalides. Vérifiez les champs et réessayez.",
     "contact.error429": "Trop de tentatives pour le moment. Patientez un instant puis réessayez.",
