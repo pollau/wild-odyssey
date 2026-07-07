@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import OrganizationSchema from "../OrganizationSchema.astro";
 import { getCollection, getEntry } from "astro:content";
 import { t } from "../../i18n/ui";
 import { tc } from "../../i18n/content";
@@ -19,7 +20,7 @@ const workshops = (await getCollection("activities"))
 
 const heroTitle = tc(homepage, "heroTitle", lang);
 const heroTitleBase = tc(homepage, "heroTitleBase", lang);
-const statsParticipants = homepage.statsParticipants ?? "+500.000";
+const statsParticipants = homepage.statsParticipants ?? "+600.000";
 const statsOrganizations = homepage.statsOrganizations ?? "+2.000";
 const statsYears = homepage.statsYears ?? "+5";
 
@@ -45,6 +46,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
 ---
 
 <Layout title="Home">
+  <OrganizationSchema />
   <main class="pt-[80px]">
 
     <!-- ─── HERO ─── -->

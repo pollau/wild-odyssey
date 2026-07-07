@@ -33,7 +33,7 @@ export default config({
                 heroTitle_fr: fields.text({ label: 'Hero Title (FR)' }),
                 heroTitle_en: fields.text({ label: 'Hero Title (EN)' }),
                 heroTitle_es: fields.text({ label: 'Hero Title (ES)' }),
-                statsParticipants: fields.text({ label: 'Stats — Participants', defaultValue: '+500.000' }),
+                statsParticipants: fields.text({ label: 'Stats — Participants', defaultValue: '+600.000' }),
                 statsOrganizations: fields.text({ label: 'Stats — Organizations', defaultValue: '+2.000' }),
                 statsYears: fields.text({ label: 'Stats — Years of experience', defaultValue: '+5' }),
                 contactEmail: fields.text({ label: 'Contact Email' }),
