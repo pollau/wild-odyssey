@@ -10,6 +10,6 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 ---
 
-<Layout title={t(lang!, "seo.contact.title")} description={t(lang!, "seo.contact.description")}>
+<Layout title={t(lang!, "seo.contact.title")} description={t(lang!, "seo.contact.description")} alternates>
   <ContactForm lang={lang!} />
 </Layout>
