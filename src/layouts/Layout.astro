@@ -6,16 +6,42 @@ import ComingSoonToast from "../components/ComingSoonToast.astro";
 
 interface Props {
 	title: string;
+	description?: string;
+	// true only for pages that exist in all three locales (home, contact),
+	// so we never advertise a language version that does not exist.
+	alternates?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, description, alternates = false } = Astro.props;
+const metaDescription =
+	description ??
+	"Wild Odyssey conçoit des expériences de sensibilisation à l'environnement (climat, océan, biodiversité) pour engager vos équipes.";
+
+const site = Astro.site ?? new URL("https://www.wildodyssey.org");
+const pathname = Astro.url.pathname;
+const canonical = new URL(pathname, site).href;
+
+// Bare path = current path with any /en or /es locale prefix removed.
+const barePath = pathname.replace(/^\/(en|es)(?=\/|$)/, "") || "/";
+const localeHref = (prefix: string) =>
+	new URL((prefix + barePath).replace(/\/{2,}/g, "/"), site).href;
+const hreflangs = alternates
+	? [
+			{ lang: "fr", href: localeHref("") },
+			{ lang: "en", href: localeHref("/en") },
+			{ lang: "es", href: localeHref("/es") },
+			{ lang: "x-default", href: localeHref("") },
+		]
+	: [];
 ---
 
 <!doctype html>
 <html lang={Astro.currentLocale ?? "fr"}>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Wild Odyssey - Science-based sustainability workshops for teams" />
+		<meta name="description" content={metaDescription} />
+		<link rel="canonical" href={canonical} />
+		{hreflangs.map((h) => <link rel="alternate" hreflang={h.lang} href={h.href} />)}
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />

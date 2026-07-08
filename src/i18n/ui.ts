@@ -52,7 +52,7 @@ export const ui = {
     "reasons.r1.text": "Du stagiaire au directeur : même expérience, même langage, même vision systémique des enjeux. Pas parce qu'ils y étaient obligés ; parce qu'ils ont vécu la même chose.",
     "reasons.r2.title": "Inspirer",
     "reasons.r2.accent": "la prise de conscience",
-    "reasons.r2.text": "Nous ne donnons pas de lesson. Nous faisons ressentir les enjeux par la science, les récits et une expérience qui dure dans le temps.",
+    "reasons.r2.text": "Nous ne donnons pas de leçon. Nous faisons ressentir les enjeux par la science, les récits et une expérience qui dure dans le temps.",
     "reasons.r3.title": "Attirer",
     "reasons.r3.accent": "de nouveaux talents",
     "reasons.r3.text": "70 % de la Gen Z et des Millennials considèrent la durabilité dans le choix de leur employeur (Deloitte, 2023). Donnez-leur une raison de vous choisir et de rester.",
@@ -80,6 +80,11 @@ export const ui = {
     "nav.ngos": "Les ONGs",
     "nav.workshops": "Les ateliers",
     "nav.cta": "Nous contacter",
+
+    "seo.home.title": "Team Building Durable & Ateliers Climat",
+    "seo.home.description": "Expériences RSE & climat personnalisées pour vos équipes. Ateliers scientifiques sur l'empreinte carbone, la biodiversité et l'océan. En EN, FR, ES.",
+    "seo.contact.title": "Contactez-nous pour une Expérience Sur Mesure",
+    "seo.contact.description": "Une question ? Prêt à engager votre équipe dans une expérience personnalisée ? Contactez-nous & rejoignez l'odyssée ! Réponse rapide en EN, ES, FR.",
 
     "contact.title": "Tout commence par une conversation",
     "contact.subtitle": "Une idée qui germe, une question qui flotte, une envie de faire quelque chose de différent et sur mesure pour vos élèves ou vos équipes ?",
@@ -185,6 +190,11 @@ export const ui = {
     "nav.workshops": "The workshops",
     "nav.cta": "Contact me",
 
+    "seo.home.title": "Sustainability Team Building & Climate Workshops",
+    "seo.home.description": "Personalized ESG & climate experiences your teams will remember. Science based workshops on carbon footprint, biodiversity, ocean & more. EN, FR, ES.",
+    "seo.contact.title": "Get in Touch for a Personalised Experience",
+    "seo.contact.description": "A question? Ready to engage your team in a personalized experience? Contact us & join the odyssey! Fast response in English, French & Spanish.",
+
     "contact.title": "It all starts with a conversation",
     "contact.subtitle": "A budding idea, a floating question, or a desire to create something different and tailor-made for your students or teams?",
     "contact.lastName": "Last name",
@@ -288,6 +298,11 @@ export const ui = {
     "nav.ngos": "Las ONGs",
     "nav.workshops": "Los talleres",
     "nav.cta": "Contacto",
+
+    "seo.home.title": "Team Building Sostenible y Talleres de Clima",
+    "seo.home.description": "Experiencias personalizadas de RSC y clima para tu equipo. Talleres científicos sobre huella de carbono, biodiversidad y océano. En EN, FR, ES.",
+    "seo.contact.title": "Contacta con Nosotros para una Experiencia Personalizada",
+    "seo.contact.description": "¿Una pregunta? ¿Listo para inspirar a tu equipo con una experiencia a medida? ¡Contáctanos y súmate a la odisea! Respuesta rápida en EN, ES, FR.",
 
     "contact.title": "Todo empieza con una conversación",
     "contact.subtitle": "¿Una idea en mente, una duda en el aire o las ganas de crear algo diferente y a medida para tus alumnos o equipos?",
