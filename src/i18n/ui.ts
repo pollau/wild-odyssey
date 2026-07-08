@@ -191,7 +191,7 @@ export const ui = {
     "nav.cta": "Contact me",
 
     "seo.home.title": "Sustainability Team Building & Climate Workshops",
-    "seo.home.description": "Personalized ESG & climate experiences your teams will remember. Science-based workshops on carbon footprint, biodiversity, ocean & more. EN, FR, ES.",
+    "seo.home.description": "Personalized ESG & climate experiences your teams will remember. Science based workshops on carbon footprint, biodiversity, ocean & more. EN, FR, ES.",
     "seo.contact.title": "Get in Touch for a Personalised Experience",
     "seo.contact.description": "A question? Ready to engage your team in a personalized experience? Contact us & join the odyssey! Fast response in English, French & Spanish.",
 
