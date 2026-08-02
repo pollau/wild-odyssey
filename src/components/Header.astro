@@ -30,6 +30,15 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
           <LanguagePicker alternates={alternates} />
         </div>
 
+        {lang === "fr" && (
+          <a
+            href="/universites"
+            class="text-[15px] lg:text-[16px] font-semibold text-black hover:text-[#f05600] transition-colors whitespace-nowrap"
+          >
+            {t(lang, "nav.university")}
+          </a>
+        )}
+
         <!-- CTA -->
         <a
           href={`${prefix}/contact`}
@@ -51,6 +60,11 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#d9d9d9] px-6 py-4 space-y-4">
     <LanguagePicker alternates={alternates} />
+    {lang === "fr" && (
+      <a href="/universites" class="block text-[16px] font-semibold text-black">
+        {t(lang, "nav.university")}
+      </a>
+    )}
 <a href={`${prefix}/contact`} class="block w-full bg-[#f05600] text-white text-center font-semibold py-3 rounded-[7px]">{t(lang, "nav.cta")}</a>
   </div>
 </header>
