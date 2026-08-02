@@ -39,7 +39,19 @@ const homepage = defineCollection({
     }),
 });
 
+const university = defineCollection({
+    type: 'data',
+    schema: z.object({
+        heroTitleBase_fr: z.string().optional(),
+        heroTitle_fr: z.string().optional(),
+        statsParticipants: z.string().optional(),
+        statsOrganizations: z.string().optional(),
+        statsYears: z.string().optional(),
+    }),
+});
+
 export const collections = {
     activities,
     homepage,
+    university,
 };

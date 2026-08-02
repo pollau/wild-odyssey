@@ -39,6 +39,18 @@ export default config({
                 contactEmail: fields.text({ label: 'Contact Email' }),
             },
         }),
+        university: singleton({
+            label: '🎓 Université',
+            path: 'src/content/university/index',
+            format: { data: 'json' },
+            schema: {
+                heroTitleBase_fr: fields.text({ label: 'Hero — début du titre, affiché en noir (FR)' }),
+                heroTitle_fr: fields.text({ label: 'Hero — fin du titre, affichée en orange (FR)' }),
+                statsParticipants: fields.text({ label: 'Stats — Participants', defaultValue: '+600.000' }),
+                statsOrganizations: fields.text({ label: 'Stats — Organisations', defaultValue: '+2.000' }),
+                statsYears: fields.text({ label: "Stats — Années d'expérience", defaultValue: '+5' }),
+            },
+        }),
     },
     collections: {
         activities: collection({
