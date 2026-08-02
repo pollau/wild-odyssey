@@ -20,6 +20,9 @@ pnpm-debug.log*
 # Azure Functions local secrets (SMTP credentials)
 api/local.settings.json
 
+# Ports du dev local, propres a chaque clone (voir scripts/dev-swa.ps1)
+dev-ports.json
+
 # macOS-specific files
 .DS_Store
 
