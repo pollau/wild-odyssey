@@ -33,6 +33,9 @@ jobs:
         run: npm run build
         env:
           PUBLIC_UMAMI_SITE_ID: ${{ github.ref == 'refs/heads/main' && secrets.UMAMI_SITE_ID_PROD || '' }}
+          # main => production (aucune pastille, indexable) ; toute PR => preview
+          # (pastille QA + noindex). Voir src/layouts/Layout.astro.
+          PUBLIC_ENV: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
 
       - name: Build And Deploy
         id: builddeploy
