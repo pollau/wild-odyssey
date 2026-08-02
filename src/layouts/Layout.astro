@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ComingSoonToast from "../components/ComingSoonToast.astro";
 import EnvBadge from "../components/EnvBadge.astro";
+import { basename } from "node:path";
 
 interface Props {
 	title: string;
@@ -23,7 +24,12 @@ const metaDescription =
 // la production : ne JAMAIS afficher de pastille sur le site public par defaut.
 const env = import.meta.env.DEV ? "local" : (import.meta.env.PUBLIC_ENV ?? "production");
 const isProd = env === "production";
-const titlePrefix = isProd ? "" : env === "local" ? "[LOCAL] " : "[QA] ";
+
+// En local on travaille souvent sur plusieurs clones en parallele (repo1,
+// repo2...) : le nom du dossier sert d'identifiant d'instance, pour savoir
+// d'un coup d'oeil quel onglet appartient a quel clone.
+const instance = env === "local" ? basename(process.cwd()) : "";
+const titlePrefix = isProd ? "" : env === "local" ? `[${instance}] ` : "[QA] ";
 
 const site = Astro.site ?? new URL("https://www.wildodyssey.org");
 const pathname = Astro.url.pathname;
@@ -66,6 +72,6 @@ const hreflangs = alternates
 		<slot />
 		<Footer />
 		<ComingSoonToast lang={Astro.currentLocale ?? "fr"} />
-		{!isProd && <EnvBadge env={env === "local" ? "local" : "preview"} />}
+		{!isProd && <EnvBadge env={env === "local" ? "local" : "preview"} instance={instance} />}
 	</body>
 </html>

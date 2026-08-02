@@ -6,11 +6,14 @@
 
 interface Props {
   env: "local" | "preview";
+  // Nom du dossier du clone en local (repo1, repo2...), pour distinguer
+  // plusieurs instances lancees en parallele. Vide hors local.
+  instance?: string;
 }
 
-const { env } = Astro.props;
+const { env, instance = "" } = Astro.props;
 const isLocal = env === "local";
-const label = isLocal ? "LOCAL" : "QA";
+const label = isLocal ? (instance ? `LOCAL · ${instance}` : "LOCAL") : "QA";
 // Couleurs volontairement hors charte (ni orange ni cyan Wild Odyssey) pour
 // qu'on ne confonde jamais cette pastille avec un element du site.
 const bg = isLocal ? "#0f766e" : "#7e22ce";
