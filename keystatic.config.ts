@@ -13,13 +13,13 @@ const useCloud =
 
 export default config({
     storage: useCloud
-        ? {
-              kind: 'cloud',
-              // Les branches creees depuis l'interface sont prefixees, et le
-              // selecteur de branches ne montre que celles-ci : Lionel ne voit
-              // pas nos branches techniques.
-              branchPrefix: 'keystatic/',
-          }
+        ? // Pas de branchPrefix : un prefixe filtrerait le selecteur de branches
+          // et empecherait de reprendre une branche existante (qa, une branche
+          // technique...). Sans lui, toutes les branches du repo sont
+          // selectionnables. Contrepartie : les branches creees depuis
+          // l'interface ne sont plus prefixees automatiquement, a nommer
+          // explicitement (ex. contenu-hero) pour rester lisibles.
+          { kind: 'cloud' }
         : { kind: 'local' },
     cloud: {
         project: 'wild-odyssey/wild-odyssey',

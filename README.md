@@ -260,19 +260,22 @@ aucun serveur requis.
 
 ```
 1. https://www.wildodyssey.org/keystatic → se connecter (Keystatic Cloud)
-2. Corriger le texte, Enregistrer
-3. `main` étant protégée, Keystatic impose de créer une branche : keystatic/...
-4. Ouvrir une PR vers main
+2. Choisir une branche dans le sélecteur en haut à gauche, ou « New branch… »
+3. Corriger le texte, Enregistrer (autant de fois que voulu, sur plusieurs sessions)
+4. « Create pull request » quand le lot est prêt
 5. Azure crée automatiquement un environnement de preview (URL dans la PR)
 6. Vérifier sur cette URL, puis merger la PR → prod
 ```
 
-Le `branchPrefix: 'keystatic/'` préfixe ses branches et filtre son sélecteur : il ne
-voit que les siennes. La **protection de branche sur `main`** est le garde-fou qui
-l'empêche techniquement d'écrire en prod.
+Le sélecteur liste **toutes** les branches du repo (pas de `branchPrefix`, qui
+filtrerait la liste et empêcherait de reprendre une branche existante). Corollaire :
+les nouvelles branches ne sont pas préfixées automatiquement, autant leur donner un
+nom parlant. La **protection de branche sur `main`** est le garde-fou qui empêche
+techniquement d'écrire en prod : Keystatic impose alors de créer une branche.
 
-**Prérequis côté comptes** : Lionel a besoin d'un compte GitHub avec accès en écriture
-au repo, et d'être membre du projet Keystatic Cloud `wild-odyssey/wild-odyssey`.
+**Prérequis côté comptes** : un compte GitHub avec **accès en écriture au repo**
+suffit (vérifié : pas d'invitation séparée à faire sur Keystatic Cloud). Sans le droit
+d'écriture, la lecture fonctionne mais l'enregistrement échoue avec un message peu clair.
 Les URLs autorisées à s'authentifier se déclarent dans les réglages du projet Cloud
 (prod + `127.0.0.1` via l'option « Allow local development »). Les URLs de preview
 étant dynamiques, l'édition se fait toujours depuis la prod ; les previews servent
