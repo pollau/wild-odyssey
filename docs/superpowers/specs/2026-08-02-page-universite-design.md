@@ -164,7 +164,11 @@ Non planifiées, notées pour que le design ne les bloque pas :
 - **EN/ES** : ajouter `src/pages/[lang]/universites.astro` sur le modèle de
   `[lang]/contact.astro`, dupliquer le bloc `uni.*` dans `en` et `es`, ajouter les
   champs `_en`/`_es` au singleton, activer `alternates`, et retirer la condition
-  `lang === 'fr'` du lien de header
+  `lang === 'fr'` du lien de header. Deux étapes supplémentaires sont nécessaires
+  à ce moment-là, sans quoi le header EN/ES resterait cassé : remplacer le `href`
+  du lien, actuellement le littéral en dur `/universites`, par `` `${prefix}/universites` ``
+  comme les liens voisins de `Header.astro` ; et ajouter `nav.university` aux
+  blocs `en` et `es` de `src/i18n/ui.ts`, où il n'existe aujourd'hui que côté `fr`
 - **catalogue par public** : ajouter un champ `audience` à la collection
   `activities` et filtrer par page
 - **factorisation** : si après stabilisation les deux pages restent structurellement
