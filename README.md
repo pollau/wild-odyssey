@@ -11,6 +11,22 @@ Site vitrine + agenda pour Wild Odyssey. Généré statiquement avec Astro, héb
 | [Keystatic](https://keystatic.com) | CMS headless — Lionel édite le contenu sans toucher au code |
 | [React](https://react.dev) | Composants interactifs (LanguagePicker) |
 | Azure Static Web Apps | Hébergement + preview environments automatiques sur PR |
+| Azure Functions (Node) | API managée `api/` : envoi des leads du formulaire de contact |
+| SMTP Infomaniak + nodemailer | Transport des emails (pas d'API email tierce) |
+
+---
+
+## Prérequis
+
+| Prérequis | Détail |
+|---|---|
+| **Node.js 20 ou 22** | ⚠️ **Node 23+ ne marche pas** avec les Azure Functions Core Tools (nécessaires pour `dev:swa`). Le site seul (`npm run dev`) tourne avec n'importe quelle version récente. |
+| **PowerShell** | Utilisé par `npm run dev:swa` (Windows). |
+| **Ne pas cloner dans OneDrive / Dropbox** | La synchro verrouille les fichiers et fait échouer les `git checkout` en plein milieu (« Deletion of directory failed »). Cloner par ex. dans `C:\Users\<toi>\perso\`. |
+
+**Node 23+ sans droits admin ?** Poser un Node 22 portable (zip de nodejs.org, aucun installeur) dans
+`%LOCALAPPDATA%\wild-odyssey-tools\node-v22.x-win-x64` : `scripts/dev-swa.ps1` le détecte et l'utilise
+**uniquement pour ce process**, sans toucher au Node global.
 
 ---
 
@@ -18,7 +34,13 @@ Site vitrine + agenda pour Wild Odyssey. Généré statiquement avec Astro, héb
 
 ```bash
 npm install
-npm run dev        # http://localhost:4321
+npm run dev        # site seul : http://localhost:4321
+```
+
+Pour travailler **sur le formulaire de contact**, il faut le site **et** l'API (voir section suivante) :
+
+```bash
+npm run dev:swa    # site + API : http://localhost:4280
 ```
 
 Si tu viens d'ajouter des événements (fichiers JSON dans `src/content/events/`), lance d'abord le scraping :
@@ -32,10 +54,59 @@ npm run dev
 
 | Commande | Action |
 |---|---|
-| `npm run dev` | Serveur dev avec HMR — contenu rechargé à chaud |
+| `npm run dev` | Site seul, HMR. `/api/*` n'existe pas → le formulaire affiche une erreur 500 (normal) |
+| `npm run dev:swa` | **Site + API** via l'émulateur Azure SWA, comme en prod. Ouvrir le port « site » |
 | `npm run scrape` | Scrape les nouvelles URLs d'événements (JSON-LD + fallback OG) |
 | `npm run build` | Build statique complet (inclut le scraping automatiquement) |
 | `npm run preview` | Prévisualisation du build statique local |
+
+---
+
+## Formulaire de contact (API locale)
+
+Le formulaire `/contact` poste sur `POST /api/contact`, une Azure Function (`api/src/functions/contact.js`)
+qui valide les champs puis envoie le lead **par SMTP Infomaniak** (`mail.infomaniak.com:587`, nodemailer)
+vers `CONTACT_TO`, avec le `Reply-To` sur l'email du prospect.
+
+### Setup local (une fois)
+
+```bash
+npm install                 # racine
+npm install --prefix api    # dépendances de la Function
+cp api/local.settings.json.example api/local.settings.json
+```
+
+Puis remplir `api/local.settings.json` (**gitignoré, ne jamais le committer**) :
+
+| Variable | Valeur |
+|---|---|
+| `SMTP_USER` | `form@wildodyssey.org` (boîte dédiée chez Infomaniak) |
+| `SMTP_PASS` | **mot de passe d'application** Infomaniak de cette boîte (pas le mot de passe principal) |
+| `CONTACT_TO` | destinataire des leads. En test, mettre son propre email |
+| `SMTP_DEBUG` | `true` pour logger tout le dialogue SMTP. **Jamais en production** (l'AUTH y apparaît en base64 déchiffrable) |
+
+> Créer la boîte et son mot de passe d'application se fait dans le Manager Infomaniak :
+> Service Mail → adresse → « Ajouter un appareil » / mots de passe d'application. Le mot de passe
+> n'est affiché **qu'une fois**.
+
+### En production
+Les mêmes variables sont définies dans le portail Azure : Static Web App → **Environment variables**,
+**par environnement** (Production et chaque preview de PR ont leur propre jeu).
+
+### Plusieurs clones en parallèle
+Les ports de `dev:swa` sont configurables (sinon deux clones se disputent 4280/4321/7071).
+Priorité : variable d'environnement > `dev-ports.json` (gitignoré, propre au clone) > défaut.
+
+```json
+// dev-ports.json à la racine du 2e clone
+{ "devPort": 4322, "swaPort": 4281, "apiPort": 7072 }
+```
+
+| Port | Rôle | Défaut |
+|---|---|---|
+| `swaPort` | **l'URL à ouvrir** (émulateur SWA : site + API) | 4280 |
+| `devPort` | serveur Astro derrière l'émulateur | 4321 |
+| `apiPort` | runtime Azure Functions | 7071 |
 
 ---
 
@@ -49,6 +120,8 @@ src/
 │   ├── Header.astro          # Navbar fixe avec language picker
 │   ├── Footer.astro          # CTA + liens + copyright
 │   ├── LanguagePicker.astro  # Sélecteur de langue (fr/en/es)
+│   ├── ContactForm.astro     # Formulaire de contact + script client (POST /api/contact)
+│   ├── OrganizationSchema.astro # JSON-LD Organization (SEO, sur la homepage)
 │   └── pages/
 │       └── HomePage.astro    # Sections de la homepage (hero, stats, thèmes, ateliers…)
 ├── content/
@@ -63,17 +136,27 @@ src/
 ├── pages/
 │   ├── index.astro           # Homepage FR (/)
 │   ├── [lang]/index.astro    # Homepage EN/ES (/en, /es)
+│   ├── contact.astro         # Formulaire FR (/contact)
+│   ├── [lang]/contact.astro  # Formulaire EN/ES (/en/contact, /es/contact)
 │   ├── evenements.astro      # Agenda public (/evenements)
 │   ├── activities/           # Catalogue ateliers
 │   └── keystatic/            # Interface CMS (local dev uniquement)
 └── styles/
     └── global.css            # Variables CSS + reset Tailwind
+api/                          # Azure Functions (API managée SWA)
+├── src/functions/contact.js  # POST /api/contact → envoi SMTP du lead
+├── host.json                 # Config runtime Functions
+└── local.settings.json       # Secrets SMTP en local (GITIGNORÉ)
 scripts/
-└── scrape-events.mjs         # Script de scraping JSON-LD des événements
+├── scrape-events.mjs         # Script de scraping JSON-LD des événements
+└── dev-swa.ps1               # Lance l'émulateur SWA (Node 22 + ports configurables)
 public/
 └── assets/
     ├── figma/                # Assets exportés depuis Figma (logos, photos, bg)
-    └── images/               # Images uploadées via Keystatic
+    └── images/
+        ├── activities/       # Photos des thématiques
+        ├── brand/            # Logo, wordmark, favicons
+        └── contact/          # Visuel de confirmation du formulaire
 ```
 
 ### i18n
@@ -141,12 +224,16 @@ Lionel colle juste l'URL d'un événement Eventbrite/BilletWeb/Meetup dans Keyst
 | Staging | `staging` | URL fixe Azure SWA (voir Azure Portal) |
 | PR previews | toute PR → `main` | URL auto générée par Azure SWA |
 
+> Les variables d'environnement (dont les secrets SMTP) se configurent **par environnement** dans le
+> portail Azure : un nouvel environnement de preview démarre sans elles, et le formulaire y renverra
+> une 500 tant qu'elles ne sont pas saisies.
+
 ### GitHub Actions
 
 Le workflow `.github/workflows/azure-static-web-apps-*.yml` :
 - Déclenché sur push `main` et `staging`, et sur toutes les PRs
 - Lance `npm run build` (qui inclut `npm run scrape`)
-- Déploie le dossier `dist/` sur Azure SWA
+- Déploie le dossier `dist/` (site) et le dossier `api/` (Functions) sur Azure SWA
 
 ### Keystatic CMS en prod
 
@@ -156,15 +243,19 @@ Keystatic Cloud utilise l'API GitHub pour committer directement — aucun serveu
 
 ## Ce qui est implémenté
 
-- [x] Homepage avec sections hero, stats, thèmes, ateliers, CTA
-- [x] i18n fr/en/es sur la homepage
+- [x] Homepage avec sections hero, 6 thématiques, formats, stats, 6 raisons, CTA
+- [x] i18n fr/en/es sur la homepage et la page contact
+- [x] **Formulaire de contact** (`/contact`, fr/en/es) → Azure Function + SMTP Infomaniak
+      (honeypot anti-spam, rate limit 5/min/IP, plafonds de longueur, Reply-To sur le prospect)
 - [x] Catalogue ateliers (`/activities`)
 - [x] Page agenda avec scraping automatique JSON-LD (`/evenements`)
-- [x] Header responsive (desktop + mobile burger)
-- [x] Footer avec CTA email
-- [x] Sitemap automatique (`/sitemap-index.xml`, `/sitemap-0.xml`)
-- [x] `robots.txt` avec Disallow keystatic
+- [x] Header responsive (desktop + mobile burger) avec logo et wordmark
+- [x] **SEO** : titres + meta descriptions par page et par langue, `canonical`, `hreflang`
+      (fr/en/es + x-default), JSON-LD Organization, sitemap, `robots.txt`
 - [x] Keystatic CMS pour ateliers, homepage, et événements
-- [ ] Analytics (Umami — prévu)
-- [ ] Pages `/ongs` et `/workshops` (navigation présente, pages vides)
+- [ ] Open Graph / Twitter cards + image de partage (aperçu nu au partage LinkedIn/WhatsApp)
+- [ ] Favicon définitif (encore un emoji pingouin placeholder → Google affiche un globe générique)
+- [ ] Analytics (Umami — variable `PUBLIC_UMAMI_SITE_ID` déjà câblée, site ID à fournir)
+- [ ] Pages `/ongs` et `/workshops` (clés de nav présentes, pages inexistantes)
+- [ ] Nettoyage des pages orphelines (`/about`, `/entreprises`, `/scolaire`…, non liées)
 - [ ] i18n événements/ateliers
