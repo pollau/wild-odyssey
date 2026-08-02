@@ -204,12 +204,12 @@ Lionel colle juste l'URL d'un événement Eventbrite/BilletWeb/Meetup dans Keyst
 ### Workflow Lionel (content manager)
 
 ```
-1. Keystatic Cloud → créer un événement (URL + published: false)
-2. Commit sur une branche → ouvrir une PR vers main
+1. Keystatic Cloud → créer un événement (slug + URL)
+2. Commit sur branche `staging`
 3. GitHub Actions: npm run build (inclut le scraping)
-4. Azure SWA déploie un environnement de preview (URL dans la PR)
-5. Lionel vérifie /evenements → passe published: true si OK
-6. Merge de la PR → déploiement en prod
+4. Azure SWA déploie sur l'env staging (URL fixe pour QA)
+5. Lionel vérifie /evenements → active published: true si OK
+6. PR staging → main → merge → prod
 ```
 
 ---
@@ -218,20 +218,20 @@ Lionel colle juste l'URL d'un événement Eventbrite/BilletWeb/Meetup dans Keyst
 
 ### Environnements Azure SWA
 
-| Environnement | Déclencheur | URL |
+| Environnement | Branche | URL |
 |---|---|---|
-| Production | push sur `main` | https://www.wildodyssey.org |
-| PR preview | toute PR vers `main` | URL auto générée par Azure SWA, détruite à la fermeture de la PR |
+| Production | `main` | https://www.wildodyssey.org |
+| Staging | `staging` | URL fixe Azure SWA (voir Azure Portal) |
+| PR previews | toute PR → `main` | URL auto générée par Azure SWA |
 
-> Il n'y a **pas** d'environnement de staging permanent : seul `main` déploie en prod, et chaque PR
-> obtient un environnement de preview éphémère. Les variables d'environnement (dont les secrets SMTP)
-> se configurent **par environnement** dans le portail Azure : un nouvel environnement de preview
-> démarre donc sans elles, et le formulaire y renverra une 500 tant qu'elles ne sont pas saisies.
+> Les variables d'environnement (dont les secrets SMTP) se configurent **par environnement** dans le
+> portail Azure : un nouvel environnement de preview démarre sans elles, et le formulaire y renverra
+> une 500 tant qu'elles ne sont pas saisies.
 
 ### GitHub Actions
 
 Le workflow `.github/workflows/azure-static-web-apps-*.yml` :
-- Déclenché sur push `main` et sur les PRs vers `main`
+- Déclenché sur push `main` et `staging`, et sur toutes les PRs
 - Lance `npm run build` (qui inclut `npm run scrape`)
 - Déploie le dossier `dist/` (site) et le dossier `api/` (Functions) sur Azure SWA
 
