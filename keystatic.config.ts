@@ -47,9 +47,15 @@ export default config({
             path: 'src/content/homepage/index',
             format: { data: 'json' },
             schema: {
-                heroTitle_fr: fields.text({ label: 'Hero Title (FR)' }),
-                heroTitle_en: fields.text({ label: 'Hero Title (EN)' }),
-                heroTitle_es: fields.text({ label: 'Hero Title (ES)' }),
+                // Le hero affiche heroTitleBase (en noir) puis heroTitle (en orange).
+                // Tout champ present dans le JSON doit etre declare ici, sinon
+                // Keystatic refuse d'ouvrir la page ("Key ... is not allowed").
+                heroTitleBase_fr: fields.text({ label: 'Hero — accroche noire (FR)' }),
+                heroTitle_fr: fields.text({ label: 'Hero — titre orange (FR)' }),
+                heroTitleBase_en: fields.text({ label: 'Hero — accroche noire (EN)' }),
+                heroTitle_en: fields.text({ label: 'Hero — titre orange (EN)' }),
+                heroTitleBase_es: fields.text({ label: 'Hero — accroche noire (ES)' }),
+                heroTitle_es: fields.text({ label: 'Hero — titre orange (ES)' }),
                 statsParticipants: fields.text({ label: 'Stats — Participants', defaultValue: '+600.000' }),
                 statsOrganizations: fields.text({ label: 'Stats — Organizations', defaultValue: '+2.000' }),
                 statsYears: fields.text({ label: 'Stats — Years of experience', defaultValue: '+5' }),
@@ -64,12 +70,17 @@ export default config({
             path: 'src/content/activities/*',
             format: { data: 'json' },
             schema: {
+                // Ordre d'affichage des cartes sur la homepage (croissant).
+                order: fields.number({ label: "Ordre d'affichage" }),
                 title: fields.slug({ name: { label: 'Name' } }),
                 subtitle: fields.text({ label: 'Subtitle (tagline)' }),
                 description: fields.text({ label: 'Description (EN)', multiline: true }),
                 title_fr: fields.text({ label: 'Name (FR)' }),
+                subtitle_fr: fields.text({ label: 'Sous-titre (FR)' }),
                 description_fr: fields.text({ label: 'Description (FR)', multiline: true }),
+                subtitle_en: fields.text({ label: 'Sous-titre (EN)' }),
                 title_es: fields.text({ label: 'Name (ES)' }),
+                subtitle_es: fields.text({ label: 'Sous-titre (ES)' }),
                 description_es: fields.text({ label: 'Description (ES)', multiline: true }),
                 duration: fields.text({ label: 'Duration (e.g. "From 2h")' }),
                 participants: fields.text({ label: 'Group size (e.g. "14–30 people")' }),
@@ -93,6 +104,18 @@ export default config({
                         { label: 'Tailor-made', value: 'tailor-made' },
                     ],
                     defaultValue: 'desirable-futures',
+                }),
+                // Cadrage de la photo dans la carte. Defaut "bottom" pour coller
+                // au repli du composant (object-position) et ne rien changer aux
+                // cartes qui n'ont pas ce champ aujourd'hui.
+                imagePosition: fields.select({
+                    label: 'Cadrage de la photo',
+                    options: [
+                        { label: 'Haut', value: 'top' },
+                        { label: 'Centre', value: 'center' },
+                        { label: 'Bas', value: 'bottom' },
+                    ],
+                    defaultValue: 'bottom',
                 }),
                 image: fields.image({
                     label: 'Cover image',
