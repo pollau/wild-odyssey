@@ -1,8 +1,25 @@
 import { config, fields, collection, singleton } from '@keystatic/core';
 
+// Stockage :
+//  - prod  : cloud (Keystatic Cloud gere l'auth, les modifs partent en commits
+//            GitHub depuis le navigateur, aucun serveur requis)
+//  - local : fichiers du disque par defaut, pratique pour iterer vite.
+//            PUBLIC_KEYSTATIC_STORAGE=cloud (npm run dev:cms) force le mode
+//            cloud en local pour tester exactement le parcours de Lionel.
+//            Keystatic Cloud n'autorise cette auth locale que depuis
+//            http://127.0.0.1 (option "Allow local development" du projet).
+const useCloud =
+    import.meta.env.PROD || import.meta.env.PUBLIC_KEYSTATIC_STORAGE === 'cloud';
+
 export default config({
-    storage: import.meta.env.PROD
-        ? { kind: 'cloud' }
+    storage: useCloud
+        ? {
+              kind: 'cloud',
+              // Les branches creees depuis l'interface sont prefixees, et le
+              // selecteur de branches ne montre que celles-ci : Lionel ne voit
+              // pas nos branches techniques.
+              branchPrefix: 'keystatic/',
+          }
         : { kind: 'local' },
     cloud: {
         project: 'wild-odyssey/wild-odyssey',

@@ -235,9 +235,48 @@ Le workflow `.github/workflows/azure-static-web-apps-*.yml` :
 - Lance `npm run build` (qui inclut `npm run scrape`)
 - Déploie le dossier `dist/` (site) et le dossier `api/` (Functions) sur Azure SWA
 
-### Keystatic CMS en prod
+### Keystatic CMS
 
-Keystatic Cloud utilise l'API GitHub pour committer directement — aucun serveur requis. L'intégration `keystatic()` dans `astro.config.mjs` est désactivée en prod (`process.env.NODE_ENV !== 'development'`) car inutile avec le build statique.
+Le CMS permet à Lionel de modifier le contenu sans toucher au code, depuis
+**https://www.wildodyssey.org/keystatic**.
+
+**Pourquoi c'est monté ainsi.** L'intégration `keystatic()` injecte des routes
+`prerender: false`, incompatibles avec un build statique. Elle n'est donc activée
+**qu'en dev** (`astro.config.mjs`, via `NODE_ENV`). En prod, l'admin est une page
+pré-rendue (`src/pages/keystatic/`) qui charge l'UI React côté navigateur ; le
+rewrite `/keystatic/*` de `staticwebapp.config.json` assure la navigation interne.
+En mode cloud, le navigateur parle directement à Keystatic Cloud et à l'API GitHub :
+aucun serveur requis.
+
+**Stockage** (`keystatic.config.ts`) :
+
+| Contexte | Mode | Effet |
+|---|---|---|
+| `npm run dev` | `local` | écrit directement dans les fichiers du repo |
+| `npm run dev:cms` | `cloud` | teste le vrai parcours de Lionel depuis `127.0.0.1` |
+| Production | `cloud` | commits GitHub via Keystatic Cloud |
+
+**Workflow de Lionel** (une faute de frappe à corriger) :
+
+```
+1. https://www.wildodyssey.org/keystatic → se connecter (Keystatic Cloud)
+2. Corriger le texte, Enregistrer
+3. `main` étant protégée, Keystatic impose de créer une branche : keystatic/...
+4. Ouvrir une PR vers main
+5. Azure crée automatiquement un environnement de preview (URL dans la PR)
+6. Vérifier sur cette URL, puis merger la PR → prod
+```
+
+Le `branchPrefix: 'keystatic/'` préfixe ses branches et filtre son sélecteur : il ne
+voit que les siennes. La **protection de branche sur `main`** est le garde-fou qui
+l'empêche techniquement d'écrire en prod.
+
+**Prérequis côté comptes** : Lionel a besoin d'un compte GitHub avec accès en écriture
+au repo, et d'être membre du projet Keystatic Cloud `wild-odyssey/wild-odyssey`.
+Les URLs autorisées à s'authentifier se déclarent dans les réglages du projet Cloud
+(prod + `127.0.0.1` via l'option « Allow local development »). Les URLs de preview
+étant dynamiques, l'édition se fait toujours depuis la prod ; les previews servent
+uniquement à relire le résultat.
 
 ---
 
