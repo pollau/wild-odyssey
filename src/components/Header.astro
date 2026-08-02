@@ -2,6 +2,12 @@
 import LanguagePicker from "./LanguagePicker.astro";
 import { t } from "../i18n/ui";
 
+interface Props {
+  alternates?: boolean;
+}
+
+const { alternates = false } = Astro.props;
+
 const lang = Astro.currentLocale || "fr";
 const prefix = lang === "fr" ? "" : `/${lang}`;
 ---
@@ -21,7 +27,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
 
         <!-- Language picker -->
         <div class="border border-[#f05600] rounded-full px-3 py-1.5 bg-[rgba(240,86,0,0.15)] flex items-center gap-2">
-          <LanguagePicker />
+          <LanguagePicker alternates={alternates} />
         </div>
 
         <!-- CTA -->
@@ -44,7 +50,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
 
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#d9d9d9] px-6 py-4 space-y-4">
-    <LanguagePicker />
+    <LanguagePicker alternates={alternates} />
 <a href={`${prefix}/contact`} class="block w-full bg-[#f05600] text-white text-center font-semibold py-3 rounded-[7px]">{t(lang, "nav.cta")}</a>
   </div>
 </header>
