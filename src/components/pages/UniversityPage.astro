@@ -21,9 +21,9 @@ const workshops = (await getCollection("activities"))
 // brancher EN/ES ne demandera que d'ajouter les champs au singleton.
 const heroTitle = tc(university, "heroTitle", lang);
 const heroTitleBase = tc(university, "heroTitleBase", lang);
-const statsParticipants = university.statsParticipants ?? "+600.000";
-const statsOrganizations = university.statsOrganizations ?? "+2.000";
-const statsYears = university.statsYears ?? "+5";
+const statsParticipants = university.statsParticipants || "+600.000";
+const statsOrganizations = university.statsOrganizations || "+2.000";
+const statsYears = university.statsYears || "+5";
 
 const features = [
   { icon: "/assets/figma/icon-clock.svg", label: t(lang, "uni.formats.feat1") },
