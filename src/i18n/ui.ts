@@ -2,6 +2,14 @@
 // par Keystatic : elles ne sont plus ecrites ici, seulement referencees, afin
 // qu il n existe jamais deux sources pour un meme texte.
 import statsUi from "../content/ui/stats.json";
+import workshopsUi from "../content/ui/workshops.json";
+
+// Keystatic omet les champs vides quand il ecrit un JSON : une cle absente
+// signifie donc 'pas de texte', pas 'cle inconnue'. On lit toujours via txt()
+// pour que ce cas rende une chaine vide au lieu de undefined.
+const txt = (o: unknown, k: string): string =>
+  (o as Record<string, string>)[k] ?? '';
+
 
 export const ui = {
   fr: {
@@ -11,13 +19,13 @@ export const ui = {
     "hero.tagline": "Nous avons la carte, vous choisissez le cap !",
     "hero.cta": "Explorer l'horizon",
 
-    "workshops.badge": "Nos thématiques",
+    "workshops.badge": txt(workshopsUi, "badge_fr"),
     "workshops.heading1": "Une méthodologie commune,",
     "workshops.heading2": "des thématiques au choix.",
-    "workshops.body1": "Climat, océan, biodiversité, empreinte carbone : quatre territoires vastes, interconnectés, parfois intimidants. Nos ateliers systémiques sont votre boussole pour les explorer. Chaque expérience révèle les liens invisibles entre ces écosystèmes, éveille la curiosité et transforme la complexité en émerveillement partagé.",
-    "workshops.body2": "Chaque format est aligné avec les ODD de l'ONU.",
-    "workshops.body3": "",
-    "workshops.learnMore": "En savoir plus",
+    "workshops.body1": txt(workshopsUi, "body1_fr"),
+    "workshops.body2": txt(workshopsUi, "body2_fr"),
+    "workshops.body3": txt(workshopsUi, "body3_fr"),
+    "workshops.learnMore": txt(workshopsUi, "learnMore_fr"),
 
     "formats.heading1": "Ateliers, Masterclasses, Marche Océane",
     "formats.heading2": "Sur Mesure",
@@ -35,13 +43,13 @@ export const ui = {
     "formats.oceanWalkDesc": "Cette marche guidée de 5,5 km simule l'ascension de la Fosse des Mariannes à la surface. Chaque mètre nous permet de découvrir les couches de l'océan, de rencontrer ses créatures incroyables et de partager les histoires insoupçonnées des profondeurs.",
     "formats.seeAll": "Voir tous les ateliers",
 
-    "badge.science": statsUi.badgeScience_fr,
+    "badge.science": txt(statsUi, "badgeScience_fr"),
     "stats.heading2": "Méthodologies",
     "stats.heading3": "reconnues par les équipes les plus",
     "stats.heading4": "ambitieuses",
-    "stats.participants": statsUi.participants_fr,
-    "stats.organizations": statsUi.organizations_fr,
-    "stats.years": statsUi.years_fr,
+    "stats.participants": txt(statsUi, "participants_fr"),
+    "stats.organizations": txt(statsUi, "organizations_fr"),
+    "stats.years": txt(statsUi, "years_fr"),
     "reasons.heading1": "1 expérience de team-building :",
     "reasons.heading2": "6 bonnes raisons",
     "reasons.heading3": "de monter à bord.",
@@ -108,12 +116,13 @@ export const ui = {
     "hero.tagline": "We've got the map. You choose the course.",
     "hero.cta": "Ready for the Odyssey",
 
-    "workshops.badge": "Our themes",
+    "workshops.badge": txt(workshopsUi, "badge_en"),
     "workshops.heading1": "A common methodology,",
     "workshops.heading2": "themes to explore",
-    "workshops.body1": "Most sustainability topics feel abstract, distant, or just plain heavy. Our science-based, systemic workshops make them visceral, clear, and energising from the first card to the last conversation.",
-    "workshops.body2": "Each experience is aligned with the UN Sustainable Development Goals, turning individual understanding into collective action.",
-    "workshops.learnMore": "Learn more",
+    "workshops.body1": txt(workshopsUi, "body1_en"),
+    "workshops.body2": txt(workshopsUi, "body2_en"),
+    "workshops.body3": txt(workshopsUi, "body3_en"),
+    "workshops.learnMore": txt(workshopsUi, "learnMore_en"),
 
     "formats.heading1": "Workshop · Masterclasses · Ocean walk",
     "formats.heading2": "Custom",
@@ -131,13 +140,13 @@ export const ui = {
     "formats.oceanWalkDesc": "This 5.5 km guided walk simulates the ascent from the Mariana Trench to the surface. Each metre reveals a new layer of the ocean, introduces incredible creatures, and shares the untold stories of the deep.",
     "formats.seeAll": "See all workshops",
 
-    "badge.science": statsUi.badgeScience_en,
+    "badge.science": txt(statsUi, "badgeScience_en"),
     "stats.heading2": "Methodologies",
     "stats.heading3": "trusted by the world's most",
     "stats.heading4": "ambitious",
-    "stats.participants": statsUi.participants_en,
-    "stats.organizations": statsUi.organizations_en,
-    "stats.years": statsUi.years_en,
+    "stats.participants": txt(statsUi, "participants_en"),
+    "stats.organizations": txt(statsUi, "organizations_en"),
+    "stats.years": txt(statsUi, "years_en"),
     "reasons.heading1": "1 team building experience:",
     "reasons.heading2": "6 good reasons",
     "reasons.heading3": "to come aboard.",
@@ -204,12 +213,13 @@ export const ui = {
     "hero.tagline": "Tenemos el mapa. Ustedes eligen el rumbo.",
     "hero.cta": "Subir a bordo",
 
-    "workshops.badge": "Nuestras temáticas",
+    "workshops.badge": txt(workshopsUi, "badge_es"),
     "workshops.heading1": "Una metodología común,",
     "workshops.heading2": "temáticas a elegir",
-    "workshops.body1": "La mayoría de los temas de sostenibilidad parecen abstractos, lejanos o simplemente pesados. Nuestros talleres científicos los hacen concretos, sorprendentes y con ganas de actuar.",
-    "workshops.body2": "Cada experiencia está alineada con los Objetivos de Desarrollo Sostenible de la ONU, convirtiendo la comprensión individual en acción colectiva.",
-    "workshops.learnMore": "Más información",
+    "workshops.body1": txt(workshopsUi, "body1_es"),
+    "workshops.body2": txt(workshopsUi, "body2_es"),
+    "workshops.body3": txt(workshopsUi, "body3_es"),
+    "workshops.learnMore": txt(workshopsUi, "learnMore_es"),
 
     "formats.heading1": "Workshop · Masterclasses · Marcha Oceánica",
     "formats.heading2": "Personalizado",
@@ -227,13 +237,13 @@ export const ui = {
     "formats.oceanWalkDesc": "Esta caminata guiada de 5,5 km simula el ascenso desde la Fosa de las Marianas hasta la superficie. Cada metro nos permite descubrir las capas del océano, conocer sus criaturas increíbles y compartir las historias insospechadas de las profundidades.",
     "formats.seeAll": "Ver todos los talleres",
 
-    "badge.science": statsUi.badgeScience_es,
+    "badge.science": txt(statsUi, "badgeScience_es"),
     "stats.heading2": "Metodologías",
     "stats.heading3": "en las que confían los equipos más",
     "stats.heading4": "ambiciosos",
-    "stats.participants": statsUi.participants_es,
-    "stats.organizations": statsUi.organizations_es,
-    "stats.years": statsUi.years_es,
+    "stats.participants": txt(statsUi, "participants_es"),
+    "stats.organizations": txt(statsUi, "organizations_es"),
+    "stats.years": txt(statsUi, "years_es"),
     "reasons.heading1": "1 experiencia de team building:",
     "reasons.heading2": "6 buenas razones",
     "reasons.heading3": "para subir a bordo.",

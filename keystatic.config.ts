@@ -64,6 +64,30 @@ export default config({
                 years_es: fields.text({ label: "Libelle Annees d'experience (ES)" }),
             },
         }),
+        // Section "Nos thematiques" de l'accueil : le texte simple seulement.
+        // Les deux moities du titre colore restent dans ui.ts pour l'instant.
+        workshopsSection: singleton({
+            label: 'Accueil — Thematiques',
+            path: 'src/content/ui/workshops',
+            format: { data: 'json' },
+            schema: {
+                badge_fr: fields.text({ label: 'Badge (FR)' }),
+                badge_en: fields.text({ label: 'Badge (EN)' }),
+                badge_es: fields.text({ label: 'Badge (ES)' }),
+                body1_fr: fields.text({ label: 'Paragraphe 1 (FR)', multiline: true }),
+                body1_en: fields.text({ label: 'Paragraphe 1 (EN)', multiline: true }),
+                body1_es: fields.text({ label: 'Paragraphe 1 (ES)', multiline: true }),
+                body2_fr: fields.text({ label: 'Paragraphe 2 (FR)', multiline: true }),
+                body2_en: fields.text({ label: 'Paragraphe 2 (EN)', multiline: true }),
+                body2_es: fields.text({ label: 'Paragraphe 2 (ES)', multiline: true }),
+                body3_fr: fields.text({ label: 'Paragraphe 3 (FR) — optionnel, masque si vide', multiline: true }),
+                body3_en: fields.text({ label: 'Paragraphe 3 (EN) — optionnel, masque si vide', multiline: true }),
+                body3_es: fields.text({ label: 'Paragraphe 3 (ES) — optionnel, masque si vide', multiline: true }),
+                learnMore_fr: fields.text({ label: 'Bouton des cartes (FR)' }),
+                learnMore_en: fields.text({ label: 'Bouton des cartes (EN)' }),
+                learnMore_es: fields.text({ label: 'Bouton des cartes (ES)' }),
+            },
+        }),
         homepage: singleton({
             label: 'Homepage',
             path: 'src/content/homepage/index',
