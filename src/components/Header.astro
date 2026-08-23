@@ -19,6 +19,10 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
       <!-- Desktop nav -->
       <nav class="hidden md:flex items-center gap-8 lg:gap-10">
 
+        <a href="/evenements" class="text-[15px] lg:text-[16px] font-medium text-black hover:text-[#f05600] transition-colors whitespace-nowrap">
+          {t(lang, "nav.events")}
+        </a>
+
         <!-- Language picker -->
         <div class="border border-[#f05600] rounded-full px-3 py-1.5 bg-[rgba(240,86,0,0.15)] flex items-center gap-2">
           <LanguagePicker />
@@ -45,7 +49,8 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#d9d9d9] px-6 py-4 space-y-4">
     <LanguagePicker />
-<a href={`${prefix}/contact`} class="block w-full bg-[#f05600] text-white text-center font-semibold py-3 rounded-[7px]">{t(lang, "nav.cta")}</a>
+    <a href="/evenements" class="block text-[16px] font-medium text-black py-1">{t(lang, "nav.events")}</a>
+    <a href={`${prefix}/contact`} class="block w-full bg-[#f05600] text-white text-center font-semibold py-3 rounded-[7px]">{t(lang, "nav.cta")}</a>
   </div>
 </header>
 
