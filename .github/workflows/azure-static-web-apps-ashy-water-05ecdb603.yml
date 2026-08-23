@@ -3,7 +3,9 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
+      # main => production ; qa => environnement nomme permanent (URL stable)
       - main
+      - qa
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
@@ -50,6 +52,11 @@ jobs:
           api_location: "api" # Azure Functions (contact form email)
           output_location: "" # Built app content directory - optional
           skip_app_build: true
+          # Seul main deploie en production. La branche qa alimente un
+          # environnement nomme "qa" a URL stable (a declarer une fois dans
+          # Keystatic Cloud) ; les PR gardent leurs previews ephemeres.
+          production_branch: "main"
+          deployment_environment: ${{ github.ref == 'refs/heads/qa' && 'qa' || '' }}
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
