@@ -19,7 +19,12 @@ const workshops = (await getCollection("activities"))
   .sort((a, b) => ((a.data.order ?? 99) - (b.data.order ?? 99)));
 
 const heroTitle = tc(homepage, "heroTitle", lang);
-const heroTitleBase = tc(homepage, "heroTitleBase", lang);
+// Accroche optionnelle au-dessus du titre : lue uniquement dans la langue
+// courante, SANS repli sur l'anglais. Keystatic omet les champs vides du
+// JSON, donc "cle absente" veut dire "pas d'accroche dans cette langue" et
+// non "pas encore traduit" : un repli afficherait le texte anglais sur les
+// pages FR et ES.
+const heroTitleBase = homepage[`heroTitleBase_${lang}` as keyof typeof homepage] ?? "";
 const statsParticipants = homepage.statsParticipants ?? "+600.000";
 const statsOrganizations = homepage.statsOrganizations ?? "+2.000";
 const statsYears = homepage.statsYears ?? "+5";
