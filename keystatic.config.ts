@@ -42,6 +42,28 @@ export default config({
                 ),
             },
         }),
+        // Section "Chiffres" de l'accueil. Les libelles vivent dans
+        // src/content/ui/stats.json ; ui.ts ne fait que les referencer, il n'y a
+        // donc jamais deux sources pour un meme texte.
+        statsSection: singleton({
+            label: 'Accueil — Chiffres',
+            path: 'src/content/ui/stats',
+            format: { data: 'json' },
+            schema: {
+                badgeScience_fr: fields.text({ label: 'Badge (FR) — affiche aussi au-dessus des 6 raisons' }),
+                badgeScience_en: fields.text({ label: 'Badge (EN)' }),
+                badgeScience_es: fields.text({ label: 'Badge (ES)' }),
+                participants_fr: fields.text({ label: 'Libelle Participants (FR)' }),
+                participants_en: fields.text({ label: 'Libelle Participants (EN)' }),
+                participants_es: fields.text({ label: 'Libelle Participants (ES)' }),
+                organizations_fr: fields.text({ label: 'Libelle Organisations (FR)' }),
+                organizations_en: fields.text({ label: 'Libelle Organisations (EN)' }),
+                organizations_es: fields.text({ label: 'Libelle Organisations (ES)' }),
+                years_fr: fields.text({ label: "Libelle Annees d'experience (FR)" }),
+                years_en: fields.text({ label: "Libelle Annees d'experience (EN)" }),
+                years_es: fields.text({ label: "Libelle Annees d'experience (ES)" }),
+            },
+        }),
         homepage: singleton({
             label: 'Homepage',
             path: 'src/content/homepage/index',
