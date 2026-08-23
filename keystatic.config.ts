@@ -42,6 +42,52 @@ export default config({
                 ),
             },
         }),
+        // Section "Chiffres" de l'accueil. Les libelles vivent dans
+        // src/content/ui/stats.json ; ui.ts ne fait que les referencer, il n'y a
+        // donc jamais deux sources pour un meme texte.
+        statsSection: singleton({
+            label: 'Accueil — Chiffres',
+            path: 'src/content/ui/stats',
+            format: { data: 'json' },
+            schema: {
+                badgeScience_fr: fields.text({ label: 'Badge (FR) — affiche aussi au-dessus des 6 raisons' }),
+                badgeScience_en: fields.text({ label: 'Badge (EN)' }),
+                badgeScience_es: fields.text({ label: 'Badge (ES)' }),
+                participants_fr: fields.text({ label: 'Libelle Participants (FR)' }),
+                participants_en: fields.text({ label: 'Libelle Participants (EN)' }),
+                participants_es: fields.text({ label: 'Libelle Participants (ES)' }),
+                organizations_fr: fields.text({ label: 'Libelle Organisations (FR)' }),
+                organizations_en: fields.text({ label: 'Libelle Organisations (EN)' }),
+                organizations_es: fields.text({ label: 'Libelle Organisations (ES)' }),
+                years_fr: fields.text({ label: "Libelle Annees d'experience (FR)" }),
+                years_en: fields.text({ label: "Libelle Annees d'experience (EN)" }),
+                years_es: fields.text({ label: "Libelle Annees d'experience (ES)" }),
+            },
+        }),
+        // Section "Nos thematiques" de l'accueil : le texte simple seulement.
+        // Les deux moities du titre colore restent dans ui.ts pour l'instant.
+        workshopsSection: singleton({
+            label: 'Accueil — Thematiques',
+            path: 'src/content/ui/workshops',
+            format: { data: 'json' },
+            schema: {
+                badge_fr: fields.text({ label: 'Badge (FR)' }),
+                badge_en: fields.text({ label: 'Badge (EN)' }),
+                badge_es: fields.text({ label: 'Badge (ES)' }),
+                body1_fr: fields.text({ label: 'Paragraphe 1 (FR)', multiline: true }),
+                body1_en: fields.text({ label: 'Paragraphe 1 (EN)', multiline: true }),
+                body1_es: fields.text({ label: 'Paragraphe 1 (ES)', multiline: true }),
+                body2_fr: fields.text({ label: 'Paragraphe 2 (FR)', multiline: true }),
+                body2_en: fields.text({ label: 'Paragraphe 2 (EN)', multiline: true }),
+                body2_es: fields.text({ label: 'Paragraphe 2 (ES)', multiline: true }),
+                body3_fr: fields.text({ label: 'Paragraphe 3 (FR) — optionnel, masque si vide', multiline: true }),
+                body3_en: fields.text({ label: 'Paragraphe 3 (EN) — optionnel, masque si vide', multiline: true }),
+                body3_es: fields.text({ label: 'Paragraphe 3 (ES) — optionnel, masque si vide', multiline: true }),
+                learnMore_fr: fields.text({ label: 'Bouton des cartes (FR)' }),
+                learnMore_en: fields.text({ label: 'Bouton des cartes (EN)' }),
+                learnMore_es: fields.text({ label: 'Bouton des cartes (ES)' }),
+            },
+        }),
         homepage: singleton({
             label: 'Homepage',
             path: 'src/content/homepage/index',

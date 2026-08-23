@@ -1,19 +1,31 @@
+// Les chaines des sections migrees vivent dans src/content/ui/*.json, pilotes
+// par Keystatic : elles ne sont plus ecrites ici, seulement referencees, afin
+// qu il n existe jamais deux sources pour un meme texte.
+import statsUi from "../content/ui/stats.json";
+import workshopsUi from "../content/ui/workshops.json";
+
+// Keystatic omet les champs vides quand il ecrit un JSON : une cle absente
+// signifie donc 'pas de texte', pas 'cle inconnue'. On lit toujours via txt()
+// pour que ce cas rende une chaine vide au lieu de undefined.
+const txt = (o: unknown, k: string): string =>
+  (o as Record<string, string>)[k] ?? '';
+
+
 export const ui = {
   fr: {
-    "hero.pretitle": "CSRD, ESG, RSE, engagement des équipes… vous avez vu les slides.",
     "hero.body1": "Nous transformons la théorie en émerveillement, et l'émerveillement en action, à travers des expériences immersives menées avec des ONG reconnues.",
     "hero.body2": "Ne vous contentez plus de rapports : mobilisez vos équipes grâce à des formats scientifiques qui ont fait leurs preuves. Ensemble, transformons votre entreprise en un équipage soudé, prêt à naviguer face au grand défi du XXIe siècle.",
     "hero.body3": "La sensibilisation que vos certifications valorisent (EcoVadis, B Corp, ISO 14001), transformée en expérience que vos équipes n'oublieront pas.",
     "hero.tagline": "Nous avons la carte, vous choisissez le cap !",
     "hero.cta": "Explorer l'horizon",
 
-    "workshops.badge": "Nos thématiques",
+    "workshops.badge": txt(workshopsUi, "badge_fr"),
     "workshops.heading1": "Une méthodologie commune,",
     "workshops.heading2": "des thématiques au choix.",
-    "workshops.body1": "Climat, océan, biodiversité, empreinte carbone : quatre territoires vastes, interconnectés, parfois intimidants. Nos ateliers systémiques sont votre boussole pour les explorer. Chaque expérience révèle les liens invisibles entre ces écosystèmes, éveille la curiosité et transforme la complexité en émerveillement partagé.",
-    "workshops.body2": "Chaque format est aligné avec les ODD de l'ONU.",
-    "workshops.body3": "",
-    "workshops.learnMore": "En savoir plus",
+    "workshops.body1": txt(workshopsUi, "body1_fr"),
+    "workshops.body2": txt(workshopsUi, "body2_fr"),
+    "workshops.body3": txt(workshopsUi, "body3_fr"),
+    "workshops.learnMore": txt(workshopsUi, "learnMore_fr"),
 
     "formats.heading1": "Ateliers, Masterclasses, Marche Océane",
     "formats.heading2": "Sur Mesure",
@@ -31,22 +43,19 @@ export const ui = {
     "formats.oceanWalkDesc": "Cette marche guidée de 5,5 km simule l'ascension de la Fosse des Mariannes à la surface. Chaque mètre nous permet de découvrir les couches de l'océan, de rencontrer ses créatures incroyables et de partager les histoires insoupçonnées des profondeurs.",
     "formats.seeAll": "Voir tous les ateliers",
 
-    "stats.badge": "ATELIERS FONDÉS SUR LA SCIENCE",
+    "badge.science": txt(statsUi, "badgeScience_fr"),
     "stats.heading2": "Méthodologies",
     "stats.heading3": "reconnues par les équipes les plus",
     "stats.heading4": "ambitieuses",
-    "stats.participants": "Participants",
-    "stats.organizations": "Organisations",
-    "stats.years": "Années d'expérience",
-
-    "reasons.badge": "ATELIERS FONDÉS SUR LA SCIENCE",
+    "stats.participants": txt(statsUi, "participants_fr"),
+    "stats.organizations": txt(statsUi, "organizations_fr"),
+    "stats.years": txt(statsUi, "years_fr"),
     "reasons.heading1": "1 expérience de team-building :",
     "reasons.heading2": "6 bonnes raisons",
     "reasons.heading3": "de monter à bord.",
     "reasons.heading4": "",
     "reasons.body1": "Pour les DRH qui ont besoin d'engagement. Pour les responsables RSE qui ont besoin d'adhésion. Pour la direction qui doit justifier le budget. Et pour toutes les personnes dans la salle qui veulent faire partie de la solution.",
     "reasons.body2": "Une expérience durable scientifique, 6 raisons de dire oui : facile à justifier, impossible à oublier.",
-    "reasons.learnMore": "En savoir plus",
     "reasons.r1.title": "Une expérience",
     "reasons.r1.accent": "mémorable",
     "reasons.r1.text": "Du stagiaire au directeur : même expérience, même langage, même vision systémique des enjeux. Pas parce qu'ils y étaient obligés ; parce qu'ils ont vécu la même chose.",
@@ -72,13 +81,6 @@ export const ui = {
     "footer.ctaBody2": "Concevons ensemble votre prochaine expérience d'impact.",
     "footer.ctaBtn": "Prêt pour l'Odyssée",
     "footer.copyright": "© 2025 - 2026 Wild Odyssey. Tous droits réservés.",
-    "footer.ngos": "Les ONGs",
-    "footer.workshops": "Les ateliers",
-    "footer.contact": "Contact",
-
-    "nav.events": "Événements",
-    "nav.ngos": "Les ONGs",
-    "nav.workshops": "Les ateliers",
     "nav.cta": "Nous contacter",
 
     "seo.home.title": "Team Building Durable & Ateliers Climat",
@@ -99,7 +101,6 @@ export const ui = {
     "contact.consent": "J'accepte d'être recontacté·e et que mes données soient traitées dans ce but.",
     "contact.optional": "facultatif",
     "contact.submit": "Envoyer !",
-    "contact.sending": "Envoi…",
     "contact.successTitle": "Message envoyé, merci !",
     "contact.successBody": "Message bien reçu, on file le transmettre à l'équipage !\nOn revient vers vous au plus vite pour tracer le cap :)",
     "contact.error": "Oups, l'envoi a échoué. Réessayez ou écrivez-nous directement.",
@@ -107,22 +108,21 @@ export const ui = {
     "contact.error429": "Trop de tentatives pour le moment. Patientez un instant puis réessayez.",
     "contact.error500": "Le service est momentanément indisponible. Réessayez dans quelques minutes.",
     "contact.errorNetwork": "Impossible de joindre le serveur. Vérifiez votre connexion et réessayez.",
-    "contact.close": "Fermer",
   },
   en: {
-    "hero.pretitle": "",
     "hero.body1": "We turn theory into wonder, and wonder into action, through immersive experiences led with recognised NGOs.",
     "hero.body2": "Stop settling for reports: bring your teams to life with science-based formats that have already proven their worth. Together, let's turn your company into a tight-knit crew, ready to face the great challenge of our century.",
     "hero.body3": "The awareness your certifications reward (EcoVadis, B Corp, ISO 14001), turned into an experience your teams won't forget.",
     "hero.tagline": "We've got the map. You choose the course.",
     "hero.cta": "Ready for the Odyssey",
 
-    "workshops.badge": "Our themes",
+    "workshops.badge": txt(workshopsUi, "badge_en"),
     "workshops.heading1": "A common methodology,",
     "workshops.heading2": "themes to explore",
-    "workshops.body1": "Most sustainability topics feel abstract, distant, or just plain heavy. Our science-based, systemic workshops make them visceral, clear, and energising from the first card to the last conversation.",
-    "workshops.body2": "Each experience is aligned with the UN Sustainable Development Goals, turning individual understanding into collective action.",
-    "workshops.learnMore": "Learn more",
+    "workshops.body1": txt(workshopsUi, "body1_en"),
+    "workshops.body2": txt(workshopsUi, "body2_en"),
+    "workshops.body3": txt(workshopsUi, "body3_en"),
+    "workshops.learnMore": txt(workshopsUi, "learnMore_en"),
 
     "formats.heading1": "Workshop · Masterclasses · Ocean walk",
     "formats.heading2": "Custom",
@@ -140,22 +140,19 @@ export const ui = {
     "formats.oceanWalkDesc": "This 5.5 km guided walk simulates the ascent from the Mariana Trench to the surface. Each metre reveals a new layer of the ocean, introduces incredible creatures, and shares the untold stories of the deep.",
     "formats.seeAll": "See all workshops",
 
-    "stats.badge": "SCIENCE-BASED WORKSHOPS",
+    "badge.science": txt(statsUi, "badgeScience_en"),
     "stats.heading2": "Methodologies",
     "stats.heading3": "trusted by the world's most",
     "stats.heading4": "ambitious",
-    "stats.participants": "Participants",
-    "stats.organizations": "Organizations",
-    "stats.years": "Years of experience",
-
-    "reasons.badge": "SCIENCE-BASED WORKSHOPS",
+    "stats.participants": txt(statsUi, "participants_en"),
+    "stats.organizations": txt(statsUi, "organizations_en"),
+    "stats.years": txt(statsUi, "years_en"),
     "reasons.heading1": "1 team building experience:",
     "reasons.heading2": "6 good reasons",
     "reasons.heading3": "to come aboard.",
     "reasons.heading4": "",
     "reasons.body1": "For HR managers who need engagement. For CSR officers who need buy-in. For the board who needs to justify the budget. And for everyone in the room who wants to feel part of the solution.",
     "reasons.body2": "One science-based sustainability experience, 6 reasons to say yes: easy to justify, impossible to forget.",
-    "reasons.learnMore": "Learn more",
     "reasons.r1.title": "A Memorable",
     "reasons.r1.accent": "Experience",
     "reasons.r1.text": "From the intern to the director: same experience, same language, same systemic vision of what's at stake. Not because they had to, but because they lived the same team building experience.",
@@ -181,13 +178,6 @@ export const ui = {
     "footer.ctaBody2": "Let's design your next impact experience together.",
     "footer.ctaBtn": "Ready for the Odyssey",
     "footer.copyright": "© 2025 - 2026 Wild Odyssey. All rights reserved.",
-    "footer.ngos": "The NGOs",
-    "footer.workshops": "The workshops",
-    "footer.contact": "Contact",
-
-    "nav.events": "Events",
-    "nav.ngos": "The NGOs",
-    "nav.workshops": "The workshops",
     "nav.cta": "Contact me",
 
     "seo.home.title": "Sustainability Team Building & Climate Workshops",
@@ -208,7 +198,6 @@ export const ui = {
     "contact.consent": "I agree to be contacted and to my data being processed for this purpose.",
     "contact.optional": "optional",
     "contact.submit": "Send!",
-    "contact.sending": "Sending…",
     "contact.successTitle": "Message sent, thank you!",
     "contact.successBody": "Message received, we're passing it on to the crew!\nWe'll get back to you soon to set the course :)",
     "contact.error": "Oops, sending failed. Try again or email us directly.",
@@ -216,22 +205,21 @@ export const ui = {
     "contact.error429": "Too many attempts right now. Wait a moment and try again.",
     "contact.error500": "The service is temporarily unavailable. Try again in a few minutes.",
     "contact.errorNetwork": "We could not reach the server. Check your connection and try again.",
-    "contact.close": "Close",
   },
   es: {
-    "hero.pretitle": "¿CSRD? ¿ESG? ¿RSE? ¿Equipos que no se implican? Ya han visto las diapositivas.",
     "hero.body1": "Transformamos la teoría en asombro, y el asombro en acción, a través de experiencias inmersivas lideradas con ONG reconocidas.",
     "hero.body2": "Dejen de conformarse con reportes: movilicen sus equipos con formatos científicos que ya han demostrado su valor. Juntos, transformemos su empresa en una tripulación unida, lista para navegar frente al gran desafío de nuestro siglo.",
     "hero.body3": "La sensibilización que sus certificaciones valoran (EcoVadis, B Corp, ISO 14001), transformada en una experiencia que sus equipos no olvidarán.",
     "hero.tagline": "Tenemos el mapa. Ustedes eligen el rumbo.",
     "hero.cta": "Subir a bordo",
 
-    "workshops.badge": "Nuestras temáticas",
+    "workshops.badge": txt(workshopsUi, "badge_es"),
     "workshops.heading1": "Una metodología común,",
     "workshops.heading2": "temáticas a elegir",
-    "workshops.body1": "La mayoría de los temas de sostenibilidad parecen abstractos, lejanos o simplemente pesados. Nuestros talleres científicos los hacen concretos, sorprendentes y con ganas de actuar.",
-    "workshops.body2": "Cada experiencia está alineada con los Objetivos de Desarrollo Sostenible de la ONU, convirtiendo la comprensión individual en acción colectiva.",
-    "workshops.learnMore": "Más información",
+    "workshops.body1": txt(workshopsUi, "body1_es"),
+    "workshops.body2": txt(workshopsUi, "body2_es"),
+    "workshops.body3": txt(workshopsUi, "body3_es"),
+    "workshops.learnMore": txt(workshopsUi, "learnMore_es"),
 
     "formats.heading1": "Workshop · Masterclasses · Marcha Oceánica",
     "formats.heading2": "Personalizado",
@@ -249,22 +237,19 @@ export const ui = {
     "formats.oceanWalkDesc": "Esta caminata guiada de 5,5 km simula el ascenso desde la Fosa de las Marianas hasta la superficie. Cada metro nos permite descubrir las capas del océano, conocer sus criaturas increíbles y compartir las historias insospechadas de las profundidades.",
     "formats.seeAll": "Ver todos los talleres",
 
-    "stats.badge": "TALLERES BASADOS EN CIENCIA",
+    "badge.science": txt(statsUi, "badgeScience_es"),
     "stats.heading2": "Metodologías",
     "stats.heading3": "en las que confían los equipos más",
     "stats.heading4": "ambiciosos",
-    "stats.participants": "Participantes",
-    "stats.organizations": "Organizaciones",
-    "stats.years": "Años de experiencia",
-
-    "reasons.badge": "TALLERES BASADOS EN CIENCIA",
+    "stats.participants": txt(statsUi, "participants_es"),
+    "stats.organizations": txt(statsUi, "organizations_es"),
+    "stats.years": txt(statsUi, "years_es"),
     "reasons.heading1": "1 experiencia de team building:",
     "reasons.heading2": "6 buenas razones",
     "reasons.heading3": "para subir a bordo.",
     "reasons.heading4": "",
     "reasons.body1": "Para los responsables de RRHH que necesitan compromiso. Para los directores de RSE que necesitan apoyo. Para la dirección que debe justificar el presupuesto. Y para todas las personas en la sala que quieren ser parte de la solución.",
     "reasons.body2": "Una experiencia de sostenibilidad basada en ciencia, 6 razones para decir sí: fácil de justificar, imposible de olvidar.",
-    "reasons.learnMore": "Más información",
     "reasons.r1.title": "Una experiencia",
     "reasons.r1.accent": "memorable",
     "reasons.r1.text": "Del becario al director: misma experiencia, mismo lenguaje, misma visión sistémica de lo que está en juego. No porque tuvieran que hacerlo, sino porque vivieron la misma experiencia de team building.",
@@ -290,13 +275,6 @@ export const ui = {
     "footer.ctaBody2": "Diseñemos juntos tu próxima experiencia de impacto.",
     "footer.ctaBtn": "Listos para la Odisea",
     "footer.copyright": "© 2025 - 2026 Wild Odyssey. Todos los derechos reservados.",
-    "footer.ngos": "Las ONGs",
-    "footer.workshops": "Los talleres",
-    "footer.contact": "Contacto",
-
-    "nav.events": "Eventos",
-    "nav.ngos": "Las ONGs",
-    "nav.workshops": "Los talleres",
     "nav.cta": "Contacto",
 
     "seo.home.title": "Team Building Sostenible y Talleres de Clima",
@@ -317,7 +295,6 @@ export const ui = {
     "contact.consent": "Acepto ser contactado·a y que mis datos se traten con este fin.",
     "contact.optional": "opcional",
     "contact.submit": "¡Enviar!",
-    "contact.sending": "Enviando…",
     "contact.successTitle": "¡Mensaje enviado, gracias!",
     "contact.successBody": "¡Mensaje recibido, se lo pasamos a la tripulación!\nVolvemos pronto para marcar el rumbo :)",
     "contact.error": "Vaya, el envío falló. Inténtalo de nuevo o escríbenos directamente.",
@@ -325,7 +302,6 @@ export const ui = {
     "contact.error429": "Demasiados intentos por ahora. Espera un momento y vuelve a intentarlo.",
     "contact.error500": "El servicio no está disponible temporalmente. Vuelve a intentarlo en unos minutos.",
     "contact.errorNetwork": "No se pudo conectar con el servidor. Comprueba tu conexión y vuelve a intentarlo.",
-    "contact.close": "Cerrar",
   },
 } as const;
 
