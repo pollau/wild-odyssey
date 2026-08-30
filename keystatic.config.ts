@@ -70,6 +70,11 @@ export default config({
                 'statsSection',
                 'reasonsSection', 'reasons',
             ],
+            'Page université': [
+                'university',
+                'universityThematicsSection', 'university-thematics',
+                'universitySessionsSection', 'university-sessions',
+            ],
             'Événements': ['events'],
             'Tout le site': ['footerSection', 'helpSection'],
         },
@@ -150,7 +155,7 @@ export default config({
         //  - une description qui dit OU le texte apparait sur le site
         //  - les 3 langues du meme texte regroupees, pour voir les manques
         statsSection: singleton({
-            label: '📝 Chiffres clés',
+            label: '📝 Chiffres clés (les deux pages)',
             path: 'src/content/ui/stats',
             format: { data: 'json' },
             schema: perLang(() => ({
@@ -236,6 +241,44 @@ export default config({
                 cta: champLigne('Texte du bouton'),
             }), "Le bandeau en haut de la page d'accueil"),
         }),
+        university: singleton({
+            label: '🎓 Introduction',
+            path: 'src/content/university/index',
+            format: { data: 'json' },
+            schema: perLang(() => ({
+                titleBase: champLigne('Accroche', 'Au-dessus du titre, en noir.'),
+                title: champLigne('Titre', 'En orange.'),
+                body: champParagraphes('Texte'),
+                tagline: champLigne('Phrase de fin', 'En orange, sous le texte.'),
+                cta: champLigne('Texte du bouton'),
+            }), "Le bandeau d'introduction de la page universite"),
+        }),
+        universityThematicsSection: singleton({
+            label: '🎓 Thématiques',
+            path: 'src/content/ui/university-thematics',
+            format: { data: 'json' },
+            schema: perLang(() => ({
+                heading: champLigne('Titre'),
+                badge: champLigne('Pastille'),
+                body: champParagraphes('Texte'),
+                learnMore: champLigne('Texte du bouton des cartes'),
+            }), 'Le texte au-dessus des cartes de thematiques de la page universite'),
+        }),
+        universitySessionsSection: singleton({
+            label: '🎓 Ateliers et masterclasses',
+            path: 'src/content/ui/university-sessions',
+            format: { data: 'json' },
+            schema: perLang(() => ({
+                heading: champLigne('Titre'),
+                feat1: champLigne('Pictogramme 1', 'Le petit texte sous la premiere icone.'),
+                feat2: champLigne('Pictogramme 2'),
+                feat3: champLigne('Pictogramme 3'),
+                feat4: champLigne('Pictogramme 4'),
+                feat5: champLigne('Pictogramme 5'),
+                feat6: champLigne('Pictogramme 6'),
+                seeAll: champLigne('Texte du bouton du bas'),
+            }), 'Le texte de la section des sessions de la page universite'),
+        }),
     },
     collections: {
         // Les trois facons dont un atelier se deroule. Meme forme que les
@@ -304,6 +347,45 @@ export default config({
                     subtitle: champLigne('Sous-titre'),
                     description: champParagraphes('Description'),
                 }), 'La carte de cette thématique'),
+            },
+        }),
+        'university-thematics': collection({
+            label: '🎓 Cartes de thématiques',
+            slugField: 'title',
+            path: 'src/content/university-thematics/*',
+            format: { data: 'json' },
+            columns: ['title'],
+            schema: {
+                title: fields.slug({
+                    name: {
+                        label: 'Nom de la fiche',
+                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
+                    },
+                }),
+                ...perLang(() => ({
+                    title: champLigne('Titre de la carte'),
+                    subtitle: champLigne('Sous-titre'),
+                    description: champParagraphes('Description'),
+                }), 'La carte de cette thematique, page universite'),
+            },
+        }),
+        'university-sessions': collection({
+            label: '🎓 Cartes de sessions',
+            slugField: 'title',
+            path: 'src/content/university-sessions/*',
+            format: { data: 'json' },
+            columns: ['title'],
+            schema: {
+                title: fields.slug({
+                    name: {
+                        label: 'Nom de la fiche',
+                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
+                    },
+                }),
+                ...perLang(() => ({
+                    title: champLigne('Titre de la carte'),
+                    description: champParagraphes('Description'),
+                }), 'La carte de cette session, page universite'),
             },
         }),
     },
