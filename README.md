@@ -33,8 +33,26 @@ Site vitrine + agenda pour Wild Odyssey. Généré statiquement avec Astro, héb
 ## Quick Start
 
 ```bash
-npm install
+npm ci
 npm run dev        # site seul : http://localhost:4321
+```
+
+`npm ci` plutôt que `npm install` : il lit uniquement `package-lock.json` sans refaire la résolution
+des versions, ce qui est plus rapide et donne exactement les mêmes versions qu'en CI.
+
+**Le build ne demande aucun secret.** Pas de `.env` à créer : `PUBLIC_UMAMI_SITE_ID` est optionnel
+(son absence désactive simplement le tracking) et le scraping d'événements ne touche pas le réseau
+tant que `events-cache.json` couvre les URLs. Un clone frais construit le site tel quel.
+
+### Clone rapide
+
+Les dépendances pèsent bien plus lourd que le dépôt : **442 Mo de `node_modules`** contre 130 Mo
+d'historique Git. Pour un clone jetable ou un runner, `--depth 1` évite les trois quarts du
+téléchargement Git (37 Mo au lieu de 130) — mais prive de `git log` et `git blame`, donc à réserver
+aux clones qu'on ne garde pas.
+
+```bash
+git clone --depth 1 https://github.com/pollau/wild-odyssey.git && cd wild-odyssey && npm ci && npm run build
 ```
 
 Pour travailler **sur le formulaire de contact**, il faut le site **et** l'API (voir section suivante) :
@@ -71,8 +89,8 @@ vers `CONTACT_TO`, avec le `Reply-To` sur l'email du prospect.
 ### Setup local (une fois)
 
 ```bash
-npm install                 # racine
-npm install --prefix api    # dépendances de la Function
+npm ci                      # racine
+npm install --prefix api    # dépendances de la Function (1,6 Mo, inutiles hors formulaire)
 cp api/local.settings.json.example api/local.settings.json
 ```
 
