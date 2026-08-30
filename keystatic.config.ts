@@ -188,9 +188,10 @@ export default config({
                 }),
             },
         }),
-        // Bandeau "Ateliers, Masterclasses, Marche Oceane / Sur Mesure".
+        // Section qui presente les facons dont un atelier se deroule, a ne pas
+        // confondre avec "Thematiques" qui en presente les sujets.
         formatsSection: singleton({
-            label: 'Formats',
+            label: 'Ateliers et masterclasses',
             path: 'src/content/ui/formats',
             format: { data: 'json' },
             schema: {
