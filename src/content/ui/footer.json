@@ -1,17 +1,20 @@
 {
   "fr": {
+    "headerCta": "Nous contacter",
     "heading": "Et **vous ?**",
     "ctaBody": "Tout commence par une conversation.\nConcevons ensemble votre prochaine expérience d'impact.",
     "ctaBtn": "Prêt pour l'Odyssée",
     "copyright": "© 2025 - 2026 Wild Odyssey. Tous droits réservés."
   },
   "en": {
+    "headerCta": "Contact me",
     "heading": "What about **YOU?**",
     "ctaBody": "It all starts with one conversation.\nLet's design your next impact experience together.",
     "ctaBtn": "Ready for the Odyssey",
     "copyright": "© 2025 - 2026 Wild Odyssey. All rights reserved."
   },
   "es": {
+    "headerCta": "Contacto",
     "heading": "¿Y **TÚ?**",
     "ctaBody": "Todo comienza con una conversación.\nDiseñemos juntos tu próxima experiencia de impacto.",
     "ctaBtn": "Listos para la Odisea",

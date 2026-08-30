@@ -46,7 +46,7 @@ export const ui = {
     "footer.ctaBtn": lang(footerUi, "fr", "ctaBtn"),
     "footer.copyright": lang(footerUi, "fr", "copyright"),
 
-    "nav.cta": "Nous contacter",
+    "nav.cta": lang(footerUi, "fr", "headerCta"),
 
     "seo.home.title": lang(seoUi, "fr", "homeTitle"),
     "seo.home.description": lang(seoUi, "fr", "homeDescription"),
@@ -103,7 +103,7 @@ export const ui = {
     "footer.ctaBtn": lang(footerUi, "en", "ctaBtn"),
     "footer.copyright": lang(footerUi, "en", "copyright"),
 
-    "nav.cta": "Contact me",
+    "nav.cta": lang(footerUi, "en", "headerCta"),
 
     "seo.home.title": lang(seoUi, "en", "homeTitle"),
     "seo.home.description": lang(seoUi, "en", "homeDescription"),
@@ -160,7 +160,7 @@ export const ui = {
     "footer.ctaBtn": lang(footerUi, "es", "ctaBtn"),
     "footer.copyright": lang(footerUi, "es", "copyright"),
 
-    "nav.cta": "Contacto",
+    "nav.cta": lang(footerUi, "es", "headerCta"),
 
     "seo.home.title": lang(seoUi, "es", "homeTitle"),
     "seo.home.description": lang(seoUi, "es", "homeDescription"),

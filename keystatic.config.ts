@@ -336,23 +336,26 @@ export default config({
         // "Et vous ?" reste dans le code : il est coupe en deux morceaux pour
         // le style, le rendre editable demanderait de revoir la mise en forme.
         footerSection: singleton({
-            label: '📝 Pied de page',
+            label: '📝 Header and footer',
             path: 'src/content/ui/footer',
             format: { data: 'json' },
             schema: {
                 fr: fields.object({
+                        headerCta: champLigne('Bouton du bandeau du haut', "Le bouton orange en haut a droite, sur toutes les pages."),
                         heading: champLigne('Titre'),
                         ctaBody: champLigne('Phrases sous le titre', undefined, true),
                         ctaBtn: champLigne('Texte du bouton'),
                         copyright: champLigne('Mention de bas de page'),
                 }, { label: 'Français', description: 'Le bloc en bas de toutes les pages, version française.' }),
                 en: fields.object({
+                        headerCta: champLigne('Bouton du bandeau du haut', "Le bouton orange en haut a droite, sur toutes les pages."),
                         heading: champLigne('Titre'),
                         ctaBody: champLigne('Phrases sous le titre', undefined, true),
                         ctaBtn: champLigne('Texte du bouton'),
                         copyright: champLigne('Mention de bas de page'),
                 }, { label: 'Anglais', description: 'Le bloc en bas de toutes les pages, version anglaise.' }),
                 es: fields.object({
+                        headerCta: champLigne('Bouton du bandeau du haut', "Le bouton orange en haut a droite, sur toutes les pages."),
                         heading: champLigne('Titre'),
                         ctaBody: champLigne('Phrases sous le titre', undefined, true),
                         ctaBtn: champLigne('Texte du bouton'),
