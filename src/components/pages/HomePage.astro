@@ -65,7 +65,7 @@ const reasons = (await getCollection("reasons"))
 const prefix = lang === "fr" ? "" : `/${lang}`;
 ---
 
-<Layout title={t(lang, "seo.home.title")} description={t(lang, "seo.home.description")} alternates>
+<Layout title={plainText(t(lang, "seo.home.title"))} description={plainText(t(lang, "seo.home.description"))} alternates>
   <OrganizationSchema />
   <main class="pt-[80px]">
 
