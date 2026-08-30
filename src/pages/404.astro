@@ -68,10 +68,42 @@ const translations = {
 </Layout>
 
 <script define:vars={{ translations }}>
-  // Le fichier est le meme pour tout le site : la langue se lit sur l'adresse
-  // reellement demandee, pas sur celle du fichier servi (toujours /404).
-  const segment = window.location.pathname.split("/")[1];
-  const lang = segment === "en" || segment === "es" ? segment : "fr";
+  // Azure sert ce meme fichier pour toutes les URL inconnues : la langue ne
+  // peut pas venir du serveur, elle se decide ici. Cascade, du signal le plus
+  // explicite au plus faible :
+  //   1. le prefixe de l'adresse demandee : il a demande CETTE page la
+  //   2. le drapeau qu'il a deja clique, memorise par le selecteur de langue
+  //   3. la langue de son navigateur, comme le fait deja l'accueil
+  //   4. francais, deja dans le HTML, donc rien a faire
+  //
+  // Le cas qui compte est le troisieme : les liens morts les plus probables
+  // sont les anciennes pages francaises sans prefixe (/entreprises/, /jeux/),
+  // encore dans l'index des moteurs. Sans cette cascade un anglophone qui les
+  // suit lit du francais.
+  const ALL = ["fr", "en", "es"];
+
+  // Le francais n'a pas de prefixe d'URL : seuls /en/ et /es/ existent.
+  const fromPath = () => {
+    const segment = window.location.pathname.split("/")[1];
+    return segment === "en" || segment === "es" ? segment : null;
+  };
+
+  const fromStorage = () => {
+    try {
+      const stored = localStorage.getItem("wild_odyssey_lang");
+      return ALL.includes(stored) ? stored : null;
+    } catch {
+      // Navigation privee, cookies bloques : on passe au signal suivant.
+      return null;
+    }
+  };
+
+  const fromBrowser = () => {
+    const tag = (navigator.language || "").slice(0, 2).toLowerCase();
+    return ALL.includes(tag) ? tag : null;
+  };
+
+  const lang = fromPath() ?? fromStorage() ?? fromBrowser() ?? "fr";
 
   if (lang !== "fr") {
     const tr = translations[lang];
@@ -81,7 +113,7 @@ const translations = {
 
     // Le Layout prefixe le titre par [QA] ou [repo2] hors production : on le
     // garde, seule la partie traduite change.
-    const prefix = document.title.match(/^\[[^\]]*\]\s/)?.[0] ?? "";
+    const prefix = document.title.match(/^[[^]]*]s/)?.[0] ?? "";
     document.title = `${prefix}${tr.seoTitle} | Wild Odyssey`;
     document.querySelector('meta[name="description"]')?.setAttribute("content", tr.seoDescription);
 
