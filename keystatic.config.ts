@@ -81,7 +81,7 @@ export default config({
                             label: 'Titre',
                             description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
-                    badgeScience: fields.text({ label: 'Pastille bleue', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
+                    badgeScience: fields.text({ label: 'Pastille', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
                     participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici." }),
                     organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000.' }),
                     years: fields.text({ label: 'Legende du 3e chiffre', description: 'Sous le compteur +5.' }),
@@ -91,7 +91,7 @@ export default config({
                             label: 'Titre',
                             description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
-                    badgeScience: fields.text({ label: 'Pastille bleue', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
+                    badgeScience: fields.text({ label: 'Pastille', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
                     participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici." }),
                     organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000.' }),
                     years: fields.text({ label: 'Legende du 3e chiffre', description: 'Sous le compteur +5.' }),
@@ -101,7 +101,7 @@ export default config({
                             label: 'Titre',
                             description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
-                    badgeScience: fields.text({ label: 'Pastille bleue', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
+                    badgeScience: fields.text({ label: 'Pastille', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
                     participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici." }),
                     organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000.' }),
                     years: fields.text({ label: 'Legende du 3e chiffre', description: 'Sous le compteur +5.' }),
@@ -120,7 +120,7 @@ export default config({
                             label: 'Titre',
                             description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
-                        badge: fields.text({ label: 'Pastille verte' }),
+                        badge: fields.text({ label: 'Pastille' }),
                         body: fields.text({
                             label: 'Texte',
                             description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
@@ -133,7 +133,7 @@ export default config({
                             label: 'Titre',
                             description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
-                        badge: fields.text({ label: 'Pastille verte' }),
+                        badge: fields.text({ label: 'Pastille' }),
                         body: fields.text({
                             label: 'Texte',
                             description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
@@ -146,7 +146,7 @@ export default config({
                             label: 'Titre',
                             description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
-                        badge: fields.text({ label: 'Pastille verte' }),
+                        badge: fields.text({ label: 'Pastille' }),
                         body: fields.text({
                             label: 'Texte',
                             description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
@@ -228,7 +228,7 @@ export default config({
                         feat4: fields.text({ label: 'Indication 4 (icone internet)' }),
                         feat5: fields.text({ label: 'Indication 5 (icone personne)' }),
                         feat6: fields.text({ label: 'Indication 6 (icone immeuble)' }),
-                        seeAll: fields.text({ label: 'Texte du bouton bleu' }),
+                        seeAll: fields.text({ label: 'Texte du bouton' }),
                 }, { label: 'Français', description: 'Le bandeau bleu des ateliers, version française.' }),
                 en: fields.object({
                         heading: fields.text({
@@ -242,7 +242,7 @@ export default config({
                         feat4: fields.text({ label: 'Indication 4 (icone internet)' }),
                         feat5: fields.text({ label: 'Indication 5 (icone personne)' }),
                         feat6: fields.text({ label: 'Indication 6 (icone immeuble)' }),
-                        seeAll: fields.text({ label: 'Texte du bouton bleu' }),
+                        seeAll: fields.text({ label: 'Texte du bouton' }),
                 }, { label: 'Anglais', description: 'Le bandeau bleu des ateliers, version anglaise.' }),
                 es: fields.object({
                         heading: fields.text({
@@ -256,7 +256,7 @@ export default config({
                         feat4: fields.text({ label: 'Indication 4 (icone internet)' }),
                         feat5: fields.text({ label: 'Indication 5 (icone personne)' }),
                         feat6: fields.text({ label: 'Indication 6 (icone immeuble)' }),
-                        seeAll: fields.text({ label: 'Texte du bouton bleu' }),
+                        seeAll: fields.text({ label: 'Texte du bouton' }),
                 }, { label: 'Espagnol', description: 'Le bandeau bleu des ateliers, version espagnole.' }),
             },
         }),
@@ -310,36 +310,36 @@ export default config({
             // page entiere d'une traite, comme on la lit sur le site.
             schema: {
                 fr: fields.object({
-                    titleBase: fields.text({ label: 'Accroche en noir' }),
-                    title: fields.text({ label: 'Titre en orange' }),
+                    titleBase: fields.text({ label: 'Accroche au-dessus du titre' }),
+                    title: fields.text({ label: 'Titre principal' }),
                         body: fields.text({
                             label: 'Texte',
                             description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
                             multiline: true,
                         }),
-                    tagline: fields.text({ label: 'Phrase orange sous les paragraphes' }),
+                    tagline: fields.text({ label: 'Phrase sous les paragraphes' }),
                     cta: fields.text({ label: 'Texte du bouton' }),
                 }, { label: 'Français', description: "Le bandeau en haut de la page d'accueil, version française." }),
                 en: fields.object({
-                    titleBase: fields.text({ label: 'Accroche en noir' }),
-                    title: fields.text({ label: 'Titre en orange' }),
+                    titleBase: fields.text({ label: 'Accroche au-dessus du titre' }),
+                    title: fields.text({ label: 'Titre principal' }),
                         body: fields.text({
                             label: 'Texte',
                             description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
                             multiline: true,
                         }),
-                    tagline: fields.text({ label: 'Phrase orange sous les paragraphes' }),
+                    tagline: fields.text({ label: 'Phrase sous les paragraphes' }),
                     cta: fields.text({ label: 'Texte du bouton' }),
                 }, { label: 'Anglais', description: "Le bandeau en haut de la page d'accueil, version anglaise." }),
                 es: fields.object({
-                    titleBase: fields.text({ label: 'Accroche en noir' }),
-                    title: fields.text({ label: 'Titre en orange' }),
+                    titleBase: fields.text({ label: 'Accroche au-dessus du titre' }),
+                    title: fields.text({ label: 'Titre principal' }),
                         body: fields.text({
                             label: 'Texte',
                             description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
                             multiline: true,
                         }),
-                    tagline: fields.text({ label: 'Phrase orange sous les paragraphes' }),
+                    tagline: fields.text({ label: 'Phrase sous les paragraphes' }),
                     cta: fields.text({ label: 'Texte du bouton' }),
                 }, { label: 'Espagnol', description: "Le bandeau en haut de la page d'accueil, version espagnole." }),
             },
