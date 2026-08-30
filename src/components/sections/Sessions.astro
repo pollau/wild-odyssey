@@ -66,13 +66,15 @@ const sessionPhoto = (fiche: string) => SESSION_IMAGES[fiche.replace(/^session-\
         </div>
       ))}
 
-      <a
-        href="#"
-        data-coming-soon
-        class="font-aileron bg-[#0698c0] text-white text-[16px] lg:text-[18px] font-semibold h-[48px] flex items-center justify-center rounded-[7px] w-full hover:bg-cyan-700 transition-colors"
-      >
-        <RichText text={chrome.seeAll} />
-      </a>
+      {chrome.seeAll && (
+        <a
+          href="#"
+          data-coming-soon
+          class="font-aileron bg-[#0698c0] text-white text-[16px] lg:text-[18px] font-semibold h-[48px] flex items-center justify-center rounded-[7px] w-full hover:bg-cyan-700 transition-colors"
+        >
+          <RichText text={chrome.seeAll} />
+        </a>
+      )}
     </div>
   </div>
 </section>

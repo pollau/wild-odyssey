@@ -77,13 +77,15 @@ const photo = (fiche: string) => THEMATIC_IMAGES[fiche.replace(/^thematic-\d+-/,
             </p>
             <div class="flex flex-col gap-5 flex-1 justify-between">
               <RichBody text={langBlock(w.data, lang).description} class="font-aileron text-[#3b3b3b] text-[15px] leading-snug" />
-              <a
-                href="#"
-                data-coming-soon
-                class="font-aileron bg-[#f05600] text-white text-[15px] font-semibold h-[46px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
-              >
-                <RichText text={chrome.learnMore} />
-              </a>
+              {chrome.learnMore && (
+                <a
+                  href="#"
+                  data-coming-soon
+                  class="font-aileron bg-[#f05600] text-white text-[15px] font-semibold h-[46px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
+                >
+                  <RichText text={chrome.learnMore} />
+                </a>
+              )}
             </div>
           </div>
         </div>
