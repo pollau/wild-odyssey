@@ -31,7 +31,7 @@ export default config({
                 'reasonsSection', 'reasons',
             ],
             'Événements': ['events'],
-            'Tout le site': ['footerSection'],
+            'Tout le site': ['footerSection', 'helpSection'],
         },
     },
     storage: useCloud
@@ -47,6 +47,44 @@ export default config({
         project: 'wild-odyssey/wild-odyssey',
     },
     singletons: {
+        // Page d'aide, affichee uniquement dans le CMS. Les blocs objet sans
+        // champ ne servent qu'a porter un titre et un texte : ils n'affichent
+        // aucune saisie. Ils ecrivent une cle vide dans help.json, d'ou le
+        // fichier dedie plutot qu'une note dans chaque entree.
+        helpSection: singleton({
+            label: '❓ Comment ecrire les textes',
+            path: 'src/content/ui/help',
+            format: { data: 'json' },
+            schema: {
+                couleur: fields.object({}, {
+                    label: 'Mettre un passage en couleur',
+                    description:
+                        "Entourez le passage de deux asterisques pour l'orange, de deux tirets bas pour le cyan. "
+                        + "Exemple : Une methodologie commune, **des thematiques au choix.** "
+                        + "La couleur annoncee sous un champ est celle par defaut : les marqueurs la remplacent, "
+                        + "mais seulement pour le passage encadre.",
+                }),
+                ligne: fields.object({}, {
+                    label: 'Aller a la ligne',
+                    description:
+                        "Dans un texte, un retour a la ligne cree un nouveau paragraphe, avec l'espace qui va avec. "
+                        + "Dans un titre, il fait simplement passer la suite sur une nouvelle ligne.",
+                }),
+                langues: fields.object({}, {
+                    label: 'Les trois langues',
+                    description:
+                        "Chaque page contient un bloc Francais, un Anglais et un Espagnol. "
+                        + "Un champ laisse vide n'affiche rien dans cette langue : le site ne va jamais "
+                        + "chercher la version d'une autre langue a la place.",
+                }),
+                photos: fields.object({}, {
+                    label: 'Les photos',
+                    description:
+                        "Les photos ne se changent pas depuis le CMS, elles font partie de la maquette. "
+                        + "Passez par Paul pour en remplacer une.",
+                }),
+            },
+        }),
         events: singleton({
             label: '📅 Événements',
             path: 'src/content/events',
@@ -81,7 +119,7 @@ export default config({
                             label: 'Titre',
                             description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
-                    badgeScience: fields.text({ label: 'Pastille', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
+                    badgeScience: fields.text({ label: 'Pastille', description: "Apparait a deux endroits : en cyan sur la bande des chiffres, en blanc au-dessus des 6 bonnes raisons." }),
                     participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici." }),
                     organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000.' }),
                     years: fields.text({ label: 'Legende du 3e chiffre', description: 'Sous le compteur +5.' }),
@@ -91,7 +129,7 @@ export default config({
                             label: 'Titre',
                             description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
-                    badgeScience: fields.text({ label: 'Pastille', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
+                    badgeScience: fields.text({ label: 'Pastille', description: "Apparait a deux endroits : en cyan sur la bande des chiffres, en blanc au-dessus des 6 bonnes raisons." }),
                     participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici." }),
                     organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000.' }),
                     years: fields.text({ label: 'Legende du 3e chiffre', description: 'Sous le compteur +5.' }),
@@ -101,7 +139,7 @@ export default config({
                             label: 'Titre',
                             description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
-                    badgeScience: fields.text({ label: 'Pastille', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
+                    badgeScience: fields.text({ label: 'Pastille', description: "Apparait a deux endroits : en cyan sur la bande des chiffres, en blanc au-dessus des 6 bonnes raisons." }),
                     participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici." }),
                     organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000.' }),
                     years: fields.text({ label: 'Legende du 3e chiffre', description: 'Sous le compteur +5.' }),
@@ -310,36 +348,63 @@ export default config({
             // page entiere d'une traite, comme on la lit sur le site.
             schema: {
                 fr: fields.object({
-                    titleBase: fields.text({ label: 'Accroche au-dessus du titre' }),
-                    title: fields.text({ label: 'Titre principal' }),
+                    titleBase: fields.text({
+                        label: 'Accroche au-dessus du titre',
+                        description: "Par defaut en noir. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
+                    }),
+                    title: fields.text({
+                        label: 'Titre principal',
+                        description: "Par defaut en orange. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
+                    }),
                         body: fields.text({
                             label: 'Texte',
                             description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
                             multiline: true,
                         }),
-                    tagline: fields.text({ label: 'Phrase sous les paragraphes' }),
+                    tagline: fields.text({
+                        label: 'Phrase sous les paragraphes',
+                        description: "Par defaut en orange. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
+                    }),
                     cta: fields.text({ label: 'Texte du bouton' }),
                 }, { label: 'Français', description: "Le bandeau en haut de la page d'accueil, version française." }),
                 en: fields.object({
-                    titleBase: fields.text({ label: 'Accroche au-dessus du titre' }),
-                    title: fields.text({ label: 'Titre principal' }),
+                    titleBase: fields.text({
+                        label: 'Accroche au-dessus du titre',
+                        description: "Par defaut en noir. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
+                    }),
+                    title: fields.text({
+                        label: 'Titre principal',
+                        description: "Par defaut en orange. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
+                    }),
                         body: fields.text({
                             label: 'Texte',
                             description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
                             multiline: true,
                         }),
-                    tagline: fields.text({ label: 'Phrase sous les paragraphes' }),
+                    tagline: fields.text({
+                        label: 'Phrase sous les paragraphes',
+                        description: "Par defaut en orange. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
+                    }),
                     cta: fields.text({ label: 'Texte du bouton' }),
                 }, { label: 'Anglais', description: "Le bandeau en haut de la page d'accueil, version anglaise." }),
                 es: fields.object({
-                    titleBase: fields.text({ label: 'Accroche au-dessus du titre' }),
-                    title: fields.text({ label: 'Titre principal' }),
+                    titleBase: fields.text({
+                        label: 'Accroche au-dessus du titre',
+                        description: "Par defaut en noir. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
+                    }),
+                    title: fields.text({
+                        label: 'Titre principal',
+                        description: "Par defaut en orange. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
+                    }),
                         body: fields.text({
                             label: 'Texte',
                             description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
                             multiline: true,
                         }),
-                    tagline: fields.text({ label: 'Phrase sous les paragraphes' }),
+                    tagline: fields.text({
+                        label: 'Phrase sous les paragraphes',
+                        description: "Par defaut en orange. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
+                    }),
                     cta: fields.text({ label: 'Texte du bouton' }),
                 }, { label: 'Espagnol', description: "Le bandeau en haut de la page d'accueil, version espagnole." }),
             },
