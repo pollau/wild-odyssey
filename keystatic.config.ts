@@ -40,6 +40,25 @@ const champParagraphes = (label: string, precision?: string) =>
         multiline: true,
     });
 
+// Le referencement est le seul texte du site qui ne s'affiche pas sur le site :
+// il part dans les balises <title> et <meta description>, que Google reprend
+// dans ses resultats. Les marqueurs de couleur n'y ont donc aucun sens, et la
+// longueur est contrainte par Google. Keystatic refuse la saisie au-dela.
+const AIDE_SEO = "Ce texte s'affiche dans les resultats de recherche Google, pas sur la page. Les marqueurs de couleur n'y fonctionnent pas.";
+const champTitreSeo = (label: string, precision: string) =>
+    fields.text({
+        label,
+        description: precision + ' ' + AIDE_SEO + ' Google coupe au-dela de 60 caracteres.',
+        validation: { length: { max: 60 } },
+    });
+const champDescriptionSeo = (label: string, precision: string) =>
+    fields.text({
+        label,
+        description: precision + ' ' + AIDE_SEO + ' Google coupe au-dela de 160 caracteres.',
+        validation: { length: { max: 160 } },
+        multiline: true,
+    });
+
 export default config({
     // Interface de Keystatic en francais (boutons, menus, messages).
     ui: {
@@ -60,7 +79,7 @@ export default config({
                 'reasonsSection', 'reasons',
             ],
             'Événements': ['events'],
-            'Tout le site': ['footerSection', 'helpSection'],
+            'Tout le site': ['footerSection', 'seoSection', 'helpSection'],
         },
     },
     storage: useCloud
@@ -80,6 +99,52 @@ export default config({
         // champ ne servent qu'a porter un titre et un texte : ils n'affichent
         // aucune saisie. Ils ecrivent une cle vide dans help.json, d'ou le
         // fichier dedie plutot qu'une note dans chaque entree.
+        // Une seule entree pour tout le referencement, plutot qu'un champ perdu
+        // dans chaque page : ces textes se relisent ensemble, pour verifier
+        // qu'ils ne se repetent pas d'une page a l'autre.
+        seoSection: singleton({
+            label: '🔎 Referencement Google',
+            path: 'src/content/ui/seo',
+            format: { data: 'json' },
+            schema: {
+                fr: fields.object({
+                        homeTitle: champTitreSeo('Accueil, titre', "Pour la page d'accueil."),
+                        homeDescription: champDescriptionSeo('Accueil, description', "Pour la page d'accueil."),
+                        contactTitle: champTitreSeo('Contact, titre', 'Pour la page de contact.'),
+                        contactDescription: champDescriptionSeo('Contact, description', 'Pour la page de contact.'),
+                        siteDescription: champDescriptionSeo('Description generale du site', "Sert de repli pour une page qui n'a pas sa propre description."),
+                        organization: fields.text({
+                            label: "Description de l'organisation",
+                            description: "Fiche d'identite envoyee aux moteurs de recherche, au format schema.org. Elle ne s'affiche nulle part et n'a pas de limite de longueur.",
+                            multiline: true,
+                        }),
+                }, { label: 'Français', description: 'Le referencement des pages françaises.' }),
+                en: fields.object({
+                        homeTitle: champTitreSeo('Accueil, titre', "Pour la page d'accueil."),
+                        homeDescription: champDescriptionSeo('Accueil, description', "Pour la page d'accueil."),
+                        contactTitle: champTitreSeo('Contact, titre', 'Pour la page de contact.'),
+                        contactDescription: champDescriptionSeo('Contact, description', 'Pour la page de contact.'),
+                        siteDescription: champDescriptionSeo('Description generale du site', "Sert de repli pour une page qui n'a pas sa propre description."),
+                        organization: fields.text({
+                            label: "Description de l'organisation",
+                            description: "Fiche d'identite envoyee aux moteurs de recherche, au format schema.org. Elle ne s'affiche nulle part et n'a pas de limite de longueur.",
+                            multiline: true,
+                        }),
+                }, { label: 'Anglais', description: 'Le referencement des pages anglaises.' }),
+                es: fields.object({
+                        homeTitle: champTitreSeo('Accueil, titre', "Pour la page d'accueil."),
+                        homeDescription: champDescriptionSeo('Accueil, description', "Pour la page d'accueil."),
+                        contactTitle: champTitreSeo('Contact, titre', 'Pour la page de contact.'),
+                        contactDescription: champDescriptionSeo('Contact, description', 'Pour la page de contact.'),
+                        siteDescription: champDescriptionSeo('Description generale du site', "Sert de repli pour une page qui n'a pas sa propre description."),
+                        organization: fields.text({
+                            label: "Description de l'organisation",
+                            description: "Fiche d'identite envoyee aux moteurs de recherche, au format schema.org. Elle ne s'affiche nulle part et n'a pas de limite de longueur.",
+                            multiline: true,
+                        }),
+                }, { label: 'Espagnol', description: 'Le referencement des pages espagnoles.' }),
+            },
+        }),
         helpSection: singleton({
             label: '❓ Comment ecrire les textes',
             path: 'src/content/ui/help',

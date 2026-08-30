@@ -4,6 +4,7 @@
 import statsUi from "../content/ui/stats.json";
 import thematicsUi from "../content/ui/thematics.json";
 import footerUi from "../content/ui/footer.json";
+import seoUi from "../content/ui/seo.json";
 import sessionsUi from "../content/ui/sessions.json";
 import reasonsUi from "../content/ui/reasons.json";
 
@@ -46,10 +47,10 @@ export const ui = {
 
     "nav.cta": "Nous contacter",
 
-    "seo.home.title": "Team Building Durable & Ateliers Climat",
-    "seo.home.description": "Expériences RSE & climat personnalisées pour vos équipes. Ateliers scientifiques sur l'empreinte carbone, la biodiversité et l'océan. En EN, FR, ES.",
-    "seo.contact.title": "Contactez-nous pour une Expérience Sur Mesure",
-    "seo.contact.description": "Une question ? Prêt à engager votre équipe dans une expérience personnalisée ? Contactez-nous & rejoignez l'odyssée ! Réponse rapide en EN, ES, FR.",
+    "seo.home.title": lang(seoUi, "fr", "homeTitle"),
+    "seo.home.description": lang(seoUi, "fr", "homeDescription"),
+    "seo.contact.title": lang(seoUi, "fr", "contactTitle"),
+    "seo.contact.description": lang(seoUi, "fr", "contactDescription"),
 
     "contact.title": "Tout commence par une conversation",
     "contact.subtitle": "Une idée qui germe, une question qui flotte, une envie de faire quelque chose de différent et sur mesure pour vos élèves ou vos équipes ?",
@@ -103,10 +104,10 @@ export const ui = {
 
     "nav.cta": "Contact me",
 
-    "seo.home.title": "Sustainability Team Building & Climate Workshops",
-    "seo.home.description": "Personalized ESG & climate experiences your teams will remember. Science based workshops on carbon footprint, biodiversity, ocean & more. EN, FR, ES.",
-    "seo.contact.title": "Get in Touch for a Personalised Experience",
-    "seo.contact.description": "A question? Ready to engage your team in a personalized experience? Contact us & join the odyssey! Fast response in English, French & Spanish.",
+    "seo.home.title": lang(seoUi, "en", "homeTitle"),
+    "seo.home.description": lang(seoUi, "en", "homeDescription"),
+    "seo.contact.title": lang(seoUi, "en", "contactTitle"),
+    "seo.contact.description": lang(seoUi, "en", "contactDescription"),
 
     "contact.title": "It all starts with a conversation",
     "contact.subtitle": "A budding idea, a floating question, or a desire to create something different and tailor-made for your students or teams?",
@@ -160,10 +161,10 @@ export const ui = {
 
     "nav.cta": "Contacto",
 
-    "seo.home.title": "Team Building Sostenible y Talleres de Clima",
-    "seo.home.description": "Experiencias personalizadas de RSC y clima para tu equipo. Talleres científicos sobre huella de carbono, biodiversidad y océano. En EN, FR, ES.",
-    "seo.contact.title": "Contacta con Nosotros para una Experiencia Personalizada",
-    "seo.contact.description": "¿Una pregunta? ¿Listo para inspirar a tu equipo con una experiencia a medida? ¡Contáctanos y súmate a la odisea! Respuesta rápida en EN, ES, FR.",
+    "seo.home.title": lang(seoUi, "es", "homeTitle"),
+    "seo.home.description": lang(seoUi, "es", "homeDescription"),
+    "seo.contact.title": lang(seoUi, "es", "contactTitle"),
+    "seo.contact.description": lang(seoUi, "es", "contactDescription"),
 
     "contact.title": "Todo empieza con una conversación",
     "contact.subtitle": "¿Una idea en mente, una duda en el aire o las ganas de crear algo diferente y a medida para tus alumnos o equipos?",
