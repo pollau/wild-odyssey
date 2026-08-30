@@ -6,6 +6,7 @@ import { t } from "../../i18n/ui";
 import RichText from "../RichText.astro";
 import RichBody from "../RichBody.astro";
 import StatCounter from "../StatCounter.astro";
+import { plainText } from "../../i18n/richText";
 import { THEMATIC_IMAGES } from "../../content/thematicImages";
 import { SESSION_IMAGES } from "../../content/sessionImages";
 
@@ -130,7 +131,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
                 {photo(w.id) && (
                   <img
                     src={photo(w.id).src}
-                    alt={card(w).title}
+                    alt={plainText(card(w).title)}
                     class="w-full h-full object-cover"
                     style={`object-position: ${photo(w.id).position}`}
                   />
@@ -185,7 +186,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
           {sessions.map((f) => (
             <div class="bg-white border border-[#d9d9d9] rounded-[13px] shadow-[0px_0px_8px_rgba(173,173,173,0.25)] flex flex-col sm:flex-row items-stretch overflow-hidden min-h-[130px] sm:h-[160px]">
               <div class="shrink-0 w-full sm:w-[160px] h-[130px] sm:h-full">
-                <img src={sessionPhoto(f.id)} alt={card(f).title} class="w-full h-full object-cover sm:rounded-bl-[13px] sm:rounded-tl-[13px]" />
+                <img src={sessionPhoto(f.id)} alt={plainText(card(f).title)} class="w-full h-full object-cover sm:rounded-bl-[13px] sm:rounded-tl-[13px]" />
               </div>
               <div class="flex flex-col gap-1 px-5 py-3 flex-1">
                 <p class="font-fraunces text-[#f05600] text-[15px] lg:text-[16px] font-bold"><RichText text={card(f).title} /></p>

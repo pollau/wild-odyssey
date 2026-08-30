@@ -51,3 +51,12 @@ export function parseRichText(source: string | undefined): Segment[][] {
 export function parseParagraphs(source: string | undefined): Segment[][] {
     return parseRichText(source).filter((p) => p.some((s) => s.text.trim() !== ''));
 }
+
+/** Le meme texte, debarrasse de ses marqueurs et de ses retours a la ligne.
+ *  Pour les attributs HTML, un alt ou un title, qui ne peuvent recevoir que
+ *  du texte brut : sans ce nettoyage ils afficheraient les asterisques. */
+export function plainText(source: string | undefined): string {
+    return (source ?? '')
+        .replace(MARKER, (_full, primary, secondary) => primary ?? secondary)
+        .split('\n').join(' ');
+}
