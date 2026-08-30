@@ -25,7 +25,7 @@ export const ui = {
     "seo.contact.title": "Contactez-nous pour une Expérience Sur Mesure",
     "seo.contact.description": "Une question ? Prêt à engager votre équipe dans une expérience personnalisée ? Contactez-nous & rejoignez l'odyssée ! Réponse rapide en EN, ES, FR.",
     "seo.university.title": "Ateliers Climat & Océan pour l'Enseignement Supérieur",
-    "seo.university.description": "Ateliers scientifiques sur le climat, l'océan et la biodiversité pour les universités et grandes écoles. Formats immersifs pour étudiants et personnels.",
+    "seo.university.description": "Ateliers scientifiques sur le climat, l'océan et la biodiversité pour les universités et grandes écoles. Sessions immersives pour étudiants et personnels.",
 
     "nav.university": "Universités",
 
@@ -64,7 +64,7 @@ export const ui = {
     "seo.contact.title": "Get in Touch for a Personalised Experience",
     "seo.contact.description": "A question? Ready to engage your team in a personalized experience? Contact us & join the odyssey! Fast response in English, French & Spanish.",
     "seo.university.title": "Climate & Ocean Workshops for Higher Education",
-    "seo.university.description": "Science-based workshops on climate, ocean and biodiversity for universities and colleges. Immersive formats for students and staff.",
+    "seo.university.description": "Science-based workshops on climate, ocean and biodiversity for universities and colleges. Immersive sessions for students and staff.",
 
     "nav.university": "Universities",
 
@@ -103,7 +103,7 @@ export const ui = {
     "seo.contact.title": "Contacta con Nosotros para una Experiencia Personalizada",
     "seo.contact.description": "¿Una pregunta? ¿Listo para inspirar a tu equipo con una experiencia a medida? ¡Contáctanos y súmate a la odisea! Respuesta rápida en EN, ES, FR.",
     "seo.university.title": "Talleres de Clima y Océano para Educación Superior",
-    "seo.university.description": "Talleres científicos sobre clima, océano y biodiversidad para universidades y escuelas superiores. Formatos inmersivos para estudiantes y personal.",
+    "seo.university.description": "Talleres científicos sobre clima, océano y biodiversidad para universidades y escuelas superiores. Sesiones inmersivas para estudiantes y personal.",
 
     "nav.university": "Universidades",
 

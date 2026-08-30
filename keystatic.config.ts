@@ -164,7 +164,7 @@ export default config({
                 participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici. Deux asterisques mettent un passage en orange, deux tirets bas en cyan." }),
                 organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.' }),
                 years: fields.text({ label: 'Legende du 3e chiffre', description: 'Sous le compteur +5. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.' }),
-            }), "La bande de chiffres de la page d'accueil"),
+            }), "La bande de chiffres, partagee par les deux pages"),
         }),
         // Section "Nos thematiques" de l'accueil : le texte simple seulement.
         // Les deux moities du titre colore restent dans ui.ts pour l'instant.
