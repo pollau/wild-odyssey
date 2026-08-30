@@ -1,0 +1,93 @@
+---
+// Intro de section et cartes de thematiques.
+//
+// cards est volontairement type a la main plutot qu avec CollectionEntry :
+// deux collections differentes l alimentent, celle de la home et celle de
+// l universite, et le composant n a pas a les connaitre.
+//
+// id est optionnel : sans lui aucun attribut n est rendu, ce qui laisse le
+// HTML de la home inchange. La page universite s en sert comme ancre.
+import RichText from "../RichText.astro";
+import RichBody from "../RichBody.astro";
+import { langBlock } from "../../i18n/langBlock";
+import { plainText } from "../../i18n/richText";
+import { THEMATIC_IMAGES } from "../../content/thematicImages";
+
+interface Props {
+  chrome: Record<string, string>;
+  cards: { id: string; data: Record<string, unknown> }[];
+  lang: string;
+  id?: string;
+}
+
+const { chrome, cards, lang, id } = Astro.props;
+
+// Le rang est porte par le nom de fichier (thematic-01-...), seule source de
+// l ordre. La photo se retrouve sans le rang, pour qu une renumerotation ne
+// la perde pas. Les deux publics partagent la meme table.
+const photo = (fiche: string) => THEMATIC_IMAGES[fiche.replace(/^thematic-\d+-/, "")];
+---
+
+<section id={id} class="relative py-12 lg:py-20 overflow-hidden" style="background-color: #e8f5e5;">
+
+  <!-- Décoration bas-droite : grand cercle blanc + photo océan intérieure -->
+  <div class="absolute bottom-0 right-0 translate-x-[30%] translate-y-[30%] pointer-events-none select-none z-[1]">
+    <div class="w-[400px] h-[400px] lg:w-[560px] lg:h-[560px] rounded-full bg-white/[0.28] flex items-center justify-center">
+      <div class="w-[260px] h-[260px] lg:w-[360px] lg:h-[360px] rounded-full overflow-hidden">
+        <img src="/assets/figma/ellipse-inner.png" alt="" class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col gap-10 lg:gap-14 items-center">
+
+    <!-- Header -->
+    <div class="flex flex-col gap-4 lg:gap-5 items-center text-center w-full">
+      <div class="bg-[rgba(6,152,192,0.15)] px-6 h-[44px] flex items-center justify-center rounded-full">
+        <span class="text-[#0698c0] text-[14px] lg:text-[15px] font-semibold"><RichText text={chrome.badge} /></span>
+      </div>
+      <h2 class="font-fraunces text-[24px] lg:text-[30px] font-semibold text-black">
+        <RichText text={chrome.heading} />
+      </h2>
+      <div class="font-aileron flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black text-center">
+        <RichBody text={chrome.body} />
+      </div>
+    </div>
+
+    <!-- Cartes de thematiques — scroll horizontal mobile, 2×2 desktop -->
+    <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory w-full max-w-3xl lg:max-w-6xl sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 sm:overflow-x-visible sm:pb-0 lg:gap-7">
+      {cards.map((w) => (
+        <div class="shrink-0 w-[260px] snap-start sm:w-auto bg-white border border-[#dbdbdb] rounded-[12px] shadow-[0px_1px_8px_rgba(168,168,168,0.25)] flex flex-col overflow-hidden">
+          <div class="relative h-[190px] bg-[#acb8a9]">
+            {photo(w.id) && (
+              <img
+                src={photo(w.id).src}
+                alt={plainText(langBlock(w.data, lang).title)}
+                class="w-full h-full object-cover"
+                style={`object-position: ${photo(w.id).position}`}
+              />
+            )}
+            <span class="font-fraunces absolute top-3 left-1/2 -translate-x-1/2 text-white text-[18px] font-bold text-center w-[90%] leading-tight drop-shadow-md">
+              <RichText text={langBlock(w.data, lang).title} />
+            </span>
+          </div>
+          <div class="p-4 flex flex-col gap-2 flex-1">
+            <p class="font-aileron text-[#0698c0] text-[17px] font-bold leading-snug">
+              <RichText text={langBlock(w.data, lang).subtitle || langBlock(w.data, lang).title} />
+            </p>
+            <div class="flex flex-col gap-5 flex-1 justify-between">
+              <RichBody text={langBlock(w.data, lang).description} class="font-aileron text-[#3b3b3b] text-[15px] leading-snug" />
+              <a
+                href="#"
+                data-coming-soon
+                class="font-aileron bg-[#f05600] text-white text-[15px] font-semibold h-[46px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
+              >
+                <RichText text={chrome.learnMore} />
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
