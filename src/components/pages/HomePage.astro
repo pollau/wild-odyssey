@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import OrganizationSchema from "../OrganizationSchema.astro";
 import { getCollection, getEntry } from "astro:content";
 import { t } from "../../i18n/ui";
+import { accentParts } from "../../i18n/accent";
 import StatCounter from "../StatCounter.astro";
 import { ACTIVITY_IMAGES } from "../../content/activityImages";
 
@@ -115,7 +116,9 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
             <span class="text-[#0698c0] text-[14px] lg:text-[15px] font-semibold">{t(lang, "workshops.badge")}</span>
           </div>
           <h2 class="font-fraunces text-[24px] lg:text-[30px] font-semibold text-black">
-            {t(lang, "workshops.heading1")} <span class="text-[#f05600]">{t(lang, "workshops.heading2")}</span>
+            {accentParts(t(lang, "workshops.heading")).map((m, i) =>
+                i % 2 ? <span class="text-[#f05600]">{m}</span> : m
+              )}
           </h2>
           <div class="font-aileron flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black text-center">
             <p>{t(lang, "workshops.body1")}</p>

@@ -98,11 +98,10 @@ export default config({
             format: { data: 'json' },
             schema: {
                 fr: fields.object({
-                        headingBlack: fields.text({
-                            label: 'Titre, partie en noir',
-                            description: "Le titre est ecrit en deux couleurs. Cette moitie s'affiche en noir, la suivante en orange, et les deux se suivent sur la meme ligne.",
+                        heading: fields.text({
+                            label: 'Titre',
+                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange, comme ceci : Une methodologie commune, **des thematiques au choix.** Sans asterisques, tout reste en noir.",
                         }),
-                        headingOrange: fields.text({ label: 'Titre, partie en orange' }),
                         badge: fields.text({ label: 'Pastille verte' }),
                         body1: fields.text({ label: 'Paragraphe 1', multiline: true }),
                         body2: fields.text({ label: 'Paragraphe 2', multiline: true }),
@@ -110,11 +109,10 @@ export default config({
                         learnMore: fields.text({ label: 'Texte du bouton des cartes' }),
                 }, { label: 'Français', description: "Le texte au-dessus des cartes de thematiques, version française." }),
                 en: fields.object({
-                        headingBlack: fields.text({
-                            label: 'Titre, partie en noir',
-                            description: "Le titre est ecrit en deux couleurs. Cette moitie s'affiche en noir, la suivante en orange, et les deux se suivent sur la meme ligne.",
+                        heading: fields.text({
+                            label: 'Titre',
+                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange, comme ceci : Une methodologie commune, **des thematiques au choix.** Sans asterisques, tout reste en noir.",
                         }),
-                        headingOrange: fields.text({ label: 'Titre, partie en orange' }),
                         badge: fields.text({ label: 'Pastille verte' }),
                         body1: fields.text({ label: 'Paragraphe 1', multiline: true }),
                         body2: fields.text({ label: 'Paragraphe 2', multiline: true }),
@@ -122,11 +120,10 @@ export default config({
                         learnMore: fields.text({ label: 'Texte du bouton des cartes' }),
                 }, { label: 'Anglais', description: "Le texte au-dessus des cartes de thematiques, version anglaise." }),
                 es: fields.object({
-                        headingBlack: fields.text({
-                            label: 'Titre, partie en noir',
-                            description: "Le titre est ecrit en deux couleurs. Cette moitie s'affiche en noir, la suivante en orange, et les deux se suivent sur la meme ligne.",
+                        heading: fields.text({
+                            label: 'Titre',
+                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange, comme ceci : Une methodologie commune, **des thematiques au choix.** Sans asterisques, tout reste en noir.",
                         }),
-                        headingOrange: fields.text({ label: 'Titre, partie en orange' }),
                         badge: fields.text({ label: 'Pastille verte' }),
                         body1: fields.text({ label: 'Paragraphe 1', multiline: true }),
                         body2: fields.text({ label: 'Paragraphe 2', multiline: true }),

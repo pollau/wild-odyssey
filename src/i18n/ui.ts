@@ -16,8 +16,7 @@ export const ui = {
   fr: {
 
     "workshops.badge": lang(workshopsUi, "fr", "badge"),
-    "workshops.heading1": lang(workshopsUi, "fr", "headingBlack"),
-    "workshops.heading2": lang(workshopsUi, "fr", "headingOrange"),
+    "workshops.heading": lang(workshopsUi, "fr", "heading"),
     "workshops.body1": lang(workshopsUi, "fr", "body1"),
     "workshops.body2": lang(workshopsUi, "fr", "body2"),
     "workshops.body3": lang(workshopsUi, "fr", "body3"),
@@ -110,8 +109,7 @@ export const ui = {
   en: {
 
     "workshops.badge": lang(workshopsUi, "en", "badge"),
-    "workshops.heading1": lang(workshopsUi, "en", "headingBlack"),
-    "workshops.heading2": lang(workshopsUi, "en", "headingOrange"),
+    "workshops.heading": lang(workshopsUi, "en", "heading"),
     "workshops.body1": lang(workshopsUi, "en", "body1"),
     "workshops.body2": lang(workshopsUi, "en", "body2"),
     "workshops.body3": lang(workshopsUi, "en", "body3"),
@@ -204,8 +202,7 @@ export const ui = {
   es: {
 
     "workshops.badge": lang(workshopsUi, "es", "badge"),
-    "workshops.heading1": lang(workshopsUi, "es", "headingBlack"),
-    "workshops.heading2": lang(workshopsUi, "es", "headingOrange"),
+    "workshops.heading": lang(workshopsUi, "es", "heading"),
     "workshops.body1": lang(workshopsUi, "es", "body1"),
     "workshops.body2": lang(workshopsUi, "es", "body2"),
     "workshops.body3": lang(workshopsUi, "es", "body3"),
