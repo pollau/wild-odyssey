@@ -32,9 +32,6 @@ const homepage = defineCollection({
         heroTitleBase_en: z.string().optional(),
         heroTitle_es: z.string().optional(),
         heroTitleBase_es: z.string().optional(),
-        statsParticipants: z.string().optional(),
-        statsOrganizations: z.string().optional(),
-        statsYears: z.string().optional(),
         contactEmail: z.string().optional(),
     }),
 });
