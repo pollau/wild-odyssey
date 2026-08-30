@@ -1,0 +1,103 @@
+---
+// Chiffre de la section STATS, anime au scroll.
+//
+// La valeur est un nombre et non une chaine : elle est volontairement codee en
+// dur cote appelant plutot qu'editable dans Keystatic, parce qu'un compteur a
+// besoin d'un entier et pas de texte libre.
+//
+// Le HTML rendu contient deja la valeur finale formatee : sans JavaScript, ou
+// pour Google, le bon chiffre est la. Le script ne fait que rejouer la montee.
+
+interface Props {
+  value: number;
+  prefix?: string;
+  class?: string;
+}
+
+const { value, prefix = "+", class: className = "" } = Astro.props;
+
+// Espace fine insecable (U+202F) : meme separateur dans les trois langues
+// (correct en francais, recommande par la RAE en espagnol, norme SI en
+// anglais), et insecable pour que "600 000" ne se coupe jamais en fin de ligne.
+const NNBSP = "\u202F";
+const group = (n: number) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, NNBSP);
+
+const finalText = prefix + group(value);
+
+// La largeur est reservee des le depart : sans ca, le chiffre s'elargit pendant
+// la montee et decale horizontalement les deux autres colonnes de stats.
+const reservedWidth = `${finalText.length}ch`;
+---
+
+<span
+  class={className}
+  data-stat-counter
+  data-value={value}
+  data-prefix={prefix}
+  style={`display:inline-block;text-align:center;min-width:${reservedWidth};font-variant-numeric:tabular-nums`}
+>{finalText}</span>
+
+<script>
+  const counters = [...document.querySelectorAll<HTMLElement>("[data-stat-counter]")];
+
+  // prefers-reduced-motion : on ne touche a rien, la valeur finale rendue au
+  // build reste affichee telle quelle.
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (counters.length && !reduced) {
+    const NNBSP = " ";
+    const group = (n: number) => n.toString().replace(/B(?=(d{3})+(?!d))/g, NNBSP);
+    const DURATION = 1800;
+
+    // Remise a zero des l'execution du script, avant tout scroll : sinon le
+    // visiteur apercoit la valeur finale au moment ou la section entre a
+    // l'ecran, puis la voit retomber a zero. La section est a ~8000px du haut,
+    // personne ne l'atteint sans scroller.
+    const items = counters
+      .map((el) => ({
+        el,
+        target: Number(el.dataset.value),
+        prefix: el.dataset.prefix ?? "",
+        // Capture avant remise a zero : la derniere frame reecrit exactement
+        // cette chaine, pour garantir zero ecart avec le rendu serveur.
+        finalText: el.textContent ?? "",
+      }))
+      .filter((it) => Number.isFinite(it.target));
+
+    for (const it of items) it.el.textContent = it.prefix + group(0);
+
+    type Item = (typeof items)[number];
+
+    const animate = ({ el, target, prefix, finalText }: Item) => {
+      const start = performance.now();
+      const step = (now: number) => {
+        const p = Math.min((now - start) / DURATION, 1);
+        if (p < 1) {
+          // easeOutCubic : depart franc, deceleration en fin de course.
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = prefix + group(Math.round(target * eased));
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = finalText;
+        }
+      };
+      requestAnimationFrame(step);
+    };
+
+    // Une seule fois par compteur : on n'a pas envie que le chiffre se rejoue
+    // a chaque aller-retour de scroll.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          observer.unobserve(entry.target);
+          const it = items.find((x) => x.el === entry.target);
+          if (it) animate(it);
+        }
+      },
+      { threshold: 0.4 },
+    );
+
+    for (const it of items) observer.observe(it.el);
+  }
+</script>

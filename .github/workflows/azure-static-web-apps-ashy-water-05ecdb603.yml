@@ -3,11 +3,15 @@ name: Azure Static Web Apps CI/CD
 on:
   push:
     branches:
+      # main => production ; qa => environnement nomme permanent (URL stable)
       - main
+      - qa
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
+      # une PR vers main ou vers qa recoit sa preview ephemere numerotee
       - main
+      - qa
 
 jobs:
   build_and_deploy_job:
@@ -33,6 +37,9 @@ jobs:
         run: npm run build
         env:
           PUBLIC_UMAMI_SITE_ID: ${{ github.ref == 'refs/heads/main' && secrets.UMAMI_SITE_ID_PROD || '' }}
+          # main => production (aucune pastille, indexable) ; toute PR => preview
+          # (pastille QA + noindex). Voir src/layouts/Layout.astro.
+          PUBLIC_ENV: ${{ github.ref == 'refs/heads/main' && 'production' || 'preview' }}
 
       - name: Build And Deploy
         id: builddeploy
@@ -47,6 +54,11 @@ jobs:
           api_location: "api" # Azure Functions (contact form email)
           output_location: "" # Built app content directory - optional
           skip_app_build: true
+          # Seul main deploie en production. La branche qa alimente un
+          # environnement nomme "qa" a URL stable (a declarer une fois dans
+          # Keystatic Cloud) ; les PR gardent leurs previews ephemeres.
+          production_branch: "main"
+          deployment_environment: ${{ github.ref == 'refs/heads/qa' && 'qa' || '' }}
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
