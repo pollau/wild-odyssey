@@ -1,0 +1,33 @@
+---
+// Rendu EN PARAGRAPHES d'un texte du CMS : chaque retour a la ligne ouvre un
+// nouveau <p>, qui recoit la classe passee. Remplace le <p> qu'on aurait
+// ecrit a la main, pour ne jamais imbriquer un paragraphe dans un autre.
+// Voir src/i18n/richText.ts pour la convention d'ecriture.
+import { parseParagraphs } from "../i18n/richText";
+
+interface Props {
+	text?: string;
+	class?: string;
+	primary?: string;
+	secondary?: string;
+}
+
+const {
+	text = "",
+	class: classe,
+	primary = "text-[#f05600]",
+	secondary = "text-[#47cdf2]",
+} = Astro.props;
+const paragraphes = parseParagraphs(text);
+---
+{paragraphes.map((segments) => (
+	<p class={classe}>
+		{segments.map((s) =>
+			s.accent === "none" ? (
+				s.text
+			) : (
+				<span class={s.accent === "primary" ? primary : secondary}>{s.text}</span>
+			)
+		)}
+	</p>
+))}

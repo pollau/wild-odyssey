@@ -1,6 +1,6 @@
 ---
 import { t } from "../i18n/ui";
-import AccentTitle from "./AccentTitle.astro";
+import RichText from "./RichText.astro";
 import footerUi from "../content/ui/footer.json";
 
 const lang = Astro.currentLocale || "fr";
@@ -23,18 +23,17 @@ const contactEmail = footerUi.contactEmail;
     <div class="py-14 lg:py-20 flex flex-col items-center gap-6 lg:gap-8 text-center px-6">
       <div>
         <h2 class="font-fraunces text-[28px] lg:text-[36px] font-semibold text-white leading-tight">
-          <AccentTitle text={t(lang, "footer.heading")} />
+          <RichText text={t(lang, "footer.heading")} />
         </h2>
         <p class="font-aileron text-[17px] lg:text-[22px] font-semibold text-white mt-3 leading-snug">
-          {t(lang, "footer.ctaBody1")}<br />
-          {t(lang, "footer.ctaBody2")}
+          <RichText text={t(lang, "footer.ctaBody")} />
         </p>
       </div>
       <a
         href={`${prefix}/contact`}
         class="font-aileron bg-[#f05600] text-white text-[16px] lg:text-[18px] font-semibold px-8 h-[54px] lg:h-[68px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
       >
-        {t(lang, "footer.ctaBtn")}
+        <RichText text={t(lang, "footer.ctaBtn")} />
       </a>
     </div>
 
@@ -50,7 +49,7 @@ const contactEmail = footerUi.contactEmail;
             <span style="color:#3a9b37">WILD </span><span class="text-white">ODYSSEY</span>
           </span>
         </a>
-        <p class="text-sm text-white/50">{t(lang, "footer.copyright")}</p>
+        <p class="text-sm text-white/50"><RichText text={t(lang, "footer.copyright")} /></p>
         <a href={`mailto:${contactEmail}`} class="text-sm text-white/70 hover:text-white transition-colors">
           {contactEmail}
         </a>

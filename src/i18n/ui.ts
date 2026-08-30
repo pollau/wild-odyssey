@@ -19,9 +19,7 @@ export const ui = {
 
     "thematics.badge": lang(thematicsUi, "fr", "badge"),
     "thematics.heading": lang(thematicsUi, "fr", "heading"),
-    "thematics.body1": lang(thematicsUi, "fr", "body1"),
-    "thematics.body2": lang(thematicsUi, "fr", "body2"),
-    "thematics.body3": lang(thematicsUi, "fr", "body3"),
+    "thematics.body": lang(thematicsUi, "fr", "body"),
     "thematics.learnMore": lang(thematicsUi, "fr", "learnMore"),
 
     "sessions.heading": lang(sessionsUi, "fr", "heading"),
@@ -39,12 +37,10 @@ export const ui = {
     "stats.organizations": lang(statsUi, "fr", "organizations"),
     "stats.years": lang(statsUi, "fr", "years"),
     "reasons.heading": lang(reasonsUi, "fr", "heading"),
-    "reasons.body1": lang(reasonsUi, "fr", "body1"),
-    "reasons.body2": lang(reasonsUi, "fr", "body2"),
+    "reasons.body": lang(reasonsUi, "fr", "body"),
 
     "footer.heading": lang(footerUi, "fr", "heading"),
-    "footer.ctaBody1": lang(footerUi, "fr", "ctaBody1"),
-    "footer.ctaBody2": lang(footerUi, "fr", "ctaBody2"),
+    "footer.ctaBody": lang(footerUi, "fr", "ctaBody"),
     "footer.ctaBtn": lang(footerUi, "fr", "ctaBtn"),
     "footer.copyright": lang(footerUi, "fr", "copyright"),
 
@@ -81,9 +77,7 @@ export const ui = {
 
     "thematics.badge": lang(thematicsUi, "en", "badge"),
     "thematics.heading": lang(thematicsUi, "en", "heading"),
-    "thematics.body1": lang(thematicsUi, "en", "body1"),
-    "thematics.body2": lang(thematicsUi, "en", "body2"),
-    "thematics.body3": lang(thematicsUi, "en", "body3"),
+    "thematics.body": lang(thematicsUi, "en", "body"),
     "thematics.learnMore": lang(thematicsUi, "en", "learnMore"),
 
     "sessions.heading": lang(sessionsUi, "en", "heading"),
@@ -101,12 +95,10 @@ export const ui = {
     "stats.organizations": lang(statsUi, "en", "organizations"),
     "stats.years": lang(statsUi, "en", "years"),
     "reasons.heading": lang(reasonsUi, "en", "heading"),
-    "reasons.body1": lang(reasonsUi, "en", "body1"),
-    "reasons.body2": lang(reasonsUi, "en", "body2"),
+    "reasons.body": lang(reasonsUi, "en", "body"),
 
     "footer.heading": lang(footerUi, "en", "heading"),
-    "footer.ctaBody1": lang(footerUi, "en", "ctaBody1"),
-    "footer.ctaBody2": lang(footerUi, "en", "ctaBody2"),
+    "footer.ctaBody": lang(footerUi, "en", "ctaBody"),
     "footer.ctaBtn": lang(footerUi, "en", "ctaBtn"),
     "footer.copyright": lang(footerUi, "en", "copyright"),
 
@@ -143,9 +135,7 @@ export const ui = {
 
     "thematics.badge": lang(thematicsUi, "es", "badge"),
     "thematics.heading": lang(thematicsUi, "es", "heading"),
-    "thematics.body1": lang(thematicsUi, "es", "body1"),
-    "thematics.body2": lang(thematicsUi, "es", "body2"),
-    "thematics.body3": lang(thematicsUi, "es", "body3"),
+    "thematics.body": lang(thematicsUi, "es", "body"),
     "thematics.learnMore": lang(thematicsUi, "es", "learnMore"),
 
     "sessions.heading": lang(sessionsUi, "es", "heading"),
@@ -163,12 +153,10 @@ export const ui = {
     "stats.organizations": lang(statsUi, "es", "organizations"),
     "stats.years": lang(statsUi, "es", "years"),
     "reasons.heading": lang(reasonsUi, "es", "heading"),
-    "reasons.body1": lang(reasonsUi, "es", "body1"),
-    "reasons.body2": lang(reasonsUi, "es", "body2"),
+    "reasons.body": lang(reasonsUi, "es", "body"),
 
     "footer.heading": lang(footerUi, "es", "heading"),
-    "footer.ctaBody1": lang(footerUi, "es", "ctaBody1"),
-    "footer.ctaBody2": lang(footerUi, "es", "ctaBody2"),
+    "footer.ctaBody": lang(footerUi, "es", "ctaBody"),
     "footer.ctaBtn": lang(footerUi, "es", "ctaBtn"),
     "footer.copyright": lang(footerUi, "es", "copyright"),
 

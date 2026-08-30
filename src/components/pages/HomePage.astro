@@ -3,7 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import OrganizationSchema from "../OrganizationSchema.astro";
 import { getCollection, getEntry } from "astro:content";
 import { t } from "../../i18n/ui";
-import AccentTitle from "../AccentTitle.astro";
+import RichText from "../RichText.astro";
+import RichBody from "../RichBody.astro";
 import StatCounter from "../StatCounter.astro";
 import { THEMATIC_IMAGES } from "../../content/thematicImages";
 import { SESSION_IMAGES } from "../../content/sessionImages";
@@ -72,21 +73,19 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
       <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
         <!-- Text -->
         <div class="flex-1 flex flex-col gap-6 lg:gap-8">
-          {intro.titleBase && <p class="font-fraunces text-[28px] lg:text-[36px] font-bold leading-tight text-black">{intro.titleBase}</p>}
+          {intro.titleBase && <p class="font-fraunces text-[28px] lg:text-[36px] font-bold leading-tight text-black"><RichText text={intro.titleBase} /></p>}
           <h1 class="font-fraunces text-[28px] lg:text-[36px] font-bold leading-tight">
-            <span class="text-[#f05600]">{intro.title}</span>
+            <span class="text-[#f05600]"><RichText text={intro.title} /></span>
           </h1>
           <div class="font-aileron flex flex-col gap-4 text-[19px] text-black leading-relaxed">
-            <p>{intro.body1}</p>
-            <p>{intro.body2}</p>
-            {intro.body3 && <p>{intro.body3}</p>}
+            <RichBody text={intro.body} />
           </div>
-          <p class="font-fraunces text-[#f05600] text-[20px]">{intro.tagline}</p>
+          <p class="font-fraunces text-[#f05600] text-[20px]"><RichText text={intro.tagline} /></p>
           <a
             href="#reasons"
             class="font-aileron bg-[#f05600] text-white text-[20px] font-semibold h-[54px] lg:h-[64px] w-full sm:w-[260px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
           >
-            {intro.cta}
+            <RichText text={intro.cta} />
           </a>
         </div>
         <!-- Image -->
@@ -113,15 +112,13 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
         <!-- Header -->
         <div class="flex flex-col gap-4 lg:gap-5 items-center text-center w-full">
           <div class="bg-[rgba(6,152,192,0.15)] px-6 h-[44px] flex items-center justify-center rounded-full">
-            <span class="text-[#0698c0] text-[14px] lg:text-[15px] font-semibold">{t(lang, "thematics.badge")}</span>
+            <span class="text-[#0698c0] text-[14px] lg:text-[15px] font-semibold"><RichText text={t(lang, "thematics.badge")} /></span>
           </div>
           <h2 class="font-fraunces text-[24px] lg:text-[30px] font-semibold text-black">
-            <AccentTitle text={t(lang, "thematics.heading")} />
+            <RichText text={t(lang, "thematics.heading")} />
           </h2>
           <div class="font-aileron flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black text-center">
-            <p>{t(lang, "thematics.body1")}</p>
-            <p>{t(lang, "thematics.body2")}</p>
-            {t(lang, "thematics.body3") && <p>{t(lang, "thematics.body3")}</p>}
+            <RichBody text={t(lang, "thematics.body")} />
           </div>
         </div>
 
@@ -139,23 +136,21 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
                   />
                 )}
                 <span class="font-fraunces absolute top-3 left-1/2 -translate-x-1/2 text-white text-[18px] font-bold text-center w-[90%] leading-tight drop-shadow-md">
-                  {card(w).title}
+                  <RichText text={card(w).title} />
                 </span>
               </div>
               <div class="p-4 flex flex-col gap-2 flex-1">
                 <p class="font-aileron text-[#0698c0] text-[17px] font-bold leading-snug">
-                  {card(w).subtitle || card(w).title}
+                  <RichText text={card(w).subtitle || card(w).title} />
                 </p>
                 <div class="flex flex-col gap-5 flex-1 justify-between">
-                  <p class="font-aileron text-[#3b3b3b] text-[15px] leading-snug">
-                    {card(w).description}
-                  </p>
+                  <RichBody text={card(w).description} class="font-aileron text-[#3b3b3b] text-[15px] leading-snug" />
                   <a
                     href="#"
                     data-coming-soon
                     class="font-aileron bg-[#f05600] text-white text-[15px] font-semibold h-[46px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
                   >
-                    {t(lang, "thematics.learnMore")}
+                    <RichText text={t(lang, "thematics.learnMore")} />
                   </a>
                 </div>
               </div>
@@ -170,7 +165,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
       <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col gap-10 lg:gap-14 items-center">
 
         <h2 class="font-fraunces text-[24px] lg:text-[32px] font-semibold text-center leading-tight">
-          <AccentTitle text={t(lang, "sessions.heading")} />
+          <RichText text={t(lang, "sessions.heading")} />
         </h2>
 
         <!-- 6 features box -->
@@ -179,7 +174,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
             {features.map((f) => (
               <div class="flex flex-col items-center gap-2 py-3 lg:py-4 px-3 text-center">
                 <img src={f.icon} alt="" class="w-[44px] h-[44px] lg:w-[52px] lg:h-[52px]" />
-                <p class="font-aileron text-black text-[14px] lg:text-[15px] font-bold leading-snug">{f.label}</p>
+                <p class="font-aileron text-black text-[14px] lg:text-[15px] font-bold leading-snug"><RichText text={f.label} /></p>
               </div>
             ))}
           </div>
@@ -193,8 +188,8 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
                 <img src={sessionPhoto(f.id)} alt={card(f).title} class="w-full h-full object-cover sm:rounded-bl-[13px] sm:rounded-tl-[13px]" />
               </div>
               <div class="flex flex-col gap-1 px-5 py-3 flex-1">
-                <p class="font-fraunces text-[#f05600] text-[15px] lg:text-[16px] font-bold">{card(f).title}</p>
-                <p class="font-aileron text-black text-[13px] lg:text-[14px] font-medium leading-[22px]">{card(f).description}</p>
+                <p class="font-fraunces text-[#f05600] text-[15px] lg:text-[16px] font-bold"><RichText text={card(f).title} /></p>
+                <RichBody text={card(f).description} class="font-aileron text-black text-[13px] lg:text-[14px] font-medium leading-[22px]" />
               </div>
             </div>
           ))}
@@ -204,7 +199,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
             data-coming-soon
             class="font-aileron bg-[#0698c0] text-white text-[16px] lg:text-[18px] font-semibold h-[48px] flex items-center justify-center rounded-[7px] w-full hover:bg-cyan-700 transition-colors"
           >
-            {t(lang, "sessions.seeAll")}
+            <RichText text={t(lang, "sessions.seeAll")} />
           </a>
         </div>
       </div>
@@ -219,17 +214,17 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
       <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center gap-8 lg:gap-10">
         <div class="flex flex-col items-center gap-4 lg:gap-5 text-center">
           <div class="bg-[rgba(6,152,192,0.53)] px-6 h-[44px] flex items-center justify-center rounded-full">
-            <span class="text-[#47cdf2] text-[13px] lg:text-[15px] font-semibold">{t(lang, "badge.science")}</span>
+            <span class="text-[#47cdf2] text-[13px] lg:text-[15px] font-semibold"><RichText text={t(lang, "badge.science")} /></span>
           </div>
           <p class="font-fraunces text-[22px] lg:text-[32px] font-semibold text-white text-center leading-snug max-w-[640px]">
-            <AccentTitle text={t(lang, "stats.heading")} />
+            <RichText text={t(lang, "stats.heading")} />
           </p>
         </div>
         <div class="flex flex-col md:flex-row gap-10 md:gap-20 items-center justify-center text-center">
           {STATS.map((s) => (
             <div class="flex flex-col items-center gap-2 lg:gap-3">
               <StatCounter value={s.value} class="font-fraunces text-[44px] lg:text-[72px] font-semibold text-white leading-none" />
-              <span class="font-aileron text-[20px] lg:text-[28px] font-semibold text-[#47cdf2]">{t(lang, s.labelKey)}</span>
+              <span class="font-aileron text-[20px] lg:text-[28px] font-semibold text-[#47cdf2]"><RichText text={t(lang, s.labelKey)} /></span>
             </div>
           ))}
         </div>
@@ -243,14 +238,13 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
         <!-- Header -->
         <div class="flex flex-col gap-4 lg:gap-5">
           <div class="bg-[#0698c0] px-6 h-[44px] flex items-center justify-center rounded-full self-start">
-            <span class="text-white text-[13px] lg:text-[15px] font-semibold">{t(lang, "badge.science")}</span>
+            <span class="text-white text-[13px] lg:text-[15px] font-semibold"><RichText text={t(lang, "badge.science")} /></span>
           </div>
           <h2 class="font-fraunces text-[24px] lg:text-[34px] font-semibold leading-tight">
-            <AccentTitle text={t(lang, "reasons.heading")} />
+            <RichText text={t(lang, "reasons.heading")} />
           </h2>
           <div class="font-aileron flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black">
-            <p>{t(lang, "reasons.body1")}</p>
-            <p>{t(lang, "reasons.body2")}</p>
+            <RichBody text={t(lang, "reasons.body")} />
           </div>
         </div>
 
@@ -261,11 +255,11 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
               <div class="flex items-center gap-4">
                 <span class="font-fraunces text-[48px] lg:text-[56px] font-bold text-[#0698c0] leading-none shrink-0">{i + 1}</span>
                 <p class="font-fraunces text-[16px] lg:text-[17px] font-bold text-black leading-snug">
-                  <AccentTitle text={card(r).title} />
+                  <RichText text={card(r).title} />
                 </p>
               </div>
               <div class="font-aileron text-[14px] lg:text-[15px] text-[#3b3b3b] leading-snug flex flex-col gap-1">
-                {(card(r).text ?? "").split("\n").map((line: string) => <p>{line}</p>)}
+                <RichBody text={card(r).text} />
               </div>
             </div>
           ))}

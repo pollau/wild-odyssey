@@ -33,9 +33,7 @@ const introBlock = z
     .object({
         titleBase: z.string().optional(),
         title: z.string().optional(),
-        body1: z.string().optional(),
-        body2: z.string().optional(),
-        body3: z.string().optional(),
+        body: z.string().optional(),
         tagline: z.string().optional(),
         cta: z.string().optional(),
     })
