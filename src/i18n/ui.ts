@@ -4,7 +4,7 @@
 import statsUi from "../content/ui/stats.json";
 import thematicsUi from "../content/ui/thematics.json";
 import footerUi from "../content/ui/footer.json";
-import formatsUi from "../content/ui/formats.json";
+import sessionsUi from "../content/ui/sessions.json";
 import reasonsUi from "../content/ui/reasons.json";
 
 // Les JSON pilotes par Keystatic sont groupes par langue : on lit
@@ -24,14 +24,14 @@ export const ui = {
     "thematics.body3": lang(thematicsUi, "fr", "body3"),
     "thematics.learnMore": lang(thematicsUi, "fr", "learnMore"),
 
-    "formats.heading": lang(formatsUi, "fr", "heading"),
-    "formats.feat1": lang(formatsUi, "fr", "feat1"),
-    "formats.feat2": lang(formatsUi, "fr", "feat2"),
-    "formats.feat3": lang(formatsUi, "fr", "feat3"),
-    "formats.feat4": lang(formatsUi, "fr", "feat4"),
-    "formats.feat5": lang(formatsUi, "fr", "feat5"),
-    "formats.feat6": lang(formatsUi, "fr", "feat6"),
-    "formats.seeAll": lang(formatsUi, "fr", "seeAll"),
+    "sessions.heading": lang(sessionsUi, "fr", "heading"),
+    "sessions.feat1": lang(sessionsUi, "fr", "feat1"),
+    "sessions.feat2": lang(sessionsUi, "fr", "feat2"),
+    "sessions.feat3": lang(sessionsUi, "fr", "feat3"),
+    "sessions.feat4": lang(sessionsUi, "fr", "feat4"),
+    "sessions.feat5": lang(sessionsUi, "fr", "feat5"),
+    "sessions.feat6": lang(sessionsUi, "fr", "feat6"),
+    "sessions.seeAll": lang(sessionsUi, "fr", "seeAll"),
 
     "badge.science": lang(statsUi, "fr", "badgeScience"),
     "stats.heading": lang(statsUi, "fr", "heading"),
@@ -98,14 +98,14 @@ export const ui = {
     "thematics.body3": lang(thematicsUi, "en", "body3"),
     "thematics.learnMore": lang(thematicsUi, "en", "learnMore"),
 
-    "formats.heading": lang(formatsUi, "en", "heading"),
-    "formats.feat1": lang(formatsUi, "en", "feat1"),
-    "formats.feat2": lang(formatsUi, "en", "feat2"),
-    "formats.feat3": lang(formatsUi, "en", "feat3"),
-    "formats.feat4": lang(formatsUi, "en", "feat4"),
-    "formats.feat5": lang(formatsUi, "en", "feat5"),
-    "formats.feat6": lang(formatsUi, "en", "feat6"),
-    "formats.seeAll": lang(formatsUi, "en", "seeAll"),
+    "sessions.heading": lang(sessionsUi, "en", "heading"),
+    "sessions.feat1": lang(sessionsUi, "en", "feat1"),
+    "sessions.feat2": lang(sessionsUi, "en", "feat2"),
+    "sessions.feat3": lang(sessionsUi, "en", "feat3"),
+    "sessions.feat4": lang(sessionsUi, "en", "feat4"),
+    "sessions.feat5": lang(sessionsUi, "en", "feat5"),
+    "sessions.feat6": lang(sessionsUi, "en", "feat6"),
+    "sessions.seeAll": lang(sessionsUi, "en", "seeAll"),
 
     "badge.science": lang(statsUi, "en", "badgeScience"),
     "stats.heading": lang(statsUi, "en", "heading"),
@@ -172,14 +172,14 @@ export const ui = {
     "thematics.body3": lang(thematicsUi, "es", "body3"),
     "thematics.learnMore": lang(thematicsUi, "es", "learnMore"),
 
-    "formats.heading": lang(formatsUi, "es", "heading"),
-    "formats.feat1": lang(formatsUi, "es", "feat1"),
-    "formats.feat2": lang(formatsUi, "es", "feat2"),
-    "formats.feat3": lang(formatsUi, "es", "feat3"),
-    "formats.feat4": lang(formatsUi, "es", "feat4"),
-    "formats.feat5": lang(formatsUi, "es", "feat5"),
-    "formats.feat6": lang(formatsUi, "es", "feat6"),
-    "formats.seeAll": lang(formatsUi, "es", "seeAll"),
+    "sessions.heading": lang(sessionsUi, "es", "heading"),
+    "sessions.feat1": lang(sessionsUi, "es", "feat1"),
+    "sessions.feat2": lang(sessionsUi, "es", "feat2"),
+    "sessions.feat3": lang(sessionsUi, "es", "feat3"),
+    "sessions.feat4": lang(sessionsUi, "es", "feat4"),
+    "sessions.feat5": lang(sessionsUi, "es", "feat5"),
+    "sessions.feat6": lang(sessionsUi, "es", "feat6"),
+    "sessions.seeAll": lang(sessionsUi, "es", "seeAll"),
 
     "badge.science": lang(statsUi, "es", "badgeScience"),
     "stats.heading": lang(statsUi, "es", "heading"),

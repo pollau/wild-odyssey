@@ -10,7 +10,7 @@ const cardBlock = z
     })
     .optional();
 
-const activities = defineCollection({
+const thematics = defineCollection({
     type: 'data',
     schema: z.object({
         title: z.string(),
@@ -45,7 +45,7 @@ const homepage = defineCollection({
 
 // Les trois facons dont un atelier se deroule : atelier collaboratif,
 // masterclass, marche oceane. Meme forme que les thematiques.
-const formats = defineCollection({
+const sessions = defineCollection({
     type: 'data',
     schema: z.object({
         title: z.string(),
@@ -56,7 +56,7 @@ const formats = defineCollection({
 });
 
 export const collections = {
-    activities,
-    formats,
+    thematics,
+    sessions,
     homepage,
 };

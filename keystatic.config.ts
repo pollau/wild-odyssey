@@ -23,7 +23,7 @@ export default config({
         // Attention : le menu est construit UNIQUEMENT a partir de cette
         // liste. Une section absente d'ici disparait de l'interface.
         navigation: {
-            "Page d'accueil": ['homepage', 'thematicsSection', 'activities', 'formatsSection', 'formats', 'statsSection', 'reasonsSection'],
+            "Page d'accueil": ['homepage', 'thematicsSection', 'thematics', 'sessionsSection', 'sessions', 'statsSection', 'reasonsSection'],
             'Événements': ['events'],
             'Tout le site': ['footerSection'],
         },
@@ -190,9 +190,9 @@ export default config({
         }),
         // Section qui presente les facons dont un atelier se deroule, a ne pas
         // confondre avec "Thematiques" qui en presente les sujets.
-        formatsSection: singleton({
+        sessionsSection: singleton({
             label: 'Introduction des ateliers',
-            path: 'src/content/ui/formats',
+            path: 'src/content/ui/sessions',
             format: { data: 'json' },
             schema: {
                 fr: fields.object({
@@ -324,10 +324,10 @@ export default config({
     collections: {
         // Les trois facons dont un atelier se deroule. Meme forme que les
         // thematiques : rang dans le nom de fichier, photo hors CMS.
-        formats: collection({
+        sessions: collection({
             label: 'Ateliers et masterclasses',
             slugField: 'title',
-            path: 'src/content/formats/*',
+            path: 'src/content/sessions/*',
             format: { data: 'json' },
             columns: ['title'],
             schema: {
@@ -340,21 +340,21 @@ export default config({
                 fr: fields.object({
                         title: fields.text({ label: 'Titre de la carte' }),
                         description: fields.text({ label: 'Description', multiline: true }),
-                }, { label: 'Français', description: 'La carte de ce format, version française.' }),
+                }, { label: 'Français', description: 'La carte de cette session, version française.' }),
                 en: fields.object({
                         title: fields.text({ label: 'Titre de la carte' }),
                         description: fields.text({ label: 'Description', multiline: true }),
-                }, { label: 'Anglais', description: 'La carte de ce format, version anglaise.' }),
+                }, { label: 'Anglais', description: 'La carte de cette session, version anglaise.' }),
                 es: fields.object({
                         title: fields.text({ label: 'Titre de la carte' }),
                         description: fields.text({ label: 'Description', multiline: true }),
-                }, { label: 'Espagnol', description: 'La carte de ce format, version espagnole.' }),
+                }, { label: 'Espagnol', description: 'La carte de cette session, version espagnole.' }),
             },
         }),
-        activities: collection({
+        thematics: collection({
             label: 'Thématiques',
             slugField: 'title',
-            path: 'src/content/activities/*',
+            path: 'src/content/thematics/*',
             format: { data: 'json' },
             // Le rang est porte par le nom de fichier (thematic-01-...), donc
             // le tri par defaut de la liste, fige sur ce nom, donne l'ordre du

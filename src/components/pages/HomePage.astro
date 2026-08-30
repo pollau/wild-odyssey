@@ -5,8 +5,8 @@ import { getCollection, getEntry } from "astro:content";
 import { t } from "../../i18n/ui";
 import AccentTitle from "../AccentTitle.astro";
 import StatCounter from "../StatCounter.astro";
-import { ACTIVITY_IMAGES } from "../../content/activityImages";
-import { FORMAT_IMAGES } from "../../content/formatImages";
+import { THEMATIC_IMAGES } from "../../content/thematicImages";
+import { SESSION_IMAGES } from "../../content/sessionImages";
 
 interface Props {
   lang: string;
@@ -24,14 +24,14 @@ const card = (w: { data: Record<string, unknown> }) =>
 // Le rang est porte par le nom de fichier (thematic-01-...), seule source de
 // l'ordre d'affichage. La photo, elle, est retrouvee sans le rang, pour qu'une
 // renumerotation ne la perde pas.
-const photo = (id: string) => ACTIVITY_IMAGES[id.replace(/^thematic-\d+-/, "")];
-const thematics = (await getCollection("activities"))
+const photo = (id: string) => THEMATIC_IMAGES[id.replace(/^thematic-\d+-/, "")];
+const thematics = (await getCollection("thematics"))
   .sort((a, b) => a.id.localeCompare(b.id));
 // Meme convention que les thematiques : le rang est dans le nom de fichier,
 // et la photo se retrouve sans ce rang.
-const formats = (await getCollection("formats"))
+const sessions = (await getCollection("sessions"))
   .sort((a, b) => a.id.localeCompare(b.id));
-const formatPhoto = (id: string) => FORMAT_IMAGES[id.replace(/^session-\d+-/, "")];
+const sessionPhoto = (id: string) => SESSION_IMAGES[id.replace(/^session-\d+-/, "")];
 
 // Bandeau d'introduction : tout le bloc vient du JSON pilote par Keystatic,
 // groupe par langue. On lit uniquement la langue courante, SANS repli sur
@@ -49,12 +49,12 @@ const STATS = [
 ] as const;
 
 const features = [
-  { icon: "/assets/figma/icon-clock.svg", label: t(lang, "formats.feat1") },
-  { icon: "/assets/figma/icon-organic.svg", label: t(lang, "formats.feat2") },
-  { icon: "/assets/figma/icon-customize.svg", label: t(lang, "formats.feat3") },
-  { icon: "/assets/figma/icon-online.svg", label: t(lang, "formats.feat4") },
-  { icon: "/assets/figma/icon-leader.svg", label: t(lang, "formats.feat5") },
-  { icon: "/assets/figma/icon-organization.svg", label: t(lang, "formats.feat6") },
+  { icon: "/assets/figma/icon-clock.svg", label: t(lang, "sessions.feat1") },
+  { icon: "/assets/figma/icon-organic.svg", label: t(lang, "sessions.feat2") },
+  { icon: "/assets/figma/icon-customize.svg", label: t(lang, "sessions.feat3") },
+  { icon: "/assets/figma/icon-online.svg", label: t(lang, "sessions.feat4") },
+  { icon: "/assets/figma/icon-leader.svg", label: t(lang, "sessions.feat5") },
+  { icon: "/assets/figma/icon-organization.svg", label: t(lang, "sessions.feat6") },
 ];
 
 const reasons = [
@@ -176,7 +176,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
       <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col gap-10 lg:gap-14 items-center">
 
         <h2 class="font-fraunces text-[24px] lg:text-[32px] font-semibold text-center leading-tight">
-          <AccentTitle text={t(lang, "formats.heading")} />
+          <AccentTitle text={t(lang, "sessions.heading")} />
         </h2>
 
         <!-- 6 features box -->
@@ -193,10 +193,10 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
 
         <!-- Liste des sessions -->
         <div class="flex flex-col gap-5 lg:gap-6 w-full">
-          {formats.map((f) => (
+          {sessions.map((f) => (
             <div class="bg-white border border-[#d9d9d9] rounded-[13px] shadow-[0px_0px_8px_rgba(173,173,173,0.25)] flex flex-col sm:flex-row items-stretch overflow-hidden min-h-[130px] sm:h-[160px]">
               <div class="shrink-0 w-full sm:w-[160px] h-[130px] sm:h-full">
-                <img src={formatPhoto(f.id)} alt={card(f).title} class="w-full h-full object-cover sm:rounded-bl-[13px] sm:rounded-tl-[13px]" />
+                <img src={sessionPhoto(f.id)} alt={card(f).title} class="w-full h-full object-cover sm:rounded-bl-[13px] sm:rounded-tl-[13px]" />
               </div>
               <div class="flex flex-col gap-1 px-5 py-3 flex-1">
                 <p class="font-fraunces text-[#f05600] text-[15px] lg:text-[16px] font-bold">{card(f).title}</p>
@@ -210,7 +210,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
             data-coming-soon
             class="font-aileron bg-[#0698c0] text-white text-[16px] lg:text-[18px] font-semibold h-[48px] flex items-center justify-center rounded-[7px] w-full hover:bg-cyan-700 transition-colors"
           >
-            {t(lang, "formats.seeAll")}
+            {t(lang, "sessions.seeAll")}
           </a>
         </div>
       </div>

@@ -8,7 +8,7 @@
 // La cle est le nom du fichier SANS son rang : thematic-03-ocean se lit
 // ici sous la cle "ocean". Renumeroter une thematique ne fait donc pas
 // disparaitre sa photo.
-export const ACTIVITY_IMAGES: Record<string, { src: string; position: string }> = {
+export const THEMATIC_IMAGES: Record<string, { src: string; position: string }> = {
   "desirable-future": { src: "/assets/images/activities/futur-desirable.jpg", position: "center" },
   "climate-carbon-footprint": { src: "/assets/images/activities/carbon-globe-blocks.jpg", position: "center" },
   "climate-skepticism": { src: "/assets/images/activities/climate-skeptic-dinner.webp", position: "center" },
