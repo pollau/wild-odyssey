@@ -24,6 +24,10 @@ export const ui = {
     "seo.home.description": "Expériences RSE & climat personnalisées pour vos équipes. Ateliers scientifiques sur l'empreinte carbone, la biodiversité et l'océan. En EN, FR, ES.",
     "seo.contact.title": "Contactez-nous pour une Expérience Sur Mesure",
     "seo.contact.description": "Une question ? Prêt à engager votre équipe dans une expérience personnalisée ? Contactez-nous & rejoignez l'odyssée ! Réponse rapide en EN, ES, FR.",
+    "seo.university.title": "Ateliers Climat & Océan pour l'Enseignement Supérieur",
+    "seo.university.description": "Ateliers scientifiques sur le climat, l'océan et la biodiversité pour les universités et grandes écoles. Formats immersifs pour étudiants et personnels.",
+
+    "nav.university": "Universités",
 
     "contact.title": "Tout commence par une conversation",
     "contact.subtitle": "Une idée qui germe, une question qui flotte, une envie de faire quelque chose de différent et sur mesure pour vos élèves ou vos équipes ?",
@@ -59,6 +63,10 @@ export const ui = {
     "seo.home.description": "Personalized ESG & climate experiences your teams will remember. Science based workshops on carbon footprint, biodiversity, ocean & more. EN, FR, ES.",
     "seo.contact.title": "Get in Touch for a Personalised Experience",
     "seo.contact.description": "A question? Ready to engage your team in a personalized experience? Contact us & join the odyssey! Fast response in English, French & Spanish.",
+    "seo.university.title": "Climate & Ocean Workshops for Higher Education",
+    "seo.university.description": "Science-based workshops on climate, ocean and biodiversity for universities and colleges. Immersive formats for students and staff.",
+
+    "nav.university": "Universities",
 
     "contact.title": "It all starts with a conversation",
     "contact.subtitle": "A budding idea, a floating question, or a desire to create something different and tailor-made for your students or teams?",
@@ -94,6 +102,10 @@ export const ui = {
     "seo.home.description": "Experiencias personalizadas de RSC y clima para tu equipo. Talleres científicos sobre huella de carbono, biodiversidad y océano. En EN, FR, ES.",
     "seo.contact.title": "Contacta con Nosotros para una Experiencia Personalizada",
     "seo.contact.description": "¿Una pregunta? ¿Listo para inspirar a tu equipo con una experiencia a medida? ¡Contáctanos y súmate a la odisea! Respuesta rápida en EN, ES, FR.",
+    "seo.university.title": "Talleres de Clima y Océano para Educación Superior",
+    "seo.university.description": "Talleres científicos sobre clima, océano y biodiversidad para universidades y escuelas superiores. Formatos inmersivos para estudiantes y personal.",
+
+    "nav.university": "Universidades",
 
     "contact.title": "Todo empieza con una conversación",
     "contact.subtitle": "¿Una idea en mente, una duda en el aire o las ganas de crear algo diferente y a medida para tus alumnos o equipos?",

@@ -1,0 +1,40 @@
+---
+// Page destinee au public universitaire. Elle compose quatre des cinq
+// sections de la home : les 6 bonnes raisons en sont absentes, leur contenu
+// etant entierement tourne vers l entreprise.
+//
+// La bande de chiffres est partagee avec la home, singleton compris : memes
+// nombres, memes legendes.
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, getEntry } from "astro:content";
+import { t } from "../../i18n/ui";
+import { langBlock } from "../../i18n/langBlock";
+import Hero from "../sections/Hero.astro";
+import Thematics from "../sections/Thematics.astro";
+import Sessions from "../sections/Sessions.astro";
+import Stats from "../sections/Stats.astro";
+import universityThematicsUi from "../../content/ui/university-thematics.json";
+import universitySessionsUi from "../../content/ui/university-sessions.json";
+import statsUi from "../../content/ui/stats.json";
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+
+const university = (await getEntry("university", "index"))!.data;
+
+const parRang = (a: { id: string }, b: { id: string }) => a.id.localeCompare(b.id);
+const thematics = (await getCollection("university-thematics")).sort(parRang);
+const sessions = (await getCollection("university-sessions")).sort(parRang);
+---
+
+<Layout title={t(lang, "seo.university.title")} description={t(lang, "seo.university.description")} alternates>
+  <main class="pt-[80px]">
+    <Hero intro={langBlock(university, lang)} ctaHref="#thematics" />
+    <Thematics chrome={langBlock(universityThematicsUi, lang)} cards={thematics} lang={lang} id="thematics" />
+    <Sessions chrome={langBlock(universitySessionsUi, lang)} cards={sessions} lang={lang} />
+    <Stats chrome={langBlock(statsUi, lang)} />
+  </main>
+</Layout>
