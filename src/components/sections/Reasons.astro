@@ -1,0 +1,55 @@
+---
+// Les 6 bonnes raisons. La carte affiche son rang, il n y a pas de
+// pictogramme a choisir.
+//
+// badgeScience est une prop distincte du reste du decor : la pastille est
+// stockee dans le singleton des chiffres et servie aussi par cette section.
+// Le passage en props rend ce couplage visible plutot que cache.
+import RichText from "../RichText.astro";
+import RichBody from "../RichBody.astro";
+import { langBlock } from "../../i18n/langBlock";
+
+interface Props {
+  chrome: Record<string, string>;
+  badgeScience: string;
+  cards: { id: string; data: Record<string, unknown> }[];
+  lang: string;
+}
+
+const { chrome, badgeScience, cards, lang } = Astro.props;
+---
+
+<section id="reasons" class="py-12 lg:py-16 bg-white scroll-mt-16 lg:scroll-mt-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col gap-7 lg:gap-9">
+
+    <!-- Header -->
+    <div class="flex flex-col gap-4 lg:gap-5">
+      <div class="bg-[#0698c0] px-6 h-[44px] flex items-center justify-center rounded-full self-start">
+        <span class="text-white text-[13px] lg:text-[15px] font-semibold"><RichText text={badgeScience} /></span>
+      </div>
+      <h2 class="font-fraunces text-[24px] lg:text-[34px] font-semibold leading-tight">
+        <RichText text={chrome.heading} />
+      </h2>
+      <div class="font-aileron flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black">
+        <RichBody text={chrome.body} />
+      </div>
+    </div>
+
+    <!-- Reason cards — 3×2 grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {cards.map((r, i) => (
+        <div class="border border-[#d9d9d9] rounded-[14px] bg-white p-6 lg:p-7 flex flex-col gap-4 shadow-sm">
+          <div class="flex items-center gap-4">
+            <span class="font-fraunces text-[48px] lg:text-[56px] font-bold text-[#0698c0] leading-none shrink-0">{i + 1}</span>
+            <p class="font-fraunces text-[16px] lg:text-[17px] font-bold text-black leading-snug">
+              <RichText text={langBlock(r.data, lang).title} />
+            </p>
+          </div>
+          <div class="font-aileron text-[14px] lg:text-[15px] text-[#3b3b3b] leading-snug flex flex-col gap-1">
+            <RichBody text={langBlock(r.data, lang).text} />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

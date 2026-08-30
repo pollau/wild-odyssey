@@ -1,0 +1,46 @@
+---
+// Bande de chiffres animes.
+//
+// Les trois nombres sont volontairement hors CMS : StatCounter les anime et
+// a besoin d entiers, pas de texte libre. Seules les legendes sont editables.
+// Les mettre a jour demande un commit.
+import RichText from "../RichText.astro";
+import StatCounter from "../StatCounter.astro";
+
+interface Props {
+  chrome: Record<string, string>;
+}
+
+const { chrome } = Astro.props;
+
+const STATS = [
+  { value: 600000, label: chrome.participants },
+  { value: 2000, label: chrome.organizations },
+  { value: 5, label: chrome.years },
+];
+---
+
+<section class="relative py-16 lg:py-24 overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="/assets/figma/stats-bg.png" alt="" class="w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black/40"></div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center gap-8 lg:gap-10">
+    <div class="flex flex-col items-center gap-4 lg:gap-5 text-center">
+      <div class="bg-[rgba(6,152,192,0.53)] px-6 h-[44px] flex items-center justify-center rounded-full">
+        <span class="text-[#47cdf2] text-[13px] lg:text-[15px] font-semibold"><RichText text={chrome.badgeScience} /></span>
+      </div>
+      <p class="font-fraunces text-[22px] lg:text-[32px] font-semibold text-white text-center leading-snug max-w-[640px]">
+        <RichText text={chrome.heading} />
+      </p>
+    </div>
+    <div class="flex flex-col md:flex-row gap-10 md:gap-20 items-center justify-center text-center">
+      {STATS.map((s) => (
+        <div class="flex flex-col items-center gap-2 lg:gap-3">
+          <StatCounter value={s.value} class="font-fraunces text-[44px] lg:text-[72px] font-semibold text-white leading-none" />
+          <span class="font-aileron text-[20px] lg:text-[28px] font-semibold text-[#47cdf2]"><RichText text={s.label} /></span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

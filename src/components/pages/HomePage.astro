@@ -1,54 +1,37 @@
 ---
+// Page d'accueil, destinee aux entreprises. Elle ne fait que composer des
+// sections : tout son texte vient de Keystatic, via les singletons de decor
+// et les collections de cartes.
 import Layout from "../../layouts/Layout.astro";
 import OrganizationSchema from "../OrganizationSchema.astro";
 import { getCollection, getEntry } from "astro:content";
 import { t } from "../../i18n/ui";
-import RichText from "../RichText.astro";
-import RichBody from "../RichBody.astro";
-import StatCounter from "../StatCounter.astro";
-import { plainText } from "../../i18n/richText";
-import { THEMATIC_IMAGES } from "../../content/thematicImages";
+import { langBlock } from "../../i18n/langBlock";
 import Hero from "../sections/Hero.astro";
 import Thematics from "../sections/Thematics.astro";
 import Sessions from "../sections/Sessions.astro";
-import { langBlock } from "../../i18n/langBlock";
+import Stats from "../sections/Stats.astro";
+import Reasons from "../sections/Reasons.astro";
 import thematicsUi from "../../content/ui/thematics.json";
 import sessionsUi from "../../content/ui/sessions.json";
+import statsUi from "../../content/ui/stats.json";
+import reasonsUi from "../../content/ui/reasons.json";
 
 interface Props {
   lang: string;
-  audience: string;
 }
 
 const { lang } = Astro.props;
 
-const homepageEntry = await getEntry("homepage", "index");
-const homepage = homepageEntry!.data;
-// Chaque thematique porte un bloc par langue. On lit la langue courante
-// sans repli : une carte non traduite doit se voir, pas afficher de l'anglais.
-const card = (w: { data: Record<string, unknown> }) =>
-  (w.data[lang] ?? {}) as Record<string, string>;
-const thematics = (await getCollection("thematics"))
-  .sort((a, b) => a.id.localeCompare(b.id));
-// Meme convention que les thematiques : le rang est dans le nom de fichier,
-// et la photo se retrouve sans ce rang.
-const sessions = (await getCollection("sessions"))
-  .sort((a, b) => a.id.localeCompare(b.id));
+const homepage = (await getEntry("homepage", "index"))!.data;
 
-const intro = langBlock(homepage, lang);
-// Chiffres de la section STATS. Volontairement hors Keystatic : ils sont
-// animes par StatCounter, qui a besoin de nombres et non de texte libre.
-// Les mettre a jour demande un commit.
-const STATS = [
-  { value: 600000, labelKey: "stats.participants" },
-  { value: 2000, labelKey: "stats.organizations" },
-  { value: 5, labelKey: "stats.years" },
-] as const;
+// Le rang vit dans le nom de fichier, seule source de l ordre d affichage.
+const parRang = (a: { id: string }, b: { id: string }) => a.id.localeCompare(b.id);
+const thematics = (await getCollection("thematics")).sort(parRang);
+const sessions = (await getCollection("sessions")).sort(parRang);
+const reasons = (await getCollection("reasons")).sort(parRang);
 
-const reasons = (await getCollection("reasons"))
-  .sort((a, b) => a.id.localeCompare(b.id));
-
-const prefix = lang === "fr" ? "" : `/${lang}`;
+const stats = langBlock(statsUi, lang);
 ---
 
 <Layout title={t(lang, "seo.home.title")} description={t(lang, "seo.home.description")} alternates>
@@ -56,7 +39,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
   <main class="pt-[80px]">
 
     <!-- ─── HERO ─── -->
-    <Hero intro={intro} ctaHref="#reasons" />
+    <Hero intro={langBlock(homepage, lang)} ctaHref="#reasons" />
 
     <!-- ─── THEMATIQUES ─── -->
     <Thematics chrome={langBlock(thematicsUi, lang)} cards={thematics} lang={lang} />
@@ -65,66 +48,10 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
     <Sessions chrome={langBlock(sessionsUi, lang)} cards={sessions} lang={lang} />
 
     <!-- ─── STATS ─── -->
-    <section class="relative py-16 lg:py-24 overflow-hidden">
-      <div class="absolute inset-0">
-        <img src="/assets/figma/stats-bg.png" alt="" class="w-full h-full object-cover" />
-        <div class="absolute inset-0 bg-black/40"></div>
-      </div>
-      <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center gap-8 lg:gap-10">
-        <div class="flex flex-col items-center gap-4 lg:gap-5 text-center">
-          <div class="bg-[rgba(6,152,192,0.53)] px-6 h-[44px] flex items-center justify-center rounded-full">
-            <span class="text-[#47cdf2] text-[13px] lg:text-[15px] font-semibold"><RichText text={t(lang, "badge.science")} /></span>
-          </div>
-          <p class="font-fraunces text-[22px] lg:text-[32px] font-semibold text-white text-center leading-snug max-w-[640px]">
-            <RichText text={t(lang, "stats.heading")} />
-          </p>
-        </div>
-        <div class="flex flex-col md:flex-row gap-10 md:gap-20 items-center justify-center text-center">
-          {STATS.map((s) => (
-            <div class="flex flex-col items-center gap-2 lg:gap-3">
-              <StatCounter value={s.value} class="font-fraunces text-[44px] lg:text-[72px] font-semibold text-white leading-none" />
-              <span class="font-aileron text-[20px] lg:text-[28px] font-semibold text-[#47cdf2]"><RichText text={t(lang, s.labelKey)} /></span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <Stats chrome={stats} />
 
     <!-- ─── 6 REASONS ─── -->
-    <section id="reasons" class="py-12 lg:py-16 bg-white scroll-mt-16 lg:scroll-mt-20">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col gap-7 lg:gap-9">
-
-        <!-- Header -->
-        <div class="flex flex-col gap-4 lg:gap-5">
-          <div class="bg-[#0698c0] px-6 h-[44px] flex items-center justify-center rounded-full self-start">
-            <span class="text-white text-[13px] lg:text-[15px] font-semibold"><RichText text={t(lang, "badge.science")} /></span>
-          </div>
-          <h2 class="font-fraunces text-[24px] lg:text-[34px] font-semibold leading-tight">
-            <RichText text={t(lang, "reasons.heading")} />
-          </h2>
-          <div class="font-aileron flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black">
-            <RichBody text={t(lang, "reasons.body")} />
-          </div>
-        </div>
-
-        <!-- Reason cards — 3×2 grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {reasons.map((r, i) => (
-            <div class="border border-[#d9d9d9] rounded-[14px] bg-white p-6 lg:p-7 flex flex-col gap-4 shadow-sm">
-              <div class="flex items-center gap-4">
-                <span class="font-fraunces text-[48px] lg:text-[56px] font-bold text-[#0698c0] leading-none shrink-0">{i + 1}</span>
-                <p class="font-fraunces text-[16px] lg:text-[17px] font-bold text-black leading-snug">
-                  <RichText text={card(r).title} />
-                </p>
-              </div>
-              <div class="font-aileron text-[14px] lg:text-[15px] text-[#3b3b3b] leading-snug flex flex-col gap-1">
-                <RichBody text={card(r).text} />
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <Reasons chrome={langBlock(reasonsUi, lang)} badgeScience={stats.badgeScience} cards={reasons} lang={lang} />
 
   </main>
 </Layout>

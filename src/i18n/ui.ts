@@ -1,11 +1,7 @@
 // Les chaines des sections migrees vivent dans src/content/ui/*.json, pilotes
 // par Keystatic : elles ne sont plus ecrites ici, seulement referencees, afin
 // qu il n existe jamais deux sources pour un meme texte.
-import statsUi from "../content/ui/stats.json";
-import thematicsUi from "../content/ui/thematics.json";
 import footerUi from "../content/ui/footer.json";
-import sessionsUi from "../content/ui/sessions.json";
-import reasonsUi from "../content/ui/reasons.json";
 
 // Les JSON pilotes par Keystatic sont groupes par langue : on lit
 // fichier[langue][cle]. Les deux niveaux peuvent manquer, Keystatic
@@ -16,28 +12,6 @@ const lang = (o: unknown, lg: string, k: string): string =>
 
 export const ui = {
   fr: {
-
-    "thematics.badge": lang(thematicsUi, "fr", "badge"),
-    "thematics.heading": lang(thematicsUi, "fr", "heading"),
-    "thematics.body": lang(thematicsUi, "fr", "body"),
-    "thematics.learnMore": lang(thematicsUi, "fr", "learnMore"),
-
-    "sessions.heading": lang(sessionsUi, "fr", "heading"),
-    "sessions.feat1": lang(sessionsUi, "fr", "feat1"),
-    "sessions.feat2": lang(sessionsUi, "fr", "feat2"),
-    "sessions.feat3": lang(sessionsUi, "fr", "feat3"),
-    "sessions.feat4": lang(sessionsUi, "fr", "feat4"),
-    "sessions.feat5": lang(sessionsUi, "fr", "feat5"),
-    "sessions.feat6": lang(sessionsUi, "fr", "feat6"),
-    "sessions.seeAll": lang(sessionsUi, "fr", "seeAll"),
-
-    "badge.science": lang(statsUi, "fr", "badgeScience"),
-    "stats.heading": lang(statsUi, "fr", "heading"),
-    "stats.participants": lang(statsUi, "fr", "participants"),
-    "stats.organizations": lang(statsUi, "fr", "organizations"),
-    "stats.years": lang(statsUi, "fr", "years"),
-    "reasons.heading": lang(reasonsUi, "fr", "heading"),
-    "reasons.body": lang(reasonsUi, "fr", "body"),
 
     "footer.heading": lang(footerUi, "fr", "heading"),
     "footer.ctaBody": lang(footerUi, "fr", "ctaBody"),
@@ -74,28 +48,6 @@ export const ui = {
   },
   en: {
 
-    "thematics.badge": lang(thematicsUi, "en", "badge"),
-    "thematics.heading": lang(thematicsUi, "en", "heading"),
-    "thematics.body": lang(thematicsUi, "en", "body"),
-    "thematics.learnMore": lang(thematicsUi, "en", "learnMore"),
-
-    "sessions.heading": lang(sessionsUi, "en", "heading"),
-    "sessions.feat1": lang(sessionsUi, "en", "feat1"),
-    "sessions.feat2": lang(sessionsUi, "en", "feat2"),
-    "sessions.feat3": lang(sessionsUi, "en", "feat3"),
-    "sessions.feat4": lang(sessionsUi, "en", "feat4"),
-    "sessions.feat5": lang(sessionsUi, "en", "feat5"),
-    "sessions.feat6": lang(sessionsUi, "en", "feat6"),
-    "sessions.seeAll": lang(sessionsUi, "en", "seeAll"),
-
-    "badge.science": lang(statsUi, "en", "badgeScience"),
-    "stats.heading": lang(statsUi, "en", "heading"),
-    "stats.participants": lang(statsUi, "en", "participants"),
-    "stats.organizations": lang(statsUi, "en", "organizations"),
-    "stats.years": lang(statsUi, "en", "years"),
-    "reasons.heading": lang(reasonsUi, "en", "heading"),
-    "reasons.body": lang(reasonsUi, "en", "body"),
-
     "footer.heading": lang(footerUi, "en", "heading"),
     "footer.ctaBody": lang(footerUi, "en", "ctaBody"),
     "footer.ctaBtn": lang(footerUi, "en", "ctaBtn"),
@@ -130,28 +82,6 @@ export const ui = {
     "contact.errorNetwork": "We could not reach the server. Check your connection and try again.",
   },
   es: {
-
-    "thematics.badge": lang(thematicsUi, "es", "badge"),
-    "thematics.heading": lang(thematicsUi, "es", "heading"),
-    "thematics.body": lang(thematicsUi, "es", "body"),
-    "thematics.learnMore": lang(thematicsUi, "es", "learnMore"),
-
-    "sessions.heading": lang(sessionsUi, "es", "heading"),
-    "sessions.feat1": lang(sessionsUi, "es", "feat1"),
-    "sessions.feat2": lang(sessionsUi, "es", "feat2"),
-    "sessions.feat3": lang(sessionsUi, "es", "feat3"),
-    "sessions.feat4": lang(sessionsUi, "es", "feat4"),
-    "sessions.feat5": lang(sessionsUi, "es", "feat5"),
-    "sessions.feat6": lang(sessionsUi, "es", "feat6"),
-    "sessions.seeAll": lang(sessionsUi, "es", "seeAll"),
-
-    "badge.science": lang(statsUi, "es", "badgeScience"),
-    "stats.heading": lang(statsUi, "es", "heading"),
-    "stats.participants": lang(statsUi, "es", "participants"),
-    "stats.organizations": lang(statsUi, "es", "organizations"),
-    "stats.years": lang(statsUi, "es", "years"),
-    "reasons.heading": lang(reasonsUi, "es", "heading"),
-    "reasons.body": lang(reasonsUi, "es", "body"),
 
     "footer.heading": lang(footerUi, "es", "heading"),
     "footer.ctaBody": lang(footerUi, "es", "ctaBody"),
