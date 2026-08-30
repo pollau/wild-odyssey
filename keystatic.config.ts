@@ -1,4 +1,4 @@
-import { config, fields, collection, singleton } from '@keystatic/core';
+import { config, fields, collection, singleton, type ComponentSchema } from '@keystatic/core';
 
 // Stockage :
 //  - prod  : cloud (Keystatic Cloud gere l'auth, les modifs partent en commits
@@ -45,7 +45,7 @@ const champParagraphes = (label: string, precision?: string) =>
  *  La forme est une fonction et non un objet : chaque langue doit recevoir
  *  ses propres instances de champs Keystatic, pas trois references vers les
  *  memes. `quoi` decrit le bloc, la phrase finale est completee ici. */
-const perLang = (shape: () => Record<string, unknown>, quoi: string) => ({
+const perLang = <S extends Record<string, ComponentSchema>>(shape: () => S, quoi: string) => ({
     fr: fields.object(shape(), { label: 'Français', description: `${quoi}, version française.` }),
     en: fields.object(shape(), { label: 'Anglais', description: `${quoi}, version anglaise.` }),
     es: fields.object(shape(), { label: 'Espagnol', description: `${quoi}, version espagnole.` }),
