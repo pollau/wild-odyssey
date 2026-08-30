@@ -59,6 +59,19 @@ const champDescriptionSeo = (label: string, precision: string) =>
         multiline: true,
     });
 
+/** Les trois blocs de langue d'une entree. Les champs ne sont ecrits qu'une
+ *  fois : la fabrique les instancie pour chaque langue et decline la meme
+ *  phrase de presentation. Sans elle, chaque champ etait recopie trois fois,
+ *  et une correction devait etre repercutee sur les trois copies. */
+const parLangue = <T extends Parameters<typeof fields.object>[0]>(
+    sujet: string,
+    champs: () => T,
+) => ({
+    fr: fields.object(champs(), { label: 'Français', description: sujet + ', version française.' }),
+    en: fields.object(champs(), { label: 'Anglais', description: sujet + ', version anglaise.' }),
+    es: fields.object(champs(), { label: 'Espagnol', description: sujet + ', version espagnole.' }),
+});
+
 export default config({
     // Interface de Keystatic en francais (boutons, menus, messages).
     ui: {
@@ -110,113 +123,47 @@ export default config({
             label: '📝 Page de contact',
             path: 'src/content/ui/contact',
             format: { data: 'json' },
-            schema: {
-                fr: fields.object({
-                        title: champLigne('Titre de la page'),
-                        subtitle: champLigne("Texte d'introduction", undefined, true),
-                        lastName: champLigne('Libelle du champ Nom'),
-                        firstName: champLigne('Libelle du champ Prenom'),
-                        organization: champLigne('Libelle du champ Organisation'),
-                        role: champLigne('Libelle du champ Role'),
-                        email: champLigne('Libelle du champ Email'),
-                        phone: champLigne('Libelle du champ Telephone'),
-                        message: champLigne('Libelle du champ Message'),
-                        consent: champLigne('Case a cocher de consentement'),
-                        optional: champLigne('Mention des champs facultatifs', 'Affichee entre parentheses a cote du libelle.'),
-                        submit: champLigne("Texte du bouton d'envoi"),
-                        successTitle: champLigne('Confirmation, titre', "Remplace le formulaire une fois le message parti."),
-                        successBody: champLigne('Confirmation, texte', "Remplace le formulaire une fois le message parti.", true),
-                        error: champLigne('Erreur generale', "S'affiche sous le formulaire quand l'envoi echoue."),
-                        error400: champLigne('Erreur, informations invalides'),
-                        error429: champLigne('Erreur, trop de tentatives'),
-                        error500: champLigne('Erreur, service indisponible'),
-                        errorNetwork: champLigne('Erreur, serveur injoignable'),
-                }, { label: 'Français', description: 'La page de contact, version française.' }),
-                en: fields.object({
-                        title: champLigne('Titre de la page'),
-                        subtitle: champLigne("Texte d'introduction", undefined, true),
-                        lastName: champLigne('Libelle du champ Nom'),
-                        firstName: champLigne('Libelle du champ Prenom'),
-                        organization: champLigne('Libelle du champ Organisation'),
-                        role: champLigne('Libelle du champ Role'),
-                        email: champLigne('Libelle du champ Email'),
-                        phone: champLigne('Libelle du champ Telephone'),
-                        message: champLigne('Libelle du champ Message'),
-                        consent: champLigne('Case a cocher de consentement'),
-                        optional: champLigne('Mention des champs facultatifs', 'Affichee entre parentheses a cote du libelle.'),
-                        submit: champLigne("Texte du bouton d'envoi"),
-                        successTitle: champLigne('Confirmation, titre', "Remplace le formulaire une fois le message parti."),
-                        successBody: champLigne('Confirmation, texte', "Remplace le formulaire une fois le message parti.", true),
-                        error: champLigne('Erreur generale', "S'affiche sous le formulaire quand l'envoi echoue."),
-                        error400: champLigne('Erreur, informations invalides'),
-                        error429: champLigne('Erreur, trop de tentatives'),
-                        error500: champLigne('Erreur, service indisponible'),
-                        errorNetwork: champLigne('Erreur, serveur injoignable'),
-                }, { label: 'Anglais', description: 'La page de contact, version anglaise.' }),
-                es: fields.object({
-                        title: champLigne('Titre de la page'),
-                        subtitle: champLigne("Texte d'introduction", undefined, true),
-                        lastName: champLigne('Libelle du champ Nom'),
-                        firstName: champLigne('Libelle du champ Prenom'),
-                        organization: champLigne('Libelle du champ Organisation'),
-                        role: champLigne('Libelle du champ Role'),
-                        email: champLigne('Libelle du champ Email'),
-                        phone: champLigne('Libelle du champ Telephone'),
-                        message: champLigne('Libelle du champ Message'),
-                        consent: champLigne('Case a cocher de consentement'),
-                        optional: champLigne('Mention des champs facultatifs', 'Affichee entre parentheses a cote du libelle.'),
-                        submit: champLigne("Texte du bouton d'envoi"),
-                        successTitle: champLigne('Confirmation, titre', "Remplace le formulaire une fois le message parti."),
-                        successBody: champLigne('Confirmation, texte', "Remplace le formulaire une fois le message parti.", true),
-                        error: champLigne('Erreur generale', "S'affiche sous le formulaire quand l'envoi echoue."),
-                        error400: champLigne('Erreur, informations invalides'),
-                        error429: champLigne('Erreur, trop de tentatives'),
-                        error500: champLigne('Erreur, service indisponible'),
-                        errorNetwork: champLigne('Erreur, serveur injoignable'),
-                }, { label: 'Espagnol', description: 'La page de contact, version espagnole.' }),
+            schema: {
+                ...parLangue('La page de contact', () => ({
+                    title: champLigne('Titre de la page'),
+                    subtitle: champLigne("Texte d'introduction", undefined, true),
+                    lastName: champLigne('Libelle du champ Nom'),
+                    firstName: champLigne('Libelle du champ Prenom'),
+                    organization: champLigne('Libelle du champ Organisation'),
+                    role: champLigne('Libelle du champ Role'),
+                    email: champLigne('Libelle du champ Email'),
+                    phone: champLigne('Libelle du champ Telephone'),
+                    message: champLigne('Libelle du champ Message'),
+                    consent: champLigne('Case a cocher de consentement'),
+                    optional: champLigne('Mention des champs facultatifs', 'Affichee entre parentheses a cote du libelle.'),
+                    submit: champLigne("Texte du bouton d'envoi"),
+                    successTitle: champLigne('Confirmation, titre', "Remplace le formulaire une fois le message parti."),
+                    successBody: champLigne('Confirmation, texte', "Remplace le formulaire une fois le message parti.", true),
+                    error: champLigne('Erreur generale', "S'affiche sous le formulaire quand l'envoi echoue."),
+                    error400: champLigne('Erreur, informations invalides'),
+                    error429: champLigne('Erreur, trop de tentatives'),
+                    error500: champLigne('Erreur, service indisponible'),
+                    errorNetwork: champLigne('Erreur, serveur injoignable'),
+                })),
             },
         }),
         seoSection: singleton({
             label: '🔎 Referencement Google',
             path: 'src/content/ui/seo',
             format: { data: 'json' },
-            schema: {
-                fr: fields.object({
-                        homeTitle: champTitreSeo('Accueil, titre', "Pour la page d'accueil."),
-                        homeDescription: champDescriptionSeo('Accueil, description', "Pour la page d'accueil."),
-                        contactTitle: champTitreSeo('Contact, titre', 'Pour la page de contact.'),
-                        contactDescription: champDescriptionSeo('Contact, description', 'Pour la page de contact.'),
-                        siteDescription: champDescriptionSeo('Description generale du site', "Sert de repli pour une page qui n'a pas sa propre description."),
-                        organization: fields.text({
-                            label: "Description de l'organisation",
-                            description: "Fiche d'identite envoyee aux moteurs de recherche, au format schema.org. Elle ne s'affiche nulle part et n'a pas de limite de longueur.",
-                            multiline: true,
-                        }),
-                }, { label: 'Français', description: 'Le referencement des pages françaises.' }),
-                en: fields.object({
-                        homeTitle: champTitreSeo('Accueil, titre', "Pour la page d'accueil."),
-                        homeDescription: champDescriptionSeo('Accueil, description', "Pour la page d'accueil."),
-                        contactTitle: champTitreSeo('Contact, titre', 'Pour la page de contact.'),
-                        contactDescription: champDescriptionSeo('Contact, description', 'Pour la page de contact.'),
-                        siteDescription: champDescriptionSeo('Description generale du site', "Sert de repli pour une page qui n'a pas sa propre description."),
-                        organization: fields.text({
-                            label: "Description de l'organisation",
-                            description: "Fiche d'identite envoyee aux moteurs de recherche, au format schema.org. Elle ne s'affiche nulle part et n'a pas de limite de longueur.",
-                            multiline: true,
-                        }),
-                }, { label: 'Anglais', description: 'Le referencement des pages anglaises.' }),
-                es: fields.object({
-                        homeTitle: champTitreSeo('Accueil, titre', "Pour la page d'accueil."),
-                        homeDescription: champDescriptionSeo('Accueil, description', "Pour la page d'accueil."),
-                        contactTitle: champTitreSeo('Contact, titre', 'Pour la page de contact.'),
-                        contactDescription: champDescriptionSeo('Contact, description', 'Pour la page de contact.'),
-                        siteDescription: champDescriptionSeo('Description generale du site', "Sert de repli pour une page qui n'a pas sa propre description."),
-                        organization: fields.text({
-                            label: "Description de l'organisation",
-                            description: "Fiche d'identite envoyee aux moteurs de recherche, au format schema.org. Elle ne s'affiche nulle part et n'a pas de limite de longueur.",
-                            multiline: true,
-                        }),
-                }, { label: 'Espagnol', description: 'Le referencement des pages espagnoles.' }),
+            schema: {
+                ...parLangue('Le referencement des pages', () => ({
+                    homeTitle: champTitreSeo('Accueil, titre', "Pour la page d'accueil."),
+                    homeDescription: champDescriptionSeo('Accueil, description', "Pour la page d'accueil."),
+                    contactTitle: champTitreSeo('Contact, titre', 'Pour la page de contact.'),
+                    contactDescription: champDescriptionSeo('Contact, description', 'Pour la page de contact.'),
+                    siteDescription: champDescriptionSeo('Description generale du site', "Sert de repli pour une page qui n'a pas sa propre description."),
+                    organization: fields.text({
+                    label: "Description de l'organisation",
+                    description: "Fiche d'identite envoyee aux moteurs de recherche, au format schema.org. Elle ne s'affiche nulle part et n'a pas de limite de longueur.",
+                    multiline: true,
+                    }),
+                })),
             },
         }),
         helpSection: singleton({
@@ -281,28 +228,14 @@ export default config({
             label: '📝 Chiffres clés',
             path: 'src/content/ui/stats',
             format: { data: 'json' },
-            schema: {
-                fr: fields.object({
-                        heading: champLigne('Titre'),
+            schema: {
+                ...parLangue("La bande de chiffres de la page d'accueil", () => ({
+                    heading: champLigne('Titre'),
                     badgeScience: champLigne('Pastille', 'Apparait a deux endroits : en cyan sur la bande des chiffres, en blanc au-dessus des 6 bonnes raisons.'),
                     participants: champLigne('Legende du 1er chiffre', "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici."),
                     organizations: champLigne('Legende du 2e chiffre', 'Sous le compteur +2 000.'),
                     years: champLigne('Legende du 3e chiffre', 'Sous le compteur +5.'),
-                }, { label: 'Français', description: "La bande de chiffres de la page d'accueil, version française." }),
-                en: fields.object({
-                        heading: champLigne('Titre'),
-                    badgeScience: champLigne('Pastille', 'Apparait a deux endroits : en cyan sur la bande des chiffres, en blanc au-dessus des 6 bonnes raisons.'),
-                    participants: champLigne('Legende du 1er chiffre', "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici."),
-                    organizations: champLigne('Legende du 2e chiffre', 'Sous le compteur +2 000.'),
-                    years: champLigne('Legende du 3e chiffre', 'Sous le compteur +5.'),
-                }, { label: 'Anglais', description: "La bande de chiffres de la page d'accueil, version anglaise." }),
-                es: fields.object({
-                        heading: champLigne('Titre'),
-                    badgeScience: champLigne('Pastille', 'Apparait a deux endroits : en cyan sur la bande des chiffres, en blanc au-dessus des 6 bonnes raisons.'),
-                    participants: champLigne('Legende du 1er chiffre', "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici."),
-                    organizations: champLigne('Legende du 2e chiffre', 'Sous le compteur +2 000.'),
-                    years: champLigne('Legende du 3e chiffre', 'Sous le compteur +5.'),
-                }, { label: 'Espagnol', description: "La bande de chiffres de la page d'accueil, version espagnole." }),
+                })),
             },
         }),
         // Section "Nos thematiques" de l'accueil : le texte simple seulement.
@@ -311,25 +244,13 @@ export default config({
             label: '📝 Thématiques',
             path: 'src/content/ui/thematics',
             format: { data: 'json' },
-            schema: {
-                fr: fields.object({
-                        heading: champLigne('Titre'),
-                        badge: champLigne('Pastille'),
-                        body: champParagraphes('Texte'),
-                        learnMore: champLigne('Texte du bouton des cartes'),
-                }, { label: 'Français', description: "Le texte au-dessus des cartes de thematiques, version française." }),
-                en: fields.object({
-                        heading: champLigne('Titre'),
-                        badge: champLigne('Pastille'),
-                        body: champParagraphes('Texte'),
-                        learnMore: champLigne('Texte du bouton des cartes'),
-                }, { label: 'Anglais', description: "Le texte au-dessus des cartes de thematiques, version anglaise." }),
-                es: fields.object({
-                        heading: champLigne('Titre'),
-                        badge: champLigne('Pastille'),
-                        body: champParagraphes('Texte'),
-                        learnMore: champLigne('Texte du bouton des cartes'),
-                }, { label: 'Espagnol', description: "Le texte au-dessus des cartes de thematiques, version espagnole." }),
+            schema: {
+                ...parLangue("Le texte au-dessus des cartes de thematiques", () => ({
+                    heading: champLigne('Titre'),
+                    badge: champLigne('Pastille'),
+                    body: champParagraphes('Texte'),
+                    learnMore: champLigne('Texte du bouton des cartes'),
+                })),
             },
         }),
         // Bas de page, present sur toutes les pages du site. Le titre colore
@@ -339,28 +260,14 @@ export default config({
             label: '📝 Header and footer',
             path: 'src/content/ui/footer',
             format: { data: 'json' },
-            schema: {
-                fr: fields.object({
-                        headerCta: champLigne('Bouton du bandeau du haut', "Le bouton orange en haut a droite, sur toutes les pages."),
-                        heading: champLigne('Titre'),
-                        ctaBody: champLigne('Phrases sous le titre', undefined, true),
-                        ctaBtn: champLigne('Texte du bouton'),
-                        copyright: champLigne('Mention de bas de page'),
-                }, { label: 'Français', description: 'Les deux bouts de page, communs a tout le site, version française.' }),
-                en: fields.object({
-                        headerCta: champLigne('Bouton du bandeau du haut', "Le bouton orange en haut a droite, sur toutes les pages."),
-                        heading: champLigne('Titre'),
-                        ctaBody: champLigne('Phrases sous le titre', undefined, true),
-                        ctaBtn: champLigne('Texte du bouton'),
-                        copyright: champLigne('Mention de bas de page'),
-                }, { label: 'Anglais', description: 'Les deux bouts de page, communs a tout le site, version anglaise.' }),
-                es: fields.object({
-                        headerCta: champLigne('Bouton du bandeau du haut', "Le bouton orange en haut a droite, sur toutes les pages."),
-                        heading: champLigne('Titre'),
-                        ctaBody: champLigne('Phrases sous le titre', undefined, true),
-                        ctaBtn: champLigne('Texte du bouton'),
-                        copyright: champLigne('Mention de bas de page'),
-                }, { label: 'Espagnol', description: 'Les deux bouts de page, communs a tout le site, version espagnole.' }),
+            schema: {
+                ...parLangue('Les deux bouts de page, communs a tout le site', () => ({
+                    headerCta: champLigne('Bouton du bandeau du haut', "Le bouton orange en haut a droite, sur toutes les pages."),
+                    heading: champLigne('Titre'),
+                    ctaBody: champLigne('Phrases sous le titre', undefined, true),
+                    ctaBtn: champLigne('Texte du bouton'),
+                    copyright: champLigne('Mention de bas de page'),
+                })),
                 contactEmail: fields.text({
                     label: 'Adresse de contact',
                     description: "Affichee en bas de chaque page et sur la page A propos. Elle alimente aussi les donnees SEO du site.",
@@ -373,58 +280,30 @@ export default config({
             label: '📝 Ateliers et masterclasses',
             path: 'src/content/ui/sessions',
             format: { data: 'json' },
-            schema: {
-                fr: fields.object({
-                        heading: champLigne('Titre', undefined, true),
-                        feat1: champLigne('Indication 1 (icone horloge)'),
-                        feat2: champLigne('Indication 2 (icone feuille)'),
-                        feat3: champLigne('Indication 3 (icone curseur)'),
-                        feat4: champLigne('Indication 4 (icone internet)'),
-                        feat5: champLigne('Indication 5 (icone personne)'),
-                        feat6: champLigne('Indication 6 (icone immeuble)'),
-                        seeAll: champLigne('Texte du bouton'),
-                }, { label: 'Français', description: 'Le bandeau bleu des ateliers, version française.' }),
-                en: fields.object({
-                        heading: champLigne('Titre', undefined, true),
-                        feat1: champLigne('Indication 1 (icone horloge)'),
-                        feat2: champLigne('Indication 2 (icone feuille)'),
-                        feat3: champLigne('Indication 3 (icone curseur)'),
-                        feat4: champLigne('Indication 4 (icone internet)'),
-                        feat5: champLigne('Indication 5 (icone personne)'),
-                        feat6: champLigne('Indication 6 (icone immeuble)'),
-                        seeAll: champLigne('Texte du bouton'),
-                }, { label: 'Anglais', description: 'Le bandeau bleu des ateliers, version anglaise.' }),
-                es: fields.object({
-                        heading: champLigne('Titre', undefined, true),
-                        feat1: champLigne('Indication 1 (icone horloge)'),
-                        feat2: champLigne('Indication 2 (icone feuille)'),
-                        feat3: champLigne('Indication 3 (icone curseur)'),
-                        feat4: champLigne('Indication 4 (icone internet)'),
-                        feat5: champLigne('Indication 5 (icone personne)'),
-                        feat6: champLigne('Indication 6 (icone immeuble)'),
-                        seeAll: champLigne('Texte du bouton'),
-                }, { label: 'Espagnol', description: 'Le bandeau bleu des ateliers, version espagnole.' }),
+            schema: {
+                ...parLangue('Le bandeau bleu des ateliers', () => ({
+                    heading: champLigne('Titre', undefined, true),
+                    feat1: champLigne('Indication 1 (icone horloge)'),
+                    feat2: champLigne('Indication 2 (icone feuille)'),
+                    feat3: champLigne('Indication 3 (icone curseur)'),
+                    feat4: champLigne('Indication 4 (icone internet)'),
+                    feat5: champLigne('Indication 5 (icone personne)'),
+                    feat6: champLigne('Indication 6 (icone immeuble)'),
+                    seeAll: champLigne('Texte du bouton'),
+                })),
             },
         }),
         // Section "6 bonnes raisons". Seuls les titres sont ici pour l'instant,
         // les textes des cartes vivent encore dans src/i18n/ui.ts.
         reasonsSection: singleton({
-            label: '📝 6 bonnes raisons',
+            label: '📝 Team building',
             path: 'src/content/ui/reasons',
             format: { data: 'json' },
-            schema: {
-                fr: fields.object({
-                        heading: champLigne('Titre'),
-                        body: champParagraphes('Texte'),
-                }, { label: 'Français', description: "L'introduction des 6 raisons, version française." }),
-                en: fields.object({
-                        heading: champLigne('Titre'),
-                        body: champParagraphes('Texte'),
-                }, { label: 'Anglais', description: "L'introduction des 6 raisons, version anglaise." }),
-                es: fields.object({
-                        heading: champLigne('Titre'),
-                        body: champParagraphes('Texte'),
-                }, { label: 'Espagnol', description: "L'introduction des 6 raisons, version espagnole." }),
+            schema: {
+                ...parLangue("L'introduction de la section team building", () => ({
+                    heading: champLigne('Titre'),
+                    body: champParagraphes('Texte'),
+                })),
             },
         }),
         homepage: singleton({
@@ -433,28 +312,14 @@ export default config({
             format: { data: 'json' },
             // Un bloc par langue plutot qu'un bloc par texte : on redige une
             // page entiere d'une traite, comme on la lit sur le site.
-            schema: {
-                fr: fields.object({
+            schema: {
+                ...parLangue("Le bandeau en haut de la page d'accueil", () => ({
                     titleBase: champLigne('Accroche au-dessus du titre', 'Par defaut en noir.'),
                     title: champLigne('Titre principal', 'Par defaut en orange.'),
-                        body: champParagraphes('Texte'),
+                    body: champParagraphes('Texte'),
                     tagline: champLigne('Phrase sous les paragraphes', 'Par defaut en orange.'),
                     cta: champLigne('Texte du bouton'),
-                }, { label: 'Français', description: "Le bandeau en haut de la page d'accueil, version française." }),
-                en: fields.object({
-                    titleBase: champLigne('Accroche au-dessus du titre', 'Par defaut en noir.'),
-                    title: champLigne('Titre principal', 'Par defaut en orange.'),
-                        body: champParagraphes('Texte'),
-                    tagline: champLigne('Phrase sous les paragraphes', 'Par defaut en orange.'),
-                    cta: champLigne('Texte du bouton'),
-                }, { label: 'Anglais', description: "Le bandeau en haut de la page d'accueil, version anglaise." }),
-                es: fields.object({
-                    titleBase: champLigne('Accroche au-dessus du titre', 'Par defaut en noir.'),
-                    title: champLigne('Titre principal', 'Par defaut en orange.'),
-                        body: champParagraphes('Texte'),
-                    tagline: champLigne('Phrase sous les paragraphes', 'Par defaut en orange.'),
-                    cta: champLigne('Texte du bouton'),
-                }, { label: 'Espagnol', description: "Le bandeau en haut de la page d'accueil, version espagnole." }),
+                })),
             },
         }),
     },
@@ -473,19 +338,11 @@ export default config({
                         label: 'Nom de la fiche',
                         description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
                     },
-                }),
-                fr: fields.object({
-                        title: champLigne('Titre de la carte'),
-                        description: champParagraphes('Description'),
-                }, { label: 'Français', description: 'La carte de cette session, version française.' }),
-                en: fields.object({
-                        title: champLigne('Titre de la carte'),
-                        description: champParagraphes('Description'),
-                }, { label: 'Anglais', description: 'La carte de cette session, version anglaise.' }),
-                es: fields.object({
-                        title: champLigne('Titre de la carte'),
-                        description: champParagraphes('Description'),
-                }, { label: 'Espagnol', description: 'La carte de cette session, version espagnole.' }),
+                }),
+                ...parLangue('La carte de cette session', () => ({
+                    title: champLigne('Titre de la carte'),
+                    description: champParagraphes('Description'),
+                })),
             },
         }),
         // Les 6 bonnes raisons de monter a bord. La carte affiche son rang,
@@ -502,19 +359,11 @@ export default config({
                         label: 'Nom de la fiche',
                         description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
                     },
-                }),
-                fr: fields.object({
-                        title: champLigne('Titre de la carte'),
-                        text: champParagraphes('Texte'),
-                }, { label: 'Français', description: 'La carte de cette raison, version française.' }),
-                en: fields.object({
-                        title: champLigne('Titre de la carte'),
-                        text: champParagraphes('Texte'),
-                }, { label: 'Anglais', description: 'La carte de cette raison, version anglaise.' }),
-                es: fields.object({
-                        title: champLigne('Titre de la carte'),
-                        text: champParagraphes('Texte'),
-                }, { label: 'Espagnol', description: 'La carte de cette raison, version espagnole.' }),
+                }),
+                ...parLangue('La carte de cette raison', () => ({
+                    title: champLigne('Titre de la carte'),
+                    text: champParagraphes('Texte'),
+                })),
             },
         }),
         thematics: collection({
@@ -535,22 +384,12 @@ export default config({
                         label: 'Nom de la fiche',
                         description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
                     },
-                }),
-                fr: fields.object({
-                        title: champLigne('Titre de la carte'),
-                        subtitle: champLigne('Sous-titre'),
-                        description: champParagraphes('Description'),
-                }, { label: 'Français', description: 'La carte de cette thématique, version française.' }),
-                en: fields.object({
-                        title: champLigne('Titre de la carte'),
-                        subtitle: champLigne('Sous-titre'),
-                        description: champParagraphes('Description'),
-                }, { label: 'Anglais', description: 'La carte de cette thématique, version anglaise.' }),
-                es: fields.object({
-                        title: champLigne('Titre de la carte'),
-                        subtitle: champLigne('Sous-titre'),
-                        description: champParagraphes('Description'),
-                }, { label: 'Espagnol', description: 'La carte de cette thématique, version espagnole.' }),
+                }),
+                ...parLangue('La carte de cette thématique', () => ({
+                    title: champLigne('Titre de la carte'),
+                    subtitle: champLigne('Sous-titre'),
+                    description: champParagraphes('Description'),
+                })),
             },
         }),
     },
