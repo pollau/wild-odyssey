@@ -1,0 +1,76 @@
+---
+// Intro de section, boite des six pictogrammes, puis cartes de sessions.
+//
+// Les six pictogrammes sont apparies a leurs libelles ici : les icones sont
+// des assets fixes, seuls les libelles viennent du CMS.
+import RichText from "../RichText.astro";
+import RichBody from "../RichBody.astro";
+import { langBlock } from "../../i18n/langBlock";
+import { plainText } from "../../i18n/richText";
+import { SESSION_IMAGES } from "../../content/sessionImages";
+
+interface Props {
+  chrome: Record<string, string>;
+  cards: { id: string; data: Record<string, unknown> }[];
+  lang: string;
+}
+
+const { chrome, cards, lang } = Astro.props;
+
+const features = [
+  { icon: "/assets/figma/icon-clock.svg", label: chrome.feat1 },
+  { icon: "/assets/figma/icon-organic.svg", label: chrome.feat2 },
+  { icon: "/assets/figma/icon-customize.svg", label: chrome.feat3 },
+  { icon: "/assets/figma/icon-online.svg", label: chrome.feat4 },
+  { icon: "/assets/figma/icon-leader.svg", label: chrome.feat5 },
+  { icon: "/assets/figma/icon-organization.svg", label: chrome.feat6 },
+];
+
+// Meme convention que les thematiques : le rang est dans le nom de fichier,
+// et la photo se retrouve sans ce rang.
+const sessionPhoto = (fiche: string) => SESSION_IMAGES[fiche.replace(/^session-\d+-/, "")];
+---
+
+<section class="py-12 lg:py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col gap-10 lg:gap-14 items-center">
+
+    <h2 class="font-fraunces text-[24px] lg:text-[32px] font-semibold text-center leading-tight">
+      <RichText text={chrome.heading} />
+    </h2>
+
+    <!-- 6 features box -->
+    <div class="w-full border-4 border-[#0698c0] rounded-[17px] bg-[rgba(6,152,192,0.05)] shadow-[0px_0px_7px_rgba(168,168,168,0.25)] p-5 lg:p-6">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        {features.map((f) => (
+          <div class="flex flex-col items-center gap-2 py-3 lg:py-4 px-3 text-center">
+            <img src={f.icon} alt="" class="w-[44px] h-[44px] lg:w-[52px] lg:h-[52px]" />
+            <p class="font-aileron text-black text-[14px] lg:text-[15px] font-bold leading-snug"><RichText text={f.label} /></p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Liste des sessions -->
+    <div class="flex flex-col gap-5 lg:gap-6 w-full">
+      {cards.map((f) => (
+        <div class="bg-white border border-[#d9d9d9] rounded-[13px] shadow-[0px_0px_8px_rgba(173,173,173,0.25)] flex flex-col sm:flex-row items-stretch overflow-hidden min-h-[130px] sm:h-[160px]">
+          <div class="shrink-0 w-full sm:w-[160px] h-[130px] sm:h-full">
+            <img src={sessionPhoto(f.id)} alt={plainText(langBlock(f.data, lang).title)} class="w-full h-full object-cover sm:rounded-bl-[13px] sm:rounded-tl-[13px]" />
+          </div>
+          <div class="flex flex-col gap-1 px-5 py-3 flex-1">
+            <p class="font-fraunces text-[#f05600] text-[15px] lg:text-[16px] font-bold"><RichText text={langBlock(f.data, lang).title} /></p>
+            <RichBody text={langBlock(f.data, lang).description} class="font-aileron text-black text-[13px] lg:text-[14px] font-medium leading-[22px]" />
+          </div>
+        </div>
+      ))}
+
+      <a
+        href="#"
+        data-coming-soon
+        class="font-aileron bg-[#0698c0] text-white text-[16px] lg:text-[18px] font-semibold h-[48px] flex items-center justify-center rounded-[7px] w-full hover:bg-cyan-700 transition-colors"
+      >
+        <RichText text={chrome.seeAll} />
+      </a>
+    </div>
+  </div>
+</section>

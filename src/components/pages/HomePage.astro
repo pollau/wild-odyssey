@@ -8,11 +8,12 @@ import RichBody from "../RichBody.astro";
 import StatCounter from "../StatCounter.astro";
 import { plainText } from "../../i18n/richText";
 import { THEMATIC_IMAGES } from "../../content/thematicImages";
-import { SESSION_IMAGES } from "../../content/sessionImages";
 import Hero from "../sections/Hero.astro";
 import Thematics from "../sections/Thematics.astro";
+import Sessions from "../sections/Sessions.astro";
 import { langBlock } from "../../i18n/langBlock";
 import thematicsUi from "../../content/ui/thematics.json";
+import sessionsUi from "../../content/ui/sessions.json";
 
 interface Props {
   lang: string;
@@ -33,7 +34,6 @@ const thematics = (await getCollection("thematics"))
 // et la photo se retrouve sans ce rang.
 const sessions = (await getCollection("sessions"))
   .sort((a, b) => a.id.localeCompare(b.id));
-const sessionPhoto = (id: string) => SESSION_IMAGES[id.replace(/^session-\d+-/, "")];
 
 const intro = langBlock(homepage, lang);
 // Chiffres de la section STATS. Volontairement hors Keystatic : ils sont
@@ -44,15 +44,6 @@ const STATS = [
   { value: 2000, labelKey: "stats.organizations" },
   { value: 5, labelKey: "stats.years" },
 ] as const;
-
-const features = [
-  { icon: "/assets/figma/icon-clock.svg", label: t(lang, "sessions.feat1") },
-  { icon: "/assets/figma/icon-organic.svg", label: t(lang, "sessions.feat2") },
-  { icon: "/assets/figma/icon-customize.svg", label: t(lang, "sessions.feat3") },
-  { icon: "/assets/figma/icon-online.svg", label: t(lang, "sessions.feat4") },
-  { icon: "/assets/figma/icon-leader.svg", label: t(lang, "sessions.feat5") },
-  { icon: "/assets/figma/icon-organization.svg", label: t(lang, "sessions.feat6") },
-];
 
 const reasons = (await getCollection("reasons"))
   .sort((a, b) => a.id.localeCompare(b.id));
@@ -71,49 +62,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
     <Thematics chrome={langBlock(thematicsUi, lang)} cards={thematics} lang={lang} />
 
     <!-- ─── ATELIERS ET MASTERCLASSES ─── -->
-    <section class="py-12 lg:py-16 bg-white">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col gap-10 lg:gap-14 items-center">
-
-        <h2 class="font-fraunces text-[24px] lg:text-[32px] font-semibold text-center leading-tight">
-          <RichText text={t(lang, "sessions.heading")} />
-        </h2>
-
-        <!-- 6 features box -->
-        <div class="w-full border-4 border-[#0698c0] rounded-[17px] bg-[rgba(6,152,192,0.05)] shadow-[0px_0px_7px_rgba(168,168,168,0.25)] p-5 lg:p-6">
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {features.map((f) => (
-              <div class="flex flex-col items-center gap-2 py-3 lg:py-4 px-3 text-center">
-                <img src={f.icon} alt="" class="w-[44px] h-[44px] lg:w-[52px] lg:h-[52px]" />
-                <p class="font-aileron text-black text-[14px] lg:text-[15px] font-bold leading-snug"><RichText text={f.label} /></p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <!-- Liste des sessions -->
-        <div class="flex flex-col gap-5 lg:gap-6 w-full">
-          {sessions.map((f) => (
-            <div class="bg-white border border-[#d9d9d9] rounded-[13px] shadow-[0px_0px_8px_rgba(173,173,173,0.25)] flex flex-col sm:flex-row items-stretch overflow-hidden min-h-[130px] sm:h-[160px]">
-              <div class="shrink-0 w-full sm:w-[160px] h-[130px] sm:h-full">
-                <img src={sessionPhoto(f.id)} alt={plainText(card(f).title)} class="w-full h-full object-cover sm:rounded-bl-[13px] sm:rounded-tl-[13px]" />
-              </div>
-              <div class="flex flex-col gap-1 px-5 py-3 flex-1">
-                <p class="font-fraunces text-[#f05600] text-[15px] lg:text-[16px] font-bold"><RichText text={card(f).title} /></p>
-                <RichBody text={card(f).description} class="font-aileron text-black text-[13px] lg:text-[14px] font-medium leading-[22px]" />
-              </div>
-            </div>
-          ))}
-
-          <a
-            href="#"
-            data-coming-soon
-            class="font-aileron bg-[#0698c0] text-white text-[16px] lg:text-[18px] font-semibold h-[48px] flex items-center justify-center rounded-[7px] w-full hover:bg-cyan-700 transition-colors"
-          >
-            <RichText text={t(lang, "sessions.seeAll")} />
-          </a>
-        </div>
-      </div>
-    </section>
+    <Sessions chrome={langBlock(sessionsUi, lang)} cards={sessions} lang={lang} />
 
     <!-- ─── STATS ─── -->
     <section class="relative py-16 lg:py-24 overflow-hidden">
