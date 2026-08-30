@@ -43,7 +43,20 @@ const homepage = defineCollection({
     }),
 });
 
+// Les trois facons dont un atelier se deroule : atelier collaboratif,
+// masterclass, marche oceane. Meme forme que les thematiques.
+const formats = defineCollection({
+    type: 'data',
+    schema: z.object({
+        title: z.string(),
+        fr: cardBlock,
+        en: cardBlock,
+        es: cardBlock,
+    }),
+});
+
 export const collections = {
     activities,
+    formats,
     homepage,
 };

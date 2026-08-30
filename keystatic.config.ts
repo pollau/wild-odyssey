@@ -23,7 +23,7 @@ export default config({
         // Attention : le menu est construit UNIQUEMENT a partir de cette
         // liste. Une section absente d'ici disparait de l'interface.
         navigation: {
-            "Page d'accueil": ['homepage', 'workshopsSection', 'activities', 'formatsSection', 'statsSection', 'reasonsSection'],
+            "Page d'accueil": ['homepage', 'workshopsSection', 'activities', 'formatsSection', 'formats', 'statsSection', 'reasonsSection'],
             'Événements': ['events'],
             'Tout le site': ['footerSection'],
         },
@@ -191,7 +191,7 @@ export default config({
         // Section qui presente les facons dont un atelier se deroule, a ne pas
         // confondre avec "Thematiques" qui en presente les sujets.
         formatsSection: singleton({
-            label: 'Ateliers et masterclasses',
+            label: 'Introduction des ateliers',
             path: 'src/content/ui/formats',
             format: { data: 'json' },
             schema: {
@@ -201,21 +201,42 @@ export default config({
                             description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base. Un retour a la ligne dans le champ en produit un a l'ecran.",
                             multiline: true,
                         }),
-                }, { label: 'Français', description: 'Le titre de la section des formats, version française.' }),
+                        feat1: fields.text({ label: 'Indication 1 (icone horloge)' }),
+                        feat2: fields.text({ label: 'Indication 2 (icone feuille)' }),
+                        feat3: fields.text({ label: 'Indication 3 (icone curseur)' }),
+                        feat4: fields.text({ label: 'Indication 4 (icone ecran)' }),
+                        feat5: fields.text({ label: 'Indication 5 (icone personne)' }),
+                        feat6: fields.text({ label: 'Indication 6 (icone immeuble)' }),
+                        seeAll: fields.text({ label: 'Texte du bouton bleu' }),
+                }, { label: 'Français', description: 'Le bandeau bleu des ateliers, version française.' }),
                 en: fields.object({
                         heading: fields.text({
                             label: 'Titre',
                             description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base. Un retour a la ligne dans le champ en produit un a l'ecran.",
                             multiline: true,
                         }),
-                }, { label: 'Anglais', description: 'Le titre de la section des formats, version anglaise.' }),
+                        feat1: fields.text({ label: 'Indication 1 (icone horloge)' }),
+                        feat2: fields.text({ label: 'Indication 2 (icone feuille)' }),
+                        feat3: fields.text({ label: 'Indication 3 (icone curseur)' }),
+                        feat4: fields.text({ label: 'Indication 4 (icone ecran)' }),
+                        feat5: fields.text({ label: 'Indication 5 (icone personne)' }),
+                        feat6: fields.text({ label: 'Indication 6 (icone immeuble)' }),
+                        seeAll: fields.text({ label: 'Texte du bouton bleu' }),
+                }, { label: 'Anglais', description: 'Le bandeau bleu des ateliers, version anglaise.' }),
                 es: fields.object({
                         heading: fields.text({
                             label: 'Titre',
                             description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base. Un retour a la ligne dans le champ en produit un a l'ecran.",
                             multiline: true,
                         }),
-                }, { label: 'Espagnol', description: 'Le titre de la section des formats, version espagnole.' }),
+                        feat1: fields.text({ label: 'Indication 1 (icone horloge)' }),
+                        feat2: fields.text({ label: 'Indication 2 (icone feuille)' }),
+                        feat3: fields.text({ label: 'Indication 3 (icone curseur)' }),
+                        feat4: fields.text({ label: 'Indication 4 (icone ecran)' }),
+                        feat5: fields.text({ label: 'Indication 5 (icone personne)' }),
+                        feat6: fields.text({ label: 'Indication 6 (icone immeuble)' }),
+                        seeAll: fields.text({ label: 'Texte du bouton bleu' }),
+                }, { label: 'Espagnol', description: 'Le bandeau bleu des ateliers, version espagnole.' }),
             },
         }),
         // Section "6 bonnes raisons". Seuls les titres sont ici pour l'instant,
@@ -301,6 +322,35 @@ export default config({
         }),
     },
     collections: {
+        // Les trois facons dont un atelier se deroule. Meme forme que les
+        // thematiques : rang dans le nom de fichier, photo hors CMS.
+        formats: collection({
+            label: 'Ateliers et masterclasses',
+            slugField: 'title',
+            path: 'src/content/formats/*',
+            format: { data: 'json' },
+            columns: ['title'],
+            schema: {
+                title: fields.slug({
+                    name: {
+                        label: 'Nom de la fiche',
+                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
+                    },
+                }),
+                fr: fields.object({
+                        title: fields.text({ label: 'Titre de la carte' }),
+                        description: fields.text({ label: 'Description', multiline: true }),
+                }, { label: 'Français', description: 'La carte de ce format, version française.' }),
+                en: fields.object({
+                        title: fields.text({ label: 'Titre de la carte' }),
+                        description: fields.text({ label: 'Description', multiline: true }),
+                }, { label: 'Anglais', description: 'La carte de ce format, version anglaise.' }),
+                es: fields.object({
+                        title: fields.text({ label: 'Titre de la carte' }),
+                        description: fields.text({ label: 'Description', multiline: true }),
+                }, { label: 'Espagnol', description: 'La carte de ce format, version espagnole.' }),
+            },
+        }),
         activities: collection({
             label: 'Thématiques',
             slugField: 'title',

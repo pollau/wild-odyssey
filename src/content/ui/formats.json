@@ -1,11 +1,32 @@
 {
   "fr": {
-    "heading": "Ateliers, Masterclasses, Marche Océane\n**Sur Mesure**"
+    "heading": "Ateliers, Masterclasses, Marche Océane\n**Sur Mesure**",
+    "feat1": "À partir d'1 heure",
+    "feat2": "PME aux grandes organisations",
+    "feat3": "Ludique, flexible et adapté à votre réalité",
+    "feat4": "En présentiel ou en ligne",
+    "feat5": "Du leadership aux équipes terrain",
+    "feat6": "Tous secteurs",
+    "seeAll": "Voir tous les ateliers"
   },
   "en": {
-    "heading": "Workshop · Masterclasses · Ocean walk\n**Custom**"
+    "heading": "Workshop · Masterclasses · Ocean walk\n**Custom**",
+    "feat1": "From 1 hour",
+    "feat2": "From SMEs to large organizations",
+    "feat3": "Fun, flexible, and fully customizable",
+    "feat4": "In person or online",
+    "feat5": "From leadership to frontline teams",
+    "feat6": "Access all sectors",
+    "seeAll": "See all workshops"
   },
   "es": {
-    "heading": "Workshop · Masterclasses · Marcha Oceánica\n**Personalizado**"
+    "heading": "Workshop · Masterclasses · Marcha Oceánica\n**Personalizado**",
+    "feat1": "Desde 1 hora",
+    "feat2": "De PYMEs a grandes organizaciones",
+    "feat3": "Divertido, flexible y totalmente personalizable",
+    "feat4": "Presencial o en línea",
+    "feat5": "Del liderazgo a los equipos de primera línea",
+    "feat6": "Todos los sectores",
+    "seeAll": "Ver todos los talleres"
   }
 }

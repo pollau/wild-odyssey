@@ -6,6 +6,7 @@ import { t } from "../../i18n/ui";
 import AccentTitle from "../AccentTitle.astro";
 import StatCounter from "../StatCounter.astro";
 import { ACTIVITY_IMAGES } from "../../content/activityImages";
+import { FORMAT_IMAGES } from "../../content/formatImages";
 
 interface Props {
   lang: string;
@@ -26,6 +27,11 @@ const card = (w: { data: Record<string, unknown> }) =>
 const photo = (id: string) => ACTIVITY_IMAGES[id.replace(/^thematic-\d+-/, "")];
 const workshops = (await getCollection("activities"))
   .sort((a, b) => a.id.localeCompare(b.id));
+// Meme convention que les thematiques : le rang est dans le nom de fichier,
+// et la photo se retrouve sans ce rang.
+const formats = (await getCollection("formats"))
+  .sort((a, b) => a.id.localeCompare(b.id));
+const formatPhoto = (id: string) => FORMAT_IMAGES[id.replace(/^format-\d+-/, "")];
 
 // Bandeau d'introduction : tout le bloc vient du JSON pilote par Keystatic,
 // groupe par langue. On lit uniquement la langue courante, SANS repli sur
@@ -187,18 +193,14 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
 
         <!-- Workshop list -->
         <div class="flex flex-col gap-5 lg:gap-6 w-full">
-          {[
-            { img: "/assets/images/activities/workshop-lionel.jpg", title: t(lang, "formats.workshopTitle"),    desc: t(lang, "formats.workshopDesc") },
-            { img: "/assets/images/activities/masterclass-lionel.jpg", title: t(lang, "formats.masterclassTitle"), desc: t(lang, "formats.masterclassDesc") },
-            { img: "/assets/images/activities/marche-oceane.jpg",      title: t(lang, "formats.oceanWalkTitle"),   desc: t(lang, "formats.oceanWalkDesc") },
-          ].map((f) => (
+          {formats.map((f) => (
             <div class="bg-white border border-[#d9d9d9] rounded-[13px] shadow-[0px_0px_8px_rgba(173,173,173,0.25)] flex flex-col sm:flex-row items-stretch overflow-hidden min-h-[130px] sm:h-[160px]">
               <div class="shrink-0 w-full sm:w-[160px] h-[130px] sm:h-full">
-                <img src={f.img} alt={f.title} class="w-full h-full object-cover sm:rounded-bl-[13px] sm:rounded-tl-[13px]" />
+                <img src={formatPhoto(f.id)} alt={card(f).title} class="w-full h-full object-cover sm:rounded-bl-[13px] sm:rounded-tl-[13px]" />
               </div>
               <div class="flex flex-col gap-1 px-5 py-3 flex-1">
-                <p class="font-fraunces text-[#f05600] text-[15px] lg:text-[16px] font-bold">{f.title}</p>
-                <p class="font-aileron text-black text-[13px] lg:text-[14px] font-medium leading-[22px]">{f.desc}</p>
+                <p class="font-fraunces text-[#f05600] text-[15px] lg:text-[16px] font-bold">{card(f).title}</p>
+                <p class="font-aileron text-black text-[13px] lg:text-[14px] font-medium leading-[22px]">{card(f).description}</p>
               </div>
             </div>
           ))}
