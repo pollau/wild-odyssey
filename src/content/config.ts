@@ -48,6 +48,29 @@ const homepage = defineCollection({
     }),
 });
 
+// Hero de la page universite. Meme forme que celui de la home.
+const university = defineCollection({
+    type: 'data',
+    schema: z.object({
+        fr: introBlock,
+        en: introBlock,
+        es: introBlock,
+    }),
+});
+
+// Cartes propres a la page universite. Collections distinctes de celles de
+// la home : le menu du CMS se construit a partir de ui.navigation, et une
+// collection ne peut figurer que dans un seul groupe.
+const universityThematics = defineCollection({
+    type: 'data',
+    schema: z.object({ title: z.string(), fr: cardBlock, en: cardBlock, es: cardBlock }),
+});
+
+const universitySessions = defineCollection({
+    type: 'data',
+    schema: z.object({ title: z.string(), fr: cardBlock, en: cardBlock, es: cardBlock }),
+});
+
 // Les trois facons dont un atelier se deroule : atelier collaboratif,
 // masterclass, marche oceane. Meme forme que les thematiques.
 const sessions = defineCollection({
@@ -77,4 +100,7 @@ export const collections = {
     sessions,
     reasons,
     homepage,
+    university,
+    'university-thematics': universityThematics,
+    'university-sessions': universitySessions,
 };
