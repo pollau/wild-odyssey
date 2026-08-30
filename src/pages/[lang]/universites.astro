@@ -8,4 +8,4 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 ---
 
-<UniversityPage lang={lang} />
+<UniversityPage lang={lang!} />
