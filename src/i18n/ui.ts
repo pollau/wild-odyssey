@@ -44,7 +44,6 @@ export const ui = {
     "footer.ctaBtn": lang(footerUi, "fr", "ctaBtn"),
     "footer.copyright": lang(footerUi, "fr", "copyright"),
 
-    "nav.events": "Événements",
     "nav.cta": "Nous contacter",
 
     "seo.home.title": "Team Building Durable & Ateliers Climat",
@@ -102,7 +101,6 @@ export const ui = {
     "footer.ctaBtn": lang(footerUi, "en", "ctaBtn"),
     "footer.copyright": lang(footerUi, "en", "copyright"),
 
-    "nav.events": "Events",
     "nav.cta": "Contact me",
 
     "seo.home.title": "Sustainability Team Building & Climate Workshops",
@@ -160,7 +158,6 @@ export const ui = {
     "footer.ctaBtn": lang(footerUi, "es", "ctaBtn"),
     "footer.copyright": lang(footerUi, "es", "copyright"),
 
-    "nav.events": "Eventos",
     "nav.cta": "Contacto",
 
     "seo.home.title": "Team Building Sostenible y Talleres de Clima",
