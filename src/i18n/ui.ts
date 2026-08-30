@@ -5,12 +5,6 @@ import statsUi from "../content/ui/stats.json";
 import workshopsUi from "../content/ui/workshops.json";
 import footerUi from "../content/ui/footer.json";
 
-// Keystatic omet les champs vides quand il ecrit un JSON : une cle absente
-// signifie donc 'pas de texte', pas 'cle inconnue'. On lit toujours via txt()
-// pour que ce cas rende une chaine vide au lieu de undefined.
-const txt = (o: unknown, k: string): string =>
-  (o as Record<string, string>)[k] ?? '';
-
 // Les JSON pilotes par Keystatic sont groupes par langue : on lit
 // fichier[langue][cle]. Les deux niveaux peuvent manquer, Keystatic
 // omettant les champs vides, d'ou les deux replis sur chaine vide.
@@ -21,13 +15,13 @@ const lang = (o: unknown, lg: string, k: string): string =>
 export const ui = {
   fr: {
 
-    "workshops.badge": txt(workshopsUi, "badge_fr"),
+    "workshops.badge": lang(workshopsUi, "fr", "badge"),
     "workshops.heading1": "Une méthodologie commune,",
     "workshops.heading2": "des thématiques au choix.",
-    "workshops.body1": txt(workshopsUi, "body1_fr"),
-    "workshops.body2": txt(workshopsUi, "body2_fr"),
-    "workshops.body3": txt(workshopsUi, "body3_fr"),
-    "workshops.learnMore": txt(workshopsUi, "learnMore_fr"),
+    "workshops.body1": lang(workshopsUi, "fr", "body1"),
+    "workshops.body2": lang(workshopsUi, "fr", "body2"),
+    "workshops.body3": lang(workshopsUi, "fr", "body3"),
+    "workshops.learnMore": lang(workshopsUi, "fr", "learnMore"),
 
     "formats.heading1": "Ateliers, Masterclasses, Marche Océane",
     "formats.heading2": "Sur Mesure",
@@ -113,13 +107,13 @@ export const ui = {
   },
   en: {
 
-    "workshops.badge": txt(workshopsUi, "badge_en"),
+    "workshops.badge": lang(workshopsUi, "en", "badge"),
     "workshops.heading1": "A common methodology,",
     "workshops.heading2": "themes to explore",
-    "workshops.body1": txt(workshopsUi, "body1_en"),
-    "workshops.body2": txt(workshopsUi, "body2_en"),
-    "workshops.body3": txt(workshopsUi, "body3_en"),
-    "workshops.learnMore": txt(workshopsUi, "learnMore_en"),
+    "workshops.body1": lang(workshopsUi, "en", "body1"),
+    "workshops.body2": lang(workshopsUi, "en", "body2"),
+    "workshops.body3": lang(workshopsUi, "en", "body3"),
+    "workshops.learnMore": lang(workshopsUi, "en", "learnMore"),
 
     "formats.heading1": "Workshop · Masterclasses · Ocean walk",
     "formats.heading2": "Custom",
@@ -205,13 +199,13 @@ export const ui = {
   },
   es: {
 
-    "workshops.badge": txt(workshopsUi, "badge_es"),
+    "workshops.badge": lang(workshopsUi, "es", "badge"),
     "workshops.heading1": "Una metodología común,",
     "workshops.heading2": "temáticas a elegir",
-    "workshops.body1": txt(workshopsUi, "body1_es"),
-    "workshops.body2": txt(workshopsUi, "body2_es"),
-    "workshops.body3": txt(workshopsUi, "body3_es"),
-    "workshops.learnMore": txt(workshopsUi, "learnMore_es"),
+    "workshops.body1": lang(workshopsUi, "es", "body1"),
+    "workshops.body2": lang(workshopsUi, "es", "body2"),
+    "workshops.body3": lang(workshopsUi, "es", "body3"),
+    "workshops.learnMore": lang(workshopsUi, "es", "learnMore"),
 
     "formats.heading1": "Workshop · Masterclasses · Marcha Oceánica",
     "formats.heading2": "Personalizado",

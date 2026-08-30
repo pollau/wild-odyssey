@@ -1,17 +1,20 @@
 {
-  "badge_fr": "Nos thématiques",
-  "badge_en": "Our themes",
-  "badge_es": "Nuestras temáticas",
-  "body1_fr": "Climat, océan, biodiversité, empreinte carbone : quatre territoires vastes, interconnectés, parfois intimidants. Nos ateliers systémiques sont votre boussole pour les explorer. Chaque expérience révèle les liens invisibles entre ces écosystèmes, éveille la curiosité et transforme la complexité en émerveillement partagé.",
-  "body1_en": "Most sustainability topics feel abstract, distant, or just plain heavy. Our science-based, systemic workshops make them visceral, clear, and energising from the first card to the last conversation.",
-  "body1_es": "La mayoría de los temas de sostenibilidad parecen abstractos, lejanos o simplemente pesados. Nuestros talleres científicos los hacen concretos, sorprendentes y con ganas de actuar.",
-  "body2_fr": "Chaque format est aligné avec les ODD de l'ONU.",
-  "body2_en": "Each experience is aligned with the UN Sustainable Development Goals, turning individual understanding into collective action.",
-  "body2_es": "Cada experiencia está alineada con los Objetivos de Desarrollo Sostenible de la ONU, convirtiendo la comprensión individual en acción colectiva.",
-  "body3_fr": "",
-  "body3_en": "",
-  "body3_es": "",
-  "learnMore_fr": "En savoir plus",
-  "learnMore_en": "Learn more",
-  "learnMore_es": "Más información"
+  "fr": {
+    "badge": "Nos thématiques",
+    "body1": "Climat, océan, biodiversité, empreinte carbone : quatre territoires vastes, interconnectés, parfois intimidants. Nos ateliers systémiques sont votre boussole pour les explorer. Chaque expérience révèle les liens invisibles entre ces écosystèmes, éveille la curiosité et transforme la complexité en émerveillement partagé.",
+    "body2": "Chaque format est aligné avec les ODD de l'ONU.",
+    "learnMore": "En savoir plus"
+  },
+  "en": {
+    "badge": "Our themes",
+    "body1": "Most sustainability topics feel abstract, distant, or just plain heavy. Our science-based, systemic workshops make them visceral, clear, and energising from the first card to the last conversation.",
+    "body2": "Each experience is aligned with the UN Sustainable Development Goals, turning individual understanding into collective action.",
+    "learnMore": "Learn more"
+  },
+  "es": {
+    "badge": "Nuestras temáticas",
+    "body1": "La mayoría de los temas de sostenibilidad parecen abstractos, lejanos o simplemente pesados. Nuestros talleres científicos los hacen concretos, sorprendentes y con ganas de actuar.",
+    "body2": "Cada experiencia está alineada con los Objetivos de Desarrollo Sostenible de la ONU, convirtiendo la comprensión individual en acción colectiva.",
+    "learnMore": "Más información"
+  }
 }
