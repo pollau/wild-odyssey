@@ -23,7 +23,13 @@ export default config({
         // Attention : le menu est construit UNIQUEMENT a partir de cette
         // liste. Une section absente d'ici disparait de l'interface.
         navigation: {
-            "Page d'accueil": ['homepage', 'thematicsSection', 'thematics', 'sessionsSection', 'sessions', 'statsSection', 'reasonsSection', 'reasons'],
+            "Page d'accueil": [
+                'homepage',
+                'thematicsSection', 'thematics',
+                'sessionsSection', 'sessions',
+                'statsSection',
+                'reasonsSection', 'reasons',
+            ],
             'Événements': ['events'],
             'Tout le site': ['footerSection'],
         },
@@ -66,7 +72,7 @@ export default config({
         //  - une description qui dit OU le texte apparait sur le site
         //  - les 3 langues du meme texte regroupees, pour voir les manques
         statsSection: singleton({
-            label: 'Chiffres clés',
+            label: '📝 Chiffres clés',
             path: 'src/content/ui/stats',
             format: { data: 'json' },
             schema: {
@@ -105,7 +111,7 @@ export default config({
         // Section "Nos thematiques" de l'accueil : le texte simple seulement.
         // Les deux moities du titre colore restent dans ui.ts pour l'instant.
         thematicsSection: singleton({
-            label: 'Introduction des thématiques',
+            label: '📝 Thématiques',
             path: 'src/content/ui/thematics',
             format: { data: 'json' },
             schema: {
@@ -154,7 +160,7 @@ export default config({
         // "Et vous ?" reste dans le code : il est coupe en deux morceaux pour
         // le style, le rendre editable demanderait de revoir la mise en forme.
         footerSection: singleton({
-            label: 'Pied de page',
+            label: '📝 Pied de page',
             path: 'src/content/ui/footer',
             format: { data: 'json' },
             schema: {
@@ -206,7 +212,7 @@ export default config({
         // Section qui presente les facons dont un atelier se deroule, a ne pas
         // confondre avec "Thematiques" qui en presente les sujets.
         sessionsSection: singleton({
-            label: 'Introduction des ateliers',
+            label: '📝 Ateliers et masterclasses',
             path: 'src/content/ui/sessions',
             format: { data: 'json' },
             schema: {
@@ -257,7 +263,7 @@ export default config({
         // Section "6 bonnes raisons". Seuls les titres sont ici pour l'instant,
         // les textes des cartes vivent encore dans src/i18n/ui.ts.
         reasonsSection: singleton({
-            label: 'Introduction des raisons',
+            label: '📝 6 bonnes raisons',
             path: 'src/content/ui/reasons',
             format: { data: 'json' },
             schema: {
@@ -297,7 +303,7 @@ export default config({
             },
         }),
         homepage: singleton({
-            label: 'Introduction',
+            label: '📝 Introduction',
             path: 'src/content/homepage/index',
             format: { data: 'json' },
             // Un bloc par langue plutot qu'un bloc par texte : on redige une
@@ -343,7 +349,7 @@ export default config({
         // Les trois facons dont un atelier se deroule. Meme forme que les
         // thematiques : rang dans le nom de fichier, photo hors CMS.
         sessions: collection({
-            label: 'Ateliers et masterclasses',
+            label: '🗂️ Les 3 ateliers',
             slugField: 'title',
             path: 'src/content/sessions/*',
             format: { data: 'json' },
@@ -372,7 +378,7 @@ export default config({
         // Les 6 bonnes raisons de monter a bord. La carte affiche son rang,
         // il n'y a pas de pictogramme a choisir.
         reasons: collection({
-            label: '6 bonnes raisons',
+            label: '🗂️ Les 6 raisons',
             slugField: 'title',
             path: 'src/content/reasons/*',
             format: { data: 'json' },
@@ -399,7 +405,7 @@ export default config({
             },
         }),
         thematics: collection({
-            label: 'Thématiques',
+            label: '🗂️ Les 6 thématiques',
             slugField: 'title',
             path: 'src/content/thematics/*',
             format: { data: 'json' },
