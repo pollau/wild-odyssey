@@ -10,6 +10,13 @@ const cardBlock = z
     })
     .optional();
 
+const reasonBlock = z
+    .object({
+        title: z.string().optional(),
+        text: z.string().optional(),
+    })
+    .optional();
+
 const thematics = defineCollection({
     type: 'data',
     schema: z.object({
@@ -55,8 +62,21 @@ const sessions = defineCollection({
     }),
 });
 
+// Les 6 bonnes raisons de monter a bord. L'icone n'existe pas : la carte
+// affiche son rang, pas de pictogramme.
+const reasons = defineCollection({
+    type: 'data',
+    schema: z.object({
+        title: z.string(),
+        fr: reasonBlock,
+        en: reasonBlock,
+        es: reasonBlock,
+    }),
+});
+
 export const collections = {
     thematics,
     sessions,
+    reasons,
     homepage,
 };

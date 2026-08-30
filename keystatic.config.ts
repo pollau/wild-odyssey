@@ -23,7 +23,7 @@ export default config({
         // Attention : le menu est construit UNIQUEMENT a partir de cette
         // liste. Une section absente d'ici disparait de l'interface.
         navigation: {
-            "Page d'accueil": ['homepage', 'thematicsSection', 'thematics', 'sessionsSection', 'sessions', 'statsSection', 'reasonsSection'],
+            "Page d'accueil": ['homepage', 'thematicsSection', 'thematics', 'sessionsSection', 'sessions', 'statsSection', 'reasonsSection', 'reasons'],
             'Événements': ['events'],
             'Tout le site': ['footerSection'],
         },
@@ -242,7 +242,7 @@ export default config({
         // Section "6 bonnes raisons". Seuls les titres sont ici pour l'instant,
         // les textes des cartes vivent encore dans src/i18n/ui.ts.
         reasonsSection: singleton({
-            label: '6 bonnes raisons',
+            label: 'Introduction des raisons',
             path: 'src/content/ui/reasons',
             format: { data: 'json' },
             schema: {
@@ -251,37 +251,25 @@ export default config({
                             label: 'Titre',
                             description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base.",
                         }),
-                        r1: fields.text({ label: 'Titre de la 1re carte' }),
-                        r2: fields.text({ label: 'Titre de la 2e carte' }),
-                        r3: fields.text({ label: 'Titre de la 3e carte' }),
-                        r4: fields.text({ label: 'Titre de la 4e carte' }),
-                        r5: fields.text({ label: 'Titre de la 5e carte' }),
-                        r6: fields.text({ label: 'Titre de la 6e carte' }),
-                }, { label: 'Français', description: 'Les titres de la section des 6 raisons, version française.' }),
+                        body1: fields.text({ label: 'Paragraphe 1', multiline: true }),
+                        body2: fields.text({ label: 'Paragraphe 2', multiline: true }),
+                }, { label: 'Français', description: "L'introduction des 6 raisons, version française." }),
                 en: fields.object({
                         heading: fields.text({
                             label: 'Titre',
                             description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base.",
                         }),
-                        r1: fields.text({ label: 'Titre de la 1re carte' }),
-                        r2: fields.text({ label: 'Titre de la 2e carte' }),
-                        r3: fields.text({ label: 'Titre de la 3e carte' }),
-                        r4: fields.text({ label: 'Titre de la 4e carte' }),
-                        r5: fields.text({ label: 'Titre de la 5e carte' }),
-                        r6: fields.text({ label: 'Titre de la 6e carte' }),
-                }, { label: 'Anglais', description: 'Les titres de la section des 6 raisons, version anglaise.' }),
+                        body1: fields.text({ label: 'Paragraphe 1', multiline: true }),
+                        body2: fields.text({ label: 'Paragraphe 2', multiline: true }),
+                }, { label: 'Anglais', description: "L'introduction des 6 raisons, version anglaise." }),
                 es: fields.object({
                         heading: fields.text({
                             label: 'Titre',
                             description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base.",
                         }),
-                        r1: fields.text({ label: 'Titre de la 1re carte' }),
-                        r2: fields.text({ label: 'Titre de la 2e carte' }),
-                        r3: fields.text({ label: 'Titre de la 3e carte' }),
-                        r4: fields.text({ label: 'Titre de la 4e carte' }),
-                        r5: fields.text({ label: 'Titre de la 5e carte' }),
-                        r6: fields.text({ label: 'Titre de la 6e carte' }),
-                }, { label: 'Espagnol', description: 'Les titres de la section des 6 raisons, version espagnole.' }),
+                        body1: fields.text({ label: 'Paragraphe 1', multiline: true }),
+                        body2: fields.text({ label: 'Paragraphe 2', multiline: true }),
+                }, { label: 'Espagnol', description: "L'introduction des 6 raisons, version espagnole." }),
             },
         }),
         homepage: singleton({
@@ -349,6 +337,35 @@ export default config({
                         title: fields.text({ label: 'Titre de la carte' }),
                         description: fields.text({ label: 'Description', multiline: true }),
                 }, { label: 'Espagnol', description: 'La carte de cette session, version espagnole.' }),
+            },
+        }),
+        // Les 6 bonnes raisons de monter a bord. La carte affiche son rang,
+        // il n'y a pas de pictogramme a choisir.
+        reasons: collection({
+            label: '6 bonnes raisons',
+            slugField: 'title',
+            path: 'src/content/reasons/*',
+            format: { data: 'json' },
+            columns: ['title'],
+            schema: {
+                title: fields.slug({
+                    name: {
+                        label: 'Nom de la fiche',
+                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
+                    },
+                }),
+                fr: fields.object({
+                        title: fields.text({ label: 'Titre de la carte' }),
+                        text: fields.text({ label: 'Texte', description: 'Un retour a la ligne cree un nouveau paragraphe dans la carte.', multiline: true }),
+                }, { label: 'Français', description: 'La carte de cette raison, version française.' }),
+                en: fields.object({
+                        title: fields.text({ label: 'Titre de la carte' }),
+                        text: fields.text({ label: 'Texte', description: 'Un retour a la ligne cree un nouveau paragraphe dans la carte.', multiline: true }),
+                }, { label: 'Anglais', description: 'La carte de cette raison, version anglaise.' }),
+                es: fields.object({
+                        title: fields.text({ label: 'Titre de la carte' }),
+                        text: fields.text({ label: 'Texte', description: 'Un retour a la ligne cree un nouveau paragraphe dans la carte.', multiline: true }),
+                }, { label: 'Espagnol', description: 'La carte de cette raison, version espagnole.' }),
             },
         }),
         thematics: collection({
