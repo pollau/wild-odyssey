@@ -23,7 +23,7 @@ export default config({
         // Attention : le menu est construit UNIQUEMENT a partir de cette
         // liste. Une section absente d'ici disparait de l'interface.
         navigation: {
-            "Page d'accueil": ['homepage', 'workshopsSection', 'activities', 'formatsSection', 'formats', 'statsSection', 'reasonsSection'],
+            "Page d'accueil": ['homepage', 'thematicsSection', 'activities', 'formatsSection', 'formats', 'statsSection', 'reasonsSection'],
             'Événements': ['events'],
             'Tout le site': ['footerSection'],
         },
@@ -104,9 +104,9 @@ export default config({
         }),
         // Section "Nos thematiques" de l'accueil : le texte simple seulement.
         // Les deux moities du titre colore restent dans ui.ts pour l'instant.
-        workshopsSection: singleton({
+        thematicsSection: singleton({
             label: 'Introduction des thématiques',
-            path: 'src/content/ui/workshops',
+            path: 'src/content/ui/thematics',
             format: { data: 'json' },
             schema: {
                 fr: fields.object({

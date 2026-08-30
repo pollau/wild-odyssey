@@ -2,7 +2,7 @@
 // par Keystatic : elles ne sont plus ecrites ici, seulement referencees, afin
 // qu il n existe jamais deux sources pour un meme texte.
 import statsUi from "../content/ui/stats.json";
-import workshopsUi from "../content/ui/workshops.json";
+import thematicsUi from "../content/ui/thematics.json";
 import footerUi from "../content/ui/footer.json";
 import formatsUi from "../content/ui/formats.json";
 import reasonsUi from "../content/ui/reasons.json";
@@ -17,12 +17,12 @@ const lang = (o: unknown, lg: string, k: string): string =>
 export const ui = {
   fr: {
 
-    "workshops.badge": lang(workshopsUi, "fr", "badge"),
-    "workshops.heading": lang(workshopsUi, "fr", "heading"),
-    "workshops.body1": lang(workshopsUi, "fr", "body1"),
-    "workshops.body2": lang(workshopsUi, "fr", "body2"),
-    "workshops.body3": lang(workshopsUi, "fr", "body3"),
-    "workshops.learnMore": lang(workshopsUi, "fr", "learnMore"),
+    "thematics.badge": lang(thematicsUi, "fr", "badge"),
+    "thematics.heading": lang(thematicsUi, "fr", "heading"),
+    "thematics.body1": lang(thematicsUi, "fr", "body1"),
+    "thematics.body2": lang(thematicsUi, "fr", "body2"),
+    "thematics.body3": lang(thematicsUi, "fr", "body3"),
+    "thematics.learnMore": lang(thematicsUi, "fr", "learnMore"),
 
     "formats.heading": lang(formatsUi, "fr", "heading"),
     "formats.feat1": lang(formatsUi, "fr", "feat1"),
@@ -91,12 +91,12 @@ export const ui = {
   },
   en: {
 
-    "workshops.badge": lang(workshopsUi, "en", "badge"),
-    "workshops.heading": lang(workshopsUi, "en", "heading"),
-    "workshops.body1": lang(workshopsUi, "en", "body1"),
-    "workshops.body2": lang(workshopsUi, "en", "body2"),
-    "workshops.body3": lang(workshopsUi, "en", "body3"),
-    "workshops.learnMore": lang(workshopsUi, "en", "learnMore"),
+    "thematics.badge": lang(thematicsUi, "en", "badge"),
+    "thematics.heading": lang(thematicsUi, "en", "heading"),
+    "thematics.body1": lang(thematicsUi, "en", "body1"),
+    "thematics.body2": lang(thematicsUi, "en", "body2"),
+    "thematics.body3": lang(thematicsUi, "en", "body3"),
+    "thematics.learnMore": lang(thematicsUi, "en", "learnMore"),
 
     "formats.heading": lang(formatsUi, "en", "heading"),
     "formats.feat1": lang(formatsUi, "en", "feat1"),
@@ -165,12 +165,12 @@ export const ui = {
   },
   es: {
 
-    "workshops.badge": lang(workshopsUi, "es", "badge"),
-    "workshops.heading": lang(workshopsUi, "es", "heading"),
-    "workshops.body1": lang(workshopsUi, "es", "body1"),
-    "workshops.body2": lang(workshopsUi, "es", "body2"),
-    "workshops.body3": lang(workshopsUi, "es", "body3"),
-    "workshops.learnMore": lang(workshopsUi, "es", "learnMore"),
+    "thematics.badge": lang(thematicsUi, "es", "badge"),
+    "thematics.heading": lang(thematicsUi, "es", "heading"),
+    "thematics.body1": lang(thematicsUi, "es", "body1"),
+    "thematics.body2": lang(thematicsUi, "es", "body2"),
+    "thematics.body3": lang(thematicsUi, "es", "body3"),
+    "thematics.learnMore": lang(thematicsUi, "es", "learnMore"),
 
     "formats.heading": lang(formatsUi, "es", "heading"),
     "formats.feat1": lang(formatsUi, "es", "feat1"),

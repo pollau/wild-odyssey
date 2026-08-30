@@ -25,7 +25,7 @@ const card = (w: { data: Record<string, unknown> }) =>
 // l'ordre d'affichage. La photo, elle, est retrouvee sans le rang, pour qu'une
 // renumerotation ne la perde pas.
 const photo = (id: string) => ACTIVITY_IMAGES[id.replace(/^thematic-\d+-/, "")];
-const workshops = (await getCollection("activities"))
+const thematics = (await getCollection("activities"))
   .sort((a, b) => a.id.localeCompare(b.id));
 // Meme convention que les thematiques : le rang est dans le nom de fichier,
 // et la photo se retrouve sans ce rang.
@@ -102,7 +102,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
       </div>
     </section>
 
-    <!-- ─── 6 THEMATIC WORKSHOPS ─── -->
+    <!-- ─── THEMATIQUES ─── -->
     <section class="relative py-12 lg:py-20 overflow-hidden" style="background-color: #e8f5e5;">
 
       <!-- Décoration bas-droite : grand cercle blanc + photo océan intérieure -->
@@ -119,21 +119,21 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
         <!-- Header -->
         <div class="flex flex-col gap-4 lg:gap-5 items-center text-center w-full">
           <div class="bg-[rgba(6,152,192,0.15)] px-6 h-[44px] flex items-center justify-center rounded-full">
-            <span class="text-[#0698c0] text-[14px] lg:text-[15px] font-semibold">{t(lang, "workshops.badge")}</span>
+            <span class="text-[#0698c0] text-[14px] lg:text-[15px] font-semibold">{t(lang, "thematics.badge")}</span>
           </div>
           <h2 class="font-fraunces text-[24px] lg:text-[30px] font-semibold text-black">
-            <AccentTitle text={t(lang, "workshops.heading")} />
+            <AccentTitle text={t(lang, "thematics.heading")} />
           </h2>
           <div class="font-aileron flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black text-center">
-            <p>{t(lang, "workshops.body1")}</p>
-            <p>{t(lang, "workshops.body2")}</p>
-            {t(lang, "workshops.body3") && <p>{t(lang, "workshops.body3")}</p>}
+            <p>{t(lang, "thematics.body1")}</p>
+            <p>{t(lang, "thematics.body2")}</p>
+            {t(lang, "thematics.body3") && <p>{t(lang, "thematics.body3")}</p>}
           </div>
         </div>
 
-        <!-- Workshop cards — scroll horizontal mobile, 2×2 desktop -->
+        <!-- Cartes de thematiques — scroll horizontal mobile, 2×2 desktop -->
         <div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory w-full max-w-3xl lg:max-w-6xl sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-5 sm:overflow-x-visible sm:pb-0 lg:gap-7">
-          {workshops.map((w) => (
+          {thematics.map((w) => (
             <div class="shrink-0 w-[260px] snap-start sm:w-auto bg-white border border-[#dbdbdb] rounded-[12px] shadow-[0px_1px_8px_rgba(168,168,168,0.25)] flex flex-col overflow-hidden">
               <div class="relative h-[190px] bg-[#acb8a9]">
                 {photo(w.id) && (
@@ -161,7 +161,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
                     data-coming-soon
                     class="font-aileron bg-[#f05600] text-white text-[15px] font-semibold h-[46px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
                   >
-                    {t(lang, "workshops.learnMore")}
+                    {t(lang, "thematics.learnMore")}
                   </a>
                 </div>
               </div>
@@ -171,7 +171,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
       </div>
     </section>
 
-    <!-- ─── WORKSHOP FORMATS ─── -->
+    <!-- ─── ATELIERS ET MASTERCLASSES ─── -->
     <section class="py-12 lg:py-16 bg-white">
       <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col gap-10 lg:gap-14 items-center">
 
@@ -191,7 +191,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
           </div>
         </div>
 
-        <!-- Workshop list -->
+        <!-- Liste des sessions -->
         <div class="flex flex-col gap-5 lg:gap-6 w-full">
           {formats.map((f) => (
             <div class="bg-white border border-[#d9d9d9] rounded-[13px] shadow-[0px_0px_8px_rgba(173,173,173,0.25)] flex flex-col sm:flex-row items-stretch overflow-hidden min-h-[130px] sm:h-[160px]">
