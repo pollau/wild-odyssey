@@ -31,7 +31,7 @@ const workshops = (await getCollection("activities"))
 // et la photo se retrouve sans ce rang.
 const formats = (await getCollection("formats"))
   .sort((a, b) => a.id.localeCompare(b.id));
-const formatPhoto = (id: string) => FORMAT_IMAGES[id.replace(/^format-\d+-/, "")];
+const formatPhoto = (id: string) => FORMAT_IMAGES[id.replace(/^session-\d+-/, "")];
 
 // Bandeau d'introduction : tout le bloc vient du JSON pilote par Keystatic,
 // groupe par langue. On lit uniquement la langue courante, SANS repli sur

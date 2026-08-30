@@ -3,7 +3,7 @@
 // sa valeur a chaque enregistrement, et les photos ne sont pas du contenu que
 // l'on veut voir modifie depuis le CMS.
 //
-// La cle est le nom du fichier SANS son rang : format-01-workshop se lit ici
+// La cle est le nom du fichier SANS son rang : session-01-workshop se lit ici
 // sous la cle "workshop".
 export const FORMAT_IMAGES: Record<string, string> = {
   "workshop": "/assets/images/activities/workshop-lionel.jpg",
