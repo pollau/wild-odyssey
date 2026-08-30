@@ -4,6 +4,7 @@ import OrganizationSchema from "../OrganizationSchema.astro";
 import { getCollection, getEntry } from "astro:content";
 import { t } from "../../i18n/ui";
 import { tc } from "../../i18n/content";
+import StatCounter from "../StatCounter.astro";
 
 interface Props {
   lang: string;
@@ -20,9 +21,14 @@ const workshops = (await getCollection("activities"))
 
 const heroTitle = tc(homepage, "heroTitle", lang);
 const heroTitleBase = tc(homepage, "heroTitleBase", lang);
-const statsParticipants = homepage.statsParticipants ?? "+600.000";
-const statsOrganizations = homepage.statsOrganizations ?? "+2.000";
-const statsYears = homepage.statsYears ?? "+5";
+// Chiffres de la section STATS. Volontairement hors Keystatic : ils sont
+// animes par StatCounter, qui a besoin de nombres et non de texte libre.
+// Les mettre a jour demande un commit.
+const STATS = [
+  { value: 600000, labelKey: "stats.participants" },
+  { value: 2000, labelKey: "stats.organizations" },
+  { value: 5, labelKey: "stats.years" },
+] as const;
 
 const features = [
   { icon: "/assets/figma/icon-clock.svg", label: t(lang, "formats.feat1") },
@@ -212,14 +218,10 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
           </p>
         </div>
         <div class="flex flex-col md:flex-row gap-10 md:gap-20 items-center justify-center text-center">
-          {[
-            { value: statsParticipants, label: t(lang, "stats.participants") },
-            { value: statsOrganizations, label: t(lang, "stats.organizations") },
-            { value: statsYears, label: t(lang, "stats.years") },
-          ].map((s) => (
+          {STATS.map((s) => (
             <div class="flex flex-col items-center gap-2 lg:gap-3">
-              <span class="font-fraunces text-[44px] lg:text-[72px] font-semibold text-white leading-none">{s.value}</span>
-              <span class="font-aileron text-[20px] lg:text-[28px] font-semibold text-[#47cdf2]">{s.label}</span>
+              <StatCounter value={s.value} class="font-fraunces text-[44px] lg:text-[72px] font-semibold text-white leading-none" />
+              <span class="font-aileron text-[20px] lg:text-[28px] font-semibold text-[#47cdf2]">{t(lang, s.labelKey)}</span>
             </div>
           ))}
         </div>
