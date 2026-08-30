@@ -73,7 +73,7 @@ export default config({
                 fr: fields.object({
                         heading: fields.text({
                             label: 'Titre',
-                            description: "Ce titre melange deux couleurs. Deux asterisques pour l'orange, deux tirets bas pour le cyan, comme ceci : __Methodologies__ reconnues par les equipes les plus **ambitieuses**",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
                     badgeScience: fields.text({ label: 'Pastille bleue', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
                     participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici." }),
@@ -83,7 +83,7 @@ export default config({
                 en: fields.object({
                         heading: fields.text({
                             label: 'Titre',
-                            description: "Ce titre melange deux couleurs. Deux asterisques pour l'orange, deux tirets bas pour le cyan, comme ceci : __Methodologies__ reconnues par les equipes les plus **ambitieuses**",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
                     badgeScience: fields.text({ label: 'Pastille bleue', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
                     participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici." }),
@@ -93,7 +93,7 @@ export default config({
                 es: fields.object({
                         heading: fields.text({
                             label: 'Titre',
-                            description: "Ce titre melange deux couleurs. Deux asterisques pour l'orange, deux tirets bas pour le cyan, comme ceci : __Methodologies__ reconnues par les equipes les plus **ambitieuses**",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
                     badgeScience: fields.text({ label: 'Pastille bleue', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
                     participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici." }),
@@ -112,12 +112,12 @@ export default config({
                 fr: fields.object({
                         heading: fields.text({
                             label: 'Titre',
-                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange, comme ceci : Une methodologie commune, **des thematiques au choix.** Sans asterisques, tout reste en noir.",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
                         badge: fields.text({ label: 'Pastille verte' }),
                         body: fields.text({
                             label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Entourez un passage de deux asterisques pour le mettre en orange, de deux tirets bas pour le mettre en cyan.",
+                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
                             multiline: true,
                         }),
                         learnMore: fields.text({ label: 'Texte du bouton des cartes' }),
@@ -125,12 +125,12 @@ export default config({
                 en: fields.object({
                         heading: fields.text({
                             label: 'Titre',
-                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange, comme ceci : Une methodologie commune, **des thematiques au choix.** Sans asterisques, tout reste en noir.",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
                         badge: fields.text({ label: 'Pastille verte' }),
                         body: fields.text({
                             label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Entourez un passage de deux asterisques pour le mettre en orange, de deux tirets bas pour le mettre en cyan.",
+                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
                             multiline: true,
                         }),
                         learnMore: fields.text({ label: 'Texte du bouton des cartes' }),
@@ -138,12 +138,12 @@ export default config({
                 es: fields.object({
                         heading: fields.text({
                             label: 'Titre',
-                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange, comme ceci : Une methodologie commune, **des thematiques au choix.** Sans asterisques, tout reste en noir.",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
                         badge: fields.text({ label: 'Pastille verte' }),
                         body: fields.text({
                             label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Entourez un passage de deux asterisques pour le mettre en orange, de deux tirets bas pour le mettre en cyan.",
+                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
                             multiline: true,
                         }),
                         learnMore: fields.text({ label: 'Texte du bouton des cartes' }),
@@ -161,11 +161,11 @@ export default config({
                 fr: fields.object({
                         heading: fields.text({
                             label: 'Titre',
-                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base.",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
                         ctaBody: fields.text({
                             label: 'Phrases sous le titre',
-                            description: "Un retour a la ligne fait passer la suite sur une nouvelle ligne. Deux asterisques pour l'orange, deux tirets bas pour le cyan.",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                             multiline: true,
                         }),
                         ctaBtn: fields.text({ label: 'Texte du bouton' }),
@@ -174,11 +174,11 @@ export default config({
                 en: fields.object({
                         heading: fields.text({
                             label: 'Titre',
-                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base.",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
                         ctaBody: fields.text({
                             label: 'Phrases sous le titre',
-                            description: "Un retour a la ligne fait passer la suite sur une nouvelle ligne. Deux asterisques pour l'orange, deux tirets bas pour le cyan.",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                             multiline: true,
                         }),
                         ctaBtn: fields.text({ label: 'Texte du bouton' }),
@@ -187,11 +187,11 @@ export default config({
                 es: fields.object({
                         heading: fields.text({
                             label: 'Titre',
-                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base.",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
                         ctaBody: fields.text({
                             label: 'Phrases sous le titre',
-                            description: "Un retour a la ligne fait passer la suite sur une nouvelle ligne. Deux asterisques pour l'orange, deux tirets bas pour le cyan.",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                             multiline: true,
                         }),
                         ctaBtn: fields.text({ label: 'Texte du bouton' }),
@@ -213,7 +213,7 @@ export default config({
                 fr: fields.object({
                         heading: fields.text({
                             label: 'Titre',
-                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base. Un retour a la ligne dans le champ en produit un a l'ecran.",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                             multiline: true,
                         }),
                         feat1: fields.text({ label: 'Indication 1 (icone horloge)' }),
@@ -227,7 +227,7 @@ export default config({
                 en: fields.object({
                         heading: fields.text({
                             label: 'Titre',
-                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base. Un retour a la ligne dans le champ en produit un a l'ecran.",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                             multiline: true,
                         }),
                         feat1: fields.text({ label: 'Indication 1 (icone horloge)' }),
@@ -241,7 +241,7 @@ export default config({
                 es: fields.object({
                         heading: fields.text({
                             label: 'Titre',
-                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base. Un retour a la ligne dans le champ en produit un a l'ecran.",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                             multiline: true,
                         }),
                         feat1: fields.text({ label: 'Indication 1 (icone horloge)' }),
@@ -264,33 +264,33 @@ export default config({
                 fr: fields.object({
                         heading: fields.text({
                             label: 'Titre',
-                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base.",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
                         body: fields.text({
                             label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Entourez un passage de deux asterisques pour le mettre en orange, de deux tirets bas pour le mettre en cyan.",
+                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
                             multiline: true,
                         }),
                 }, { label: 'Français', description: "L'introduction des 6 raisons, version française." }),
                 en: fields.object({
                         heading: fields.text({
                             label: 'Titre',
-                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base.",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
                         body: fields.text({
                             label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Entourez un passage de deux asterisques pour le mettre en orange, de deux tirets bas pour le mettre en cyan.",
+                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
                             multiline: true,
                         }),
                 }, { label: 'Anglais', description: "L'introduction des 6 raisons, version anglaise." }),
                 es: fields.object({
                         heading: fields.text({
                             label: 'Titre',
-                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base.",
+                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
                         }),
                         body: fields.text({
                             label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Entourez un passage de deux asterisques pour le mettre en orange, de deux tirets bas pour le mettre en cyan.",
+                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
                             multiline: true,
                         }),
                 }, { label: 'Espagnol', description: "L'introduction des 6 raisons, version espagnole." }),
@@ -308,7 +308,7 @@ export default config({
                     title: fields.text({ label: 'Titre en orange' }),
                         body: fields.text({
                             label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Entourez un passage de deux asterisques pour le mettre en orange, de deux tirets bas pour le mettre en cyan.",
+                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
                             multiline: true,
                         }),
                     tagline: fields.text({ label: 'Phrase orange sous les paragraphes' }),
@@ -319,7 +319,7 @@ export default config({
                     title: fields.text({ label: 'Titre en orange' }),
                         body: fields.text({
                             label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Entourez un passage de deux asterisques pour le mettre en orange, de deux tirets bas pour le mettre en cyan.",
+                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
                             multiline: true,
                         }),
                     tagline: fields.text({ label: 'Phrase orange sous les paragraphes' }),
@@ -330,7 +330,7 @@ export default config({
                     title: fields.text({ label: 'Titre en orange' }),
                         body: fields.text({
                             label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Entourez un passage de deux asterisques pour le mettre en orange, de deux tirets bas pour le mettre en cyan.",
+                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
                             multiline: true,
                         }),
                     tagline: fields.text({ label: 'Phrase orange sous les paragraphes' }),
@@ -386,15 +386,15 @@ export default config({
                 }),
                 fr: fields.object({
                         title: fields.text({ label: 'Titre de la carte' }),
-                        text: fields.text({ label: 'Texte', description: 'Un retour a la ligne cree un nouveau paragraphe dans la carte.', multiline: true }),
+                        text: fields.text({ label: 'Texte', description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.", multiline: true }),
                 }, { label: 'Français', description: 'La carte de cette raison, version française.' }),
                 en: fields.object({
                         title: fields.text({ label: 'Titre de la carte' }),
-                        text: fields.text({ label: 'Texte', description: 'Un retour a la ligne cree un nouveau paragraphe dans la carte.', multiline: true }),
+                        text: fields.text({ label: 'Texte', description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.", multiline: true }),
                 }, { label: 'Anglais', description: 'La carte de cette raison, version anglaise.' }),
                 es: fields.object({
                         title: fields.text({ label: 'Titre de la carte' }),
-                        text: fields.text({ label: 'Texte', description: 'Un retour a la ligne cree un nouveau paragraphe dans la carte.', multiline: true }),
+                        text: fields.text({ label: 'Texte', description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.", multiline: true }),
                 }, { label: 'Espagnol', description: 'La carte de cette raison, version espagnole.' }),
             },
         }),
