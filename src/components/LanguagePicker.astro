@@ -1,11 +1,24 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
+interface Props {
+  // True only for pages that exist in all three locales. When false the picker
+  // targets each locale home, so it never links to a path that would 404.
+  alternates?: boolean;
+}
+
+const { alternates = false } = Astro.props;
+
 const currentLocale = Astro.currentLocale || 'fr';
 
 // Strip locale prefix to get the bare path, then rebuild per locale
 const rawPath = Astro.url.pathname;
 const strippedPath = rawPath.replace(/^\/(en|es)(\/|$)/, '/') || '/';
+
+// A page that exists in every locale keeps its path for all three entries.
+// On an untranslated page only the current locale can keep it — the others
+// would point at a URL that does not exist.
+const pathFor = (code: string) => (alternates || code === currentLocale ? strippedPath : '/');
 
 const languages = {
   fr: { code: 'fr', flag: 'https://flagcdn.com/w40/fr.png', label: 'FR', name: 'Français' },
@@ -25,8 +38,8 @@ const languages = {
         <ul class="py-1">
             {Object.values(languages).map((lang) => (
                 <li>
-                    <a 
-                        href={getRelativeLocaleUrl(lang.code, strippedPath)}
+                    <a
+                        href={getRelativeLocaleUrl(lang.code, pathFor(lang.code))}
                         class={`block px-4 py-3 text-sm flex items-center gap-3 hover:bg-gray-50 transition-colors ${currentLocale === lang.code ? 'font-bold text-primary bg-blue-50' : 'text-gray-700'}`}
                         onclick={`localStorage.setItem('wild_odyssey_lang', '${lang.code}')`}
                     >

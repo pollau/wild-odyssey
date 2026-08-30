@@ -1,0 +1,128 @@
+---
+// Page servie par Azure pour toute URL inconnue, via responseOverrides["404"]
+// de public/staticwebapp.config.json. Astro la construit en dist/404.html.
+//
+// Azure ne sert qu'UN SEUL fichier pour toutes les URL inconnues, quelle que
+// soit la locale : impossible d'avoir un 404 par langue cote configuration.
+// Le HTML est donc rendu en francais (la locale par defaut, sans prefixe
+// d'URL) et un script bascule le texte quand l'adresse demandee commence par
+// /en/ ou /es/. Sans JavaScript, le visiteur voit le francais.
+//
+// `alternates` reste a false : on n'annonce pas de version /en/404 ou
+// /es/404, qui n'existent pas.
+import Layout from "../layouts/Layout.astro";
+import { t } from "../i18n/ui";
+
+const lang = "fr";
+
+// Les deux autres langues partent au client. Le francais est deja dans le HTML.
+const translations = {
+  en: {
+    eyebrow: t("en", "notFound.eyebrow"),
+    title: t("en", "notFound.title"),
+    body: t("en", "notFound.body"),
+    cta: t("en", "notFound.cta"),
+    seoTitle: t("en", "notFound.seoTitle"),
+    seoDescription: t("en", "notFound.seoDescription"),
+  },
+  es: {
+    eyebrow: t("es", "notFound.eyebrow"),
+    title: t("es", "notFound.title"),
+    body: t("es", "notFound.body"),
+    cta: t("es", "notFound.cta"),
+    seoTitle: t("es", "notFound.seoTitle"),
+    seoDescription: t("es", "notFound.seoDescription"),
+  },
+};
+---
+
+<Layout
+  title={t(lang, "notFound.seoTitle")}
+  description={t(lang, "notFound.seoDescription")}
+>
+  <main class="pt-[64px] lg:pt-[80px] min-h-screen bg-white flex items-center">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28 w-full">
+      <div class="max-w-xl">
+        <p data-t="eyebrow" class="text-[13px] font-semibold tracking-widest uppercase text-[#0698c0] mb-3">
+          {t(lang, "notFound.eyebrow")}
+        </p>
+        <h1 data-t="title" class="text-[28px] lg:text-[38px] font-semibold text-[#1e3676] leading-tight">
+          {t(lang, "notFound.title")}
+        </h1>
+        <p data-t="body" class="mt-4 text-[15px] lg:text-[17px] text-gray-500">
+          {t(lang, "notFound.body")}
+        </p>
+
+        <div class="mt-8">
+          <a
+            data-t="cta"
+            href="/"
+            class="inline-flex items-center justify-center bg-[#f05600] text-white text-[15px] font-semibold px-8 h-[46px] rounded-[7px] hover:bg-orange-700 transition-colors"
+          >
+            {t(lang, "notFound.cta")}
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script define:vars={{ translations }}>
+  // Azure sert ce meme fichier pour toutes les URL inconnues : la langue ne
+  // peut pas venir du serveur, elle se decide ici. Cascade, du signal le plus
+  // explicite au plus faible :
+  //   1. le prefixe de l'adresse demandee : il a demande CETTE page la
+  //   2. le drapeau qu'il a deja clique, memorise par le selecteur de langue
+  //   3. la langue de son navigateur, comme le fait deja l'accueil
+  //   4. francais, deja dans le HTML, donc rien a faire
+  //
+  // Le cas qui compte est le troisieme : les liens morts les plus probables
+  // sont les anciennes pages francaises sans prefixe (/entreprises/, /jeux/),
+  // encore dans l'index des moteurs. Sans cette cascade un anglophone qui les
+  // suit lit du francais.
+  const ALL = ["fr", "en", "es"];
+
+  // Le francais n'a pas de prefixe d'URL : seuls /en/ et /es/ existent.
+  const fromPath = () => {
+    const segment = window.location.pathname.split("/")[1];
+    return segment === "en" || segment === "es" ? segment : null;
+  };
+
+  const fromStorage = () => {
+    try {
+      const stored = localStorage.getItem("wild_odyssey_lang");
+      return ALL.includes(stored) ? stored : null;
+    } catch {
+      // Navigation privee, cookies bloques : on passe au signal suivant.
+      return null;
+    }
+  };
+
+  const fromBrowser = () => {
+    const tag = (navigator.language || "").slice(0, 2).toLowerCase();
+    return ALL.includes(tag) ? tag : null;
+  };
+
+  const lang = fromPath() ?? fromStorage() ?? fromBrowser() ?? "fr";
+
+  if (lang !== "fr") {
+    const tr = translations[lang];
+    const root = document.documentElement;
+
+    root.lang = lang;
+
+    // Le Layout prefixe le titre par [QA] ou [repo2] hors production : on le
+    // garde, seule la partie traduite change.
+    const prefix = document.title.match(/^[[^]]*]s/)?.[0] ?? "";
+    document.title = `${prefix}${tr.seoTitle} | Wild Odyssey`;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", tr.seoDescription);
+
+    for (const key of ["eyebrow", "title", "body", "cta"]) {
+      const el = document.querySelector(`[data-t="${key}"]`);
+      if (el) el.textContent = tr[key];
+    }
+
+    // Renvoyer vers l'accueil de SA langue, pas vers l'accueil francais.
+    document.querySelector('[data-t="cta"]')?.setAttribute("href", `/${lang}/`);
+  }
+</script>
