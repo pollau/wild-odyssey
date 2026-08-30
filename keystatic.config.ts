@@ -11,6 +11,35 @@ import { config, fields, collection, singleton } from '@keystatic/core';
 const useCloud =
     import.meta.env.PROD || import.meta.env.PUBLIC_KEYSTATIC_STORAGE === 'cloud';
 
+// La convention d'ecriture, telle qu'elle est expliquee a l'editeur sous chaque
+// champ. Deux phrases seulement, selon que le champ est rendu en ligne ou en
+// paragraphes : c'est exactement la distinction entre RichText et RichBody.
+// Elles vivent ici et nulle part ailleurs, pour qu'une reformulation ne soit
+// pas a repercuter sur quatre-vingt-quinze champs.
+const AIDE_LIGNE =
+    'Deux asterisques mettent un passage en orange, deux tirets bas en cyan. '
+    + 'Un retour a la ligne fait passer la suite sur une nouvelle ligne.';
+const AIDE_PARAGRAPHES =
+    'Un retour a la ligne cree un nouveau paragraphe. '
+    + 'Deux asterisques mettent un passage en orange, deux tirets bas en cyan.';
+
+/** Champ rendu en ligne. `precision` ajoute une phrase propre au champ, par
+ *  exemple ou il apparait sur le site, ou sa couleur par defaut. */
+const champLigne = (label: string, precision?: string, multiline = false) =>
+    fields.text({
+        label,
+        description: precision ? precision + ' ' + AIDE_LIGNE : AIDE_LIGNE,
+        multiline,
+    });
+
+/** Champ rendu en paragraphes : un retour a la ligne en ouvre un nouveau. */
+const champParagraphes = (label: string, precision?: string) =>
+    fields.text({
+        label,
+        description: precision ? precision + ' ' + AIDE_PARAGRAPHES : AIDE_PARAGRAPHES,
+        multiline: true,
+    });
+
 export default config({
     // Interface de Keystatic en francais (boutons, menus, messages).
     ui: {
@@ -115,30 +144,21 @@ export default config({
             format: { data: 'json' },
             schema: {
                 fr: fields.object({
-                        heading: fields.text({
-                            label: 'Titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                        }),
+                        heading: champLigne('Titre'),
                     badgeScience: fields.text({ label: 'Pastille', description: "Apparait a deux endroits : en cyan sur la bande des chiffres, en blanc au-dessus des 6 bonnes raisons. Deux asterisques mettent un passage en orange, deux tirets bas en cyan." }),
                     participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici. Deux asterisques mettent un passage en orange, deux tirets bas en cyan." }),
                     organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.' }),
                     years: fields.text({ label: 'Legende du 3e chiffre', description: 'Sous le compteur +5. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.' }),
                 }, { label: 'Français', description: "La bande de chiffres de la page d'accueil, version française." }),
                 en: fields.object({
-                        heading: fields.text({
-                            label: 'Titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                        }),
+                        heading: champLigne('Titre'),
                     badgeScience: fields.text({ label: 'Pastille', description: "Apparait a deux endroits : en cyan sur la bande des chiffres, en blanc au-dessus des 6 bonnes raisons. Deux asterisques mettent un passage en orange, deux tirets bas en cyan." }),
                     participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici. Deux asterisques mettent un passage en orange, deux tirets bas en cyan." }),
                     organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.' }),
                     years: fields.text({ label: 'Legende du 3e chiffre', description: 'Sous le compteur +5. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.' }),
                 }, { label: 'Anglais', description: "La bande de chiffres de la page d'accueil, version anglaise." }),
                 es: fields.object({
-                        heading: fields.text({
-                            label: 'Titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                        }),
+                        heading: champLigne('Titre'),
                     badgeScience: fields.text({ label: 'Pastille', description: "Apparait a deux endroits : en cyan sur la bande des chiffres, en blanc au-dessus des 6 bonnes raisons. Deux asterisques mettent un passage en orange, deux tirets bas en cyan." }),
                     participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici. Deux asterisques mettent un passage en orange, deux tirets bas en cyan." }),
                     organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.' }),
@@ -154,43 +174,22 @@ export default config({
             format: { data: 'json' },
             schema: {
                 fr: fields.object({
-                        heading: fields.text({
-                            label: 'Titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                        }),
-                        badge: fields.text({ label: 'Pastille', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        body: fields.text({
-                            label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
-                            multiline: true,
-                        }),
-                        learnMore: fields.text({ label: 'Texte du bouton des cartes', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
+                        heading: champLigne('Titre'),
+                        badge: champLigne('Pastille'),
+                        body: champParagraphes('Texte'),
+                        learnMore: champLigne('Texte du bouton des cartes'),
                 }, { label: 'Français', description: "Le texte au-dessus des cartes de thematiques, version française." }),
                 en: fields.object({
-                        heading: fields.text({
-                            label: 'Titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                        }),
-                        badge: fields.text({ label: 'Pastille', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        body: fields.text({
-                            label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
-                            multiline: true,
-                        }),
-                        learnMore: fields.text({ label: 'Texte du bouton des cartes', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
+                        heading: champLigne('Titre'),
+                        badge: champLigne('Pastille'),
+                        body: champParagraphes('Texte'),
+                        learnMore: champLigne('Texte du bouton des cartes'),
                 }, { label: 'Anglais', description: "Le texte au-dessus des cartes de thematiques, version anglaise." }),
                 es: fields.object({
-                        heading: fields.text({
-                            label: 'Titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                        }),
-                        badge: fields.text({ label: 'Pastille', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        body: fields.text({
-                            label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
-                            multiline: true,
-                        }),
-                        learnMore: fields.text({ label: 'Texte du bouton des cartes', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
+                        heading: champLigne('Titre'),
+                        badge: champLigne('Pastille'),
+                        body: champParagraphes('Texte'),
+                        learnMore: champLigne('Texte du bouton des cartes'),
                 }, { label: 'Espagnol', description: "Le texte au-dessus des cartes de thematiques, version espagnole." }),
             },
         }),
@@ -203,43 +202,22 @@ export default config({
             format: { data: 'json' },
             schema: {
                 fr: fields.object({
-                        heading: fields.text({
-                            label: 'Titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                        }),
-                        ctaBody: fields.text({
-                            label: 'Phrases sous le titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                            multiline: true,
-                        }),
-                        ctaBtn: fields.text({ label: 'Texte du bouton', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        copyright: fields.text({ label: 'Mention de bas de page', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
+                        heading: champLigne('Titre'),
+                        ctaBody: champLigne('Phrases sous le titre', undefined, true),
+                        ctaBtn: champLigne('Texte du bouton'),
+                        copyright: champLigne('Mention de bas de page'),
                 }, { label: 'Français', description: 'Le bloc en bas de toutes les pages, version française.' }),
                 en: fields.object({
-                        heading: fields.text({
-                            label: 'Titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                        }),
-                        ctaBody: fields.text({
-                            label: 'Phrases sous le titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                            multiline: true,
-                        }),
-                        ctaBtn: fields.text({ label: 'Texte du bouton', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        copyright: fields.text({ label: 'Mention de bas de page', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
+                        heading: champLigne('Titre'),
+                        ctaBody: champLigne('Phrases sous le titre', undefined, true),
+                        ctaBtn: champLigne('Texte du bouton'),
+                        copyright: champLigne('Mention de bas de page'),
                 }, { label: 'Anglais', description: 'Le bloc en bas de toutes les pages, version anglaise.' }),
                 es: fields.object({
-                        heading: fields.text({
-                            label: 'Titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                        }),
-                        ctaBody: fields.text({
-                            label: 'Phrases sous le titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                            multiline: true,
-                        }),
-                        ctaBtn: fields.text({ label: 'Texte du bouton', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        copyright: fields.text({ label: 'Mention de bas de page', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
+                        heading: champLigne('Titre'),
+                        ctaBody: champLigne('Phrases sous le titre', undefined, true),
+                        ctaBtn: champLigne('Texte du bouton'),
+                        copyright: champLigne('Mention de bas de page'),
                 }, { label: 'Espagnol', description: 'Le bloc en bas de toutes les pages, version espagnole.' }),
                 contactEmail: fields.text({
                     label: 'Adresse de contact',
@@ -255,46 +233,34 @@ export default config({
             format: { data: 'json' },
             schema: {
                 fr: fields.object({
-                        heading: fields.text({
-                            label: 'Titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                            multiline: true,
-                        }),
-                        feat1: fields.text({ label: 'Indication 1 (icone horloge)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        feat2: fields.text({ label: 'Indication 2 (icone feuille)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        feat3: fields.text({ label: 'Indication 3 (icone curseur)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        feat4: fields.text({ label: 'Indication 4 (icone internet)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        feat5: fields.text({ label: 'Indication 5 (icone personne)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        feat6: fields.text({ label: 'Indication 6 (icone immeuble)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        seeAll: fields.text({ label: 'Texte du bouton', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
+                        heading: champLigne('Titre', undefined, true),
+                        feat1: champLigne('Indication 1 (icone horloge)'),
+                        feat2: champLigne('Indication 2 (icone feuille)'),
+                        feat3: champLigne('Indication 3 (icone curseur)'),
+                        feat4: champLigne('Indication 4 (icone internet)'),
+                        feat5: champLigne('Indication 5 (icone personne)'),
+                        feat6: champLigne('Indication 6 (icone immeuble)'),
+                        seeAll: champLigne('Texte du bouton'),
                 }, { label: 'Français', description: 'Le bandeau bleu des ateliers, version française.' }),
                 en: fields.object({
-                        heading: fields.text({
-                            label: 'Titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                            multiline: true,
-                        }),
-                        feat1: fields.text({ label: 'Indication 1 (icone horloge)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        feat2: fields.text({ label: 'Indication 2 (icone feuille)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        feat3: fields.text({ label: 'Indication 3 (icone curseur)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        feat4: fields.text({ label: 'Indication 4 (icone internet)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        feat5: fields.text({ label: 'Indication 5 (icone personne)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        feat6: fields.text({ label: 'Indication 6 (icone immeuble)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        seeAll: fields.text({ label: 'Texte du bouton', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
+                        heading: champLigne('Titre', undefined, true),
+                        feat1: champLigne('Indication 1 (icone horloge)'),
+                        feat2: champLigne('Indication 2 (icone feuille)'),
+                        feat3: champLigne('Indication 3 (icone curseur)'),
+                        feat4: champLigne('Indication 4 (icone internet)'),
+                        feat5: champLigne('Indication 5 (icone personne)'),
+                        feat6: champLigne('Indication 6 (icone immeuble)'),
+                        seeAll: champLigne('Texte du bouton'),
                 }, { label: 'Anglais', description: 'Le bandeau bleu des ateliers, version anglaise.' }),
                 es: fields.object({
-                        heading: fields.text({
-                            label: 'Titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                            multiline: true,
-                        }),
-                        feat1: fields.text({ label: 'Indication 1 (icone horloge)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        feat2: fields.text({ label: 'Indication 2 (icone feuille)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        feat3: fields.text({ label: 'Indication 3 (icone curseur)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        feat4: fields.text({ label: 'Indication 4 (icone internet)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        feat5: fields.text({ label: 'Indication 5 (icone personne)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        feat6: fields.text({ label: 'Indication 6 (icone immeuble)', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        seeAll: fields.text({ label: 'Texte du bouton', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
+                        heading: champLigne('Titre', undefined, true),
+                        feat1: champLigne('Indication 1 (icone horloge)'),
+                        feat2: champLigne('Indication 2 (icone feuille)'),
+                        feat3: champLigne('Indication 3 (icone curseur)'),
+                        feat4: champLigne('Indication 4 (icone internet)'),
+                        feat5: champLigne('Indication 5 (icone personne)'),
+                        feat6: champLigne('Indication 6 (icone immeuble)'),
+                        seeAll: champLigne('Texte du bouton'),
                 }, { label: 'Espagnol', description: 'Le bandeau bleu des ateliers, version espagnole.' }),
             },
         }),
@@ -306,37 +272,16 @@ export default config({
             format: { data: 'json' },
             schema: {
                 fr: fields.object({
-                        heading: fields.text({
-                            label: 'Titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                        }),
-                        body: fields.text({
-                            label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
-                            multiline: true,
-                        }),
+                        heading: champLigne('Titre'),
+                        body: champParagraphes('Texte'),
                 }, { label: 'Français', description: "L'introduction des 6 raisons, version française." }),
                 en: fields.object({
-                        heading: fields.text({
-                            label: 'Titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                        }),
-                        body: fields.text({
-                            label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
-                            multiline: true,
-                        }),
+                        heading: champLigne('Titre'),
+                        body: champParagraphes('Texte'),
                 }, { label: 'Anglais', description: "L'introduction des 6 raisons, version anglaise." }),
                 es: fields.object({
-                        heading: fields.text({
-                            label: 'Titre',
-                            description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                        }),
-                        body: fields.text({
-                            label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
-                            multiline: true,
-                        }),
+                        heading: champLigne('Titre'),
+                        body: champParagraphes('Texte'),
                 }, { label: 'Espagnol', description: "L'introduction des 6 raisons, version espagnole." }),
             },
         }),
@@ -348,64 +293,25 @@ export default config({
             // page entiere d'une traite, comme on la lit sur le site.
             schema: {
                 fr: fields.object({
-                    titleBase: fields.text({
-                        label: 'Accroche au-dessus du titre',
-                        description: "Par defaut en noir. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                    }),
-                    title: fields.text({
-                        label: 'Titre principal',
-                        description: "Par defaut en orange. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                    }),
-                        body: fields.text({
-                            label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
-                            multiline: true,
-                        }),
-                    tagline: fields.text({
-                        label: 'Phrase sous les paragraphes',
-                        description: "Par defaut en orange. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                    }),
-                    cta: fields.text({ label: 'Texte du bouton', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
+                    titleBase: champLigne('Accroche au-dessus du titre', 'Par defaut en noir.'),
+                    title: champLigne('Titre principal', 'Par defaut en orange.'),
+                        body: champParagraphes('Texte'),
+                    tagline: champLigne('Phrase sous les paragraphes', 'Par defaut en orange.'),
+                    cta: champLigne('Texte du bouton'),
                 }, { label: 'Français', description: "Le bandeau en haut de la page d'accueil, version française." }),
                 en: fields.object({
-                    titleBase: fields.text({
-                        label: 'Accroche au-dessus du titre',
-                        description: "Par defaut en noir. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                    }),
-                    title: fields.text({
-                        label: 'Titre principal',
-                        description: "Par defaut en orange. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                    }),
-                        body: fields.text({
-                            label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
-                            multiline: true,
-                        }),
-                    tagline: fields.text({
-                        label: 'Phrase sous les paragraphes',
-                        description: "Par defaut en orange. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                    }),
-                    cta: fields.text({ label: 'Texte du bouton', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
+                    titleBase: champLigne('Accroche au-dessus du titre', 'Par defaut en noir.'),
+                    title: champLigne('Titre principal', 'Par defaut en orange.'),
+                        body: champParagraphes('Texte'),
+                    tagline: champLigne('Phrase sous les paragraphes', 'Par defaut en orange.'),
+                    cta: champLigne('Texte du bouton'),
                 }, { label: 'Anglais', description: "Le bandeau en haut de la page d'accueil, version anglaise." }),
                 es: fields.object({
-                    titleBase: fields.text({
-                        label: 'Accroche au-dessus du titre',
-                        description: "Par defaut en noir. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                    }),
-                    title: fields.text({
-                        label: 'Titre principal',
-                        description: "Par defaut en orange. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                    }),
-                        body: fields.text({
-                            label: 'Texte',
-                            description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.",
-                            multiline: true,
-                        }),
-                    tagline: fields.text({
-                        label: 'Phrase sous les paragraphes',
-                        description: "Par defaut en orange. Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne.",
-                    }),
-                    cta: fields.text({ label: 'Texte du bouton', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
+                    titleBase: champLigne('Accroche au-dessus du titre', 'Par defaut en noir.'),
+                    title: champLigne('Titre principal', 'Par defaut en orange.'),
+                        body: champParagraphes('Texte'),
+                    tagline: champLigne('Phrase sous les paragraphes', 'Par defaut en orange.'),
+                    cta: champLigne('Texte du bouton'),
                 }, { label: 'Espagnol', description: "Le bandeau en haut de la page d'accueil, version espagnole." }),
             },
         }),
@@ -427,16 +333,16 @@ export default config({
                     },
                 }),
                 fr: fields.object({
-                        title: fields.text({ label: 'Titre de la carte', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        description: fields.text({ label: 'Description', description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.", multiline: true }),
+                        title: champLigne('Titre de la carte'),
+                        description: champParagraphes('Description'),
                 }, { label: 'Français', description: 'La carte de cette session, version française.' }),
                 en: fields.object({
-                        title: fields.text({ label: 'Titre de la carte', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        description: fields.text({ label: 'Description', description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.", multiline: true }),
+                        title: champLigne('Titre de la carte'),
+                        description: champParagraphes('Description'),
                 }, { label: 'Anglais', description: 'La carte de cette session, version anglaise.' }),
                 es: fields.object({
-                        title: fields.text({ label: 'Titre de la carte', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        description: fields.text({ label: 'Description', description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.", multiline: true }),
+                        title: champLigne('Titre de la carte'),
+                        description: champParagraphes('Description'),
                 }, { label: 'Espagnol', description: 'La carte de cette session, version espagnole.' }),
             },
         }),
@@ -456,16 +362,16 @@ export default config({
                     },
                 }),
                 fr: fields.object({
-                        title: fields.text({ label: 'Titre de la carte', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        text: fields.text({ label: 'Texte', description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.", multiline: true }),
+                        title: champLigne('Titre de la carte'),
+                        text: champParagraphes('Texte'),
                 }, { label: 'Français', description: 'La carte de cette raison, version française.' }),
                 en: fields.object({
-                        title: fields.text({ label: 'Titre de la carte', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        text: fields.text({ label: 'Texte', description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.", multiline: true }),
+                        title: champLigne('Titre de la carte'),
+                        text: champParagraphes('Texte'),
                 }, { label: 'Anglais', description: 'La carte de cette raison, version anglaise.' }),
                 es: fields.object({
-                        title: fields.text({ label: 'Titre de la carte', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        text: fields.text({ label: 'Texte', description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.", multiline: true }),
+                        title: champLigne('Titre de la carte'),
+                        text: champParagraphes('Texte'),
                 }, { label: 'Espagnol', description: 'La carte de cette raison, version espagnole.' }),
             },
         }),
@@ -489,19 +395,19 @@ export default config({
                     },
                 }),
                 fr: fields.object({
-                        title: fields.text({ label: 'Titre de la carte', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        subtitle: fields.text({ label: 'Sous-titre', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        description: fields.text({ label: 'Description', description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.", multiline: true }),
+                        title: champLigne('Titre de la carte'),
+                        subtitle: champLigne('Sous-titre'),
+                        description: champParagraphes('Description'),
                 }, { label: 'Français', description: 'La carte de cette thématique, version française.' }),
                 en: fields.object({
-                        title: fields.text({ label: 'Titre de la carte', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        subtitle: fields.text({ label: 'Sous-titre', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        description: fields.text({ label: 'Description', description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.", multiline: true }),
+                        title: champLigne('Titre de la carte'),
+                        subtitle: champLigne('Sous-titre'),
+                        description: champParagraphes('Description'),
                 }, { label: 'Anglais', description: 'La carte de cette thématique, version anglaise.' }),
                 es: fields.object({
-                        title: fields.text({ label: 'Titre de la carte', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        subtitle: fields.text({ label: 'Sous-titre', description: "Deux asterisques mettent un passage en orange, deux tirets bas en cyan. Un retour a la ligne fait passer la suite sur une nouvelle ligne." }),
-                        description: fields.text({ label: 'Description', description: "Un retour a la ligne cree un nouveau paragraphe. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.", multiline: true }),
+                        title: champLigne('Titre de la carte'),
+                        subtitle: champLigne('Sous-titre'),
+                        description: champParagraphes('Description'),
                 }, { label: 'Espagnol', description: 'La carte de cette thématique, version espagnole.' }),
             },
         }),
