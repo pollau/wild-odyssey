@@ -23,7 +23,7 @@ export default config({
         // Attention : le menu est construit UNIQUEMENT a partir de cette
         // liste. Une section absente d'ici disparait de l'interface.
         navigation: {
-            "Page d'accueil": ['homepage', 'workshopsSection', 'activities', 'statsSection'],
+            "Page d'accueil": ['homepage', 'workshopsSection', 'activities', 'formatsSection', 'statsSection', 'reasonsSection'],
             'Événements': ['events'],
             'Tout le site': ['footerSection'],
         },
@@ -71,18 +71,30 @@ export default config({
             format: { data: 'json' },
             schema: {
                 fr: fields.object({
+                        heading: fields.text({
+                            label: 'Titre',
+                            description: "Ce titre melange deux couleurs. Deux asterisques pour l'orange, deux tirets bas pour le cyan, comme ceci : __Methodologies__ reconnues par les equipes les plus **ambitieuses**",
+                        }),
                     badgeScience: fields.text({ label: 'Pastille bleue', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
                     participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici." }),
                     organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000.' }),
                     years: fields.text({ label: 'Legende du 3e chiffre', description: 'Sous le compteur +5.' }),
                 }, { label: 'Français', description: "La bande de chiffres de la page d'accueil, version française." }),
                 en: fields.object({
+                        heading: fields.text({
+                            label: 'Titre',
+                            description: "Ce titre melange deux couleurs. Deux asterisques pour l'orange, deux tirets bas pour le cyan, comme ceci : __Methodologies__ reconnues par les equipes les plus **ambitieuses**",
+                        }),
                     badgeScience: fields.text({ label: 'Pastille bleue', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
                     participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici." }),
                     organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000.' }),
                     years: fields.text({ label: 'Legende du 3e chiffre', description: 'Sous le compteur +5.' }),
                 }, { label: 'Anglais', description: "La bande de chiffres de la page d'accueil, version anglaise." }),
                 es: fields.object({
+                        heading: fields.text({
+                            label: 'Titre',
+                            description: "Ce titre melange deux couleurs. Deux asterisques pour l'orange, deux tirets bas pour le cyan, comme ceci : __Methodologies__ reconnues par les equipes les plus **ambitieuses**",
+                        }),
                     badgeScience: fields.text({ label: 'Pastille bleue', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
                     participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici." }),
                     organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000.' }),
@@ -141,18 +153,30 @@ export default config({
             format: { data: 'json' },
             schema: {
                 fr: fields.object({
+                        heading: fields.text({
+                            label: 'Titre',
+                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base.",
+                        }),
                         ctaBody1: fields.text({ label: 'Phrase 1' }),
                         ctaBody2: fields.text({ label: 'Phrase 2' }),
                         ctaBtn: fields.text({ label: 'Texte du bouton' }),
                         copyright: fields.text({ label: 'Mention de bas de page' }),
                 }, { label: 'Français', description: 'Le bloc en bas de toutes les pages, version française.' }),
                 en: fields.object({
+                        heading: fields.text({
+                            label: 'Titre',
+                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base.",
+                        }),
                         ctaBody1: fields.text({ label: 'Phrase 1' }),
                         ctaBody2: fields.text({ label: 'Phrase 2' }),
                         ctaBtn: fields.text({ label: 'Texte du bouton' }),
                         copyright: fields.text({ label: 'Mention de bas de page' }),
                 }, { label: 'Anglais', description: 'Le bloc en bas de toutes les pages, version anglaise.' }),
                 es: fields.object({
+                        heading: fields.text({
+                            label: 'Titre',
+                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base.",
+                        }),
                         ctaBody1: fields.text({ label: 'Phrase 1' }),
                         ctaBody2: fields.text({ label: 'Phrase 2' }),
                         ctaBtn: fields.text({ label: 'Texte du bouton' }),
@@ -162,6 +186,80 @@ export default config({
                     label: 'Adresse de contact',
                     description: "Affichee en bas de chaque page et sur la page A propos. Elle alimente aussi les donnees SEO du site.",
                 }),
+            },
+        }),
+        // Bandeau "Ateliers, Masterclasses, Marche Oceane / Sur Mesure".
+        formatsSection: singleton({
+            label: 'Formats',
+            path: 'src/content/ui/formats',
+            format: { data: 'json' },
+            schema: {
+                fr: fields.object({
+                        heading: fields.text({
+                            label: 'Titre',
+                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base. Un retour a la ligne dans le champ en produit un a l'ecran.",
+                            multiline: true,
+                        }),
+                }, { label: 'Français', description: 'Le titre de la section des formats, version française.' }),
+                en: fields.object({
+                        heading: fields.text({
+                            label: 'Titre',
+                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base. Un retour a la ligne dans le champ en produit un a l'ecran.",
+                            multiline: true,
+                        }),
+                }, { label: 'Anglais', description: 'Le titre de la section des formats, version anglaise.' }),
+                es: fields.object({
+                        heading: fields.text({
+                            label: 'Titre',
+                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base. Un retour a la ligne dans le champ en produit un a l'ecran.",
+                            multiline: true,
+                        }),
+                }, { label: 'Espagnol', description: 'Le titre de la section des formats, version espagnole.' }),
+            },
+        }),
+        // Section "6 bonnes raisons". Seuls les titres sont ici pour l'instant,
+        // les textes des cartes vivent encore dans src/i18n/ui.ts.
+        reasonsSection: singleton({
+            label: '6 bonnes raisons',
+            path: 'src/content/ui/reasons',
+            format: { data: 'json' },
+            schema: {
+                fr: fields.object({
+                        heading: fields.text({
+                            label: 'Titre',
+                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base.",
+                        }),
+                        r1: fields.text({ label: 'Titre de la 1re carte' }),
+                        r2: fields.text({ label: 'Titre de la 2e carte' }),
+                        r3: fields.text({ label: 'Titre de la 3e carte' }),
+                        r4: fields.text({ label: 'Titre de la 4e carte' }),
+                        r5: fields.text({ label: 'Titre de la 5e carte' }),
+                        r6: fields.text({ label: 'Titre de la 6e carte' }),
+                }, { label: 'Français', description: 'Les titres de la section des 6 raisons, version française.' }),
+                en: fields.object({
+                        heading: fields.text({
+                            label: 'Titre',
+                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base.",
+                        }),
+                        r1: fields.text({ label: 'Titre de la 1re carte' }),
+                        r2: fields.text({ label: 'Titre de la 2e carte' }),
+                        r3: fields.text({ label: 'Titre de la 3e carte' }),
+                        r4: fields.text({ label: 'Titre de la 4e carte' }),
+                        r5: fields.text({ label: 'Titre de la 5e carte' }),
+                        r6: fields.text({ label: 'Titre de la 6e carte' }),
+                }, { label: 'Anglais', description: 'Les titres de la section des 6 raisons, version anglaise.' }),
+                es: fields.object({
+                        heading: fields.text({
+                            label: 'Titre',
+                            description: "Le titre s'affiche en deux couleurs. Entourez de deux asterisques la partie a mettre en orange. Sans asterisques, tout reste dans la couleur de base.",
+                        }),
+                        r1: fields.text({ label: 'Titre de la 1re carte' }),
+                        r2: fields.text({ label: 'Titre de la 2e carte' }),
+                        r3: fields.text({ label: 'Titre de la 3e carte' }),
+                        r4: fields.text({ label: 'Titre de la 4e carte' }),
+                        r5: fields.text({ label: 'Titre de la 5e carte' }),
+                        r6: fields.text({ label: 'Titre de la 6e carte' }),
+                }, { label: 'Espagnol', description: 'Les titres de la section des 6 raisons, version espagnole.' }),
             },
         }),
         homepage: singleton({

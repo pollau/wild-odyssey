@@ -3,7 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import OrganizationSchema from "../OrganizationSchema.astro";
 import { getCollection, getEntry } from "astro:content";
 import { t } from "../../i18n/ui";
-import { accentParts } from "../../i18n/accent";
+import AccentTitle from "../AccentTitle.astro";
 import StatCounter from "../StatCounter.astro";
 import { ACTIVITY_IMAGES } from "../../content/activityImages";
 
@@ -52,12 +52,12 @@ const features = [
 ];
 
 const reasons = [
-  { icon: "👥", title: t(lang, "reasons.r1.title"), accent: t(lang, "reasons.r1.accent"), text: t(lang, "reasons.r1.text") },
-  { icon: "💡", title: t(lang, "reasons.r2.title"), accent: t(lang, "reasons.r2.accent"), text: t(lang, "reasons.r2.text") },
-  { icon: "💪", title: t(lang, "reasons.r3.title"), accent: t(lang, "reasons.r3.accent"), text: t(lang, "reasons.r3.text") },
-  { icon: "🌿", title: t(lang, "reasons.r4.title"), accent: t(lang, "reasons.r4.accent"), text: t(lang, "reasons.r4.text") },
-  { icon: "🎓", title: t(lang, "reasons.r5.title"), accent: t(lang, "reasons.r5.accent"), text: t(lang, "reasons.r5.text") },
-  { icon: "🏅", title: t(lang, "reasons.r6.title"), accent: t(lang, "reasons.r6.accent"), text: t(lang, "reasons.r6.text") },
+  { icon: "👥", title: t(lang, "reasons.r1.title"), text: t(lang, "reasons.r1.text") },
+  { icon: "💡", title: t(lang, "reasons.r2.title"), text: t(lang, "reasons.r2.text") },
+  { icon: "💪", title: t(lang, "reasons.r3.title"), text: t(lang, "reasons.r3.text") },
+  { icon: "🌿", title: t(lang, "reasons.r4.title"), text: t(lang, "reasons.r4.text") },
+  { icon: "🎓", title: t(lang, "reasons.r5.title"), text: t(lang, "reasons.r5.text") },
+  { icon: "🏅", title: t(lang, "reasons.r6.title"), text: t(lang, "reasons.r6.text") },
 ];
 
 const prefix = lang === "fr" ? "" : `/${lang}`;
@@ -116,9 +116,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
             <span class="text-[#0698c0] text-[14px] lg:text-[15px] font-semibold">{t(lang, "workshops.badge")}</span>
           </div>
           <h2 class="font-fraunces text-[24px] lg:text-[30px] font-semibold text-black">
-            {accentParts(t(lang, "workshops.heading")).map((m, i) =>
-                i % 2 ? <span class="text-[#f05600]">{m}</span> : m
-              )}
+            <AccentTitle text={t(lang, "workshops.heading")} />
           </h2>
           <div class="font-aileron flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black text-center">
             <p>{t(lang, "workshops.body1")}</p>
@@ -172,8 +170,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
       <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col gap-10 lg:gap-14 items-center">
 
         <h2 class="font-fraunces text-[24px] lg:text-[32px] font-semibold text-center leading-tight">
-          {t(lang, "formats.heading1")}<br />
-          <span class="text-[#f05600]">{t(lang, "formats.heading2")}</span>
+          <AccentTitle text={t(lang, "formats.heading")} />
         </h2>
 
         <!-- 6 features box -->
@@ -229,7 +226,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
             <span class="text-[#47cdf2] text-[13px] lg:text-[15px] font-semibold">{t(lang, "badge.science")}</span>
           </div>
           <p class="font-fraunces text-[22px] lg:text-[32px] font-semibold text-white text-center leading-snug max-w-[640px]">
-            <span class="text-[#47cdf2]">{t(lang, "stats.heading2")}</span> {t(lang, "stats.heading3")} <span class="text-[#f05600]">{t(lang, "stats.heading4")}</span>
+            <AccentTitle text={t(lang, "stats.heading")} />
           </p>
         </div>
         <div class="flex flex-col md:flex-row gap-10 md:gap-20 items-center justify-center text-center">
@@ -253,7 +250,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
             <span class="text-white text-[13px] lg:text-[15px] font-semibold">{t(lang, "badge.science")}</span>
           </div>
           <h2 class="font-fraunces text-[24px] lg:text-[34px] font-semibold leading-tight">
-            {t(lang, "reasons.heading1")} <span class="text-[#f05600]">{t(lang, "reasons.heading2")}</span> {t(lang, "reasons.heading3")} <span class="text-[#f05600]">{t(lang, "reasons.heading4")}</span>
+            <AccentTitle text={t(lang, "reasons.heading")} />
           </h2>
           <div class="font-aileron flex flex-col gap-3 text-[15px] lg:text-[17px] font-medium text-black">
             <p>{t(lang, "reasons.body1")}</p>
@@ -268,7 +265,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
               <div class="flex items-center gap-4">
                 <span class="font-fraunces text-[48px] lg:text-[56px] font-bold text-[#0698c0] leading-none shrink-0">{i + 1}</span>
                 <p class="font-fraunces text-[16px] lg:text-[17px] font-bold text-black leading-snug">
-                  {r.title} <span class="text-[#f05600]">{r.accent}</span>
+                  <AccentTitle text={r.title} />
                 </p>
               </div>
               <div class="font-aileron text-[14px] lg:text-[15px] text-[#3b3b3b] leading-snug flex flex-col gap-1">

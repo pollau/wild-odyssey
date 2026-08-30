@@ -1,5 +1,6 @@
 ---
 import { t } from "../i18n/ui";
+import AccentTitle from "./AccentTitle.astro";
 import footerUi from "../content/ui/footer.json";
 
 const lang = Astro.currentLocale || "fr";
@@ -22,7 +23,7 @@ const contactEmail = footerUi.contactEmail;
     <div class="py-14 lg:py-20 flex flex-col items-center gap-6 lg:gap-8 text-center px-6">
       <div>
         <h2 class="font-fraunces text-[28px] lg:text-[36px] font-semibold text-white leading-tight">
-          {t(lang, "footer.ctaHeading")} <span class="text-[#f05600]">{t(lang, "footer.ctaAccent")}</span>
+          <AccentTitle text={t(lang, "footer.heading")} />
         </h2>
         <p class="font-aileron text-[17px] lg:text-[22px] font-semibold text-white mt-3 leading-snug">
           {t(lang, "footer.ctaBody1")}<br />
