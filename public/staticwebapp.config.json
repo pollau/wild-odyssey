@@ -1,14 +1,4 @@
 {
-    "navigationFallback": {
-        "rewrite": "/keystatic/index.html",
-        "exclude": [
-            "/assets/*",
-            "/images/*",
-            "*.css",
-            "*.js",
-            "*.ico"
-        ]
-    },
     "routes": [
         {
             "route": "/keystatic/*",
