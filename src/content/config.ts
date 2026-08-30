@@ -13,7 +13,6 @@ const cardBlock = z
 const activities = defineCollection({
     type: 'data',
     schema: z.object({
-        order: z.number().optional(),
         title: z.string(),
         fr: cardBlock,
         en: cardBlock,

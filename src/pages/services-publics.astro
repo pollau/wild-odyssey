@@ -62,7 +62,7 @@ const publicActivities = allActivities.filter((activity) =>
                             title={activity.data.en?.title}
                             description={activity.data.en?.description}
                             color={activity.data.color}
-                            image={ACTIVITY_IMAGES[activity.id]?.src}
+                            image={ACTIVITY_IMAGES[activity.id.replace(/^thematic-\d+-/, "")]?.src}
                         />
                     ))
                 }

@@ -19,8 +19,12 @@ const homepage = homepageEntry!.data;
 // sans repli : une carte non traduite doit se voir, pas afficher de l'anglais.
 const card = (w: { data: Record<string, unknown> }) =>
   (w.data[lang] ?? {}) as Record<string, string>;
+// Le rang est porte par le nom de fichier (thematic-01-...), seule source de
+// l'ordre d'affichage. La photo, elle, est retrouvee sans le rang, pour qu'une
+// renumerotation ne la perde pas.
+const photo = (id: string) => ACTIVITY_IMAGES[id.replace(/^thematic-\d+-/, "")];
 const workshops = (await getCollection("activities"))
-  .sort((a, b) => ((a.data.order ?? 99) - (b.data.order ?? 99)));
+  .sort((a, b) => a.id.localeCompare(b.id));
 
 // Bandeau d'introduction : tout le bloc vient du JSON pilote par Keystatic,
 // groupe par langue. On lit uniquement la langue courante, SANS repli sur
@@ -125,12 +129,12 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
           {workshops.map((w) => (
             <div class="shrink-0 w-[260px] snap-start sm:w-auto bg-white border border-[#dbdbdb] rounded-[12px] shadow-[0px_1px_8px_rgba(168,168,168,0.25)] flex flex-col overflow-hidden">
               <div class="relative h-[190px] bg-[#acb8a9]">
-                {ACTIVITY_IMAGES[w.id] && (
+                {photo(w.id) && (
                   <img
-                    src={ACTIVITY_IMAGES[w.id].src}
+                    src={photo(w.id).src}
                     alt={card(w).title}
                     class="w-full h-full object-cover"
-                    style={`object-position: ${ACTIVITY_IMAGES[w.id].position}`}
+                    style={`object-position: ${photo(w.id).position}`}
                   />
                 )}
                 <span class="font-fraunces absolute top-3 left-1/2 -translate-x-1/2 text-white text-[18px] font-bold text-center w-[90%] leading-tight drop-shadow-md">
