@@ -195,11 +195,12 @@ export default config({
             slugField: 'title',
             path: 'src/content/activities/*',
             format: { data: 'json' },
-            // La 1re colonne de la liste affiche le nom de fichier, en anglais,
-            // et n'est pas configurable (son en-tete "Name" est ecrit en dur
-            // dans la librairie). On ajoute donc le titre francais a cote,
-            // pour retrouver une thematique sans decoder le nom de fichier.
-            columns: ['title'],
+            // La 1re colonne affiche le nom de fichier et n'est pas
+            // configurable. On ajoute l'ordre d'affichage et le nom de la
+            // fiche a cote. Le tri initial est fige sur le nom de fichier
+            // dans cette version de Keystatic : un clic sur l'en-tete
+            // "Ordre d'affichage" remet la liste dans l'ordre du site.
+            columns: ['order', 'title'],
             schema: {
                 // Ordre d'affichage des cartes sur la homepage (croissant).
                 order: fields.number({ label: "Ordre d'affichage" }),
