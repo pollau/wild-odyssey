@@ -9,6 +9,8 @@ import StatCounter from "../StatCounter.astro";
 import { plainText } from "../../i18n/richText";
 import { THEMATIC_IMAGES } from "../../content/thematicImages";
 import { SESSION_IMAGES } from "../../content/sessionImages";
+import Hero from "../sections/Hero.astro";
+import { langBlock } from "../../i18n/langBlock";
 
 interface Props {
   lang: string;
@@ -35,12 +37,7 @@ const sessions = (await getCollection("sessions"))
   .sort((a, b) => a.id.localeCompare(b.id));
 const sessionPhoto = (id: string) => SESSION_IMAGES[id.replace(/^session-\d+-/, "")];
 
-// Bandeau d'introduction : tout le bloc vient du JSON pilote par Keystatic,
-// groupe par langue. On lit uniquement la langue courante, SANS repli sur
-// l'anglais. Keystatic omet les champs vides du JSON, donc "cle absente"
-// veut dire "pas de texte dans cette langue" et non "pas encore traduit" :
-// un repli afficherait de l'anglais sur les pages FR et ES.
-const intro = (homepage[lang as "fr" | "en" | "es"] ?? {}) as Record<string, string>;
+const intro = langBlock(homepage, lang);
 // Chiffres de la section STATS. Volontairement hors Keystatic : ils sont
 // animes par StatCounter, qui a besoin de nombres et non de texte libre.
 // Les mettre a jour demande un commit.
@@ -70,31 +67,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
   <main class="pt-[80px]">
 
     <!-- ─── HERO ─── -->
-    <section class="bg-white py-12 lg:py-20">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
-        <!-- Text -->
-        <div class="flex-1 flex flex-col gap-6 lg:gap-8">
-          {intro.titleBase && <p class="font-fraunces text-[28px] lg:text-[36px] font-bold leading-tight text-black"><RichText text={intro.titleBase} /></p>}
-          <h1 class="font-fraunces text-[28px] lg:text-[36px] font-bold leading-tight">
-            <span class="text-[#f05600]"><RichText text={intro.title} /></span>
-          </h1>
-          <div class="font-aileron flex flex-col gap-4 text-[19px] text-black leading-relaxed">
-            <RichBody text={intro.body} />
-          </div>
-          <p class="font-fraunces text-[#f05600] text-[20px]"><RichText text={intro.tagline} /></p>
-          <a
-            href="#reasons"
-            class="font-aileron bg-[#f05600] text-white text-[20px] font-semibold h-[54px] lg:h-[64px] w-full sm:w-[260px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
-          >
-            <RichText text={intro.cta} />
-          </a>
-        </div>
-        <!-- Image -->
-        <div class="w-full lg:flex-shrink-0 lg:w-auto">
-          <img src="/assets/figma/hero-nature.png" alt="Wild Odyssey" class="w-full lg:w-[460px] rounded-2xl object-cover" />
-        </div>
-      </div>
-    </section>
+    <Hero intro={intro} ctaHref="#reasons" />
 
     <!-- ─── THEMATIQUES ─── -->
     <section class="relative py-12 lg:py-20 overflow-hidden" style="background-color: #e8f5e5;">
