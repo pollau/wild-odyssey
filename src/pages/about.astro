@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getEntry } from "astro:content";
+import footerUi from "../content/ui/footer.json";
 
 const homepage = await getEntry("homepage", "index");
 ---
@@ -69,7 +70,7 @@ const homepage = await getEntry("homepage", "index");
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {
-                        homepage.data.contactEmail && (
+                        footerUi.contactEmail && (
                             <div class="p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                                 <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
                                     <span class="text-2xl">✉️</span>
@@ -78,10 +79,10 @@ const homepage = await getEntry("homepage", "index");
                                     Email
                                 </h3>
                                 <a
-                                    href={`mailto:${homepage.data.contactEmail}`}
+                                    href={`mailto:${footerUi.contactEmail}`}
                                     class="text-primary hover:text-accent transition-colors"
                                 >
-                                    {homepage.data.contactEmail}
+                                    {footerUi.contactEmail}
                                 </a>
                             </div>
                         )

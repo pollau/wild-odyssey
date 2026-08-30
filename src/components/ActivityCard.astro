@@ -2,8 +2,6 @@
 interface Props {
     title: string;
     description: string;
-    duration?: string;
-    participants?: string;
     image?: string;
     color?: string; // Optional accent color class
 }
@@ -11,8 +9,6 @@ interface Props {
 const {
     title,
     description,
-    duration,
-    participants,
     image,
     color = "bg-primary",
 } = Astro.props;
@@ -50,25 +46,6 @@ const {
             )
         }
 
-        <!-- Badges (Floating) -->
-        <div
-            class="absolute bottom-4 left-4 flex flex-wrap gap-2 pointer-events-none"
-        >
-            {
-                duration && (
-                    <span class="px-3 py-1 bg-white/95 backdrop-blur-sm text-xs font-bold tracking-wide rounded-full text-stone-700 shadow-md border border-white/20">
-                        {duration}
-                    </span>
-                )
-            }
-            {
-                participants && (
-                    <span class="px-3 py-1 bg-white/95 backdrop-blur-sm text-xs font-bold tracking-wide rounded-full text-stone-700 shadow-md border border-white/20">
-                        {participants}
-                    </span>
-                )
-            }
-        </div>
     </div>
 
     <div class="p-8 flex flex-col flex-grow">

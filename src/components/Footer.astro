@@ -1,12 +1,11 @@
 ---
 import { t } from "../i18n/ui";
-import { getEntry } from "astro:content";
+import footerUi from "../content/ui/footer.json";
 
 const lang = Astro.currentLocale || "fr";
 const prefix = lang === "fr" ? "" : `/${lang}`;
 
-const homepageEntry = await getEntry("homepage", "index");
-const contactEmail = (homepageEntry?.data.contactEmail as string) ?? "lionel.raybaud@wildodyssey.org";
+const contactEmail = footerUi.contactEmail;
 ---
 
 <footer id="contact" class="relative overflow-hidden">

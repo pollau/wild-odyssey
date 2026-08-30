@@ -12,6 +12,22 @@ const useCloud =
     import.meta.env.PROD || import.meta.env.PUBLIC_KEYSTATIC_STORAGE === 'cloud';
 
 export default config({
+    // Interface de Keystatic en francais (boutons, menus, messages).
+    ui: {
+        brand: { name: 'Wild Odyssey' },
+        // Menu regroupe par zone du site, dans l'ordre ou on les rencontre.
+        // Les cles sont les noms techniques des collections/singletons.
+        // Un groupe par zone du site, dans l'ordre ou on la rencontre en
+        // descendant la page. Le texte d'une section et ses cartes sont
+        // voisins, pour ne plus avoir a editer un meme bloc a deux endroits.
+        // Attention : le menu est construit UNIQUEMENT a partir de cette
+        // liste. Une section absente d'ici disparait de l'interface.
+        navigation: {
+            "Page d'accueil": ['homepage', 'workshopsSection', 'activities', 'statsSection'],
+            'Événements': ['events'],
+            'Tout le site': ['footerSection'],
+        },
+    },
     storage: useCloud
         ? // Pas de branchPrefix : un prefixe filtrerait le selecteur de branches
           // et empecherait de reprendre une branche existante (qa, une branche
@@ -45,126 +61,166 @@ export default config({
         // Section "Chiffres" de l'accueil. Les libelles vivent dans
         // src/content/ui/stats.json ; ui.ts ne fait que les referencer, il n'y a
         // donc jamais deux sources pour un meme texte.
+        // MODELE DE REFERENCE pour les autres sections :
+        //  - un libelle qui dit ce que c'est, pas le nom technique
+        //  - une description qui dit OU le texte apparait sur le site
+        //  - les 3 langues du meme texte regroupees, pour voir les manques
         statsSection: singleton({
-            label: 'Accueil — Chiffres',
+            label: 'Chiffres clés',
             path: 'src/content/ui/stats',
             format: { data: 'json' },
             schema: {
-                badgeScience_fr: fields.text({ label: 'Badge (FR) — affiche aussi au-dessus des 6 raisons' }),
-                badgeScience_en: fields.text({ label: 'Badge (EN)' }),
-                badgeScience_es: fields.text({ label: 'Badge (ES)' }),
-                participants_fr: fields.text({ label: 'Libelle Participants (FR)' }),
-                participants_en: fields.text({ label: 'Libelle Participants (EN)' }),
-                participants_es: fields.text({ label: 'Libelle Participants (ES)' }),
-                organizations_fr: fields.text({ label: 'Libelle Organisations (FR)' }),
-                organizations_en: fields.text({ label: 'Libelle Organisations (EN)' }),
-                organizations_es: fields.text({ label: 'Libelle Organisations (ES)' }),
-                years_fr: fields.text({ label: "Libelle Annees d'experience (FR)" }),
-                years_en: fields.text({ label: "Libelle Annees d'experience (EN)" }),
-                years_es: fields.text({ label: "Libelle Annees d'experience (ES)" }),
+                fr: fields.object({
+                    badgeScience: fields.text({ label: 'Pastille bleue', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
+                    participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici." }),
+                    organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000.' }),
+                    years: fields.text({ label: 'Legende du 3e chiffre', description: 'Sous le compteur +5.' }),
+                }, { label: 'Français', description: "La bande de chiffres de la page d'accueil, version française." }),
+                en: fields.object({
+                    badgeScience: fields.text({ label: 'Pastille bleue', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
+                    participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici." }),
+                    organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000.' }),
+                    years: fields.text({ label: 'Legende du 3e chiffre', description: 'Sous le compteur +5.' }),
+                }, { label: 'Anglais', description: "La bande de chiffres de la page d'accueil, version anglaise." }),
+                es: fields.object({
+                    badgeScience: fields.text({ label: 'Pastille bleue', description: "Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons." }),
+                    participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici." }),
+                    organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000.' }),
+                    years: fields.text({ label: 'Legende du 3e chiffre', description: 'Sous le compteur +5.' }),
+                }, { label: 'Espagnol', description: "La bande de chiffres de la page d'accueil, version espagnole." }),
             },
         }),
         // Section "Nos thematiques" de l'accueil : le texte simple seulement.
         // Les deux moities du titre colore restent dans ui.ts pour l'instant.
         workshopsSection: singleton({
-            label: 'Accueil — Thematiques',
+            label: 'Introduction des thématiques',
             path: 'src/content/ui/workshops',
             format: { data: 'json' },
             schema: {
-                badge_fr: fields.text({ label: 'Badge (FR)' }),
-                badge_en: fields.text({ label: 'Badge (EN)' }),
-                badge_es: fields.text({ label: 'Badge (ES)' }),
+                badge_fr: fields.text({ label: 'Pastille (FR)' }),
+                badge_en: fields.text({ label: 'Pastille (EN)' }),
+                badge_es: fields.text({ label: 'Pastille (ES)' }),
                 body1_fr: fields.text({ label: 'Paragraphe 1 (FR)', multiline: true }),
                 body1_en: fields.text({ label: 'Paragraphe 1 (EN)', multiline: true }),
                 body1_es: fields.text({ label: 'Paragraphe 1 (ES)', multiline: true }),
                 body2_fr: fields.text({ label: 'Paragraphe 2 (FR)', multiline: true }),
                 body2_en: fields.text({ label: 'Paragraphe 2 (EN)', multiline: true }),
                 body2_es: fields.text({ label: 'Paragraphe 2 (ES)', multiline: true }),
-                body3_fr: fields.text({ label: 'Paragraphe 3 (FR) — optionnel, masque si vide', multiline: true }),
-                body3_en: fields.text({ label: 'Paragraphe 3 (EN) — optionnel, masque si vide', multiline: true }),
-                body3_es: fields.text({ label: 'Paragraphe 3 (ES) — optionnel, masque si vide', multiline: true }),
-                learnMore_fr: fields.text({ label: 'Bouton des cartes (FR)' }),
-                learnMore_en: fields.text({ label: 'Bouton des cartes (EN)' }),
-                learnMore_es: fields.text({ label: 'Bouton des cartes (ES)' }),
+                body3_fr: fields.text({ label: 'Paragraphe 3 (FR), optionnel : laisser vide pour le masquer', multiline: true }),
+                body3_en: fields.text({ label: 'Paragraphe 3 (EN), optionnel : laisser vide pour le masquer', multiline: true }),
+                body3_es: fields.text({ label: 'Paragraphe 3 (ES), optionnel : laisser vide pour le masquer', multiline: true }),
+                learnMore_fr: fields.text({ label: 'Texte du bouton des cartes (FR)' }),
+                learnMore_en: fields.text({ label: 'Texte du bouton des cartes (EN)' }),
+                learnMore_es: fields.text({ label: 'Texte du bouton des cartes (ES)' }),
+            },
+        }),
+        // Bas de page, present sur toutes les pages du site. Le titre colore
+        // "Et vous ?" reste dans le code : il est coupe en deux morceaux pour
+        // le style, le rendre editable demanderait de revoir la mise en forme.
+        footerSection: singleton({
+            label: 'Pied de page',
+            path: 'src/content/ui/footer',
+            format: { data: 'json' },
+            schema: {
+                fr: fields.object({
+                        ctaBody1: fields.text({ label: 'Phrase 1' }),
+                        ctaBody2: fields.text({ label: 'Phrase 2' }),
+                        ctaBtn: fields.text({ label: 'Texte du bouton' }),
+                        copyright: fields.text({ label: 'Mention de bas de page' }),
+                }, { label: 'Français', description: 'Le bloc en bas de toutes les pages, version française.' }),
+                en: fields.object({
+                        ctaBody1: fields.text({ label: 'Phrase 1' }),
+                        ctaBody2: fields.text({ label: 'Phrase 2' }),
+                        ctaBtn: fields.text({ label: 'Texte du bouton' }),
+                        copyright: fields.text({ label: 'Mention de bas de page' }),
+                }, { label: 'Anglais', description: 'Le bloc en bas de toutes les pages, version anglaise.' }),
+                es: fields.object({
+                        ctaBody1: fields.text({ label: 'Phrase 1' }),
+                        ctaBody2: fields.text({ label: 'Phrase 2' }),
+                        ctaBtn: fields.text({ label: 'Texte du bouton' }),
+                        copyright: fields.text({ label: 'Mention de bas de page' }),
+                }, { label: 'Espagnol', description: 'Le bloc en bas de toutes les pages, version espagnole.' }),
+                contactEmail: fields.text({
+                    label: 'Adresse de contact',
+                    description: "Affichee en bas de chaque page et sur la page A propos. Elle alimente aussi les donnees SEO du site.",
+                }),
             },
         }),
         homepage: singleton({
-            label: 'Homepage',
+            label: 'Introduction',
             path: 'src/content/homepage/index',
             format: { data: 'json' },
+            // Un bloc par langue plutot qu'un bloc par texte : on redige une
+            // page entiere d'une traite, comme on la lit sur le site.
             schema: {
-                // Le hero affiche heroTitleBase (en noir) puis heroTitle (en orange).
-                // Tout champ present dans le JSON doit etre declare ici, sinon
-                // Keystatic refuse d'ouvrir la page ("Key ... is not allowed").
-                heroTitleBase_fr: fields.text({ label: 'Hero — accroche noire (FR)' }),
-                heroTitle_fr: fields.text({ label: 'Hero — titre orange (FR)' }),
-                heroTitleBase_en: fields.text({ label: 'Hero — accroche noire (EN)' }),
-                heroTitle_en: fields.text({ label: 'Hero — titre orange (EN)' }),
-                heroTitleBase_es: fields.text({ label: 'Hero — accroche noire (ES)' }),
-                heroTitle_es: fields.text({ label: 'Hero — titre orange (ES)' }),
-                contactEmail: fields.text({ label: 'Contact Email' }),
+                fr: fields.object({
+                    titleBase: fields.text({ label: 'Accroche en noir' }),
+                    title: fields.text({ label: 'Titre en orange' }),
+                    body1: fields.text({ label: 'Paragraphe 1', multiline: true }),
+                    body2: fields.text({ label: 'Paragraphe 2', multiline: true }),
+                    body3: fields.text({ label: 'Paragraphe 3', description: 'Optionnel : laisser vide pour le masquer.', multiline: true }),
+                    tagline: fields.text({ label: 'Phrase orange sous les paragraphes' }),
+                    cta: fields.text({ label: 'Texte du bouton' }),
+                }, { label: 'Français', description: "Le bandeau en haut de la page d'accueil, version française." }),
+                en: fields.object({
+                    titleBase: fields.text({ label: 'Accroche en noir' }),
+                    title: fields.text({ label: 'Titre en orange' }),
+                    body1: fields.text({ label: 'Paragraphe 1', multiline: true }),
+                    body2: fields.text({ label: 'Paragraphe 2', multiline: true }),
+                    body3: fields.text({ label: 'Paragraphe 3', description: 'Optionnel : laisser vide pour le masquer.', multiline: true }),
+                    tagline: fields.text({ label: 'Phrase orange sous les paragraphes' }),
+                    cta: fields.text({ label: 'Texte du bouton' }),
+                }, { label: 'Anglais', description: "Le bandeau en haut de la page d'accueil, version anglaise." }),
+                es: fields.object({
+                    titleBase: fields.text({ label: 'Accroche en noir' }),
+                    title: fields.text({ label: 'Titre en orange' }),
+                    body1: fields.text({ label: 'Paragraphe 1', multiline: true }),
+                    body2: fields.text({ label: 'Paragraphe 2', multiline: true }),
+                    body3: fields.text({ label: 'Paragraphe 3', description: 'Optionnel : laisser vide pour le masquer.', multiline: true }),
+                    tagline: fields.text({ label: 'Phrase orange sous les paragraphes' }),
+                    cta: fields.text({ label: 'Texte du bouton' }),
+                }, { label: 'Espagnol', description: "Le bandeau en haut de la page d'accueil, version espagnole." }),
             },
         }),
     },
     collections: {
         activities: collection({
-            label: 'Workshops',
+            label: 'Thématiques',
             slugField: 'title',
             path: 'src/content/activities/*',
             format: { data: 'json' },
+            // La 1re colonne de la liste affiche le nom de fichier, en anglais,
+            // et n'est pas configurable (son en-tete "Name" est ecrit en dur
+            // dans la librairie). On ajoute donc le titre francais a cote,
+            // pour retrouver une thematique sans decoder le nom de fichier.
+            columns: ['title'],
             schema: {
                 // Ordre d'affichage des cartes sur la homepage (croissant).
                 order: fields.number({ label: "Ordre d'affichage" }),
-                title: fields.slug({ name: { label: 'Name' } }),
-                subtitle: fields.text({ label: 'Subtitle (tagline)' }),
-                description: fields.text({ label: 'Description (EN)', multiline: true }),
-                title_fr: fields.text({ label: 'Name (FR)' }),
-                subtitle_fr: fields.text({ label: 'Sous-titre (FR)' }),
-                description_fr: fields.text({ label: 'Description (FR)', multiline: true }),
-                subtitle_en: fields.text({ label: 'Sous-titre (EN)' }),
-                title_es: fields.text({ label: 'Name (ES)' }),
-                subtitle_es: fields.text({ label: 'Sous-titre (ES)' }),
-                description_es: fields.text({ label: 'Description (ES)', multiline: true }),
-                duration: fields.text({ label: 'Duration (e.g. "From 2h")' }),
-                participants: fields.text({ label: 'Group size (e.g. "14–30 people")' }),
-                format: fields.multiselect({
-                    label: 'Formats',
-                    options: [
-                        { label: 'Workshop', value: 'workshop' },
-                        { label: 'Masterclass', value: 'masterclass' },
-                        { label: 'Ocean Walk', value: 'ocean-walk' },
-                        { label: 'Custom', value: 'custom' },
-                    ],
+                // Nom de la fiche : sert de nom de fichier et d'identifiant
+                // dans la liste. Il n'est jamais affiche sur le site, les
+                // titres affiches vivent dans les blocs de langue ci-dessous.
+                title: fields.slug({
+                    name: {
+                        label: 'Nom de la fiche',
+                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
+                    },
                 }),
-                theme: fields.select({
-                    label: 'Theme',
-                    options: [
-                        { label: 'Desirable Futures', value: 'desirable-futures' },
-                        { label: 'Ocean & Systemic', value: 'ocean' },
-                        { label: 'Biodiversity', value: 'biodiversity' },
-                        { label: 'Carbon Footprint', value: 'carbon' },
-                        { label: 'Climate Skeptic Dinner', value: 'climate-skeptic' },
-                        { label: 'Tailor-made', value: 'tailor-made' },
-                    ],
-                    defaultValue: 'desirable-futures',
-                }),
-                // Cadrage de la photo dans la carte. Defaut "bottom" pour coller
-                // au repli du composant (object-position) et ne rien changer aux
-                // cartes qui n'ont pas ce champ aujourd'hui.
-                imagePosition: fields.select({
-                    label: 'Cadrage de la photo',
-                    options: [
-                        { label: 'Haut', value: 'top' },
-                        { label: 'Centre', value: 'center' },
-                        { label: 'Bas', value: 'bottom' },
-                    ],
-                    defaultValue: 'bottom',
-                }),
-                image: fields.image({
-                    label: 'Cover image',
-                    directory: 'public/assets/images/activities',
-                    publicPath: '/assets/images/activities/',
-                }),
+                fr: fields.object({
+                        title: fields.text({ label: 'Titre de la carte' }),
+                        subtitle: fields.text({ label: 'Sous-titre' }),
+                        description: fields.text({ label: 'Description', multiline: true }),
+                }, { label: 'Français', description: 'La carte de cette thématique, version française.' }),
+                en: fields.object({
+                        title: fields.text({ label: 'Titre de la carte' }),
+                        subtitle: fields.text({ label: 'Sous-titre' }),
+                        description: fields.text({ label: 'Description', multiline: true }),
+                }, { label: 'Anglais', description: 'La carte de cette thématique, version anglaise.' }),
+                es: fields.object({
+                        title: fields.text({ label: 'Titre de la carte' }),
+                        subtitle: fields.text({ label: 'Sous-titre' }),
+                        description: fields.text({ label: 'Description', multiline: true }),
+                }, { label: 'Espagnol', description: 'La carte de cette thématique, version espagnole.' }),
             },
         }),
     },

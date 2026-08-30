@@ -3,6 +3,7 @@
 // qu il n existe jamais deux sources pour un meme texte.
 import statsUi from "../content/ui/stats.json";
 import workshopsUi from "../content/ui/workshops.json";
+import footerUi from "../content/ui/footer.json";
 
 // Keystatic omet les champs vides quand il ecrit un JSON : une cle absente
 // signifie donc 'pas de texte', pas 'cle inconnue'. On lit toujours via txt()
@@ -10,14 +11,15 @@ import workshopsUi from "../content/ui/workshops.json";
 const txt = (o: unknown, k: string): string =>
   (o as Record<string, string>)[k] ?? '';
 
+// Les JSON pilotes par Keystatic sont groupes par langue : on lit
+// fichier[langue][cle]. Les deux niveaux peuvent manquer, Keystatic
+// omettant les champs vides, d'ou les deux replis sur chaine vide.
+const lang = (o: unknown, lg: string, k: string): string =>
+  ((o as Record<string, Record<string, string>>)[lg] ?? {})[k] ?? "";
+
 
 export const ui = {
   fr: {
-    "hero.body1": "Nous transformons la théorie en émerveillement, et l'émerveillement en action, à travers des expériences immersives menées avec des ONG reconnues.",
-    "hero.body2": "Ne vous contentez plus de rapports : mobilisez vos équipes grâce à des formats scientifiques qui ont fait leurs preuves. Ensemble, transformons votre entreprise en un équipage soudé, prêt à naviguer face au grand défi du XXIe siècle.",
-    "hero.body3": "La sensibilisation que vos certifications valorisent (EcoVadis, B Corp, ISO 14001), transformée en expérience que vos équipes n'oublieront pas.",
-    "hero.tagline": "Nous avons la carte, vous choisissez le cap !",
-    "hero.cta": "Explorer l'horizon",
 
     "workshops.badge": txt(workshopsUi, "badge_fr"),
     "workshops.heading1": "Une méthodologie commune,",
@@ -43,13 +45,13 @@ export const ui = {
     "formats.oceanWalkDesc": "Cette marche guidée de 5,5 km simule l'ascension de la Fosse des Mariannes à la surface. Chaque mètre nous permet de découvrir les couches de l'océan, de rencontrer ses créatures incroyables et de partager les histoires insoupçonnées des profondeurs.",
     "formats.seeAll": "Voir tous les ateliers",
 
-    "badge.science": txt(statsUi, "badgeScience_fr"),
+    "badge.science": lang(statsUi, "fr", "badgeScience"),
     "stats.heading2": "Méthodologies",
     "stats.heading3": "reconnues par les équipes les plus",
     "stats.heading4": "ambitieuses",
-    "stats.participants": txt(statsUi, "participants_fr"),
-    "stats.organizations": txt(statsUi, "organizations_fr"),
-    "stats.years": txt(statsUi, "years_fr"),
+    "stats.participants": lang(statsUi, "fr", "participants"),
+    "stats.organizations": lang(statsUi, "fr", "organizations"),
+    "stats.years": lang(statsUi, "fr", "years"),
     "reasons.heading1": "1 expérience de team-building :",
     "reasons.heading2": "6 bonnes raisons",
     "reasons.heading3": "de monter à bord.",
@@ -77,10 +79,10 @@ export const ui = {
 
     "footer.ctaHeading": "Et",
     "footer.ctaAccent": "vous ?",
-    "footer.ctaBody1": "Tout commence par une conversation.",
-    "footer.ctaBody2": "Concevons ensemble votre prochaine expérience d'impact.",
-    "footer.ctaBtn": "Prêt pour l'Odyssée",
-    "footer.copyright": "© 2025 - 2026 Wild Odyssey. Tous droits réservés.",
+    "footer.ctaBody1": lang(footerUi, "fr", "ctaBody1"),
+    "footer.ctaBody2": lang(footerUi, "fr", "ctaBody2"),
+    "footer.ctaBtn": lang(footerUi, "fr", "ctaBtn"),
+    "footer.copyright": lang(footerUi, "fr", "copyright"),
     "nav.cta": "Nous contacter",
 
     "seo.home.title": "Team Building Durable & Ateliers Climat",
@@ -110,11 +112,6 @@ export const ui = {
     "contact.errorNetwork": "Impossible de joindre le serveur. Vérifiez votre connexion et réessayez.",
   },
   en: {
-    "hero.body1": "We turn theory into wonder, and wonder into action, through immersive experiences led with recognised NGOs.",
-    "hero.body2": "Stop settling for reports: bring your teams to life with science-based formats that have already proven their worth. Together, let's turn your company into a tight-knit crew, ready to face the great challenge of our century.",
-    "hero.body3": "The awareness your certifications reward (EcoVadis, B Corp, ISO 14001), turned into an experience your teams won't forget.",
-    "hero.tagline": "We've got the map. You choose the course.",
-    "hero.cta": "Ready for the Odyssey",
 
     "workshops.badge": txt(workshopsUi, "badge_en"),
     "workshops.heading1": "A common methodology,",
@@ -140,13 +137,13 @@ export const ui = {
     "formats.oceanWalkDesc": "This 5.5 km guided walk simulates the ascent from the Mariana Trench to the surface. Each metre reveals a new layer of the ocean, introduces incredible creatures, and shares the untold stories of the deep.",
     "formats.seeAll": "See all workshops",
 
-    "badge.science": txt(statsUi, "badgeScience_en"),
+    "badge.science": lang(statsUi, "en", "badgeScience"),
     "stats.heading2": "Methodologies",
     "stats.heading3": "trusted by the world's most",
     "stats.heading4": "ambitious",
-    "stats.participants": txt(statsUi, "participants_en"),
-    "stats.organizations": txt(statsUi, "organizations_en"),
-    "stats.years": txt(statsUi, "years_en"),
+    "stats.participants": lang(statsUi, "en", "participants"),
+    "stats.organizations": lang(statsUi, "en", "organizations"),
+    "stats.years": lang(statsUi, "en", "years"),
     "reasons.heading1": "1 team building experience:",
     "reasons.heading2": "6 good reasons",
     "reasons.heading3": "to come aboard.",
@@ -174,10 +171,10 @@ export const ui = {
 
     "footer.ctaHeading": "What about",
     "footer.ctaAccent": "YOU?",
-    "footer.ctaBody1": "It all starts with one conversation.",
-    "footer.ctaBody2": "Let's design your next impact experience together.",
-    "footer.ctaBtn": "Ready for the Odyssey",
-    "footer.copyright": "© 2025 - 2026 Wild Odyssey. All rights reserved.",
+    "footer.ctaBody1": lang(footerUi, "en", "ctaBody1"),
+    "footer.ctaBody2": lang(footerUi, "en", "ctaBody2"),
+    "footer.ctaBtn": lang(footerUi, "en", "ctaBtn"),
+    "footer.copyright": lang(footerUi, "en", "copyright"),
     "nav.cta": "Contact me",
 
     "seo.home.title": "Sustainability Team Building & Climate Workshops",
@@ -207,11 +204,6 @@ export const ui = {
     "contact.errorNetwork": "We could not reach the server. Check your connection and try again.",
   },
   es: {
-    "hero.body1": "Transformamos la teoría en asombro, y el asombro en acción, a través de experiencias inmersivas lideradas con ONG reconocidas.",
-    "hero.body2": "Dejen de conformarse con reportes: movilicen sus equipos con formatos científicos que ya han demostrado su valor. Juntos, transformemos su empresa en una tripulación unida, lista para navegar frente al gran desafío de nuestro siglo.",
-    "hero.body3": "La sensibilización que sus certificaciones valoran (EcoVadis, B Corp, ISO 14001), transformada en una experiencia que sus equipos no olvidarán.",
-    "hero.tagline": "Tenemos el mapa. Ustedes eligen el rumbo.",
-    "hero.cta": "Subir a bordo",
 
     "workshops.badge": txt(workshopsUi, "badge_es"),
     "workshops.heading1": "Una metodología común,",
@@ -237,13 +229,13 @@ export const ui = {
     "formats.oceanWalkDesc": "Esta caminata guiada de 5,5 km simula el ascenso desde la Fosa de las Marianas hasta la superficie. Cada metro nos permite descubrir las capas del océano, conocer sus criaturas increíbles y compartir las historias insospechadas de las profundidades.",
     "formats.seeAll": "Ver todos los talleres",
 
-    "badge.science": txt(statsUi, "badgeScience_es"),
+    "badge.science": lang(statsUi, "es", "badgeScience"),
     "stats.heading2": "Metodologías",
     "stats.heading3": "en las que confían los equipos más",
     "stats.heading4": "ambiciosos",
-    "stats.participants": txt(statsUi, "participants_es"),
-    "stats.organizations": txt(statsUi, "organizations_es"),
-    "stats.years": txt(statsUi, "years_es"),
+    "stats.participants": lang(statsUi, "es", "participants"),
+    "stats.organizations": lang(statsUi, "es", "organizations"),
+    "stats.years": lang(statsUi, "es", "years"),
     "reasons.heading1": "1 experiencia de team building:",
     "reasons.heading2": "6 buenas razones",
     "reasons.heading3": "para subir a bordo.",
@@ -271,10 +263,10 @@ export const ui = {
 
     "footer.ctaHeading": "¿Y",
     "footer.ctaAccent": "TÚ?",
-    "footer.ctaBody1": "Todo comienza con una conversación.",
-    "footer.ctaBody2": "Diseñemos juntos tu próxima experiencia de impacto.",
-    "footer.ctaBtn": "Listos para la Odisea",
-    "footer.copyright": "© 2025 - 2026 Wild Odyssey. Todos los derechos reservados.",
+    "footer.ctaBody1": lang(footerUi, "es", "ctaBody1"),
+    "footer.ctaBody2": lang(footerUi, "es", "ctaBody2"),
+    "footer.ctaBtn": lang(footerUi, "es", "ctaBtn"),
+    "footer.copyright": lang(footerUi, "es", "copyright"),
     "nav.cta": "Contacto",
 
     "seo.home.title": "Team Building Sostenible y Talleres de Clima",

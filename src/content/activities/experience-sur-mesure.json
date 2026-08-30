@@ -1,19 +1,19 @@
 {
-  "order": 5,
-  "title": "The tailor-made experience",
-  "subtitle": "A doubt, a mix of themes, new topics (digital, water...)?",
-  "subtitle_fr": "Un doute, un mix de thématiques, de nouveaux sujets (numérique, eau...) ?",
-  "subtitle_en": "A doubt, a mix of themes, new topics (digital, water...)?",
-  "subtitle_es": "¿Una duda, una mezcla de temas, nuevos asuntos (digital, agua...)?",
-  "description": "Reach out, we'll chart the course together, tuned to your needs.",
-  "title_fr": "L'expérience sur mesure",
-  "description_fr": "Contactez-nous, on tracera le cap ensemble, à l'écoute de vos envies et en nous adaptant à vos besoins.",
-  "title_es": "La experiencia a medida",
-  "description_es": "Contáctanos, trazaremos el rumbo juntos, escuchando tus deseos y adaptándonos a tus necesidades.",
-  "format": [
-    "custom"
-  ],
-  "theme": "tailor-made",
-  "image": "/assets/images/activities/experience-sur-mesure.jpg",
-  "imagePosition": "center"
+  "order": 4,
+  "title": "L'expérience sur mesure",
+  "fr": {
+    "title": "L'expérience sur mesure",
+    "subtitle": "Un doute, un mix de thématiques, de nouveaux sujets (numérique, eau...) ?",
+    "description": "Contactez-nous, on tracera le cap ensemble, à l'écoute de vos envies et en nous adaptant à vos besoins."
+  },
+  "en": {
+    "title": "The tailor-made experience",
+    "subtitle": "A doubt, a mix of themes, new topics (digital, water...)?",
+    "description": "Reach out, we'll chart the course together, tuned to your needs."
+  },
+  "es": {
+    "title": "La experiencia a medida",
+    "subtitle": "¿Una duda, una mezcla de temas, nuevos asuntos (digital, agua...)?",
+    "description": "Contáctanos, trazaremos el rumbo juntos, escuchando tus deseos y adaptándonos a tus necesidades."
+  }
 }

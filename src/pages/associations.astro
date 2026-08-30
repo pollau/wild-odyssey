@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { ACTIVITY_IMAGES } from "../content/activityImages";
 import ActivityCard from "../components/ActivityCard.astro";
 import { getCollection } from "astro:content";
 
@@ -49,12 +50,10 @@ const assocActivities = allActivities.filter((activity) =>
                 {
                     assocActivities.map((activity) => (
                         <ActivityCard
-                            title={activity.data.title}
-                            description={activity.data.description}
-                            duration={activity.data.duration}
-                            participants={activity.data.participants}
+                            title={activity.data.en?.title}
+                            description={activity.data.en?.description}
                             color={activity.data.color}
-                            image={activity.data.image}
+                            image={ACTIVITY_IMAGES[activity.id]?.src}
                         />
                     ))
                 }

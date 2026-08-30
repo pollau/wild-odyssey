@@ -1,14 +1,20 @@
 {
-  "badgeScience_fr": "ATELIERS FONDÉS SUR LA SCIENCE",
-  "badgeScience_en": "SCIENCE-BASED WORKSHOPS",
-  "badgeScience_es": "TALLERES BASADOS EN CIENCIA",
-  "participants_fr": "Participants",
-  "participants_en": "Participants",
-  "participants_es": "Participantes",
-  "organizations_fr": "Organisations",
-  "organizations_en": "Organizations",
-  "organizations_es": "Organizaciones",
-  "years_fr": "Années d'expérience",
-  "years_en": "Years of experience",
-  "years_es": "Años de experiencia"
+  "fr": {
+    "badgeScience": "ATELIERS FONDÉS SUR LA SCIENCE",
+    "participants": "Participants",
+    "organizations": "Organisations",
+    "years": "Années d'expérience"
+  },
+  "en": {
+    "badgeScience": "SCIENCE-BASED WORKSHOPS",
+    "participants": "Participants",
+    "organizations": "Organizations",
+    "years": "Years of experience"
+  },
+  "es": {
+    "badgeScience": "TALLERES BASADOS EN CIENCIA",
+    "participants": "Participantes",
+    "organizations": "Organizaciones",
+    "years": "Años de experiencia"
+  }
 }

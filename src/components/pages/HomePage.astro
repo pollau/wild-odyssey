@@ -3,8 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import OrganizationSchema from "../OrganizationSchema.astro";
 import { getCollection, getEntry } from "astro:content";
 import { t } from "../../i18n/ui";
-import { tc } from "../../i18n/content";
 import StatCounter from "../StatCounter.astro";
+import { ACTIVITY_IMAGES } from "../../content/activityImages";
 
 interface Props {
   lang: string;
@@ -15,17 +15,19 @@ const { lang } = Astro.props;
 
 const homepageEntry = await getEntry("homepage", "index");
 const homepage = homepageEntry!.data;
+// Chaque thematique porte un bloc par langue. On lit la langue courante
+// sans repli : une carte non traduite doit se voir, pas afficher de l'anglais.
+const card = (w: { data: Record<string, unknown> }) =>
+  (w.data[lang] ?? {}) as Record<string, string>;
 const workshops = (await getCollection("activities"))
-  .filter((w) => w.data.theme !== "placeholder")
   .sort((a, b) => ((a.data.order ?? 99) - (b.data.order ?? 99)));
 
-const heroTitle = tc(homepage, "heroTitle", lang);
-// Accroche optionnelle au-dessus du titre : lue uniquement dans la langue
-// courante, SANS repli sur l'anglais. Keystatic omet les champs vides du
-// JSON, donc "cle absente" veut dire "pas d'accroche dans cette langue" et
-// non "pas encore traduit" : un repli afficherait le texte anglais sur les
-// pages FR et ES.
-const heroTitleBase = homepage[`heroTitleBase_${lang}` as keyof typeof homepage] ?? "";
+// Bandeau d'introduction : tout le bloc vient du JSON pilote par Keystatic,
+// groupe par langue. On lit uniquement la langue courante, SANS repli sur
+// l'anglais. Keystatic omet les champs vides du JSON, donc "cle absente"
+// veut dire "pas de texte dans cette langue" et non "pas encore traduit" :
+// un repli afficherait de l'anglais sur les pages FR et ES.
+const intro = (homepage[lang as "fr" | "en" | "es"] ?? {}) as Record<string, string>;
 // Chiffres de la section STATS. Volontairement hors Keystatic : ils sont
 // animes par StatCounter, qui a besoin de nombres et non de texte libre.
 // Les mettre a jour demande un commit.
@@ -65,21 +67,21 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
       <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
         <!-- Text -->
         <div class="flex-1 flex flex-col gap-6 lg:gap-8">
-          {heroTitleBase && <p class="font-fraunces text-[28px] lg:text-[36px] font-bold leading-tight text-black">{heroTitleBase}</p>}
+          {intro.titleBase && <p class="font-fraunces text-[28px] lg:text-[36px] font-bold leading-tight text-black">{intro.titleBase}</p>}
           <h1 class="font-fraunces text-[28px] lg:text-[36px] font-bold leading-tight">
-            <span class="text-[#f05600]">{heroTitle}</span>
+            <span class="text-[#f05600]">{intro.title}</span>
           </h1>
           <div class="font-aileron flex flex-col gap-4 text-[19px] text-black leading-relaxed">
-            <p>{t(lang, "hero.body1")}</p>
-            <p>{t(lang, "hero.body2")}</p>
-            {t(lang, "hero.body3") && <p>{t(lang, "hero.body3")}</p>}
+            <p>{intro.body1}</p>
+            <p>{intro.body2}</p>
+            {intro.body3 && <p>{intro.body3}</p>}
           </div>
-          <p class="font-fraunces text-[#f05600] text-[20px]">{t(lang, "hero.tagline")}</p>
+          <p class="font-fraunces text-[#f05600] text-[20px]">{intro.tagline}</p>
           <a
             href="#reasons"
             class="font-aileron bg-[#f05600] text-white text-[20px] font-semibold h-[54px] lg:h-[64px] w-full sm:w-[260px] flex items-center justify-center rounded-[7px] hover:bg-orange-700 transition-colors"
           >
-            {t(lang, "hero.cta")}
+            {intro.cta}
           </a>
         </div>
         <!-- Image -->
@@ -123,23 +125,25 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
           {workshops.map((w) => (
             <div class="shrink-0 w-[260px] snap-start sm:w-auto bg-white border border-[#dbdbdb] rounded-[12px] shadow-[0px_1px_8px_rgba(168,168,168,0.25)] flex flex-col overflow-hidden">
               <div class="relative h-[190px] bg-[#acb8a9]">
-                <img
-                  src={w.data.image}
-                  alt={tc(w.data, "title", lang)}
-                  class="w-full h-full object-cover"
-                  style={`object-position: ${w.data.imagePosition ?? "bottom"}`}
-                />
+                {ACTIVITY_IMAGES[w.id] && (
+                  <img
+                    src={ACTIVITY_IMAGES[w.id].src}
+                    alt={card(w).title}
+                    class="w-full h-full object-cover"
+                    style={`object-position: ${ACTIVITY_IMAGES[w.id].position}`}
+                  />
+                )}
                 <span class="font-fraunces absolute top-3 left-1/2 -translate-x-1/2 text-white text-[18px] font-bold text-center w-[90%] leading-tight drop-shadow-md">
-                  {tc(w.data, "title", lang)}
+                  {card(w).title}
                 </span>
               </div>
               <div class="p-4 flex flex-col gap-2 flex-1">
                 <p class="font-aileron text-[#0698c0] text-[17px] font-bold leading-snug">
-                  {tc(w.data, "subtitle", lang) || tc(w.data, "title", lang)}
+                  {card(w).subtitle || card(w).title}
                 </p>
                 <div class="flex flex-col gap-5 flex-1 justify-between">
                   <p class="font-aileron text-[#3b3b3b] text-[15px] leading-snug">
-                    {tc(w.data, "description", lang)}
+                    {card(w).description}
                   </p>
                   <a
                     href="#"

@@ -1,21 +1,19 @@
 {
   "order": 3,
-  "title": "Ocean",
-  "subtitle": "Dive into the heart of the ocean.",
-  "subtitle_fr": "Plongez au cœur de l'océan.",
-  "subtitle_en": "Dive into the heart of the ocean.",
-  "subtitle_es": "Sumérgete en el corazón del océano.",
-  "description": "A systemic approach to the role of the ocean, its benefits, and the human pressures that weaken it.",
-  "title_fr": "Océan",
-  "description_fr": "Une approche systémique du rôle de l'océan, de ses bénéfices et des pressions humaines qui l'affaiblissent.",
-  "title_es": "Oceano",
-  "description_es": "Un enfoque sistémico del papel del océano, sus beneficios y las presiones humanas que lo debilitan.",
-  "duration": "From 2h",
-  "participants": "14–200 people",
-  "format": [
-    "workshop",
-    "ocean-walk"
-  ],
-  "theme": "ocean",
-  "image": "/assets/images/activities/ocean.jpg"
+  "title": "Océan",
+  "fr": {
+    "title": "Océan",
+    "subtitle": "Plongez au cœur de l'océan.",
+    "description": "Une approche systémique du rôle de l'océan, de ses bénéfices et des pressions humaines qui l'affaiblissent."
+  },
+  "en": {
+    "title": "Ocean",
+    "subtitle": "Dive into the heart of the ocean.",
+    "description": "A systemic approach to the role of the ocean, its benefits, and the human pressures that weaken it."
+  },
+  "es": {
+    "title": "Oceano",
+    "subtitle": "Sumérgete en el corazón del océano.",
+    "description": "Un enfoque sistémico del papel del océano, sus beneficios y las presiones humanas que lo debilitan."
+  }
 }
