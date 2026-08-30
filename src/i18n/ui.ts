@@ -46,7 +46,6 @@ export const ui = {
     "reasons.heading4": "",
     "reasons.body1": "Pour les DRH qui ont besoin d'engagement. Pour les responsables RSE qui ont besoin d'adhésion. Pour la direction qui doit justifier le budget. Et pour toutes les personnes dans la salle qui veulent faire partie de la solution.",
     "reasons.body2": "Une expérience durable scientifique, 6 raisons de dire oui : facile à justifier, impossible à oublier.",
-    "reasons.learnMore": "En savoir plus",
     "reasons.r1.title": "Une expérience",
     "reasons.r1.accent": "mémorable",
     "reasons.r1.text": "Du stagiaire au directeur : même expérience, même langage, même vision systémique des enjeux. Pas parce qu'ils y étaient obligés ; parce qu'ils ont vécu la même chose.",
@@ -72,13 +71,8 @@ export const ui = {
     "footer.ctaBody2": "Concevons ensemble votre prochaine expérience d'impact.",
     "footer.ctaBtn": "Prêt pour l'Odyssée",
     "footer.copyright": "© 2025 - 2026 Wild Odyssey. Tous droits réservés.",
-    "footer.ngos": "Les ONGs",
-    "footer.workshops": "Les ateliers",
-    "footer.contact": "Contact",
 
     "nav.events": "Événements",
-    "nav.ngos": "Les ONGs",
-    "nav.workshops": "Les ateliers",
     "nav.cta": "Nous contacter",
 
     "seo.home.title": "Team Building Durable & Ateliers Climat",
@@ -99,7 +93,6 @@ export const ui = {
     "contact.consent": "J'accepte d'être recontacté·e et que mes données soient traitées dans ce but.",
     "contact.optional": "facultatif",
     "contact.submit": "Envoyer !",
-    "contact.sending": "Envoi…",
     "contact.successTitle": "Message envoyé, merci !",
     "contact.successBody": "Message bien reçu, on file le transmettre à l'équipage !\nOn revient vers vous au plus vite pour tracer le cap :)",
     "contact.error": "Oups, l'envoi a échoué. Réessayez ou écrivez-nous directement.",
@@ -107,7 +100,6 @@ export const ui = {
     "contact.error429": "Trop de tentatives pour le moment. Patientez un instant puis réessayez.",
     "contact.error500": "Le service est momentanément indisponible. Réessayez dans quelques minutes.",
     "contact.errorNetwork": "Impossible de joindre le serveur. Vérifiez votre connexion et réessayez.",
-    "contact.close": "Fermer",
   },
   en: {
     "hero.pretitle": "",
@@ -155,7 +147,6 @@ export const ui = {
     "reasons.heading4": "",
     "reasons.body1": "For HR managers who need engagement. For CSR officers who need buy-in. For the board who needs to justify the budget. And for everyone in the room who wants to feel part of the solution.",
     "reasons.body2": "One science-based sustainability experience, 6 reasons to say yes: easy to justify, impossible to forget.",
-    "reasons.learnMore": "Learn more",
     "reasons.r1.title": "A Memorable",
     "reasons.r1.accent": "Experience",
     "reasons.r1.text": "From the intern to the director: same experience, same language, same systemic vision of what's at stake. Not because they had to, but because they lived the same team building experience.",
@@ -181,13 +172,8 @@ export const ui = {
     "footer.ctaBody2": "Let's design your next impact experience together.",
     "footer.ctaBtn": "Ready for the Odyssey",
     "footer.copyright": "© 2025 - 2026 Wild Odyssey. All rights reserved.",
-    "footer.ngos": "The NGOs",
-    "footer.workshops": "The workshops",
-    "footer.contact": "Contact",
 
     "nav.events": "Events",
-    "nav.ngos": "The NGOs",
-    "nav.workshops": "The workshops",
     "nav.cta": "Contact me",
 
     "seo.home.title": "Sustainability Team Building & Climate Workshops",
@@ -208,7 +194,6 @@ export const ui = {
     "contact.consent": "I agree to be contacted and to my data being processed for this purpose.",
     "contact.optional": "optional",
     "contact.submit": "Send!",
-    "contact.sending": "Sending…",
     "contact.successTitle": "Message sent, thank you!",
     "contact.successBody": "Message received, we're passing it on to the crew!\nWe'll get back to you soon to set the course :)",
     "contact.error": "Oops, sending failed. Try again or email us directly.",
@@ -216,7 +201,6 @@ export const ui = {
     "contact.error429": "Too many attempts right now. Wait a moment and try again.",
     "contact.error500": "The service is temporarily unavailable. Try again in a few minutes.",
     "contact.errorNetwork": "We could not reach the server. Check your connection and try again.",
-    "contact.close": "Close",
   },
   es: {
     "hero.pretitle": "¿CSRD? ¿ESG? ¿RSE? ¿Equipos que no se implican? Ya han visto las diapositivas.",
@@ -264,7 +248,6 @@ export const ui = {
     "reasons.heading4": "",
     "reasons.body1": "Para los responsables de RRHH que necesitan compromiso. Para los directores de RSE que necesitan apoyo. Para la dirección que debe justificar el presupuesto. Y para todas las personas en la sala que quieren ser parte de la solución.",
     "reasons.body2": "Una experiencia de sostenibilidad basada en ciencia, 6 razones para decir sí: fácil de justificar, imposible de olvidar.",
-    "reasons.learnMore": "Más información",
     "reasons.r1.title": "Una experiencia",
     "reasons.r1.accent": "memorable",
     "reasons.r1.text": "Del becario al director: misma experiencia, mismo lenguaje, misma visión sistémica de lo que está en juego. No porque tuvieran que hacerlo, sino porque vivieron la misma experiencia de team building.",
@@ -290,13 +273,8 @@ export const ui = {
     "footer.ctaBody2": "Diseñemos juntos tu próxima experiencia de impacto.",
     "footer.ctaBtn": "Listos para la Odisea",
     "footer.copyright": "© 2025 - 2026 Wild Odyssey. Todos los derechos reservados.",
-    "footer.ngos": "Las ONGs",
-    "footer.workshops": "Los talleres",
-    "footer.contact": "Contacto",
 
     "nav.events": "Eventos",
-    "nav.ngos": "Las ONGs",
-    "nav.workshops": "Los talleres",
     "nav.cta": "Contacto",
 
     "seo.home.title": "Team Building Sostenible y Talleres de Clima",
@@ -317,7 +295,6 @@ export const ui = {
     "contact.consent": "Acepto ser contactado·a y que mis datos se traten con este fin.",
     "contact.optional": "opcional",
     "contact.submit": "¡Enviar!",
-    "contact.sending": "Enviando…",
     "contact.successTitle": "¡Mensaje enviado, gracias!",
     "contact.successBody": "¡Mensaje recibido, se lo pasamos a la tripulación!\nVolvemos pronto para marcar el rumbo :)",
     "contact.error": "Vaya, el envío falló. Inténtalo de nuevo o escríbenos directamente.",
@@ -325,7 +302,6 @@ export const ui = {
     "contact.error429": "Demasiados intentos por ahora. Espera un momento y vuelve a intentarlo.",
     "contact.error500": "El servicio no está disponible temporalmente. Vuelve a intentarlo en unos minutos.",
     "contact.errorNetwork": "No se pudo conectar con el servidor. Comprueba tu conexión y vuelve a intentarlo.",
-    "contact.close": "Cerrar",
   },
 } as const;
 
