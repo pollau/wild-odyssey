@@ -28,7 +28,7 @@ const { chrome, cards, lang, id } = Astro.props;
 const photo = (fiche: string) => THEMATIC_IMAGES[fiche.replace(/^thematic-\d+-/, "")];
 ---
 
-<section id={id} class="relative py-12 lg:py-20 overflow-hidden" style="background-color: #e8f5e5;">
+<section id={id} class="relative py-12 lg:py-20 overflow-hidden scroll-mt-16 lg:scroll-mt-20" style="background-color: #e8f5e5;">
 
   <!-- Décoration bas-droite : grand cercle blanc + photo océan intérieure -->
   <div class="absolute bottom-0 right-0 translate-x-[30%] translate-y-[30%] pointer-events-none select-none z-[1]">
