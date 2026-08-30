@@ -9,7 +9,7 @@ Site vitrine + agenda pour Wild Odyssey. Généré statiquement avec Astro, héb
 | [Astro 5](https://astro.build) | Framework statique (pages, i18n, content collections) |
 | [Tailwind CSS v4](https://tailwindcss.com) | Styles (via plugin Vite, pas de config file) |
 | [Keystatic](https://keystatic.com) | CMS headless — Lionel édite le contenu sans toucher au code |
-| [React](https://react.dev) | Composants interactifs (LanguagePicker) |
+| [React](https://react.dev) | Uniquement l'interface d'admin Keystatic (`KeystaticAdmin.tsx`, montée en `client:only`). Aucun autre composant React sur le site |
 | Azure Static Web Apps | Hébergement + preview environments automatiques sur PR |
 | Azure Functions (Node) | API managée `api/` : envoi des leads du formulaire de contact |
 | SMTP Infomaniak + nodemailer | Transport des emails (pas d'API email tierce) |
@@ -43,10 +43,10 @@ Pour travailler **sur le formulaire de contact**, il faut le site **et** l'API (
 npm run dev:swa    # site + API : http://localhost:4280
 ```
 
-Si tu viens d'ajouter des événements (fichiers JSON dans `src/content/events/`), lance d'abord le scraping :
+Si tu viens d'ajouter des événements (URLs dans `src/content/events.json`), lance d'abord le scraping :
 
 ```bash
-npm run scrape     # fetch JSON-LD depuis les URLs d'événements → met à jour _cache.json
+npm run scrape     # fetch JSON-LD depuis les URLs d'événements → met à jour events-cache.json
 npm run dev
 ```
 
@@ -122,11 +122,16 @@ src/
 │   ├── LanguagePicker.astro  # Sélecteur de langue (fr/en/es)
 │   ├── ContactForm.astro     # Formulaire de contact + script client (POST /api/contact)
 │   ├── OrganizationSchema.astro # JSON-LD Organization (SEO, sur la homepage)
+│   ├── StatCounter.astro     # Chiffre de la section stats, animé au scroll
+│   ├── EnvBadge.astro        # Pastille d'environnement hors production
+│   ├── ComingSoonToast.astro # Toast des liens pas encore branchés
+│   ├── KeystaticAdmin.tsx    # Île React de l'admin CMS (seul composant React)
 │   └── pages/
 │       └── HomePage.astro    # Sections de la homepage (hero, stats, thèmes, ateliers…)
 ├── content/
 │   ├── activities/           # JSON par atelier (titre, description, image, thème…)
-│   ├── events/               # JSON par événement (URL + published) + _cache.json
+│   ├── events.json           # Liste des URLs d'événements (+ published)
+│   ├── events-cache.json     # Cache du scraping, commité
 │   └── homepage/
 │       └── index.json        # Textes homepage éditables via Keystatic
 ├── i18n/
@@ -139,10 +144,10 @@ src/
 │   ├── contact.astro         # Formulaire FR (/contact)
 │   ├── [lang]/contact.astro  # Formulaire EN/ES (/en/contact, /es/contact)
 │   ├── evenements.astro      # Agenda public (/evenements)
-│   ├── activities/           # Catalogue ateliers
 │   └── keystatic/            # Interface CMS (local dev uniquement)
 └── styles/
-    └── global.css            # Variables CSS + reset Tailwind
+    ├── global.css            # Variables CSS + reset Tailwind
+    └── typography.css        # Polices Fraunces / Aileron (@theme)
 api/                          # Azure Functions (API managée SWA)
 ├── src/functions/contact.js  # POST /api/contact → envoi SMTP du lead
 ├── host.json                 # Config runtime Functions
@@ -163,7 +168,10 @@ public/
 
 - Locale par défaut : **fr** (pas de préfixe URL — `/`)
 - Autres locales : **en** (`/en/`), **es** (`/es/`)
-- Seule la homepage est traduite. Les autres pages (événements, ateliers) sont FR uniquement.
+- La homepage et la page contact sont traduites. L'agenda (`/evenements`) est FR uniquement.
+- Une page qui n'existe pas dans les trois langues ne doit **pas** passer `alternates` au `Layout` :
+  sans cette prop, aucun `hreflang` n'est émis et le sélecteur de langue pointe vers la racine de
+  chaque locale au lieu d'une URL qui renverrait un 404.
 - Traductions dans `src/i18n/ui.ts`
 
 ### Content Collections (Astro)
@@ -204,12 +212,12 @@ Lionel colle juste l'URL d'un événement Eventbrite/BilletWeb/Meetup dans Keyst
 ### Workflow Lionel (content manager)
 
 ```
-1. Keystatic Cloud → créer un événement (slug + URL)
-2. Commit sur branche `staging`
+1. Keystatic Cloud → ajouter l'URL de l'événement
+2. Commit sur la branche `qa`
 3. GitHub Actions: npm run build (inclut le scraping)
-4. Azure SWA déploie sur l'env staging (URL fixe pour QA)
+4. Azure SWA déploie sur l'environnement nommé « qa » (URL stable)
 5. Lionel vérifie /evenements → active published: true si OK
-6. PR staging → main → merge → prod
+6. PR qa → main → merge → prod
 ```
 
 ---
@@ -218,11 +226,19 @@ Lionel colle juste l'URL d'un événement Eventbrite/BilletWeb/Meetup dans Keyst
 
 ### Environnements Azure SWA
 
-| Environnement | Branche | URL |
-|---|---|---|
-| Production | `main` | https://www.wildodyssey.org |
-| Staging | `staging` | URL fixe Azure SWA (voir Azure Portal) |
-| PR previews | toute PR → `main` | URL auto générée par Azure SWA |
+| Environnement | Branche | URL | Durée de vie |
+|---|---|---|---|
+| Production | `main` | https://www.wildodyssey.org | permanente |
+| QA (environnement **nommé**) | `qa` | https://ashy-water-05ecdb603-qa.westeurope.1.azurestaticapps.net | **permanente** |
+| Previews de PR | toute PR → `main` ou `qa` | URL numérotée générée par Azure | supprimée à la fermeture de la PR |
+
+L'URL de QA est stable par construction (`deployment_environment: qa` dans le workflow) : c'est ce qui
+permet de la déclarer **une seule fois** dans Keystatic Cloud, là où une preview de PR change d'URL à
+chaque tour. Attention, l'interface Azure range les environnements nommés et les previews de PR dans la
+même section : seul le second type est nettoyé automatiquement.
+
+Tout ce qui n'est pas `main` reçoit la pastille d'environnement et un `robots: noindex, nofollow`
+(via `PUBLIC_ENV`, voir `src/layouts/Layout.astro`).
 
 > Les variables d'environnement (dont les secrets SMTP) se configurent **par environnement** dans le
 > portail Azure : un nouvel environnement de preview démarre sans elles, et le formulaire y renverra
@@ -231,9 +247,14 @@ Lionel colle juste l'URL d'un événement Eventbrite/BilletWeb/Meetup dans Keyst
 ### GitHub Actions
 
 Le workflow `.github/workflows/azure-static-web-apps-*.yml` :
-- Déclenché sur push `main` et `staging`, et sur toutes les PRs
+- Déclenché sur push `main` et `qa`, et sur les PR ciblant `main` ou `qa`
 - Lance `npm run build` (qui inclut `npm run scrape`)
 - Déploie le dossier `dist/` (site) et le dossier `api/` (Functions) sur Azure SWA
+
+Sur un événement `pull_request`, la référence Git est `refs/pull/<n>/merge` et non `refs/heads/qa` :
+une PR vers `qa` reçoit donc bien une preview éphémère et n'écrase pas l'environnement nommé.
+GitHub exécute le workflow issu de la **branche source**, donc une branche antérieure à ce filtre
+ne déclenchera rien tant qu'elle n'a pas absorbé `main`.
 
 ### Keystatic CMS
 
@@ -289,7 +310,6 @@ uniquement à relire le résultat.
 - [x] i18n fr/en/es sur la homepage et la page contact
 - [x] **Formulaire de contact** (`/contact`, fr/en/es) → Azure Function + SMTP Infomaniak
       (honeypot anti-spam, rate limit 5/min/IP, plafonds de longueur, Reply-To sur le prospect)
-- [x] Catalogue ateliers (`/activities`)
 - [x] Page agenda avec scraping automatique JSON-LD (`/evenements`)
 - [x] Header responsive (desktop + mobile burger) avec logo et wordmark
 - [x] **SEO** : titres + meta descriptions par page et par langue, `canonical`, `hreflang`
@@ -298,6 +318,6 @@ uniquement à relire le résultat.
 - [ ] Open Graph / Twitter cards + image de partage (aperçu nu au partage LinkedIn/WhatsApp)
 - [ ] Favicon définitif (encore un emoji pingouin placeholder → Google affiche un globe générique)
 - [ ] Analytics (Umami — variable `PUBLIC_UMAMI_SITE_ID` déjà câblée, site ID à fournir)
-- [ ] Pages `/ongs` et `/workshops` (clés de nav présentes, pages inexistantes)
-- [ ] Nettoyage des pages orphelines (`/about`, `/entreprises`, `/scolaire`…, non liées)
-- [ ] i18n événements/ateliers
+- [x] Nettoyage des pages orphelines de l'ancienne itération (`/about`, `/entreprises`, `/scolaire`…)
+- [ ] Catalogue ateliers (`/activities`) — l'ancienne page a été supprimée, à refaire
+- [ ] i18n de l'agenda
