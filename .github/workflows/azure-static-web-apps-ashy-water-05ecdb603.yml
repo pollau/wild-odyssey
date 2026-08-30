@@ -9,7 +9,9 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
     branches:
+      # une PR vers main ou vers qa recoit sa preview ephemere numerotee
       - main
+      - qa
 
 jobs:
   build_and_deploy_job:
