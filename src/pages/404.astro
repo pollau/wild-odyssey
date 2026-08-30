@@ -2,43 +2,95 @@
 // Page servie par Azure pour toute URL inconnue, via responseOverrides["404"]
 // de public/staticwebapp.config.json. Astro la construit en dist/404.html.
 //
-// Page francaise uniquement, comme /evenements : `alternates` reste a false,
-// on n'annonce pas de version /en ou /es qui n'existe pas.
+// Azure ne sert qu'UN SEUL fichier pour toutes les URL inconnues, quelle que
+// soit la locale : impossible d'avoir un 404 par langue cote configuration.
+// Le HTML est donc rendu en francais (la locale par defaut, sans prefixe
+// d'URL) et un script bascule le texte quand l'adresse demandee commence par
+// /en/ ou /es/. Sans JavaScript, le visiteur voit le francais.
+//
+// `alternates` reste a false : on n'annonce pas de version /en/404 ou
+// /es/404, qui n'existent pas.
 import Layout from "../layouts/Layout.astro";
+import { t } from "../i18n/ui";
+
+const lang = "fr";
+
+// Les deux autres langues partent au client. Le francais est deja dans le HTML.
+const translations = {
+  en: {
+    eyebrow: t("en", "notFound.eyebrow"),
+    title: t("en", "notFound.title"),
+    body: t("en", "notFound.body"),
+    cta: t("en", "notFound.cta"),
+    seoTitle: t("en", "notFound.seoTitle"),
+    seoDescription: t("en", "notFound.seoDescription"),
+  },
+  es: {
+    eyebrow: t("es", "notFound.eyebrow"),
+    title: t("es", "notFound.title"),
+    body: t("es", "notFound.body"),
+    cta: t("es", "notFound.cta"),
+    seoTitle: t("es", "notFound.seoTitle"),
+    seoDescription: t("es", "notFound.seoDescription"),
+  },
+};
 ---
 
 <Layout
-  title="Page introuvable"
-  description="Cette page n'existe pas ou n'existe plus. Retrouvez l'accueil et l'agenda de Wild Odyssey."
+  title={t(lang, "notFound.seoTitle")}
+  description={t(lang, "notFound.seoDescription")}
 >
   <main class="pt-[64px] lg:pt-[80px] min-h-screen bg-white flex items-center">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28 w-full">
       <div class="max-w-xl">
-        <p class="text-[13px] font-semibold tracking-widest uppercase text-[#0698c0] mb-3">
-          Erreur 404
+        <p data-t="eyebrow" class="text-[13px] font-semibold tracking-widest uppercase text-[#0698c0] mb-3">
+          {t(lang, "notFound.eyebrow")}
         </p>
-        <h1 class="text-[28px] lg:text-[38px] font-semibold text-[#1e3676] leading-tight">
-          Cette page n'existe pas
+        <h1 data-t="title" class="text-[28px] lg:text-[38px] font-semibold text-[#1e3676] leading-tight">
+          {t(lang, "notFound.title")}
         </h1>
-        <p class="mt-4 text-[15px] lg:text-[17px] text-gray-500">
-          Le lien est peut-être erroné, ou la page a été déplacée depuis votre dernière visite.
+        <p data-t="body" class="mt-4 text-[15px] lg:text-[17px] text-gray-500">
+          {t(lang, "notFound.body")}
         </p>
 
-        <div class="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+        <div class="mt-8">
           <a
+            data-t="cta"
             href="/"
             class="inline-flex items-center justify-center bg-[#f05600] text-white text-[15px] font-semibold px-8 h-[46px] rounded-[7px] hover:bg-orange-700 transition-colors"
           >
-            Retour à l'accueil
-          </a>
-          <a
-            href="/evenements"
-            class="inline-flex items-center justify-center border border-[#e5edf4] text-[#1e3676] text-[15px] font-semibold px-8 h-[46px] rounded-[7px] hover:bg-[#f7fbfe] transition-colors"
-          >
-            Voir l'agenda
+            {t(lang, "notFound.cta")}
           </a>
         </div>
       </div>
     </div>
   </main>
 </Layout>
+
+<script define:vars={{ translations }}>
+  // Le fichier est le meme pour tout le site : la langue se lit sur l'adresse
+  // reellement demandee, pas sur celle du fichier servi (toujours /404).
+  const segment = window.location.pathname.split("/")[1];
+  const lang = segment === "en" || segment === "es" ? segment : "fr";
+
+  if (lang !== "fr") {
+    const tr = translations[lang];
+    const root = document.documentElement;
+
+    root.lang = lang;
+
+    // Le Layout prefixe le titre par [QA] ou [repo2] hors production : on le
+    // garde, seule la partie traduite change.
+    const prefix = document.title.match(/^\[[^\]]*\]\s/)?.[0] ?? "";
+    document.title = `${prefix}${tr.seoTitle} | Wild Odyssey`;
+    document.querySelector('meta[name="description"]')?.setAttribute("content", tr.seoDescription);
+
+    for (const key of ["eyebrow", "title", "body", "cta"]) {
+      const el = document.querySelector(`[data-t="${key}"]`);
+      if (el) el.textContent = tr[key];
+    }
+
+    // Renvoyer vers l'accueil de SA langue, pas vers l'accueil francais.
+    document.querySelector('[data-t="cta"]')?.setAttribute("href", `/${lang}/`);
+  }
+</script>
