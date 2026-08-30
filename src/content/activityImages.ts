@@ -7,10 +7,10 @@
 //
 // La cle est le nom du fichier de la thematique, sans l'extension.
 export const ACTIVITY_IMAGES: Record<string, { src: string; position: string }> = {
-  "2030-glorieuses": { src: "/assets/images/activities/futur-desirable.jpg", position: "center" },
-  "carbon-footprint": { src: "/assets/images/activities/carbon-globe-blocks.jpg", position: "center" },
-  "climate-skeptic-dinner": { src: "/assets/images/activities/climate-skeptic-dinner.webp", position: "center" },
-  "experience-sur-mesure": { src: "/assets/images/activities/experience-sur-mesure.jpg", position: "center" },
-  "ocean-systemic": { src: "/assets/images/activities/ocean.jpg", position: "bottom" },
-  "risks-dependencies": { src: "/assets/images/activities/biodiversite.jpg", position: "bottom" },
+  "desirable-future": { src: "/assets/images/activities/futur-desirable.jpg", position: "center" },
+  "climate-carbon-footprint": { src: "/assets/images/activities/carbon-globe-blocks.jpg", position: "center" },
+  "climate-skepticism": { src: "/assets/images/activities/climate-skeptic-dinner.webp", position: "center" },
+  "tailor-made-experience": { src: "/assets/images/activities/experience-sur-mesure.jpg", position: "center" },
+  "ocean": { src: "/assets/images/activities/ocean.jpg", position: "bottom" },
+  "biodiversity": { src: "/assets/images/activities/biodiversite.jpg", position: "bottom" },
 };
