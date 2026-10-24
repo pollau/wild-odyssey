@@ -291,10 +291,12 @@ aucun serveur requis.
 Le sélecteur liste **toutes** les branches du repo (pas de `branchPrefix`, qui
 filtrerait la liste et empêcherait de reprendre une branche existante). Corollaire :
 les nouvelles branches ne sont pas préfixées automatiquement, autant leur donner un
-nom parlant. > ⚠️ `main` **n'est pas protégée** (vérifié via l'API GitHub). Rien n'empêche
-> donc techniquement d'enregistrer directement en prod depuis Keystatic. Activer
-> la protection de branche la rendrait impossible et forcerait le passage par une
-> branche, ce que ce document décrivait à tort comme déjà en place.
+nom parlant. `main` est protégée par un **ruleset** GitHub, et non par la protection de branche
+classique : `gh api repos/.../branches/main/protection` répond 404 alors que les
+règles existent, il faut interroger `gh api repos/.../rules/branches/main`. Les
+règles en place : pull request obligatoire, historique linéaire, pas de push
+non-fast-forward, pas de suppression. Keystatic ne peut donc pas écrire
+directement en prod, il impose de créer une branche.
 
 **Prérequis côté comptes** : un compte GitHub avec **accès en écriture au repo**
 suffit (vérifié : pas d'invitation séparée à faire sur Keystatic Cloud). Sans le droit
