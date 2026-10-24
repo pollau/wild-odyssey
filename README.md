@@ -33,26 +33,8 @@ Site vitrine + agenda pour Wild Odyssey. Généré statiquement avec Astro, héb
 ## Quick Start
 
 ```bash
-npm ci
+npm install
 npm run dev        # site seul : http://localhost:4321
-```
-
-`npm ci` plutôt que `npm install` : il lit uniquement `package-lock.json` sans refaire la résolution
-des versions, ce qui est plus rapide et donne exactement les mêmes versions qu'en CI.
-
-**Le build ne demande aucun secret.** Pas de `.env` à créer : `PUBLIC_UMAMI_SITE_ID` est optionnel
-(son absence désactive simplement le tracking) et le scraping d'événements ne touche pas le réseau
-tant que `events-cache.json` couvre les URLs. Un clone frais construit le site tel quel.
-
-### Clone rapide
-
-Les dépendances pèsent bien plus lourd que le dépôt : **442 Mo de `node_modules`** contre 130 Mo
-d'historique Git. Pour un clone jetable ou un runner, `--depth 1` évite les trois quarts du
-téléchargement Git (37 Mo au lieu de 130) — mais prive de `git log` et `git blame`, donc à réserver
-aux clones qu'on ne garde pas.
-
-```bash
-git clone --depth 1 https://github.com/pollau/wild-odyssey.git && cd wild-odyssey && npm ci && npm run build
 ```
 
 Pour travailler **sur le formulaire de contact**, il faut le site **et** l'API (voir section suivante) :
@@ -89,8 +71,8 @@ vers `CONTACT_TO`, avec le `Reply-To` sur l'email du prospect.
 ### Setup local (une fois)
 
 ```bash
-npm ci                      # racine
-npm install --prefix api    # dépendances de la Function (1,6 Mo, inutiles hors formulaire)
+npm install                 # racine
+npm install --prefix api    # dépendances de la Function
 cp api/local.settings.json.example api/local.settings.json
 ```
 
@@ -274,9 +256,55 @@ une PR vers `qa` reçoit donc bien une preview éphémère et n'écrase pas l'en
 GitHub exécute le workflow issu de la **branche source**, donc une branche antérieure à ce filtre
 ne déclenchera rien tant qu'elle n'a pas absorbé `main`.
 
-### Keystatic CMS en prod
+### Keystatic CMS
 
-Keystatic Cloud utilise l'API GitHub pour committer directement — aucun serveur requis. L'intégration `keystatic()` est actuellement **commentée** dans `astro.config.mjs` : elle injecte des routes `prerender: false` incompatibles avec un build 100 % statique. La réactiver en dev uniquement fait partie du travail en cours sur la branche `qa`.
+Le CMS permet à Lionel de modifier le contenu sans toucher au code, depuis
+**https://www.wildodyssey.org/keystatic**.
+
+**Pourquoi c'est monté ainsi.** L'intégration `keystatic()` injecte des routes
+`prerender: false`, incompatibles avec un build statique. Elle n'est donc activée
+**qu'en dev** (`astro.config.mjs`, via `NODE_ENV`). En prod, l'admin est une page
+pré-rendue (`src/pages/keystatic/`) qui charge l'UI React côté navigateur ; le
+rewrite `/keystatic/*` de `staticwebapp.config.json` assure la navigation interne.
+En mode cloud, le navigateur parle directement à Keystatic Cloud et à l'API GitHub :
+aucun serveur requis.
+
+**Stockage** (`keystatic.config.ts`) :
+
+| Contexte | Mode | Effet |
+|---|---|---|
+| `npm run dev` | `local` | écrit directement dans les fichiers du repo |
+| `npm run dev:cms` | `cloud` | teste le vrai parcours de Lionel depuis `127.0.0.1` |
+| Production | `cloud` | commits GitHub via Keystatic Cloud |
+
+**Workflow de Lionel** (une faute de frappe à corriger) :
+
+```
+1. https://www.wildodyssey.org/keystatic → se connecter (Keystatic Cloud)
+2. Choisir une branche dans le sélecteur en haut à gauche, ou « New branch… »
+3. Corriger le texte, Enregistrer (autant de fois que voulu, sur plusieurs sessions)
+4. « Create pull request » quand le lot est prêt
+5. Azure crée automatiquement un environnement de preview (URL dans la PR)
+6. Vérifier sur cette URL, puis merger la PR → prod
+```
+
+Le sélecteur liste **toutes** les branches du repo (pas de `branchPrefix`, qui
+filtrerait la liste et empêcherait de reprendre une branche existante). Corollaire :
+les nouvelles branches ne sont pas préfixées automatiquement, autant leur donner un
+nom parlant. `main` est protégée par un **ruleset** GitHub, et non par la protection de branche
+classique : `gh api repos/.../branches/main/protection` répond 404 alors que les
+règles existent, il faut interroger `gh api repos/.../rules/branches/main`. Les
+règles en place : pull request obligatoire, historique linéaire, pas de push
+non-fast-forward, pas de suppression. Keystatic ne peut donc pas écrire
+directement en prod, il impose de créer une branche.
+
+**Prérequis côté comptes** : un compte GitHub avec **accès en écriture au repo**
+suffit (vérifié : pas d'invitation séparée à faire sur Keystatic Cloud). Sans le droit
+d'écriture, la lecture fonctionne mais l'enregistrement échoue avec un message peu clair.
+Les URLs autorisées à s'authentifier se déclarent dans les réglages du projet Cloud
+(prod + `127.0.0.1` via l'option « Allow local development »). Les URLs de preview
+étant dynamiques, l'édition se fait toujours depuis la prod ; les previews servent
+uniquement à relire le résultat.
 
 ---
 

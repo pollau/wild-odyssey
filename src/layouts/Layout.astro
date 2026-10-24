@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import ComingSoonToast from "../components/ComingSoonToast.astro";
 import EnvBadge from "../components/EnvBadge.astro";
 import { basename } from "node:path";
+import seoUi from "../content/ui/seo.json";
 
 interface Props {
 	title: string;
@@ -15,9 +16,11 @@ interface Props {
 }
 
 const { title, description, alternates = false } = Astro.props;
-const metaDescription =
-	description ??
-	"Wild Odyssey conçoit des expériences de sensibilisation à l'environnement (climat, océan, biodiversité) pour engager vos équipes.";
+// Repli pour une page sans description propre : celle du site, dans la
+// langue de la page. Avant, une phrase francaise ecrite en dur se serait
+// retrouvee telle quelle sur une page anglaise ou espagnole.
+const seoLang = (Astro.currentLocale ?? "fr") as "fr" | "en" | "es";
+const metaDescription = description ?? seoUi[seoLang].siteDescription;
 
 // Environnement : "local" en dev, sinon la valeur injectee au build par le
 // workflow (main => production, toute PR => preview). Sans valeur, on suppose

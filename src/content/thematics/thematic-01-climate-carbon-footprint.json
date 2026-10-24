@@ -1,0 +1,18 @@
+{
+  "title": "Climat & Empreinte Carbone",
+  "fr": {
+    "title": "Climat & Empreinte Carbone",
+    "subtitle": "Décryptez les actions concrètes derrière les chiffres.",
+    "description": "Une simulation interactive pour comprendre l'empreinte carbone, explorer les voies de réduction et identifier les leviers d'action."
+  },
+  "en": {
+    "title": "Climate & Carbon Footprint",
+    "subtitle": "Decrypt the concrete actions behind the numbers.",
+    "description": "An interactive simulation to understand carbon footprint, explore reduction pathways and identify levers for action."
+  },
+  "es": {
+    "title": "Huella de Carbono",
+    "subtitle": "Descifra las acciones concretas detrás de las cifras.",
+    "description": "Una simulación interactiva para entender la huella de carbono, explorar vías de reducción e identificar palancas de acción."
+  }
+}

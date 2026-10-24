@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "dev:swa": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/dev-swa.ps1",
+    "dev:cms": "node scripts/dev-cms.mjs",
     "scrape": "node scripts/scrape-events.mjs",
     "build": "node scripts/scrape-events.mjs && astro build",
     "preview": "astro preview",

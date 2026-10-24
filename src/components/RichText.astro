@@ -1,0 +1,29 @@
+---
+// Rendu EN LIGNE d'un texte du CMS : les couleurs sont appliquees et chaque
+// retour a la ligne devient un saut de ligne. Ne produit aucun conteneur, il
+// se glisse donc dans le <span>, <p> ou <a> existant.
+// Voir src/i18n/richText.ts pour la convention d'ecriture.
+import { parseRichText } from "../i18n/richText";
+
+interface Props {
+	text?: string;
+	// Classes de couleur, pour les rares endroits qui s'ecartent de la charte.
+	primary?: string;
+	secondary?: string;
+}
+
+const { text = "", primary = "text-[#f05600]", secondary = "text-[#47cdf2]" } = Astro.props;
+const lignes = parseRichText(text);
+---
+{lignes.map((segments, i) => (
+	<Fragment>
+		{i > 0 && <br />}
+		{segments.map((s) =>
+			s.accent === "none" ? (
+				s.text
+			) : (
+				<span class={s.accent === "primary" ? primary : secondary}>{s.text}</span>
+			)
+		)}
+	</Fragment>
+))}

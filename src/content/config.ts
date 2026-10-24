@@ -1,42 +1,80 @@
 import { defineCollection, z } from 'astro:content';
 
-const activities = defineCollection({
+// Une thematique : le nom de la fiche est technique (nom de fichier), les
+// textes affiches vivent dans un bloc par langue.
+const cardBlock = z
+    .object({
+        title: z.string().optional(),
+        subtitle: z.string().optional(),
+        description: z.string().optional(),
+    })
+    .optional();
+
+const reasonBlock = z
+    .object({
+        title: z.string().optional(),
+        text: z.string().optional(),
+    })
+    .optional();
+
+const thematics = defineCollection({
     type: 'data',
     schema: z.object({
-        order: z.number().optional(),
         title: z.string(),
-        title_fr: z.string().optional(),
-        title_es: z.string().optional(),
-        subtitle: z.string().optional(),
-        subtitle_fr: z.string().optional(),
-        subtitle_en: z.string().optional(),
-        subtitle_es: z.string().optional(),
-        description: z.string(),
-        description_fr: z.string().optional(),
-        description_es: z.string().optional(),
-        duration: z.string().optional(),
-        participants: z.string().optional(),
-        format: z.array(z.string()).optional(),
-        theme: z.string().optional(),
-        image: z.string().nullable().optional(),
-        imagePosition: z.string().optional(),
+        fr: cardBlock,
+        en: cardBlock,
+        es: cardBlock,
     }),
 });
+
+// Bandeau d'introduction de l'accueil : un bloc par langue, pilote par
+// Keystatic. Tout est optionnel, car Keystatic omet les champs vides du JSON.
+const introBlock = z
+    .object({
+        titleBase: z.string().optional(),
+        title: z.string().optional(),
+        body: z.string().optional(),
+        tagline: z.string().optional(),
+        cta: z.string().optional(),
+    })
+    .optional();
 
 const homepage = defineCollection({
     type: 'data',
     schema: z.object({
-        heroTitle_fr: z.string().optional(),
-        heroTitleBase_fr: z.string().optional(),
-        heroTitle_en: z.string().optional(),
-        heroTitleBase_en: z.string().optional(),
-        heroTitle_es: z.string().optional(),
-        heroTitleBase_es: z.string().optional(),
-        contactEmail: z.string().optional(),
+        fr: introBlock,
+        en: introBlock,
+        es: introBlock,
+    }),
+});
+
+// Les trois facons dont un atelier se deroule : atelier collaboratif,
+// masterclass, marche oceane. Meme forme que les thematiques.
+const sessions = defineCollection({
+    type: 'data',
+    schema: z.object({
+        title: z.string(),
+        fr: cardBlock,
+        en: cardBlock,
+        es: cardBlock,
+    }),
+});
+
+// Les 6 bonnes raisons de monter a bord. L'icone n'existe pas : la carte
+// affiche son rang, pas de pictogramme.
+const reasons = defineCollection({
+    type: 'data',
+    schema: z.object({
+        title: z.string(),
+        fr: reasonBlock,
+        en: reasonBlock,
+        es: reasonBlock,
     }),
 });
 
 export const collections = {
-    activities,
+    thematics,
+    sessions,
+    reasons,
     homepage,
 };

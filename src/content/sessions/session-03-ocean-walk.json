@@ -1,0 +1,15 @@
+{
+  "title": "Marche Océane",
+  "fr": {
+    "title": "La Marche Océane : une immersion marine, les pieds sur terre",
+    "description": "Cette marche guidée de 5,5 km simule l'ascension de la Fosse des Mariannes à la surface. Chaque mètre nous permet de découvrir les couches de l'océan, de rencontrer ses créatures incroyables et de partager les histoires insoupçonnées des profondeurs."
+  },
+  "en": {
+    "title": "The Ocean Walk: A Marine Immersion, Feet on the Ground",
+    "description": "This 5.5 km guided walk simulates the ascent from the Mariana Trench to the surface. Each metre reveals a new layer of the ocean, introduces incredible creatures, and shares the untold stories of the deep."
+  },
+  "es": {
+    "title": "La Marcha del Océano: una inmersión marina, con los pies en la tierra",
+    "description": "Esta caminata guiada de 5,5 km simula el ascenso desde la Fosa de las Marianas hasta la superficie. Cada metro nos permite descubrir las capas del océano, conocer sus criaturas increíbles y compartir las historias insospechadas de las profundidades."
+  }
+}
