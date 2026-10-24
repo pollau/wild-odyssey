@@ -1,6 +1,18 @@
 {
   "title": "Futur Désirable",
-  "fr": {},
-  "en": {},
-  "es": {}
+  "fr": {
+    "title": "Futur Désirable",
+    "subtitle": "Explorez les utopies réalisées.",
+    "description": "Imaginez un futur désirable, puis co-construisez-le de manière réalisable à partir d'idées individuelles et collectives."
+  },
+  "en": {
+    "title": "Desirable Future",
+    "subtitle": "Explore achieved utopias.",
+    "description": "Imagine a desirable future, then co-construct it in a feasible way from individual and group ideas."
+  },
+  "es": {
+    "title": "Futuros Deseables",
+    "subtitle": "Explora las utopías realizadas.",
+    "description": "Imagina un futuro deseable y co-constrúyelo de forma factible a partir de ideas individuales y colectivas."
+  }
 }

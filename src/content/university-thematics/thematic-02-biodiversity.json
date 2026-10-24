@@ -1,6 +1,18 @@
 {
   "title": "Biodiversité",
-  "fr": {},
-  "en": {},
-  "es": {}
+  "fr": {
+    "title": "Biodiversité",
+    "subtitle": "Aventurez-vous dans le monde du vivant.",
+    "description": "Comprendre comment le vivant fonctionne, les pressions qu'il subit et pourquoi l'érosion de la biodiversité est un risque systémique."
+  },
+  "en": {
+    "title": "Biodiversity",
+    "subtitle": "Venture into the world of living things.",
+    "description": "Understand how living things work, the pressures they face, and why biodiversity erosion is a systemic risk."
+  },
+  "es": {
+    "title": "Biodiversidad",
+    "subtitle": "Adéntrate en el mundo de los seres vivos.",
+    "description": "Entiende cómo funcionan los seres vivos, las presiones que enfrentan y por qué la erosión de la biodiversidad es un riesgo sistémico."
+  }
 }
