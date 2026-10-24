@@ -270,7 +270,8 @@ export default config({
             schema: {
                 ...parLangue('Les deux bouts de page, communs a tout le site', () => ({
                     headerCta: champLigne('Bouton du bandeau du haut', "Le bouton orange en haut a droite, sur toutes les pages."),
-                    headerUniversity: champLigne('Lien vers la page ecoles et campus', "Le lien texte a gauche du bouton orange, sur toutes les pages. Il mene a /universites."),
+                    headerHome: champLigne("Lien vers la page d'accueil", "Le premier lien à droite du logo, sur toutes les pages. Il mène à l'accueil, la page destinée aux entreprises."),
+                    headerUniversity: champLigne('Lien vers la page écoles et campus', "Le second lien à droite du logo, sur toutes les pages. Il mène à /universites."),
                     heading: champLigne('Titre'),
                     ctaBody: champLigne('Phrases sous le titre', undefined, true),
                     ctaBtn: champLigne('Texte du bouton'),

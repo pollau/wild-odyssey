@@ -5,32 +5,58 @@ import { t } from "../i18n/ui";
 
 const lang = Astro.currentLocale || "fr";
 const prefix = lang === "fr" ? "" : `/${lang}`;
+
+// Les deux publics du site. L accueil est la page entreprises : son lien
+// pointe donc sur la racine, comme le logo, mais il est nomme, pour qu on
+// voie qu il existe deux versions et comment revenir a l autre.
+const publics = [
+  { href: `${prefix}/`, cle: "nav.home" as const },
+  { href: `${prefix}/universites`, cle: "nav.university" as const },
+];
+
+// Page courante, pour souligner le public ou l on se trouve. On compare les
+// chemins sans leur barre finale, qu Astro ajoute ou non selon la route.
+const ici = Astro.url.pathname.replace(/\/$/, "");
+const estCourant = (href: string) => ici === href.replace(/\/$/, "");
 ---
 
 <header class="fixed w-full z-50 bg-white shadow-[0px_4px_12.5px_rgba(206,206,206,0.25)]" id="main-header">
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex items-center justify-between h-[64px] lg:h-[80px]">
 
-      <!-- Logo -->
-      <a href={`${prefix}/`} class="flex items-center gap-6 shrink-0">
-        <img src="/assets/images/brand/logo-symbol.png" alt="" class="h-[48px] lg:h-[58px] w-auto" />
-        <img src="/assets/images/brand/logo-text.png" alt="Wild Odyssey" class="h-[15px] lg:h-[18px] w-auto mt-[3px] lg:mt-1" />
-      </a>
+      <!-- Logo et liens de public, groupes a gauche -->
+      <div class="flex items-center gap-6 lg:gap-10">
 
-      <!-- Desktop nav -->
-      <nav class="hidden md:flex items-center gap-8 lg:gap-10">
+        <a href={`${prefix}/`} class="flex items-center gap-6 shrink-0">
+          <img src="/assets/images/brand/logo-symbol.png" alt="" class="h-[48px] lg:h-[58px] w-auto" />
+          <img src="/assets/images/brand/logo-text.png" alt="Wild Odyssey" class="h-[15px] lg:h-[18px] w-auto mt-[3px] lg:mt-1" />
+        </a>
+
+        <nav class="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Nos publics">
+          {publics.map((p) => (
+            <a
+              href={p.href}
+              aria-current={estCourant(p.href) ? "page" : undefined}
+              class:list={[
+                "text-[15px] lg:text-[16px] font-semibold whitespace-nowrap transition-colors",
+                estCourant(p.href)
+                  ? "text-[#f05600] border-b-2 border-[#f05600] pb-0.5"
+                  : "text-black hover:text-[#f05600]",
+              ]}
+            >
+              <RichText text={t(lang, p.cle)} />
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <!-- Utilitaires, groupes a droite -->
+      <div class="hidden md:flex items-center gap-8 lg:gap-10">
 
         <!-- Language picker -->
         <div class="border border-[#f05600] rounded-full px-3 py-1.5 bg-[rgba(240,86,0,0.15)] flex items-center gap-2">
           <LanguagePicker />
         </div>
-
-        <a
-          href={`${prefix}/universites`}
-          class="text-[15px] lg:text-[16px] font-semibold text-black hover:text-[#f05600] transition-colors whitespace-nowrap"
-        >
-          <RichText text={t(lang, "nav.university")} />
-        </a>
 
         <!-- CTA -->
         <a
@@ -39,7 +65,7 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
         >
           <RichText text={t(lang, "nav.cta")} />
         </a>
-      </nav>
+      </div>
 
       <!-- Mobile burger -->
       <button id="mobile-menu-btn" class="md:hidden p-2 text-black" aria-label="Menu">
@@ -53,10 +79,16 @@ const prefix = lang === "fr" ? "" : `/${lang}`;
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#d9d9d9] px-6 py-4 space-y-4">
     <LanguagePicker />
-    <a href={`${prefix}/universites`} class="block text-[16px] font-semibold text-black">
-      <RichText text={t(lang, "nav.university")} />
-    </a>
-<a href={`${prefix}/contact`} class="block w-full bg-[#f05600] text-white text-center font-semibold py-3 rounded-[7px]"><RichText text={t(lang, "nav.cta")} /></a>
+    {publics.map((p) => (
+      <a
+        href={p.href}
+        aria-current={estCourant(p.href) ? "page" : undefined}
+        class:list={["block text-[16px] font-semibold", estCourant(p.href) ? "text-[#f05600]" : "text-black"]}
+      >
+        <RichText text={t(lang, p.cle)} />
+      </a>
+    ))}
+    <a href={`${prefix}/contact`} class="block w-full bg-[#f05600] text-white text-center font-semibold py-3 rounded-[7px]"><RichText text={t(lang, "nav.cta")} /></a>
   </div>
 </header>
 

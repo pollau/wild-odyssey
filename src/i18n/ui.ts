@@ -29,6 +29,7 @@ export const ui = {
     "seo.university.title": lang(seoUi, "fr", "universityTitle"),
     "seo.university.description": lang(seoUi, "fr", "universityDescription"),
 
+    "nav.home": lang(footerUi, "fr", "headerHome"),
     "nav.university": lang(footerUi, "fr", "headerUniversity"),
 
     "contact.title": lang(contactUi, "fr", "title"),
@@ -68,6 +69,7 @@ export const ui = {
     "seo.university.title": lang(seoUi, "en", "universityTitle"),
     "seo.university.description": lang(seoUi, "en", "universityDescription"),
 
+    "nav.home": lang(footerUi, "en", "headerHome"),
     "nav.university": lang(footerUi, "en", "headerUniversity"),
 
     "contact.title": lang(contactUi, "en", "title"),
@@ -107,6 +109,7 @@ export const ui = {
     "seo.university.title": lang(seoUi, "es", "universityTitle"),
     "seo.university.description": lang(seoUi, "es", "universityDescription"),
 
+    "nav.home": lang(footerUi, "es", "headerHome"),
     "nav.university": lang(footerUi, "es", "headerUniversity"),
 
     "contact.title": lang(contactUi, "es", "title"),
