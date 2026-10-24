@@ -24,34 +24,35 @@ const estCourant = (href: string) => ici === href.replace(/\/$/, "");
   <div class="max-w-7xl mx-auto px-6 lg:px-8">
     <div class="flex items-center justify-between h-[64px] lg:h-[80px]">
 
-      <!-- Logo et liens de public, groupes a gauche -->
-      <div class="flex items-center gap-6 lg:gap-10">
+      <a href={`${prefix}/`} class="flex items-center gap-6 shrink-0">
+        <img src="/assets/images/brand/logo-symbol.png" alt="" class="h-[48px] lg:h-[58px] w-auto" />
+        <img src="/assets/images/brand/logo-text.png" alt="Wild Odyssey" class="h-[15px] lg:h-[18px] w-auto mt-[3px] lg:mt-1" />
+      </a>
 
-        <a href={`${prefix}/`} class="flex items-center gap-6 shrink-0">
-          <img src="/assets/images/brand/logo-symbol.png" alt="" class="h-[48px] lg:h-[58px] w-auto" />
-          <img src="/assets/images/brand/logo-text.png" alt="Wild Odyssey" class="h-[15px] lg:h-[18px] w-auto mt-[3px] lg:mt-1" />
-        </a>
-
-        <nav class="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Nos publics">
-          {publics.map((p) => (
-            <a
-              href={p.href}
-              aria-current={estCourant(p.href) ? "page" : undefined}
-              class:list={[
-                "text-[15px] lg:text-[16px] font-semibold whitespace-nowrap transition-colors",
-                estCourant(p.href)
-                  ? "text-[#f05600] border-b-2 border-[#f05600] pb-0.5"
-                  : "text-black hover:text-[#f05600]",
-              ]}
-            >
-              <RichText text={t(lang, p.cle)} />
-            </a>
-          ))}
-        </nav>
-      </div>
+      <!-- Liens de public, centres dans l espace laisse entre le logo et les
+           utilitaires. Le soulignement est porte par tous les liens, en
+           transparent sur ceux qui dorment : sans cela le lien actif serait
+           plus haut que l autre, sa bordure poussant son texte vers le haut.
+           Le decalage vertical aligne le texte sur le mot Wild Odyssey. -->
+      <nav class="hidden md:flex flex-1 items-center justify-center gap-6 lg:gap-10 translate-y-[4px]" aria-label="Nos publics">
+        {publics.map((p) => (
+          <a
+            href={p.href}
+            aria-current={estCourant(p.href) ? "page" : undefined}
+            class:list={[
+              "text-[15px] lg:text-[16px] font-semibold whitespace-nowrap transition-colors border-b-2 pb-0.5",
+              estCourant(p.href)
+                ? "text-[#f05600] border-[#f05600]"
+                : "text-black border-transparent hover:text-[#f05600]",
+            ]}
+          >
+            <RichText text={t(lang, p.cle)} />
+          </a>
+        ))}
+      </nav>
 
       <!-- Utilitaires, groupes a droite -->
-      <div class="hidden md:flex items-center gap-8 lg:gap-10">
+      <div class="hidden md:flex items-center gap-8 lg:gap-10 shrink-0">
 
         <!-- Language picker -->
         <div class="border border-[#f05600] rounded-full px-3 py-1.5 bg-[rgba(240,86,0,0.15)] flex items-center gap-2">
