@@ -88,14 +88,18 @@ export default config({
                 'homepage',
                 'thematicsSection', 'thematics',
                 'sessionsSection', 'sessions',
-                'statsSection',
                 'reasonsSection', 'reasons',
             ],
             'Page université': [
                 'university',
                 'universityThematicsSection', 'university-thematics',
                 'universitySessionsSection', 'university-sessions',
+                'universityReasonsSection', 'university-reasons',
             ],
+            // La bande de chiffres est le seul texte que les deux pages se
+            // partagent vraiment : la ranger sous l'une des deux laissait
+            // croire qu'on n'y touchait que celle-la.
+            'Les deux pages': ['statsSection'],
             'Événements': ['events'],
             'Page de contact': ['contactSection'],
             'Tout le site': ['footerSection', 'seoSection', 'helpSection'],
@@ -232,11 +236,11 @@ export default config({
         //  - une description qui dit OU le texte apparait sur le site
         //  - les 3 langues du meme texte regroupees, pour voir les manques
         statsSection: singleton({
-            label: '📝 Chiffres clés (les deux pages)',
+            label: '📝 Chiffres clés',
             path: 'src/content/ui/stats',
             format: { data: 'json' },
             schema: {
-                ...parLangue("La bande de chiffres de la page d'accueil", () => ({
+                ...parLangue("La bande de chiffres, identique sur l'accueil et sur la page université", () => ({
                     heading: champLigne('Titre'),
                     badgeScience: champLigne('Pastille', 'Apparait a deux endroits : en cyan sur la bande des chiffres, en blanc au-dessus des 6 bonnes raisons.'),
                     participants: champLigne('Legende du 1er chiffre', "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici."),
@@ -357,6 +361,17 @@ export default config({
                     badge: champLigne('Pastille'),
                     body: champParagraphes('Texte'),
                     learnMore: champLigne('Texte du bouton des cartes'),
+                })),
+            },
+        }),
+        universityReasonsSection: singleton({
+            label: '📝 Team building',
+            path: 'src/content/ui/university-reasons',
+            format: { data: 'json' },
+            schema: {
+                ...parLangue("L'introduction de la section team building de la page université", () => ({
+                    heading: champLigne('Titre'),
+                    body: champParagraphes('Texte'),
                 })),
             },
         }),
@@ -486,6 +501,25 @@ export default config({
                 ...parLangue('La carte de cet atelier, page université', () => ({
                     title: champLigne('Titre de la carte'),
                     description: champParagraphes('Description'),
+                })),
+            },
+        }),
+        'university-reasons': collection({
+            label: '🗂️ Les 6 raisons',
+            slugField: 'title',
+            path: 'src/content/university-reasons/*',
+            format: { data: 'json' },
+            columns: ['title'],
+            schema: {
+                title: fields.slug({
+                    name: {
+                        label: 'Nom de la fiche',
+                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
+                    },
+                }),
+                ...parLangue('La carte de cette raison, page université', () => ({
+                    title: champLigne('Titre de la carte'),
+                    text: champParagraphes('Texte'),
                 })),
             },
         }),

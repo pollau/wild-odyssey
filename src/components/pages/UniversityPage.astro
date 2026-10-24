@@ -1,10 +1,10 @@
 ---
-// Page destinee au public universitaire. Elle compose quatre des cinq
-// sections de la home : les 6 bonnes raisons en sont absentes, leur contenu
-// etant entierement tourne vers l entreprise.
+// Page destinee au public universitaire. Elle compose les memes cinq
+// sections que la home, dans le meme ordre, mais chacune lit ses propres
+// fiches : le public change, pas la structure.
 //
-// La bande de chiffres est partagee avec la home, singleton compris : memes
-// nombres, memes legendes.
+// Seule la bande de chiffres est partagee avec la home, singleton compris :
+// memes nombres, memes legendes, un seul endroit ou les corriger.
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, getEntry } from "astro:content";
 import { t } from "../../i18n/ui";
@@ -14,8 +14,10 @@ import Hero from "../sections/Hero.astro";
 import Thematics from "../sections/Thematics.astro";
 import Sessions from "../sections/Sessions.astro";
 import Stats from "../sections/Stats.astro";
+import Reasons from "../sections/Reasons.astro";
 import universityThematicsUi from "../../content/ui/university-thematics.json";
 import universitySessionsUi from "../../content/ui/university-sessions.json";
+import universityReasonsUi from "../../content/ui/university-reasons.json";
 import statsUi from "../../content/ui/stats.json";
 
 interface Props {
@@ -29,13 +31,17 @@ const university = (await getEntry("university", "index"))!.data;
 const parRang = (a: { id: string }, b: { id: string }) => a.id.localeCompare(b.id);
 const thematics = (await getCollection("university-thematics")).sort(parRang);
 const sessions = (await getCollection("university-sessions")).sort(parRang);
+const reasons = (await getCollection("university-reasons")).sort(parRang);
+
+const stats = langBlock(statsUi, lang);
 ---
 
 <Layout title={plainText(t(lang, "seo.university.title"))} description={plainText(t(lang, "seo.university.description"))} alternates>
   <main class="pt-[80px]">
-    <Hero intro={langBlock(university, lang)} ctaHref="#thematics" />
-    <Thematics chrome={langBlock(universityThematicsUi, lang)} cards={thematics} lang={lang} id="thematics" />
+    <Hero intro={langBlock(university, lang)} ctaHref="#reasons" />
+    <Thematics chrome={langBlock(universityThematicsUi, lang)} cards={thematics} lang={lang} />
     <Sessions chrome={langBlock(universitySessionsUi, lang)} cards={sessions} lang={lang} />
-    <Stats chrome={langBlock(statsUi, lang)} />
+    <Stats chrome={stats} />
+    <Reasons chrome={langBlock(universityReasonsUi, lang)} badgeScience={stats.badgeScience} cards={reasons} lang={lang} />
   </main>
 </Layout>

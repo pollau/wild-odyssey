@@ -71,6 +71,11 @@ const universitySessions = defineCollection({
     schema: z.object({ title: z.string(), fr: cardBlock, en: cardBlock, es: cardBlock }),
 });
 
+const universityReasons = defineCollection({
+    type: 'data',
+    schema: z.object({ title: z.string(), fr: reasonBlock, en: reasonBlock, es: reasonBlock }),
+});
+
 // Les trois facons dont un atelier se deroule : atelier collaboratif,
 // masterclass, marche oceane. Meme forme que les thematiques.
 const sessions = defineCollection({
@@ -103,4 +108,5 @@ export const collections = {
     university,
     'university-thematics': universityThematics,
     'university-sessions': universitySessions,
+    'university-reasons': universityReasons,
 };
