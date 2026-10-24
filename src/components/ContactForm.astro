@@ -1,5 +1,7 @@
 ---
 import { t } from "../i18n/ui";
+import RichText from "./RichText.astro";
+import { plainText } from "../i18n/richText";
 
 interface Props {
   lang: string;
@@ -34,9 +36,9 @@ const labelClass = "font-aileron text-[13px] font-semibold text-[#3b3b3b] mb-1.5
       <!-- Header -->
       <div class="text-center mb-8">
         <h1 class="font-fraunces text-[28px] sm:text-[34px] font-semibold leading-tight text-black">
-          {t(lang, "contact.title")}
+          <RichText text={t(lang, "contact.title")} />
         </h1>
-        <p class="font-aileron text-[16px] text-[#3b3b3b] mt-3 leading-snug whitespace-pre-line">{t(lang, "contact.subtitle")}</p>
+        <p class="font-aileron text-[16px] text-[#3b3b3b] mt-3 leading-snug"><RichText text={t(lang, "contact.subtitle")} /></p>
       </div>
 
       <!-- Card -->
@@ -52,41 +54,41 @@ const labelClass = "font-aileron text-[13px] font-semibold text-[#3b3b3b] mb-1.5
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class={labelClass} for="cf-lastName">{t(lang, "contact.lastName")}<span class="text-[#f05600]">*</span></label>
+              <label class={labelClass} for="cf-lastName"><RichText text={t(lang, "contact.lastName")} /><span class="text-[#f05600]">*</span></label>
               <input class={inputClass} id="cf-lastName" name="lastName" type="text" autocomplete="family-name" required />
             </div>
             <div>
-              <label class={labelClass} for="cf-firstName">{t(lang, "contact.firstName")}<span class="text-[#f05600]">*</span></label>
+              <label class={labelClass} for="cf-firstName"><RichText text={t(lang, "contact.firstName")} /><span class="text-[#f05600]">*</span></label>
               <input class={inputClass} id="cf-firstName" name="firstName" type="text" autocomplete="given-name" required />
             </div>
           </div>
 
           <div>
-            <label class={labelClass} for="cf-organization">{t(lang, "contact.organization")}<span class="text-[#f05600]">*</span></label>
+            <label class={labelClass} for="cf-organization"><RichText text={t(lang, "contact.organization")} /><span class="text-[#f05600]">*</span></label>
             <input class={inputClass} id="cf-organization" name="organization" type="text" autocomplete="organization" required />
           </div>
 
           <div>
             <label class={labelClass} for="cf-role">
-              {t(lang, "contact.role")}<span class="font-normal text-[#9a9a9a] text-[12px]">({t(lang, "contact.optional")})</span>
+              <RichText text={t(lang, "contact.role")} /><span class="font-normal text-[#9a9a9a] text-[12px]">(<RichText text={t(lang, "contact.optional")} />)</span>
             </label>
             <input class={inputClass} id="cf-role" name="role" type="text" autocomplete="organization-title" />
           </div>
 
           <div>
-            <label class={labelClass} for="cf-email">{t(lang, "contact.email")}<span class="text-[#f05600]">*</span></label>
+            <label class={labelClass} for="cf-email"><RichText text={t(lang, "contact.email")} /><span class="text-[#f05600]">*</span></label>
             <input class={inputClass} id="cf-email" name="email" type="email" autocomplete="email" required />
           </div>
 
           <div>
             <label class={labelClass} for="cf-phone">
-              {t(lang, "contact.phone")}<span class="font-normal text-[#9a9a9a] text-[12px]">({t(lang, "contact.optional")})</span>
+              <RichText text={t(lang, "contact.phone")} /><span class="font-normal text-[#9a9a9a] text-[12px]">(<RichText text={t(lang, "contact.optional")} />)</span>
             </label>
             <div class="flex gap-2">
               <select
                 id="cf-phonePrefix"
                 name="phonePrefix"
-                aria-label={t(lang, "contact.phonePrefix")}
+                aria-label={plainText(t(lang, "contact.phonePrefix"))}
                 class={inputBase + " w-[110px] shrink-0 pr-2"}
               >
                 {phonePrefixes.map((p) => <option value={p.code}>{p.flag} {p.code}</option>)}
@@ -96,26 +98,26 @@ const labelClass = "font-aileron text-[13px] font-semibold text-[#3b3b3b] mb-1.5
           </div>
 
           <div>
-            <label class={labelClass} for="cf-message">{t(lang, "contact.message")}<span class="text-[#f05600]">*</span></label>
+            <label class={labelClass} for="cf-message"><RichText text={t(lang, "contact.message")} /><span class="text-[#f05600]">*</span></label>
             <textarea class={inputClass + " h-[120px] py-3 leading-snug resize-y"} id="cf-message" name="message" required></textarea>
           </div>
 
           <label class="flex items-start gap-2.5 cursor-pointer">
             <input type="checkbox" name="consent" required class="mt-0.5 w-4 h-4 accent-[#f05600] shrink-0" />
-            <span class="font-aileron text-[13px] text-[#3b3b3b] leading-snug">{t(lang, "contact.consent")}<span class="text-[#f05600]"> *</span></span>
+            <span class="font-aileron text-[13px] text-[#3b3b3b] leading-snug"><RichText text={t(lang, "contact.consent")} /><span class="text-[#f05600]"> *</span></span>
           </label>
 
           <p
             id="contact-error"
             class="hidden font-aileron text-[14px] text-[#c0392b] bg-[#fdecea] border border-[#f5c6c0] rounded-[7px] px-3.5 py-2.5"
             role="alert"
-            data-msg-generic={t(lang, "contact.error")}
-            data-msg-400={t(lang, "contact.error400")}
-            data-msg-429={t(lang, "contact.error429")}
-            data-msg-500={t(lang, "contact.error500")}
-            data-msg-network={t(lang, "contact.errorNetwork")}
+            data-msg-generic={plainText(t(lang, "contact.error"))}
+            data-msg-400={plainText(t(lang, "contact.error400"))}
+            data-msg-429={plainText(t(lang, "contact.error429"))}
+            data-msg-500={plainText(t(lang, "contact.error500"))}
+            data-msg-network={plainText(t(lang, "contact.errorNetwork"))}
           >
-            {t(lang, "contact.error")}
+            <RichText text={t(lang, "contact.error")} />
           </p>
 
           <button
@@ -123,7 +125,7 @@ const labelClass = "font-aileron text-[13px] font-semibold text-[#3b3b3b] mb-1.5
             id="contact-submit"
             class="font-aileron bg-[#f05600] text-white text-[17px] font-semibold h-[54px] flex items-center justify-center gap-2 rounded-[7px] hover:bg-orange-700 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            <span data-submit-label>{t(lang, "contact.submit")}</span>
+            <span data-submit-label><RichText text={t(lang, "contact.submit")} /></span>
             <span data-submit-spinner class="hidden w-5 h-5 border-2 border-white/40 border-t-white rounded-full animate-spin"></span>
           </button>
         </form>
@@ -136,8 +138,8 @@ const labelClass = "font-aileron text-[13px] font-semibold text-[#3b3b3b] mb-1.5
             class="w-full rounded-[12px] object-cover"
             loading="lazy"
           />
-          <h3 class="font-fraunces text-[22px] font-semibold text-black">{t(lang, "contact.successTitle")}</h3>
-          <p class="font-aileron text-[15px] text-[#3b3b3b] leading-snug whitespace-pre-line">{t(lang, "contact.successBody")}</p>
+          <h3 class="font-fraunces text-[22px] font-semibold text-black"><RichText text={t(lang, "contact.successTitle")} /></h3>
+          <p class="font-aileron text-[15px] text-[#3b3b3b] leading-snug"><RichText text={t(lang, "contact.successBody")} /></p>
         </div>
       </div>
     </div>

@@ -9,6 +9,7 @@ import Layout from "../../layouts/Layout.astro";
 import { getCollection, getEntry } from "astro:content";
 import { t } from "../../i18n/ui";
 import { langBlock } from "../../i18n/langBlock";
+import { plainText } from "../../i18n/richText";
 import Hero from "../sections/Hero.astro";
 import Thematics from "../sections/Thematics.astro";
 import Sessions from "../sections/Sessions.astro";
@@ -30,7 +31,7 @@ const thematics = (await getCollection("university-thematics")).sort(parRang);
 const sessions = (await getCollection("university-sessions")).sort(parRang);
 ---
 
-<Layout title={t(lang, "seo.university.title")} description={t(lang, "seo.university.description")} alternates>
+<Layout title={plainText(t(lang, "seo.university.title"))} description={plainText(t(lang, "seo.university.description"))} alternates>
   <main class="pt-[80px]">
     <Hero intro={langBlock(university, lang)} ctaHref="#thematics" />
     <Thematics chrome={langBlock(universityThematicsUi, lang)} cards={thematics} lang={lang} id="thematics" />

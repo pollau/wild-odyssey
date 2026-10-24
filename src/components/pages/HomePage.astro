@@ -7,6 +7,7 @@ import OrganizationSchema from "../OrganizationSchema.astro";
 import { getCollection, getEntry } from "astro:content";
 import { t } from "../../i18n/ui";
 import { langBlock } from "../../i18n/langBlock";
+import { plainText } from "../../i18n/richText";
 import Hero from "../sections/Hero.astro";
 import Thematics from "../sections/Thematics.astro";
 import Sessions from "../sections/Sessions.astro";
@@ -34,7 +35,7 @@ const reasons = (await getCollection("reasons")).sort(parRang);
 const stats = langBlock(statsUi, lang);
 ---
 
-<Layout title={t(lang, "seo.home.title")} description={t(lang, "seo.home.description")} alternates>
+<Layout title={plainText(t(lang, "seo.home.title"))} description={plainText(t(lang, "seo.home.description"))} alternates>
   <OrganizationSchema />
   <main class="pt-[80px]">
 

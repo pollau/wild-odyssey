@@ -1,8 +1,11 @@
 ---
 import footerUi from "../content/ui/footer.json";
+import seoUi from "../content/ui/seo.json";
 
 // Organization structured data (schema.org) — placed on the homepage per Google's guidance.
 const email = footerUi.contactEmail;
+// La fiche part sur les trois accueils : elle doit parler la langue de la page.
+const schemaLang = (Astro.currentLocale ?? "fr") as "fr" | "en" | "es";
 const site = Astro.site ?? new URL("https://www.wildodyssey.org");
 
 const schema = {
@@ -11,8 +14,7 @@ const schema = {
   name: "Wild Odyssey",
   url: site.href,
   logo: new URL("/assets/images/brand/logo-full.png", site).href,
-  description:
-    "Wild Odyssey designs science-based awareness workshops (climate, ocean, biodiversity, carbon footprint) that engage teams and turn awareness into action.",
+  description: seoUi[schemaLang].organization,
   email,
   contactPoint: {
     "@type": "ContactPoint",

@@ -1,4 +1,4 @@
-import { config, fields, collection, singleton, type ComponentSchema } from '@keystatic/core';
+import { config, fields, collection, singleton } from '@keystatic/core';
 
 // Stockage :
 //  - prod  : cloud (Keystatic Cloud gere l'auth, les modifs partent en commits
@@ -40,15 +40,36 @@ const champParagraphes = (label: string, precision?: string) =>
         multiline: true,
     });
 
-/** Rend les trois blocs de langue d une meme forme de champs.
- *
- *  La forme est une fonction et non un objet : chaque langue doit recevoir
- *  ses propres instances de champs Keystatic, pas trois references vers les
- *  memes. `quoi` decrit le bloc, la phrase finale est completee ici. */
-const perLang = <S extends Record<string, ComponentSchema>>(shape: () => S, quoi: string) => ({
-    fr: fields.object(shape(), { label: 'Français', description: `${quoi}, version française.` }),
-    en: fields.object(shape(), { label: 'Anglais', description: `${quoi}, version anglaise.` }),
-    es: fields.object(shape(), { label: 'Espagnol', description: `${quoi}, version espagnole.` }),
+// Le referencement est le seul texte du site qui ne s'affiche pas sur le site :
+// il part dans les balises <title> et <meta description>, que Google reprend
+// dans ses resultats. Les marqueurs de couleur n'y ont donc aucun sens, et la
+// longueur est contrainte par Google. Keystatic refuse la saisie au-dela.
+const AIDE_SEO = "Ce texte s'affiche dans les resultats de recherche Google, pas sur la page. Les marqueurs de couleur n'y fonctionnent pas.";
+const champTitreSeo = (label: string, precision: string) =>
+    fields.text({
+        label,
+        description: precision + ' ' + AIDE_SEO + ' Google coupe au-dela de 60 caracteres.',
+        validation: { length: { max: 60 } },
+    });
+const champDescriptionSeo = (label: string, precision: string) =>
+    fields.text({
+        label,
+        description: precision + ' ' + AIDE_SEO + ' Google coupe au-dela de 160 caracteres.',
+        validation: { length: { max: 160 } },
+        multiline: true,
+    });
+
+/** Les trois blocs de langue d'une entree. Les champs ne sont ecrits qu'une
+ *  fois : la fabrique les instancie pour chaque langue et decline la meme
+ *  phrase de presentation. Sans elle, chaque champ etait recopie trois fois,
+ *  et une correction devait etre repercutee sur les trois copies. */
+const parLangue = <T extends Parameters<typeof fields.object>[0]>(
+    sujet: string,
+    champs: () => T,
+) => ({
+    fr: fields.object(champs(), { label: 'Français', description: sujet + ', version française.' }),
+    en: fields.object(champs(), { label: 'Anglais', description: sujet + ', version anglaise.' }),
+    es: fields.object(champs(), { label: 'Espagnol', description: sujet + ', version espagnole.' }),
 });
 
 export default config({
@@ -76,7 +97,8 @@ export default config({
                 'universitySessionsSection', 'university-sessions',
             ],
             'Événements': ['events'],
-            'Tout le site': ['footerSection', 'helpSection'],
+            'Page de contact': ['contactSection'],
+            'Tout le site': ['footerSection', 'seoSection', 'helpSection'],
         },
     },
     storage: useCloud
@@ -96,6 +118,61 @@ export default config({
         // champ ne servent qu'a porter un titre et un texte : ils n'affichent
         // aucune saisie. Ils ecrivent une cle vide dans help.json, d'ou le
         // fichier dedie plutot qu'une note dans chaque entree.
+        // Une seule entree pour tout le referencement, plutot qu'un champ perdu
+        // dans chaque page : ces textes se relisent ensemble, pour verifier
+        // qu'ils ne se repetent pas d'une page a l'autre.
+        // Page de contact. Les cinq messages d'erreur decrivent des etats
+        // techniques : ils sont editables pour pouvoir en adoucir le ton, pas
+        // pour changer ce qu'ils signalent.
+        contactSection: singleton({
+            label: '📝 Page de contact',
+            path: 'src/content/ui/contact',
+            format: { data: 'json' },
+            schema: {
+                ...parLangue('La page de contact', () => ({
+                    title: champLigne('Titre de la page'),
+                    subtitle: champLigne("Texte d'introduction", undefined, true),
+                    lastName: champLigne('Libelle du champ Nom'),
+                    firstName: champLigne('Libelle du champ Prenom'),
+                    organization: champLigne('Libelle du champ Organisation'),
+                    role: champLigne('Libelle du champ Role'),
+                    email: champLigne('Libelle du champ Email'),
+                    phone: champLigne('Libelle du champ Telephone'),
+                    message: champLigne('Libelle du champ Message'),
+                    consent: champLigne('Case a cocher de consentement'),
+                    optional: champLigne('Mention des champs facultatifs', 'Affichee entre parentheses a cote du libelle.'),
+                    submit: champLigne("Texte du bouton d'envoi"),
+                    successTitle: champLigne('Confirmation, titre', "Remplace le formulaire une fois le message parti."),
+                    successBody: champLigne('Confirmation, texte', "Remplace le formulaire une fois le message parti.", true),
+                    error: champLigne('Erreur generale', "S'affiche sous le formulaire quand l'envoi echoue."),
+                    error400: champLigne('Erreur, informations invalides'),
+                    error429: champLigne('Erreur, trop de tentatives'),
+                    error500: champLigne('Erreur, service indisponible'),
+                    errorNetwork: champLigne('Erreur, serveur injoignable'),
+                })),
+            },
+        }),
+        seoSection: singleton({
+            label: '🔎 Referencement Google',
+            path: 'src/content/ui/seo',
+            format: { data: 'json' },
+            schema: {
+                ...parLangue('Le referencement des pages', () => ({
+                    homeTitle: champTitreSeo('Accueil, titre', "Pour la page d'accueil."),
+                    homeDescription: champDescriptionSeo('Accueil, description', "Pour la page d'accueil."),
+                    contactTitle: champTitreSeo('Contact, titre', 'Pour la page de contact.'),
+                    contactDescription: champDescriptionSeo('Contact, description', 'Pour la page de contact.'),
+                    universityTitle: champTitreSeo('Université, titre', 'Pour la page université.'),
+                    universityDescription: champDescriptionSeo('Université, description', 'Pour la page université.'),
+                    siteDescription: champDescriptionSeo('Description generale du site', "Sert de repli pour une page qui n'a pas sa propre description."),
+                    organization: fields.text({
+                    label: "Description de l'organisation",
+                    description: "Fiche d'identite envoyee aux moteurs de recherche, au format schema.org. Elle ne s'affiche nulle part et n'a pas de limite de longueur.",
+                    multiline: true,
+                    }),
+                })),
+            },
+        }),
         helpSection: singleton({
             label: '❓ Comment ecrire les textes',
             path: 'src/content/ui/help',
@@ -158,13 +235,15 @@ export default config({
             label: '📝 Chiffres clés (les deux pages)',
             path: 'src/content/ui/stats',
             format: { data: 'json' },
-            schema: perLang(() => ({
-                heading: champLigne('Titre'),
-                badgeScience: fields.text({ label: 'Pastille', description: "Apparait a deux endroits : en cyan sur la bande des chiffres, en blanc au-dessus des 6 bonnes raisons. Deux asterisques mettent un passage en orange, deux tirets bas en cyan." }),
-                participants: fields.text({ label: 'Legende du 1er chiffre', description: "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici. Deux asterisques mettent un passage en orange, deux tirets bas en cyan." }),
-                organizations: fields.text({ label: 'Legende du 2e chiffre', description: 'Sous le compteur +2 000. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.' }),
-                years: fields.text({ label: 'Legende du 3e chiffre', description: 'Sous le compteur +5. Deux asterisques mettent un passage en orange, deux tirets bas en cyan.' }),
-            }), "La bande de chiffres, partagee par les deux pages"),
+            schema: {
+                ...parLangue("La bande de chiffres de la page d'accueil", () => ({
+                    heading: champLigne('Titre'),
+                    badgeScience: champLigne('Pastille', 'Apparait a deux endroits : en cyan sur la bande des chiffres, en blanc au-dessus des 6 bonnes raisons.'),
+                    participants: champLigne('Legende du 1er chiffre', "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici."),
+                    organizations: champLigne('Legende du 2e chiffre', 'Sous le compteur +2 000.'),
+                    years: champLigne('Legende du 3e chiffre', 'Sous le compteur +5.'),
+                })),
+            },
         }),
         // Section "Nos thematiques" de l'accueil : le texte simple seulement.
         // Les deux moities du titre colore restent dans ui.ts pour l'instant.
@@ -172,27 +251,31 @@ export default config({
             label: '📝 Thématiques',
             path: 'src/content/ui/thematics',
             format: { data: 'json' },
-            schema: perLang(() => ({
-                heading: champLigne('Titre'),
-                badge: champLigne('Pastille'),
-                body: champParagraphes('Texte'),
-                learnMore: champLigne('Texte du bouton des cartes'),
-            }), 'Le texte au-dessus des cartes de thematiques'),
+            schema: {
+                ...parLangue("Le texte au-dessus des cartes de thematiques", () => ({
+                    heading: champLigne('Titre'),
+                    badge: champLigne('Pastille'),
+                    body: champParagraphes('Texte'),
+                    learnMore: champLigne('Texte du bouton des cartes'),
+                })),
+            },
         }),
         // Bas de page, present sur toutes les pages du site. Le titre colore
         // "Et vous ?" reste dans le code : il est coupe en deux morceaux pour
         // le style, le rendre editable demanderait de revoir la mise en forme.
         footerSection: singleton({
-            label: '📝 Pied de page',
+            label: '📝 Header and footer',
             path: 'src/content/ui/footer',
             format: { data: 'json' },
             schema: {
-                ...perLang(() => ({
+                ...parLangue('Les deux bouts de page, communs a tout le site', () => ({
+                    headerCta: champLigne('Bouton du bandeau du haut', "Le bouton orange en haut a droite, sur toutes les pages."),
+                    headerUniversity: champLigne('Lien Universites du bandeau du haut', "Le lien texte a gauche du bouton orange, sur toutes les pages."),
                     heading: champLigne('Titre'),
                     ctaBody: champLigne('Phrases sous le titre', undefined, true),
                     ctaBtn: champLigne('Texte du bouton'),
                     copyright: champLigne('Mention de bas de page'),
-                }), 'Le bloc en bas de toutes les pages'),
+                })),
                 contactEmail: fields.text({
                     label: 'Adresse de contact',
                     description: "Affichee en bas de chaque page et sur la page A propos. Elle alimente aussi les donnees SEO du site.",
@@ -205,27 +288,31 @@ export default config({
             label: '📝 Ateliers et masterclasses',
             path: 'src/content/ui/sessions',
             format: { data: 'json' },
-            schema: perLang(() => ({
-                heading: champLigne('Titre', undefined, true),
-                feat1: champLigne('Indication 1 (icone horloge)'),
-                feat2: champLigne('Indication 2 (icone feuille)'),
-                feat3: champLigne('Indication 3 (icone curseur)'),
-                feat4: champLigne('Indication 4 (icone internet)'),
-                feat5: champLigne('Indication 5 (icone personne)'),
-                feat6: champLigne('Indication 6 (icone immeuble)'),
-                seeAll: champLigne('Texte du bouton'),
-            }), 'Le bandeau bleu des ateliers'),
+            schema: {
+                ...parLangue('Le bandeau bleu des ateliers', () => ({
+                    heading: champLigne('Titre', undefined, true),
+                    feat1: champLigne('Indication 1 (icone horloge)'),
+                    feat2: champLigne('Indication 2 (icone feuille)'),
+                    feat3: champLigne('Indication 3 (icone curseur)'),
+                    feat4: champLigne('Indication 4 (icone internet)'),
+                    feat5: champLigne('Indication 5 (icone personne)'),
+                    feat6: champLigne('Indication 6 (icone immeuble)'),
+                    seeAll: champLigne('Texte du bouton'),
+                })),
+            },
         }),
         // Section "6 bonnes raisons". Seuls les titres sont ici pour l'instant,
         // les textes des cartes vivent encore dans src/i18n/ui.ts.
         reasonsSection: singleton({
-            label: '📝 6 bonnes raisons',
+            label: '📝 Team building',
             path: 'src/content/ui/reasons',
             format: { data: 'json' },
-            schema: perLang(() => ({
-                heading: champLigne('Titre'),
-                body: champParagraphes('Texte'),
-            }), "L'introduction des 6 raisons"),
+            schema: {
+                ...parLangue("L'introduction de la section team building", () => ({
+                    heading: champLigne('Titre'),
+                    body: champParagraphes('Texte'),
+                })),
+            },
         }),
         homepage: singleton({
             label: '📝 Introduction',
@@ -233,51 +320,61 @@ export default config({
             format: { data: 'json' },
             // Un bloc par langue plutot qu'un bloc par texte : on redige une
             // page entiere d'une traite, comme on la lit sur le site.
-            schema: perLang(() => ({
-                titleBase: champLigne('Accroche au-dessus du titre', 'Par defaut en noir.'),
-                title: champLigne('Titre principal', 'Par defaut en orange.'),
-                body: champParagraphes('Texte'),
-                tagline: champLigne('Phrase sous les paragraphes', 'Par defaut en orange.'),
-                cta: champLigne('Texte du bouton'),
-            }), "Le bandeau en haut de la page d'accueil"),
+            schema: {
+                ...parLangue("Le bandeau en haut de la page d'accueil", () => ({
+                    titleBase: champLigne('Accroche au-dessus du titre', 'Par defaut en noir.'),
+                    title: champLigne('Titre principal', 'Par defaut en orange.'),
+                    body: champParagraphes('Texte'),
+                    tagline: champLigne('Phrase sous les paragraphes', 'Par defaut en orange.'),
+                    cta: champLigne('Texte du bouton'),
+                })),
+            },
         }),
+        // Page universite. Meme forme que ses equivalents de l'accueil : seuls
+        // les textes different, la structure est partagee par les composants.
         university: singleton({
-            label: '🎓 Introduction',
+            label: '📝 Introduction',
             path: 'src/content/university/index',
             format: { data: 'json' },
-            schema: perLang(() => ({
-                titleBase: champLigne('Accroche', 'Au-dessus du titre, en noir.'),
-                title: champLigne('Titre', 'En orange.'),
-                body: champParagraphes('Texte'),
-                tagline: champLigne('Phrase de fin', 'En orange, sous le texte.'),
-                cta: champLigne('Texte du bouton'),
-            }), "Le bandeau d'introduction de la page universite"),
+            schema: {
+                ...parLangue('Le bandeau en haut de la page universite', () => ({
+                    titleBase: champLigne('Accroche au-dessus du titre', 'Par defaut en noir.'),
+                    title: champLigne('Titre principal', 'Par defaut en orange.'),
+                    body: champParagraphes('Texte'),
+                    tagline: champLigne('Phrase sous les paragraphes', 'Par defaut en orange.'),
+                    cta: champLigne('Texte du bouton'),
+                })),
+            },
         }),
         universityThematicsSection: singleton({
-            label: '🎓 Thématiques',
+            label: '📝 Thématiques',
             path: 'src/content/ui/university-thematics',
             format: { data: 'json' },
-            schema: perLang(() => ({
-                heading: champLigne('Titre'),
-                badge: champLigne('Pastille'),
-                body: champParagraphes('Texte'),
-                learnMore: champLigne('Texte du bouton des cartes'),
-            }), 'Le texte au-dessus des cartes de thematiques de la page universite'),
+            schema: {
+                ...parLangue('Le texte au-dessus des cartes de thematiques de la page universite', () => ({
+                    heading: champLigne('Titre'),
+                    badge: champLigne('Pastille'),
+                    body: champParagraphes('Texte'),
+                    learnMore: champLigne('Texte du bouton des cartes'),
+                })),
+            },
         }),
         universitySessionsSection: singleton({
-            label: '🎓 Ateliers et masterclasses',
+            label: '📝 Ateliers et masterclasses',
             path: 'src/content/ui/university-sessions',
             format: { data: 'json' },
-            schema: perLang(() => ({
-                heading: champLigne('Titre'),
-                feat1: champLigne('Pictogramme 1', 'Le petit texte sous la premiere icone.'),
-                feat2: champLigne('Pictogramme 2'),
-                feat3: champLigne('Pictogramme 3'),
-                feat4: champLigne('Pictogramme 4'),
-                feat5: champLigne('Pictogramme 5'),
-                feat6: champLigne('Pictogramme 6'),
-                seeAll: champLigne('Texte du bouton du bas'),
-            }), 'Le texte de la section des sessions de la page universite'),
+            schema: {
+                ...parLangue('Le texte de la section des ateliers de la page universite', () => ({
+                    heading: champLigne('Titre', undefined, true),
+                    feat1: champLigne('Indication 1 (icone horloge)'),
+                    feat2: champLigne('Indication 2 (icone feuille)'),
+                    feat3: champLigne('Indication 3 (icone curseur)'),
+                    feat4: champLigne('Indication 4 (icone ecran)'),
+                    feat5: champLigne('Indication 5 (icone personne)'),
+                    feat6: champLigne('Indication 6 (icone organisation)'),
+                    seeAll: champLigne('Texte du bouton sous les cartes'),
+                })),
+            },
         }),
     },
     collections: {
@@ -296,10 +393,10 @@ export default config({
                         description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
                     },
                 }),
-                ...perLang(() => ({
+                ...parLangue('La carte de cette session', () => ({
                     title: champLigne('Titre de la carte'),
                     description: champParagraphes('Description'),
-                }), 'La carte de cette session'),
+                })),
             },
         }),
         // Les 6 bonnes raisons de monter a bord. La carte affiche son rang,
@@ -317,10 +414,10 @@ export default config({
                         description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
                     },
                 }),
-                ...perLang(() => ({
+                ...parLangue('La carte de cette raison', () => ({
                     title: champLigne('Titre de la carte'),
                     text: champParagraphes('Texte'),
-                }), 'La carte de cette raison'),
+                })),
             },
         }),
         thematics: collection({
@@ -342,15 +439,18 @@ export default config({
                         description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
                     },
                 }),
-                ...perLang(() => ({
+                ...parLangue('La carte de cette thématique', () => ({
                     title: champLigne('Titre de la carte'),
                     subtitle: champLigne('Sous-titre'),
                     description: champParagraphes('Description'),
-                }), 'La carte de cette thématique'),
+                })),
             },
         }),
+        // Cartes propres a la page universite. Collections distinctes de
+        // celles de l'accueil : le menu se construit a partir de navigation,
+        // et une collection ne peut figurer que dans un seul groupe.
         'university-thematics': collection({
-            label: '🎓 Cartes de thématiques',
+            label: '🗂️ Les thématiques',
             slugField: 'title',
             path: 'src/content/university-thematics/*',
             format: { data: 'json' },
@@ -359,18 +459,18 @@ export default config({
                 title: fields.slug({
                     name: {
                         label: 'Nom de la fiche',
-                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
+                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site. Commencez par thematic-07- : le numero fixe l'ordre d'affichage et la suite du nom choisit la photo. Passez par Paul pour ajouter une photo.",
                     },
                 }),
-                ...perLang(() => ({
+                ...parLangue('La carte de cette thématique, page université', () => ({
                     title: champLigne('Titre de la carte'),
                     subtitle: champLigne('Sous-titre'),
                     description: champParagraphes('Description'),
-                }), 'La carte de cette thematique, page universite'),
+                })),
             },
         }),
         'university-sessions': collection({
-            label: '🎓 Cartes de sessions',
+            label: '🗂️ Les ateliers',
             slugField: 'title',
             path: 'src/content/university-sessions/*',
             format: { data: 'json' },
@@ -379,13 +479,13 @@ export default config({
                 title: fields.slug({
                     name: {
                         label: 'Nom de la fiche',
-                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
+                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site. Commencez par session-04- : le numero fixe l'ordre d'affichage et la suite du nom choisit la photo. Passez par Paul pour ajouter une photo.",
                     },
                 }),
-                ...perLang(() => ({
+                ...parLangue('La carte de cet atelier, page université', () => ({
                     title: champLigne('Titre de la carte'),
                     description: champParagraphes('Description'),
-                }), 'La carte de cette session, page universite'),
+                })),
             },
         }),
     },
