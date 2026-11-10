@@ -6,7 +6,9 @@
     "ctaBtn": "Prêt pour l'Odyssée",
     "copyright": "© 2025 - 2026 Wild Odyssey. Tous droits réservés.",
     "headerHome": "Accueil",
-    "headerUniversity": "Écoles & Campus"
+    "headerEducation": "Éducation",
+    "headerSchools": "Écoles",
+    "headerHigherEd": "Enseignement supérieur"
   },
   "en": {
     "headerCta": "Contact me",
@@ -15,7 +17,9 @@
     "ctaBtn": "Ready for the Odyssey",
     "copyright": "© 2025 - 2026 Wild Odyssey. All rights reserved.",
     "headerHome": "Home",
-    "headerUniversity": "Schools"
+    "headerEducation": "Éducation",
+    "headerSchools": "Écoles",
+    "headerHigherEd": "Enseignement supérieur"
   },
   "es": {
     "headerCta": "Contacto",
@@ -24,7 +28,9 @@
     "ctaBtn": "Listos para la Odisea",
     "copyright": "© 2025 - 2026 Wild Odyssey. Todos los derechos reservados.",
     "headerHome": "Inicio",
-    "headerUniversity": "Escuelas y Campus"
+    "headerEducation": "Éducation",
+    "headerSchools": "Écoles",
+    "headerHigherEd": "Enseignement supérieur"
   },
   "contactEmail": "lionel.raybaud@wildodyssey.org"
 }

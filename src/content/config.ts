@@ -48,8 +48,11 @@ const homepage = defineCollection({
     }),
 });
 
-// Hero de la page universite. Meme forme que celui de la home.
-const university = defineCollection({
+// Pages par public de l'onglet Education : enseignement superieur
+// (/universites) et ecoles (/ecoles). Chacune a son hero et ses propres
+// cartes, sous la meme forme que la home. Les definitions sont des fabriques
+// instanciees une fois par page, plutot que recopiees.
+const audienceIntro = () => defineCollection({
     type: 'data',
     schema: z.object({
         fr: introBlock,
@@ -58,20 +61,20 @@ const university = defineCollection({
     }),
 });
 
-// Cartes propres a la page universite. Collections distinctes de celles de
-// la home : le menu du CMS se construit a partir de ui.navigation, et une
-// collection ne peut figurer que dans un seul groupe.
-const universityThematics = defineCollection({
+// Collections distinctes de celles de la home et entre pages : le menu du CMS
+// se construit a partir de ui.navigation, et une collection ne peut figurer
+// que dans un seul groupe.
+const audienceThematics = () => defineCollection({
     type: 'data',
     schema: z.object({ title: z.string(), fr: cardBlock, en: cardBlock, es: cardBlock }),
 });
 
-const universitySessions = defineCollection({
+const audienceSessions = () => defineCollection({
     type: 'data',
     schema: z.object({ title: z.string(), fr: cardBlock, en: cardBlock, es: cardBlock }),
 });
 
-const universityReasons = defineCollection({
+const audienceReasons = () => defineCollection({
     type: 'data',
     schema: z.object({ title: z.string(), fr: reasonBlock, en: reasonBlock, es: reasonBlock }),
 });
@@ -105,8 +108,12 @@ export const collections = {
     sessions,
     reasons,
     homepage,
-    university,
-    'university-thematics': universityThematics,
-    'university-sessions': universitySessions,
-    'university-reasons': universityReasons,
+    university: audienceIntro(),
+    'university-thematics': audienceThematics(),
+    'university-sessions': audienceSessions(),
+    'university-reasons': audienceReasons(),
+    schools: audienceIntro(),
+    'schools-thematics': audienceThematics(),
+    'schools-sessions': audienceSessions(),
+    'schools-reasons': audienceReasons(),
 };

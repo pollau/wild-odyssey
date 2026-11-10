@@ -1,0 +1,18 @@
+{
+  "title": "Océan",
+  "fr": {
+    "title": "Océan",
+    "subtitle": "Plongez au cœur de l'océan.",
+    "description": "Une approche systémique du rôle de l'océan, de ses bénéfices et des pressions humaines qui l'affaiblissent."
+  },
+  "en": {
+    "title": "Ocean",
+    "subtitle": "Dive into the heart of the ocean.",
+    "description": "A systemic approach to the role of the ocean, its benefits, and the human pressures that weaken it."
+  },
+  "es": {
+    "title": "Oceano",
+    "subtitle": "Sumérgete en el corazón del océano.",
+    "description": "Un enfoque sistémico del papel del océano, sus beneficios y las presiones humanas que lo debilitan."
+  }
+}

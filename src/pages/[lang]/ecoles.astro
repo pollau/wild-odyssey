@@ -1,0 +1,11 @@
+---
+import AudiencePage from "../../components/pages/AudiencePage.astro";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "en" } }, { params: { lang: "es" } }];
+}
+
+const { lang } = Astro.params;
+---
+
+<AudiencePage audience="schools" lang={lang!} />

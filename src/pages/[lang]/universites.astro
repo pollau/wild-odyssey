@@ -1,5 +1,5 @@
 ---
-import UniversityPage from "../../components/pages/UniversityPage.astro";
+import AudiencePage from "../../components/pages/AudiencePage.astro";
 
 export function getStaticPaths() {
   return [{ params: { lang: "en" } }, { params: { lang: "es" } }];
@@ -8,4 +8,4 @@ export function getStaticPaths() {
 const { lang } = Astro.params;
 ---
 
-<UniversityPage lang={lang!} />
+<AudiencePage audience="university" lang={lang!} />

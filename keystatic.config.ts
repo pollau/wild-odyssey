@@ -72,6 +72,135 @@ const parLangue = <T extends Parameters<typeof fields.object>[0]>(
     es: fields.object(champs(), { label: 'Espagnol', description: sujet + ', version espagnole.' }),
 });
 
+/** Les pages Ecoles (/ecoles) et Enseignement superieur (/universites) ont la
+ *  meme forme et chacune ses propres textes. Une seule fabrique les decrit,
+ *  pour qu'un champ ajoute a l'une le soit aussi a l'autre. La cle est le nom
+ *  technique de la page, celui des dossiers de src/content. Les cartes ont
+ *  leurs propres collections, distinctes de celles de l'accueil : le menu se
+ *  construit a partir de navigation, et une collection ne figure que dans un
+ *  seul groupe. */
+const pageEducation = (cle: 'schools' | 'university', page: string) => ({
+    singletons: {
+        [cle]: singleton({
+            label: '📝 Introduction',
+            path: `src/content/${cle}/index`,
+            format: { data: 'json' },
+            schema: {
+                ...parLangue(`Le bandeau en haut de la ${page}`, () => ({
+                    titleBase: champLigne('Accroche au-dessus du titre', 'Par defaut en noir.'),
+                    title: champLigne('Titre principal', 'Par defaut en orange.'),
+                    body: champParagraphes('Texte'),
+                    tagline: champLigne('Phrase sous les paragraphes', 'Par defaut en orange.'),
+                    cta: champLigne('Texte du bouton'),
+                })),
+            },
+        }),
+        [`${cle}ThematicsSection`]: singleton({
+            label: '📝 Thématiques',
+            path: `src/content/ui/${cle}-thematics`,
+            format: { data: 'json' },
+            schema: {
+                ...parLangue(`Le texte au-dessus des cartes de thematiques de la ${page}`, () => ({
+                    heading: champLigne('Titre'),
+                    badge: champLigne('Pastille'),
+                    body: champParagraphes('Texte'),
+                    learnMore: champLigne('Texte du bouton des cartes'),
+                })),
+            },
+        }),
+        [`${cle}ReasonsSection`]: singleton({
+            label: '📝 Team building',
+            path: `src/content/ui/${cle}-reasons`,
+            format: { data: 'json' },
+            schema: {
+                ...parLangue(`L'introduction de la section team building de la ${page}`, () => ({
+                    heading: champLigne('Titre'),
+                    body: champParagraphes('Texte'),
+                })),
+            },
+        }),
+        [`${cle}SessionsSection`]: singleton({
+            label: '📝 Ateliers et masterclasses',
+            path: `src/content/ui/${cle}-sessions`,
+            format: { data: 'json' },
+            schema: {
+                ...parLangue(`Le texte de la section des ateliers de la ${page}`, () => ({
+                    heading: champLigne('Titre', undefined, true),
+                    feat1: champLigne('Indication 1 (icone horloge)'),
+                    feat2: champLigne('Indication 2 (icone feuille)'),
+                    feat3: champLigne('Indication 3 (icone curseur)'),
+                    feat4: champLigne('Indication 4 (icone ecran)'),
+                    feat5: champLigne('Indication 5 (icone personne)'),
+                    feat6: champLigne('Indication 6 (icone organisation)'),
+                    seeAll: champLigne('Texte du bouton sous les cartes'),
+                })),
+            },
+        }),
+    },
+    collections: {
+        [`${cle}-thematics`]: collection({
+            label: '🗂️ Les thématiques',
+            slugField: 'title',
+            path: `src/content/${cle}-thematics/*`,
+            format: { data: 'json' },
+            columns: ['title'],
+            schema: {
+                title: fields.slug({
+                    name: {
+                        label: 'Nom de la fiche',
+                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site. Commencez par thematic-07- : le numero fixe l'ordre d'affichage et la suite du nom choisit la photo. Passez par Paul pour ajouter une photo.",
+                    },
+                }),
+                ...parLangue(`La carte de cette thématique, ${page}`, () => ({
+                    title: champLigne('Titre de la carte'),
+                    subtitle: champLigne('Sous-titre'),
+                    description: champParagraphes('Description'),
+                })),
+            },
+        }),
+        [`${cle}-sessions`]: collection({
+            label: '🗂️ Les ateliers',
+            slugField: 'title',
+            path: `src/content/${cle}-sessions/*`,
+            format: { data: 'json' },
+            columns: ['title'],
+            schema: {
+                title: fields.slug({
+                    name: {
+                        label: 'Nom de la fiche',
+                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site. Commencez par session-04- : le numero fixe l'ordre d'affichage et la suite du nom choisit la photo. Passez par Paul pour ajouter une photo.",
+                    },
+                }),
+                ...parLangue(`La carte de cet atelier, ${page}`, () => ({
+                    title: champLigne('Titre de la carte'),
+                    description: champParagraphes('Description'),
+                })),
+            },
+        }),
+        [`${cle}-reasons`]: collection({
+            label: '🗂️ Les 6 raisons',
+            slugField: 'title',
+            path: `src/content/${cle}-reasons/*`,
+            format: { data: 'json' },
+            columns: ['title'],
+            schema: {
+                title: fields.slug({
+                    name: {
+                        label: 'Nom de la fiche',
+                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
+                    },
+                }),
+                ...parLangue(`La carte de cette raison, ${page}`, () => ({
+                    title: champLigne('Titre de la carte'),
+                    text: champParagraphes('Texte'),
+                })),
+            },
+        }),
+    },
+});
+const ecoles = pageEducation('schools', 'page écoles');
+const enseignementSuperieur = pageEducation('university', 'page enseignement supérieur');
+
 export default config({
     // Interface de Keystatic en francais (boutons, menus, messages).
     ui: {
@@ -90,16 +219,22 @@ export default config({
                 'sessionsSection', 'sessions',
                 'reasonsSection', 'reasons',
             ],
-            'Page université': [
+            'Écoles': [
+                'schools',
+                'schoolsThematicsSection', 'schools-thematics',
+                'schoolsSessionsSection', 'schools-sessions',
+                'schoolsReasonsSection', 'schools-reasons',
+            ],
+            'Enseignement supérieur': [
                 'university',
                 'universityThematicsSection', 'university-thematics',
                 'universitySessionsSection', 'university-sessions',
                 'universityReasonsSection', 'university-reasons',
             ],
-            // La bande de chiffres est le seul texte que les deux pages se
-            // partagent vraiment : la ranger sous l'une des deux laissait
+            // La bande de chiffres est le seul texte que les trois pages se
+            // partagent vraiment : la ranger sous l'une d'elles laissait
             // croire qu'on n'y touchait que celle-la.
-            'Les deux pages': ['statsSection'],
+            'Les trois pages': ['statsSection'],
             'Événements': ['events'],
             'Page de contact': ['contactSection'],
             'Tout le site': ['footerSection', 'seoSection', 'helpSection'],
@@ -166,8 +301,10 @@ export default config({
                     homeDescription: champDescriptionSeo('Accueil, description', "Pour la page d'accueil."),
                     contactTitle: champTitreSeo('Contact, titre', 'Pour la page de contact.'),
                     contactDescription: champDescriptionSeo('Contact, description', 'Pour la page de contact.'),
-                    universityTitle: champTitreSeo('Université, titre', 'Pour la page université.'),
-                    universityDescription: champDescriptionSeo('Université, description', 'Pour la page université.'),
+                    universityTitle: champTitreSeo('Enseignement supérieur, titre', 'Pour la page enseignement supérieur.'),
+                    universityDescription: champDescriptionSeo('Enseignement supérieur, description', 'Pour la page enseignement supérieur.'),
+                    schoolsTitle: champTitreSeo('Écoles, titre', 'Pour la page écoles.'),
+                    schoolsDescription: champDescriptionSeo('Écoles, description', 'Pour la page écoles.'),
                     siteDescription: champDescriptionSeo('Description generale du site', "Sert de repli pour une page qui n'a pas sa propre description."),
                     organization: fields.text({
                     label: "Description de l'organisation",
@@ -240,7 +377,7 @@ export default config({
             path: 'src/content/ui/stats',
             format: { data: 'json' },
             schema: {
-                ...parLangue("La bande de chiffres, identique sur l'accueil et sur la page université", () => ({
+                ...parLangue("La bande de chiffres, identique sur l'accueil, la page écoles et la page enseignement supérieur", () => ({
                     heading: champLigne('Titre'),
                     badgeScience: champLigne('Pastille', 'Apparait a deux endroits : en cyan sur la bande des chiffres, en blanc au-dessus des 6 bonnes raisons.'),
                     participants: champLigne('Legende du 1er chiffre', "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici."),
@@ -275,7 +412,9 @@ export default config({
                 ...parLangue('Les deux bouts de page, communs a tout le site', () => ({
                     headerCta: champLigne('Bouton du bandeau du haut', "Le bouton orange en haut a droite, sur toutes les pages."),
                     headerHome: champLigne("Lien vers la page d'accueil", "Le premier lien à droite du logo, sur toutes les pages. Il mène à l'accueil, la page destinée aux entreprises."),
-                    headerUniversity: champLigne('Lien vers la page écoles et campus', "Le second lien à droite du logo, sur toutes les pages. Il mène à /universites."),
+                    headerEducation: champLigne('Onglet Éducation', "Le second onglet à droite du logo, sur toutes les pages. Il ouvre un menu vers les pages écoles et enseignement supérieur."),
+                    headerSchools: champLigne('Lien vers la page écoles', "Premier lien du menu Éducation. Il mène à /ecoles."),
+                    headerHigherEd: champLigne('Lien vers la page enseignement supérieur', "Second lien du menu Éducation. Il mène à /universites."),
                     heading: champLigne('Titre'),
                     ctaBody: champLigne('Phrases sous le titre', undefined, true),
                     ctaBtn: champLigne('Texte du bouton'),
@@ -335,63 +474,8 @@ export default config({
                 })),
             },
         }),
-        // Page universite. Meme forme que ses equivalents de l'accueil : seuls
-        // les textes different, la structure est partagee par les composants.
-        university: singleton({
-            label: '📝 Introduction',
-            path: 'src/content/university/index',
-            format: { data: 'json' },
-            schema: {
-                ...parLangue('Le bandeau en haut de la page universite', () => ({
-                    titleBase: champLigne('Accroche au-dessus du titre', 'Par defaut en noir.'),
-                    title: champLigne('Titre principal', 'Par defaut en orange.'),
-                    body: champParagraphes('Texte'),
-                    tagline: champLigne('Phrase sous les paragraphes', 'Par defaut en orange.'),
-                    cta: champLigne('Texte du bouton'),
-                })),
-            },
-        }),
-        universityThematicsSection: singleton({
-            label: '📝 Thématiques',
-            path: 'src/content/ui/university-thematics',
-            format: { data: 'json' },
-            schema: {
-                ...parLangue('Le texte au-dessus des cartes de thematiques de la page universite', () => ({
-                    heading: champLigne('Titre'),
-                    badge: champLigne('Pastille'),
-                    body: champParagraphes('Texte'),
-                    learnMore: champLigne('Texte du bouton des cartes'),
-                })),
-            },
-        }),
-        universityReasonsSection: singleton({
-            label: '📝 Team building',
-            path: 'src/content/ui/university-reasons',
-            format: { data: 'json' },
-            schema: {
-                ...parLangue("L'introduction de la section team building de la page université", () => ({
-                    heading: champLigne('Titre'),
-                    body: champParagraphes('Texte'),
-                })),
-            },
-        }),
-        universitySessionsSection: singleton({
-            label: '📝 Ateliers et masterclasses',
-            path: 'src/content/ui/university-sessions',
-            format: { data: 'json' },
-            schema: {
-                ...parLangue('Le texte de la section des ateliers de la page universite', () => ({
-                    heading: champLigne('Titre', undefined, true),
-                    feat1: champLigne('Indication 1 (icone horloge)'),
-                    feat2: champLigne('Indication 2 (icone feuille)'),
-                    feat3: champLigne('Indication 3 (icone curseur)'),
-                    feat4: champLigne('Indication 4 (icone ecran)'),
-                    feat5: champLigne('Indication 5 (icone personne)'),
-                    feat6: champLigne('Indication 6 (icone organisation)'),
-                    seeAll: champLigne('Texte du bouton sous les cartes'),
-                })),
-            },
-        }),
+        ...ecoles.singletons,
+        ...enseignementSuperieur.singletons,
     },
     collections: {
         // Les trois facons dont un atelier se deroule. Meme forme que les
@@ -462,66 +546,7 @@ export default config({
                 })),
             },
         }),
-        // Cartes propres a la page universite. Collections distinctes de
-        // celles de l'accueil : le menu se construit a partir de navigation,
-        // et une collection ne peut figurer que dans un seul groupe.
-        'university-thematics': collection({
-            label: '🗂️ Les thématiques',
-            slugField: 'title',
-            path: 'src/content/university-thematics/*',
-            format: { data: 'json' },
-            columns: ['title'],
-            schema: {
-                title: fields.slug({
-                    name: {
-                        label: 'Nom de la fiche',
-                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site. Commencez par thematic-07- : le numero fixe l'ordre d'affichage et la suite du nom choisit la photo. Passez par Paul pour ajouter une photo.",
-                    },
-                }),
-                ...parLangue('La carte de cette thématique, page université', () => ({
-                    title: champLigne('Titre de la carte'),
-                    subtitle: champLigne('Sous-titre'),
-                    description: champParagraphes('Description'),
-                })),
-            },
-        }),
-        'university-sessions': collection({
-            label: '🗂️ Les ateliers',
-            slugField: 'title',
-            path: 'src/content/university-sessions/*',
-            format: { data: 'json' },
-            columns: ['title'],
-            schema: {
-                title: fields.slug({
-                    name: {
-                        label: 'Nom de la fiche',
-                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site. Commencez par session-04- : le numero fixe l'ordre d'affichage et la suite du nom choisit la photo. Passez par Paul pour ajouter une photo.",
-                    },
-                }),
-                ...parLangue('La carte de cet atelier, page université', () => ({
-                    title: champLigne('Titre de la carte'),
-                    description: champParagraphes('Description'),
-                })),
-            },
-        }),
-        'university-reasons': collection({
-            label: '🗂️ Les 6 raisons',
-            slugField: 'title',
-            path: 'src/content/university-reasons/*',
-            format: { data: 'json' },
-            columns: ['title'],
-            schema: {
-                title: fields.slug({
-                    name: {
-                        label: 'Nom de la fiche',
-                        description: "Sert de nom de fichier et de reperage dans la liste. N'apparait pas sur le site.",
-                    },
-                }),
-                ...parLangue('La carte de cette raison, page université', () => ({
-                    title: champLigne('Titre de la carte'),
-                    text: champParagraphes('Texte'),
-                })),
-            },
-        }),
+        ...ecoles.collections,
+        ...enseignementSuperieur.collections,
     },
 });

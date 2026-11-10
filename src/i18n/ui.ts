@@ -28,9 +28,13 @@ export const ui = {
     "seo.contact.description": lang(seoUi, "fr", "contactDescription"),
     "seo.university.title": lang(seoUi, "fr", "universityTitle"),
     "seo.university.description": lang(seoUi, "fr", "universityDescription"),
+    "seo.schools.title": lang(seoUi, "fr", "schoolsTitle"),
+    "seo.schools.description": lang(seoUi, "fr", "schoolsDescription"),
 
     "nav.home": lang(footerUi, "fr", "headerHome"),
-    "nav.university": lang(footerUi, "fr", "headerUniversity"),
+    "nav.education": lang(footerUi, "fr", "headerEducation"),
+    "nav.schools": lang(footerUi, "fr", "headerSchools"),
+    "nav.higherEd": lang(footerUi, "fr", "headerHigherEd"),
 
     "contact.title": lang(contactUi, "fr", "title"),
     "contact.subtitle": lang(contactUi, "fr", "subtitle"),
@@ -68,9 +72,13 @@ export const ui = {
     "seo.contact.description": lang(seoUi, "en", "contactDescription"),
     "seo.university.title": lang(seoUi, "en", "universityTitle"),
     "seo.university.description": lang(seoUi, "en", "universityDescription"),
+    "seo.schools.title": lang(seoUi, "en", "schoolsTitle"),
+    "seo.schools.description": lang(seoUi, "en", "schoolsDescription"),
 
     "nav.home": lang(footerUi, "en", "headerHome"),
-    "nav.university": lang(footerUi, "en", "headerUniversity"),
+    "nav.education": lang(footerUi, "en", "headerEducation"),
+    "nav.schools": lang(footerUi, "en", "headerSchools"),
+    "nav.higherEd": lang(footerUi, "en", "headerHigherEd"),
 
     "contact.title": lang(contactUi, "en", "title"),
     "contact.subtitle": lang(contactUi, "en", "subtitle"),
@@ -108,9 +116,13 @@ export const ui = {
     "seo.contact.description": lang(seoUi, "es", "contactDescription"),
     "seo.university.title": lang(seoUi, "es", "universityTitle"),
     "seo.university.description": lang(seoUi, "es", "universityDescription"),
+    "seo.schools.title": lang(seoUi, "es", "schoolsTitle"),
+    "seo.schools.description": lang(seoUi, "es", "schoolsDescription"),
 
     "nav.home": lang(footerUi, "es", "headerHome"),
-    "nav.university": lang(footerUi, "es", "headerUniversity"),
+    "nav.education": lang(footerUi, "es", "headerEducation"),
+    "nav.schools": lang(footerUi, "es", "headerSchools"),
+    "nav.higherEd": lang(footerUi, "es", "headerHigherEd"),
 
     "contact.title": lang(contactUi, "es", "title"),
     "contact.subtitle": lang(contactUi, "es", "subtitle"),
