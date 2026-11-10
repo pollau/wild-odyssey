@@ -2,9 +2,17 @@
 //
 // Une seule convention, valable dans tous les champs du CMS :
 //
-//   **texte**   couleur d'accent principale, l'orange de la charte
-//   __texte__   couleur d'accent secondaire, le cyan
+//   **texte**   orange
+//   __texte__   cyan
+//   ==texte==   bleu
 //   Entree      un nouveau paragraphe, ou un saut de ligne dans un titre
+//
+// Les marqueurs sont la seule source de couleur editoriale. Un texte sans
+// marqueur prend la couleur de son fond, fixee par le composant : noir ou
+// gris sur fond clair, blanc sur fond sombre. Aucun champ n'a de couleur
+// d'accent par defaut, tous se comportent de la meme facon. Seuls les
+// pastilles, les boutons et les etats (page courante, erreur) gardent leur
+// propre couleur dans le composant.
 //
 // Le parseur ne produit que des donnees. Ce sont les composants RichText et
 // RichBody qui rendent ces donnees, sous forme de noeuds et jamais de HTML :
@@ -15,14 +23,23 @@
 // Comportements aux limites, verifies : une paire non fermee laisse ses
 // marqueurs visibles, plusieurs paires colorent chacune leur contenu, un
 // marqueur isole ne declenche rien. Rien ne casse la page. Corollaire :
-// les doubles asterisques et les doubles tirets bas sont reserves a la
-// couleur, on ne peut pas en afficher deux litteralement dans un meme texte.
-// Les asterisques et tirets bas simples restent libres.
+// les doubles asterisques, doubles tirets bas et doubles egal sont reserves
+// a la couleur, on ne peut pas en afficher deux litteralement dans un meme
+// texte. Les caracteres simples restent libres.
 
-export type Accent = 'none' | 'primary' | 'secondary';
+export type Accent = 'none' | 'orange' | 'cyan' | 'blue';
 export type Segment = { text: string; accent: Accent };
 
-const MARKER = /\*\*(.+?)\*\*|__(.+?)__/g;
+/** La palette des marqueurs, definie ici et nulle part ailleurs. */
+export const ACCENT_CLASS: Record<Exclude<Accent, 'none'>, string> = {
+    orange: 'text-[#f05600]',
+    cyan: 'text-[#47cdf2]',
+    blue: 'text-[#0698c0]',
+};
+
+// Un groupe capturant par marqueur, dans l'ordre de MARKER_ACCENTS.
+const MARKER = /\*\*(.+?)\*\*|__(.+?)__|==(.+?)==/g;
+const MARKER_ACCENTS = ['orange', 'cyan', 'blue'] as const;
 
 function parseLine(line: string): Segment[] {
     const segments: Segment[] = [];
@@ -31,10 +48,8 @@ function parseLine(line: string): Segment[] {
     MARKER.lastIndex = 0;
     while ((m = MARKER.exec(line)) !== null) {
         if (m.index > last) segments.push({ text: line.slice(last, m.index), accent: 'none' });
-        segments.push({
-            text: m[1] ?? m[2],
-            accent: m[1] !== undefined ? 'primary' : 'secondary',
-        });
+        const groupe = m.slice(1).findIndex((g) => g !== undefined);
+        segments.push({ text: m[groupe + 1], accent: MARKER_ACCENTS[groupe] });
         last = MARKER.lastIndex;
     }
     if (last < line.length) segments.push({ text: line.slice(last), accent: 'none' });
@@ -54,9 +69,9 @@ export function parseParagraphs(source: string | undefined): Segment[][] {
 
 /** Le meme texte, debarrasse de ses marqueurs et de ses retours a la ligne.
  *  Pour les attributs HTML, un alt ou un title, qui ne peuvent recevoir que
- *  du texte brut : sans ce nettoyage ils afficheraient les asterisques. */
+ *  du texte brut : sans ce nettoyage ils afficheraient les marqueurs. */
 export function plainText(source: string | undefined): string {
     return (source ?? '')
-        .replace(MARKER, (_full, primary, secondary) => primary ?? secondary)
+        .replace(MARKER, (_full, orange, cyan, bleu) => orange ?? cyan ?? bleu)
         .split('\n').join(' ');
 }

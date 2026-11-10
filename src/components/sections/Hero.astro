@@ -20,13 +20,13 @@ const { intro, ctaHref } = Astro.props;
     <!-- Text -->
     <div class="flex-1 flex flex-col gap-6 lg:gap-8">
       {intro.titleBase && <p class="font-fraunces text-[28px] lg:text-[36px] font-bold leading-tight text-black"><RichText text={intro.titleBase} /></p>}
-      <h1 class="font-fraunces text-[28px] lg:text-[36px] font-bold leading-tight">
-        <span class="text-[#f05600]"><RichText text={intro.title} /></span>
+      <h1 class="font-fraunces text-[28px] lg:text-[36px] font-bold leading-tight text-black">
+        <RichText text={intro.title} />
       </h1>
       <div class="font-aileron flex flex-col gap-4 text-[19px] text-black leading-relaxed">
         <RichBody text={intro.body} />
       </div>
-      <p class="font-fraunces text-[#f05600] text-[20px]"><RichText text={intro.tagline} /></p>
+      <p class="font-fraunces text-black text-[20px]"><RichText text={intro.tagline} /></p>
       {intro.cta && (
         <a
           href={ctaHref}

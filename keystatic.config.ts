@@ -11,34 +11,35 @@ import { config, fields, collection, singleton } from '@keystatic/core';
 const useCloud =
     import.meta.env.PROD || import.meta.env.PUBLIC_KEYSTATIC_STORAGE === 'cloud';
 
-// La convention d'ecriture, telle qu'elle est expliquee a l'editeur sous chaque
-// champ. Deux phrases seulement, selon que le champ est rendu en ligne ou en
-// paragraphes : c'est exactement la distinction entre RichText et RichBody.
-// Elles vivent ici et nulle part ailleurs, pour qu'une reformulation ne soit
-// pas a repercuter sur quatre-vingt-quinze champs.
-const AIDE_LIGNE =
-    'Deux asterisques mettent un passage en orange, deux tirets bas en cyan. '
-    + 'Un retour a la ligne fait passer la suite sur une nouvelle ligne.';
-const AIDE_PARAGRAPHES =
-    'Un retour a la ligne cree un nouveau paragraphe. '
-    + 'Deux asterisques mettent un passage en orange, deux tirets bas en cyan.';
+// TOUT texte affiche sur le site se declare avec l'une des trois fabriques
+// ci-dessous, et s'affiche avec RichText (champLigne, champMultiligne) ou
+// RichBody (champParagraphes). C'est ce qui garantit que chaque champ, ancien
+// ou nouveau, suit la meme convention d'ecriture (src/i18n/richText.ts) :
+// la couleur ne vient que des marqueurs, aucun champ n'en a par defaut.
+//
+// La convention elle-meme n'est expliquee qu'a un seul endroit, la page
+// "Comment ecrire les textes" (helpSection). Sous chaque champ, on ne dit que
+// ce qui lui est propre : ce que fait la touche Entree, et ou trouver l'aide.
+const VOIR_AIDE = 'Couleurs : voir ❓ Comment écrire les textes, dans Tout le site.';
+const AIDE_LIGNE = VOIR_AIDE;
+const AIDE_MULTILIGNE = 'Entrée passe à la ligne. ' + VOIR_AIDE;
+const AIDE_PARAGRAPHES = 'Entrée crée un nouveau paragraphe. ' + VOIR_AIDE;
 
-/** Champ rendu en ligne. `precision` ajoute une phrase propre au champ, par
- *  exemple ou il apparait sur le site, ou sa couleur par defaut. */
-const champLigne = (label: string, precision?: string, multiline = false) =>
-    fields.text({
-        label,
-        description: precision ? precision + ' ' + AIDE_LIGNE : AIDE_LIGNE,
-        multiline,
-    });
+/** `precision` ajoute une phrase propre au champ, par exemple ou il apparait
+ *  sur le site. Jamais de couleur : aucun champ n'en a par defaut. */
+const decrire = (aide: string, precision?: string) => (precision ? `${precision} ${aide}` : aide);
 
-/** Champ rendu en paragraphes : un retour a la ligne en ouvre un nouveau. */
+/** Texte d'une seule ligne, rendu par RichText. */
+const champLigne = (label: string, precision?: string) =>
+    fields.text({ label, description: decrire(AIDE_LIGNE, precision) });
+
+/** Texte rendu par RichText ou Entree fait passer a la ligne (<br>). */
+const champMultiligne = (label: string, precision?: string) =>
+    fields.text({ label, description: decrire(AIDE_MULTILIGNE, precision), multiline: true });
+
+/** Texte rendu par RichBody : chaque Entree ouvre un nouveau paragraphe. */
 const champParagraphes = (label: string, precision?: string) =>
-    fields.text({
-        label,
-        description: precision ? precision + ' ' + AIDE_PARAGRAPHES : AIDE_PARAGRAPHES,
-        multiline: true,
-    });
+    fields.text({ label, description: decrire(AIDE_PARAGRAPHES, precision), multiline: true });
 
 // Le referencement est le seul texte du site qui ne s'affiche pas sur le site :
 // il part dans les balises <title> et <meta description>, que Google reprend
@@ -87,10 +88,10 @@ const pageEducation = (cle: 'schools' | 'university', page: string) => ({
             format: { data: 'json' },
             schema: {
                 ...parLangue(`Le bandeau en haut de la ${page}`, () => ({
-                    titleBase: champLigne('Accroche au-dessus du titre', 'Par defaut en noir.'),
-                    title: champLigne('Titre principal', 'Par defaut en orange.'),
+                    titleBase: champLigne('Accroche au-dessus du titre'),
+                    title: champLigne('Titre principal'),
                     body: champParagraphes('Texte'),
-                    tagline: champLigne('Phrase sous les paragraphes', 'Par defaut en orange.'),
+                    tagline: champLigne('Phrase sous les paragraphes'),
                     cta: champLigne('Texte du bouton'),
                 })),
             },
@@ -125,7 +126,7 @@ const pageEducation = (cle: 'schools' | 'university', page: string) => ({
             format: { data: 'json' },
             schema: {
                 ...parLangue(`Le texte de la section des ateliers de la ${page}`, () => ({
-                    heading: champLigne('Titre', undefined, true),
+                    heading: champMultiligne('Titre'),
                     feat1: champLigne('Indication 1 (icone horloge)'),
                     feat2: champLigne('Indication 2 (icone feuille)'),
                     feat3: champLigne('Indication 3 (icone curseur)'),
@@ -253,13 +254,6 @@ export default config({
         project: 'wild-odyssey/wild-odyssey',
     },
     singletons: {
-        // Page d'aide, affichee uniquement dans le CMS. Les blocs objet sans
-        // champ ne servent qu'a porter un titre et un texte : ils n'affichent
-        // aucune saisie. Ils ecrivent une cle vide dans help.json, d'ou le
-        // fichier dedie plutot qu'une note dans chaque entree.
-        // Une seule entree pour tout le referencement, plutot qu'un champ perdu
-        // dans chaque page : ces textes se relisent ensemble, pour verifier
-        // qu'ils ne se repetent pas d'une page a l'autre.
         // Page de contact. Les cinq messages d'erreur decrivent des etats
         // techniques : ils sont editables pour pouvoir en adoucir le ton, pas
         // pour changer ce qu'ils signalent.
@@ -270,7 +264,7 @@ export default config({
             schema: {
                 ...parLangue('La page de contact', () => ({
                     title: champLigne('Titre de la page'),
-                    subtitle: champLigne("Texte d'introduction", undefined, true),
+                    subtitle: champMultiligne("Texte d'introduction"),
                     lastName: champLigne('Libelle du champ Nom'),
                     firstName: champLigne('Libelle du champ Prenom'),
                     organization: champLigne('Libelle du champ Organisation'),
@@ -282,7 +276,7 @@ export default config({
                     optional: champLigne('Mention des champs facultatifs', 'Affichee entre parentheses a cote du libelle.'),
                     submit: champLigne("Texte du bouton d'envoi"),
                     successTitle: champLigne('Confirmation, titre', "Remplace le formulaire une fois le message parti."),
-                    successBody: champLigne('Confirmation, texte', "Remplace le formulaire une fois le message parti.", true),
+                    successBody: champMultiligne('Confirmation, texte', "Remplace le formulaire une fois le message parti."),
                     error: champLigne('Erreur generale', "S'affiche sous le formulaire quand l'envoi echoue."),
                     error400: champLigne('Erreur, informations invalides'),
                     error429: champLigne('Erreur, trop de tentatives'),
@@ -291,6 +285,9 @@ export default config({
                 })),
             },
         }),
+        // Une seule entree pour tout le referencement, plutot qu'un champ perdu
+        // dans chaque page : ces textes se relisent ensemble, pour verifier
+        // qu'ils ne se repetent pas d'une page a l'autre.
         seoSection: singleton({
             label: '🔎 Referencement Google',
             path: 'src/content/ui/seo',
@@ -314,31 +311,42 @@ export default config({
                 })),
             },
         }),
+        // Page d'aide, affichee uniquement dans le CMS : la SEULE explication
+        // de la convention d'ecriture, a laquelle renvoie chaque champ (voir
+        // VOIR_AIDE). Les blocs objet sans champ ne servent qu'a porter un
+        // titre et un texte : ils n'affichent aucune saisie. Ils ecrivent une
+        // cle vide dans help.json, d'ou le fichier dedie.
         helpSection: singleton({
-            label: '❓ Comment ecrire les textes',
+            label: '❓ Comment écrire les textes',
             path: 'src/content/ui/help',
             format: { data: 'json' },
             schema: {
                 couleur: fields.object({}, {
                     label: 'Mettre un passage en couleur',
                     description:
-                        "Entourez le passage de deux asterisques pour l'orange, de deux tirets bas pour le cyan. "
-                        + "Exemple : Une methodologie commune, **des thematiques au choix.** "
-                        + "La couleur annoncee sous un champ est celle par defaut : les marqueurs la remplacent, "
-                        + "mais seulement pour le passage encadre.",
+                        "Tous les champs fonctionnent de la même façon. Sans marqueur, un texte prend la couleur "
+                        + "de son fond : noir sur fond clair, blanc sur fond sombre. "
+                        + "Pour colorer un passage, entourez-le de deux astérisques pour l'orange (**texte**), "
+                        + "de deux tirets bas pour le cyan (__texte__) ou de deux signes égal pour le bleu (==texte==). "
+                        + "Exemple : Une méthodologie commune, **des thématiques au choix.** "
+                        + "Seul le passage entouré change de couleur. Une paire incomplète reste affichée telle quelle. "
+                        + "Les boutons et les pastilles gardent leur propre couleur : n'y mettez pas de marqueurs. "
+                        + "Le référencement Google ignore les marqueurs.",
                 }),
                 ligne: fields.object({}, {
-                    label: 'Aller a la ligne',
+                    label: 'Aller à la ligne',
                     description:
-                        "Dans un texte, un retour a la ligne cree un nouveau paragraphe, avec l'espace qui va avec. "
-                        + "Dans un titre, il fait simplement passer la suite sur une nouvelle ligne.",
+                        "Sous chaque champ, une phrase indique ce que fait la touche Entrée. "
+                        + "Dans un texte, elle crée un nouveau paragraphe, avec l'espace qui va avec. "
+                        + "Dans un titre, elle fait simplement passer la suite à la ligne. "
+                        + "Les champs d'une seule ligne n'acceptent pas de retour à la ligne.",
                 }),
                 langues: fields.object({}, {
                     label: 'Les trois langues',
                     description:
-                        "Chaque page contient un bloc Francais, un Anglais et un Espagnol. "
-                        + "Un champ laisse vide n'affiche rien dans cette langue : le site ne va jamais "
-                        + "chercher la version d'une autre langue a la place.",
+                        "Chaque page contient un bloc Français, un Anglais et un Espagnol. "
+                        + "Un champ laissé vide n'affiche rien dans cette langue : le site ne va jamais "
+                        + "chercher la version d'une autre langue à la place.",
                 }),
                 photos: fields.object({}, {
                     label: 'Les photos',
@@ -379,15 +387,15 @@ export default config({
             schema: {
                 ...parLangue("La bande de chiffres, identique sur l'accueil, la page écoles et la page enseignement supérieur", () => ({
                     heading: champLigne('Titre'),
-                    badgeScience: champLigne('Pastille', 'Apparait a deux endroits : en cyan sur la bande des chiffres, en blanc au-dessus des 6 bonnes raisons.'),
+                    badgeScience: champLigne('Pastille', 'Apparait a deux endroits : sur la bande des chiffres et au-dessus des 6 bonnes raisons.'),
                     participants: champLigne('Legende du 1er chiffre', "Sous le compteur +600 000. Le nombre lui-meme est anime, il n'est pas modifiable ici."),
                     organizations: champLigne('Legende du 2e chiffre', 'Sous le compteur +2 000.'),
                     years: champLigne('Legende du 3e chiffre', 'Sous le compteur +5.'),
                 })),
             },
         }),
-        // Section "Nos thematiques" de l'accueil : le texte simple seulement.
-        // Les deux moities du titre colore restent dans ui.ts pour l'instant.
+        // Section "Nos thematiques" de l'accueil : le texte au-dessus des
+        // cartes. Les cartes elles-memes sont la collection thematics.
         thematicsSection: singleton({
             label: '📝 Thématiques',
             path: 'src/content/ui/thematics',
@@ -401,9 +409,7 @@ export default config({
                 })),
             },
         }),
-        // Bas de page, present sur toutes les pages du site. Le titre colore
-        // "Et vous ?" reste dans le code : il est coupe en deux morceaux pour
-        // le style, le rendre editable demanderait de revoir la mise en forme.
+        // Haut et bas de page, presents sur toutes les pages du site.
         footerSection: singleton({
             label: '📝 Header and footer',
             path: 'src/content/ui/footer',
@@ -416,7 +422,7 @@ export default config({
                     headerSchools: champLigne('Lien vers la page écoles', "Premier lien du menu Éducation. Il mène à /ecoles."),
                     headerHigherEd: champLigne('Lien vers la page enseignement supérieur', "Second lien du menu Éducation. Il mène à /universites."),
                     heading: champLigne('Titre'),
-                    ctaBody: champLigne('Phrases sous le titre', undefined, true),
+                    ctaBody: champMultiligne('Phrases sous le titre'),
                     ctaBtn: champLigne('Texte du bouton'),
                     copyright: champLigne('Mention de bas de page'),
                 })),
@@ -434,7 +440,7 @@ export default config({
             format: { data: 'json' },
             schema: {
                 ...parLangue('Le bandeau bleu des ateliers', () => ({
-                    heading: champLigne('Titre', undefined, true),
+                    heading: champMultiligne('Titre'),
                     feat1: champLigne('Indication 1 (icone horloge)'),
                     feat2: champLigne('Indication 2 (icone feuille)'),
                     feat3: champLigne('Indication 3 (icone curseur)'),
@@ -445,8 +451,8 @@ export default config({
                 })),
             },
         }),
-        // Section "6 bonnes raisons". Seuls les titres sont ici pour l'instant,
-        // les textes des cartes vivent encore dans src/i18n/ui.ts.
+        // Section "6 bonnes raisons" : l'introduction. Les cartes elles-memes
+        // sont la collection reasons.
         reasonsSection: singleton({
             label: '📝 Team building',
             path: 'src/content/ui/reasons',
@@ -466,10 +472,10 @@ export default config({
             // page entiere d'une traite, comme on la lit sur le site.
             schema: {
                 ...parLangue("Le bandeau en haut de la page d'accueil", () => ({
-                    titleBase: champLigne('Accroche au-dessus du titre', 'Par defaut en noir.'),
-                    title: champLigne('Titre principal', 'Par defaut en orange.'),
+                    titleBase: champLigne('Accroche au-dessus du titre'),
+                    title: champLigne('Titre principal'),
                     body: champParagraphes('Texte'),
-                    tagline: champLigne('Phrase sous les paragraphes', 'Par defaut en orange.'),
+                    tagline: champLigne('Phrase sous les paragraphes'),
                     cta: champLigne('Texte du bouton'),
                 })),
             },
