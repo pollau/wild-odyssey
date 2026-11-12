@@ -78,6 +78,11 @@ const parLangue = <T extends Parameters<typeof fields.object>[0]>(
     es: fields.object(champs(), { label: 'Espagnol', description: sujet + ', version espagnole.' }),
 });
 
+/** Un objet d'une seule entree, dont la cle est calculee. Ecrit directement
+ *  { [`${cle}-reasons`]: ... }, TypeScript oublie le nom exact de la cle, et le
+ *  menu (navigation) refuse alors 'schools-reasons' comme section inconnue. */
+const entree = <K extends string, V>(cle: K, valeur: V) => ({ [cle]: valeur }) as Record<K, V>;
+
 /** Les pages Ecoles (/ecoles) et Enseignement superieur (/universites) ont la
  *  meme forme et chacune ses propres textes. Une seule fabrique les decrit,
  *  pour qu'un champ ajoute a l'une le soit aussi a l'autre. La cle est le nom
@@ -85,9 +90,9 @@ const parLangue = <T extends Parameters<typeof fields.object>[0]>(
  *  leurs propres collections, distinctes de celles de l'accueil : le menu se
  *  construit a partir de navigation, et une collection ne figure que dans un
  *  seul groupe. */
-const pageEducation = (cle: 'schools' | 'university', page: string) => ({
+const pageEducation = <C extends 'schools' | 'university'>(cle: C, page: string) => ({
     singletons: {
-        [cle]: singleton({
+        ...entree(cle, singleton({
             label: '📝 Introduction',
             path: `src/content/${cle}/index`,
             format: { data: 'json' },
@@ -100,8 +105,8 @@ const pageEducation = (cle: 'schools' | 'university', page: string) => ({
                     cta: champLigne('Texte du bouton'),
                 })),
             },
-        }),
-        [`${cle}ThematicsSection`]: singleton({
+        })),
+        ...entree(`${cle}ThematicsSection`, singleton({
             label: '📝 Thématiques',
             path: `src/content/ui/${cle}-thematics`,
             format: { data: 'json' },
@@ -113,8 +118,8 @@ const pageEducation = (cle: 'schools' | 'university', page: string) => ({
                     learnMore: champLigne('Texte du bouton des cartes'),
                 })),
             },
-        }),
-        [`${cle}ReasonsSection`]: singleton({
+        })),
+        ...entree(`${cle}ReasonsSection`, singleton({
             label: '📝 Team building',
             path: `src/content/ui/${cle}-reasons`,
             format: { data: 'json' },
@@ -124,8 +129,8 @@ const pageEducation = (cle: 'schools' | 'university', page: string) => ({
                     body: champParagraphes('Texte'),
                 })),
             },
-        }),
-        [`${cle}SessionsSection`]: singleton({
+        })),
+        ...entree(`${cle}SessionsSection`, singleton({
             label: '📝 Ateliers et masterclasses',
             path: `src/content/ui/${cle}-sessions`,
             format: { data: 'json' },
@@ -141,10 +146,10 @@ const pageEducation = (cle: 'schools' | 'university', page: string) => ({
                     seeAll: champLigne('Texte du bouton sous les cartes'),
                 })),
             },
-        }),
+        })),
     },
     collections: {
-        [`${cle}-thematics`]: collection({
+        ...entree(`${cle}-thematics`, collection({
             label: '🗂️ Les thématiques',
             slugField: 'title',
             path: `src/content/${cle}-thematics/*`,
@@ -163,8 +168,8 @@ const pageEducation = (cle: 'schools' | 'university', page: string) => ({
                     description: champParagraphes('Description'),
                 })),
             },
-        }),
-        [`${cle}-sessions`]: collection({
+        })),
+        ...entree(`${cle}-sessions`, collection({
             label: '🗂️ Les ateliers',
             slugField: 'title',
             path: `src/content/${cle}-sessions/*`,
@@ -182,8 +187,8 @@ const pageEducation = (cle: 'schools' | 'university', page: string) => ({
                     description: champParagraphes('Description'),
                 })),
             },
-        }),
-        [`${cle}-reasons`]: collection({
+        })),
+        ...entree(`${cle}-reasons`, collection({
             label: '🗂️ Les 6 raisons',
             slugField: 'title',
             path: `src/content/${cle}-reasons/*`,
@@ -201,7 +206,7 @@ const pageEducation = (cle: 'schools' | 'university', page: string) => ({
                     text: champParagraphes('Texte'),
                 })),
             },
-        }),
+        })),
     },
 });
 const ecoles = pageEducation('schools', 'page écoles');
