@@ -1,4 +1,8 @@
 import { config, fields, collection, singleton } from '@keystatic/core';
+import {
+    ENTREE_LIGNE, ENTREE_PARAGRAPHE, bandeauAide, bandeauSeo,
+    aideCouleur, aideLigne, aideLangues, aidePhotos,
+} from './src/keystatic/aide';
 
 // Stockage :
 //  - prod  : cloud (Keystatic Cloud gere l'auth, les modifs partent en commits
@@ -18,56 +22,57 @@ const useCloud =
 // la couleur ne vient que des marqueurs, aucun champ n'en a par defaut.
 //
 // La convention elle-meme n'est expliquee qu'a un seul endroit, la page
-// "Comment ecrire les textes" (helpSection). Sous chaque champ, on ne dit que
-// ce qui lui est propre : ce que fait la touche Entree, et ou trouver l'aide.
-const VOIR_AIDE = 'Couleurs : voir ❓ Comment écrire les textes, dans Tout le site.';
-const AIDE_LIGNE = VOIR_AIDE;
-const AIDE_MULTILIGNE = 'Entrée passe à la ligne. ' + VOIR_AIDE;
-const AIDE_PARAGRAPHES = 'Entrée crée un nouveau paragraphe. ' + VOIR_AIDE;
+// "Comment ecrire les textes" (helpSection, src/keystatic/aide.ts). Chaque
+// section y renvoie une fois, par le bandeau que pose parLangue. Sous un
+// champ, on ne dit que ce qui lui est propre : ou il apparait, et ce que
+// fait la touche Entree quand elle fait quelque chose.
 
-/** `precision` ajoute une phrase propre au champ, par exemple ou il apparait
- *  sur le site. Jamais de couleur : aucun champ n'en a par defaut. */
-const decrire = (aide: string, precision?: string) => (precision ? `${precision} ${aide}` : aide);
+/** Phrase propre au champ suivie, s'il y a lieu, du comportement d'Entree. */
+const decrire = (precision?: string, entree?: string) =>
+    [precision, entree].filter(Boolean).join(' ') || undefined;
 
-/** Texte d'une seule ligne, rendu par RichText. */
+/** Texte d'une seule ligne, rendu par RichText. Entree n'y fait rien. */
 const champLigne = (label: string, precision?: string) =>
-    fields.text({ label, description: decrire(AIDE_LIGNE, precision) });
+    fields.text({ label, description: decrire(precision) });
 
 /** Texte rendu par RichText ou Entree fait passer a la ligne (<br>). */
 const champMultiligne = (label: string, precision?: string) =>
-    fields.text({ label, description: decrire(AIDE_MULTILIGNE, precision), multiline: true });
+    fields.text({ label, description: decrire(precision, ENTREE_LIGNE), multiline: true });
 
 /** Texte rendu par RichBody : chaque Entree ouvre un nouveau paragraphe. */
 const champParagraphes = (label: string, precision?: string) =>
-    fields.text({ label, description: decrire(AIDE_PARAGRAPHES, precision), multiline: true });
+    fields.text({ label, description: decrire(precision, ENTREE_PARAGRAPHE), multiline: true });
 
 // Le referencement est le seul texte du site qui ne s'affiche pas sur le site :
 // il part dans les balises <title> et <meta description>, que Google reprend
-// dans ses resultats. Les marqueurs de couleur n'y ont donc aucun sens, et la
-// longueur est contrainte par Google. Keystatic refuse la saisie au-dela.
-const AIDE_SEO = "Ce texte s'affiche dans les resultats de recherche Google, pas sur la page. Les marqueurs de couleur n'y fonctionnent pas.";
+// dans ses resultats. Les marqueurs n'y ont donc aucun sens (bandeauSeo le dit
+// en haut de la section), et la longueur est contrainte par Google. Keystatic
+// refuse la saisie au-dela.
 const champTitreSeo = (label: string, precision: string) =>
     fields.text({
         label,
-        description: precision + ' ' + AIDE_SEO + ' Google coupe au-dela de 60 caracteres.',
+        description: precision + ' Google coupe au-delà de 60 caractères.',
         validation: { length: { max: 60 } },
     });
 const champDescriptionSeo = (label: string, precision: string) =>
     fields.text({
         label,
-        description: precision + ' ' + AIDE_SEO + ' Google coupe au-dela de 160 caracteres.',
+        description: precision + ' Google coupe au-delà de 160 caractères.',
         validation: { length: { max: 160 } },
         multiline: true,
     });
 
-/** Les trois blocs de langue d'une entree. Les champs ne sont ecrits qu'une
- *  fois : la fabrique les instancie pour chaque langue et decline la meme
- *  phrase de presentation. Sans elle, chaque champ etait recopie trois fois,
- *  et une correction devait etre repercutee sur les trois copies. */
+/** Les trois blocs de langue d'une entree, precedes du bandeau d'aide. Les
+ *  champs ne sont ecrits qu'une fois : la fabrique les instancie pour chaque
+ *  langue et decline la meme phrase de presentation. Sans elle, chaque champ
+ *  etait recopie trois fois, et une correction devait etre repercutee sur les
+ *  trois copies. Le bandeau n'ecrit rien dans le JSON. */
 const parLangue = <T extends Parameters<typeof fields.object>[0]>(
     sujet: string,
     champs: () => T,
+    bandeau = bandeauAide,
 ) => ({
+    aide: bandeau(),
     fr: fields.object(champs(), { label: 'Français', description: sujet + ', version française.' }),
     en: fields.object(champs(), { label: 'Anglais', description: sujet + ', version anglaise.' }),
     es: fields.object(champs(), { label: 'Espagnol', description: sujet + ', version espagnole.' }),
@@ -308,52 +313,22 @@ export default config({
                     description: "Fiche d'identite envoyee aux moteurs de recherche, au format schema.org. Elle ne s'affiche nulle part et n'a pas de limite de longueur.",
                     multiline: true,
                     }),
-                })),
+                }), bandeauSeo),
             },
         }),
         // Page d'aide, affichee uniquement dans le CMS : la SEULE explication
-        // de la convention d'ecriture, a laquelle renvoie chaque champ (voir
-        // VOIR_AIDE). Les blocs objet sans champ ne servent qu'a porter un
-        // titre et un texte : ils n'affichent aucune saisie. Ils ecrivent une
-        // cle vide dans help.json, d'ou le fichier dedie.
+        // de la convention d'ecriture, a laquelle renvoie le bandeau de chaque
+        // section. Ses blocs sont des champs d'affichage (src/keystatic/aide.ts)
+        // qui n'ecrivent rien : help.json reste vide.
         helpSection: singleton({
             label: '❓ Comment écrire les textes',
             path: 'src/content/ui/help',
             format: { data: 'json' },
             schema: {
-                couleur: fields.object({}, {
-                    label: 'Mettre un passage en couleur',
-                    description:
-                        "Tous les champs fonctionnent de la même façon. Sans marqueur, un texte prend la couleur "
-                        + "de son fond : noir sur fond clair, blanc sur fond sombre. "
-                        + "Pour colorer un passage, entourez-le de deux astérisques pour l'orange (**texte**), "
-                        + "de deux tirets bas pour le cyan (__texte__) ou de deux signes égal pour le bleu (==texte==). "
-                        + "Exemple : Une méthodologie commune, **des thématiques au choix.** "
-                        + "Seul le passage entouré change de couleur. Une paire incomplète reste affichée telle quelle. "
-                        + "Les boutons et les pastilles gardent leur propre couleur : n'y mettez pas de marqueurs. "
-                        + "Le référencement Google ignore les marqueurs.",
-                }),
-                ligne: fields.object({}, {
-                    label: 'Aller à la ligne',
-                    description:
-                        "Sous chaque champ, une phrase indique ce que fait la touche Entrée. "
-                        + "Dans un texte, elle crée un nouveau paragraphe, avec l'espace qui va avec. "
-                        + "Dans un titre, elle fait simplement passer la suite à la ligne. "
-                        + "Les champs d'une seule ligne n'acceptent pas de retour à la ligne.",
-                }),
-                langues: fields.object({}, {
-                    label: 'Les trois langues',
-                    description:
-                        "Chaque page contient un bloc Français, un Anglais et un Espagnol. "
-                        + "Un champ laissé vide n'affiche rien dans cette langue : le site ne va jamais "
-                        + "chercher la version d'une autre langue à la place.",
-                }),
-                photos: fields.object({}, {
-                    label: 'Les photos',
-                    description:
-                        "Les photos ne se changent pas depuis le CMS, elles font partie de la maquette. "
-                        + "Passez par Paul pour en remplacer une.",
-                }),
+                couleur: aideCouleur(),
+                ligne: aideLigne(),
+                langues: aideLangues(),
+                photos: aidePhotos(),
             },
         }),
         events: singleton({

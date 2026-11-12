@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "./typography.css";
 
+/* L'aide du CMS est stylee en ligne et ne s'affiche pas sur le site : sans
+   cette exclusion, Tailwind y lirait des mots comme "underline" et les
+   ajouterait au CSS du site pour rien. */
+@source not "../keystatic";
+
 @theme {
   --color-orange:      #f05600;
   --color-blue:        #0698c0;

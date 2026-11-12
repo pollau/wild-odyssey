@@ -3,7 +3,7 @@
 // retour a la ligne devient un saut de ligne. Ne produit aucun conteneur, il
 // se glisse donc dans le <span>, <p> ou <a> existant.
 // Voir src/i18n/richText.ts pour la convention d'ecriture.
-import { ACCENT_CLASS, parseRichText } from "../i18n/richText";
+import { ACCENTS, parseRichText } from "../i18n/richText";
 
 interface Props {
 	text?: string;
@@ -16,7 +16,7 @@ const lignes = parseRichText(text);
 	<Fragment>
 		{i > 0 && <br />}
 		{segments.map((s) =>
-			s.accent === "none" ? s.text : <span class={ACCENT_CLASS[s.accent]}>{s.text}</span>
+			s.accent === "none" ? s.text : <span class={ACCENTS[s.accent].classe}>{s.text}</span>
 		)}
 	</Fragment>
 ))}

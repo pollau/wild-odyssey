@@ -3,7 +3,7 @@
 // nouveau <p>, qui recoit la classe passee. Remplace le <p> qu'on aurait
 // ecrit a la main, pour ne jamais imbriquer un paragraphe dans un autre.
 // Voir src/i18n/richText.ts pour la convention d'ecriture.
-import { ACCENT_CLASS, parseParagraphs } from "../i18n/richText";
+import { ACCENTS, parseParagraphs } from "../i18n/richText";
 
 interface Props {
 	text?: string;
@@ -16,7 +16,7 @@ const paragraphes = parseParagraphs(text);
 {paragraphes.map((segments) => (
 	<p class={classe}>
 		{segments.map((s) =>
-			s.accent === "none" ? s.text : <span class={ACCENT_CLASS[s.accent]}>{s.text}</span>
+			s.accent === "none" ? s.text : <span class={ACCENTS[s.accent].classe}>{s.text}</span>
 		)}
 	</p>
 ))}
